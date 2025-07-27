@@ -1,0 +1,60 @@
+Pessoals Website Style Guide
+
+1. Typography
+- Headings: Playfair Display (Serif, Elegant, Professional)
+- Body Text: Lato (Sans-serif, Clean, Readable)
+- Logo Font: Montserrat (Modern, Bold)
+- Font Sizes:
+  - H1: 48px
+  - H2: 36px
+  - H3: 28px
+  - Body: 18px
+  - Small Text: 14px
+
+2. Color Palette
+- Primary Color: #1E1E1E (Deep Black - Strong, Elegant)
+- Secondary Color: #D4AF37 (Gold - Luxury, Premium Feel)
+- Accent Color: #F4F4F4 (Light Gray - Soft Contrast)
+- Background: #FFFFFF (White - Clean, Minimalist)
+- Call-to-Action (CTA): #E63946 (Red - Bold, Attention-Grabbing)
+
+3. Layout & Grid System
+- Grid: 12-column layout with 80px gutters
+- Container Width: 1200px max
+- Spacing:
+  - Section Padding: 80px top & bottom
+  - Component Spacing: 40px between elements
+
+4. Imagery & Visuals
+- Photo Style: High-quality, professional lifestyle and branding shots.
+- Illustrations: Minimalist, clean, and slightly artistic.
+- Icons: Line-based, simple, and modern.
+- Hero Images: Full-width with subtle overlays for contrast.
+
+5. UI Elements
+- Buttons:
+  - Primary: Gold background with black text (#D4AF37, #1E1E1E)
+  - Secondary: Transparent border with gold text (#D4AF37 border)
+  - Rounded corners: 8px
+  - Hover Effect: Slight shadow and color darkening
+- Forms:
+  - Input Fields: Rounded edges, soft gray borders
+  - Labels: Bold and small
+  - CTA Buttons: Always in gold/red to stand out
+
+6. Navigation & Footer
+- Navigation Bar:
+  - Sticky top menu
+  - Simple menu items: Home, About, Services, Portfolio, Contact
+  - Call-to-Action (CTA) button in the menu
+- Footer:
+  - Dark background for contrast
+  - Social media icons in gold
+  - Quick links and copyright info
+
+7. Tone & Voice
+- Brand Personality: Confident, Professional, and Engaging.
+- Copywriting Style: Direct, Inspiring, and Value-Driven.
+- Calls to Action: Strong and compelling (e.g., "Let’s Build Your Brand Today!")
+
+This guide ensures consistency across the Pessoals website while maintaining a sleek, professional, and engaging user experience.

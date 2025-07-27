@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pessolas eBooks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      margin: 0;
+      background-color: #f9fafb;
+      color: #333;
+    }
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+    }
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      background-color: #fff;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      color: #666;
+      font-size: 1.2rem;
+    }
+    .ebooks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .ebook-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+    .ebook-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .ebook-card p {
+      color: #555;
+    }
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    .button {
+      margin-top: 1.5rem;
+      display: inline-block;
+      background-color: #000;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .button:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <h1>Pessolas eBooks</h1>
+    <p>Unlock personal branding strategies, templates, and guides tailored for creators, coaches, and founders.</p>
+  </section>
+
+  <section class="ebooks-grid">
+    <div class="ebook-card">
+      <h2>The Magnetic Brand Guide</h2>
+      <p>Master your personal brand and attract your dream audience.</p>
+      <p class="price">$15</p>
+      <a href="/ebooks/magnetic-brand-guide" class="button">Learn More</a>
+    </div>
+    <div class="ebook-card">
+      <h2>Content System Templates</h2>
+      <p>Plan and publish high-converting content with our proven frameworks.</p>
+      <p class="price">$12</p>
+      <a href="#" class="button">Learn More</a>
+    </div>
+    <div class="ebook-card">
+      <h2>Personal Brand Positioning</h2>
+      <p>Find your unique voice and stand out in any niche or industry.</p>
+      <p class="price">$10</p>
+      <a href="#" class="button">Learn More</a>
+    </div>
+  </section>
+</body>
+</html>
