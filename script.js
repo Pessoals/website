@@ -243,3 +243,23 @@ document.addEventListener("DOMContentLoaded", function() {
 /*  resources data filter end */ 
 
 /* pop of paypal payment button */
+
+/* start of f&q section */
+
+const toggles = document.querySelectorAll('.accordion-toggle');
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener('change', () => {
+      // If a checkbox is checked
+      if (toggle.checked) {
+        // Uncheck all others
+        toggles.forEach(other => {
+          if (other !== toggle) {
+            other.checked = false;
+          }
+        });
+      }
+    });
+  });
+
+  /* end of f&q section */ 
