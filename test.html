@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Branding Case Study - Opella</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: #333;
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Sections: Challenge, Solution, Results */
+    section {
+      padding: 40px 20px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+      color: #1c1a15;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+
+    section p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      background: white;
+      max-width: 1100px;
+      margin: 40px auto 80px auto;
+      padding: 40px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .gallery h2 {
+      margin-bottom: 25px;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      color: #1c1a15;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .gallery {
+        padding: 20px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero" title="Click to scroll to top">
+    <h1>Opella: Reinventing Self-Care</h1>
+    <p>Discover how we transformed Opella into a challenger brand in the self-care industry.</p>
+  </section>
+
+  <!-- Challenge Section -->
+  <section class="challenge">
+    <h2>The Challenge</h2>
+    <p>Sanofi Consumer Healthcare sought to simplify self-care amidst growing complexity.</p>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="solution">
+    <h2>The Solution</h2>
+    <p>We developed a bold visual identity and clear messaging to resonate with modern consumers.</p>
+  </section>
+
+  <!-- Results Section -->
+  <section class="results">
+    <h2>Results</h2>
+    <img class="results" src="Images/docconte.png" alt="Logo Design" />
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="gallery">
+    <h2>Visual Identity</h2>
+    <div class="image-grid">
+      <img src="Images/docconte.png" alt="Logo Design" />
+      <img src="Images/casestudy04.png" alt="Packaging Design" />
+      <img src="image3.jpg" alt="Website Design" />
+      <!-- Add more images as needed -->
+    </div>
+  </section>
+
+  <script>
+    // Smooth scroll to top on hero click
+    document.querySelector('.hero').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

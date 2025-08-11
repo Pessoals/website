@@ -1,133 +1,87 @@
-const  menulist = document.getElementById("menulist")
-const burgermenu = document.getElementById("burgermenu")
+// Menu toggle code
+const menulist = document.getElementById("menulist");
+const burgermenu = document.getElementById("burgermenu");
 
-menulist.style.maxHeight="0px";
+menulist.style.maxHeight = "0px";
 
-
-
-function toggleMenu (){
-
-    if (menulist.style.maxHeight=="0px") {
-  
-        menulist.style.maxHeight="350px";
-    } else {
-        menulist.style.maxHeight="0px";
-    }
+function toggleMenu() {
+  if (menulist.style.maxHeight === "0px") {
+    menulist.style.maxHeight = "350px";
+  } else {
+    menulist.style.maxHeight = "0px";
+  }
 }
 
-const testimonial = [
-    {
-      name: "Joren Velas",
-      role: "Founder",
-      linkText: "Legacy Foundation",
-      linkHref: "#",
-      imgSrc:"Images/drchrstianphoto.png",
-      text: "They captured my luxury wellness vibe perfectly. My brand now feels elevated and effortlessly aligned with my clients"
-    },
-    {
-      name: "Jane Doe",
-      role: "CEO",
-      linkText: "Visionary Co.",
-      linkHref: "#",
-      imgSrc: "https://randomuser.me/api/portraits/women/68.jpg",
-      text: "The process was smooth, creative, and honestly kind of fun. In just a few weeks, I had a complete brand identity that finally felt like me, plus a content strategy that makes showing up online effortless. If you want a brand that actually reflects who you are, Pessoals is the team you need."
-    },
-    {
-      name: "John Smith",
-      role: "Tax Advisory",
-      linkText: "InnovateX",
-      linkHref: "#",
-      imgSrc: "https://randomuser.me/api/portraits/men/62.jpg",
-      text: "Working with Pessoals was a game-changer for me. They didn’t just design a personal brand—they helped me figure out who I really am and how to show that to the world."
-    },
-    {
-      name: "Anne william",
-      role: "Content Creator",
-      linkText: "InnovateX",
-      linkHref: "#",
-      imgSrc: "images/drchristianphoto.jpg",
-      text: "Working with Pessoals was a game-changer for me. They didn’t just design a personal brand—they helped me figure out who I really am and how to show that to the world."
-    }
-  ];
-
-  let Index = 1;
-
-  function showTestimonial(index) {
-    const testimonial = testimonial[index];
-    document.getElementById('profile-name').textContent = testimonial.name;
-    document.getElementById('profile-link').textContent = testimonial.linkText;
-    document.getElementById('profile-link').href = testimonial.linkHref;
-    document.getElementById('profile-img').src = testimonial.imgSrc;
-    document.getElementById('testimonial-text').textContent = testimonial.text;
+// Testimonials data - ONE array only, consistent naming
+const testimonials = [
+  {
+    name: "Joren Velas",
+    role: "Founder",
+    linkText: "Legacy Foundation",
+    linkHref: "#",
+    imgSrc: "Images/drchrstianphoto.png",
+    text: "They captured my luxury wellness vibe perfectly. My brand now feels elevated and effortlessly aligned with my clients."
+  },
+  {
+    name: "Jane Doe",
+    role: "CEO",
+    linkText: "Visionary Co.",
+    linkHref: "#",
+    imgSrc: "https://randomuser.me/api/portraits/women/68.jpg",
+    text: "The process was smooth, creative, and honestly kind of fun. In just a few weeks, I had a complete brand identity that finally felt like me, plus a content strategy that makes showing up online effortless. If you want a brand that actually reflects who you are, Pessoals is the team you need."
+  },
+  {
+    name: "John Smith",
+    role: "Tax Advisory",
+    linkText: "InnovateX",
+    linkHref: "#",
+    imgSrc: "https://randomuser.me/api/portraits/men/62.jpg",
+    text: "Working with Pessoals was a game-changer for me. They didn’t just design a personal brand—they helped me figure out who I really am and how to show that to the world."
+  },
+  {
+    name: "Anne William",
+    role: "Content Creator",
+    linkText: "InnovateX",
+    linkHref: "#",
+    imgSrc: "images/drchristianphoto.jpg",
+    text: "Working with Pessoals was a game-changer for me. They didn’t just design a personal brand—they helped me figure out who I really am and how to show that to the world."
   }
+];
 
-  function nextTestimonial() {
-    currentIndex = (Index + 1) % testimonial.length;
-    showTestimonial(Index);
-  }
+// Track current testimonial index
+let currentIndex = 0;
 
-  function prevTestimonial() {
-    currentIndex = (Index - 1 + testimonial.length) % testimonial.length;
-    showTestimonial(Index);
-  }
+// Display a testimonial by index
+function showTestimonial(index) {
+  const testimonial = testimonials[index];
+  document.getElementById('profile-name').textContent = testimonial.name;
+  document.getElementById('profile-link').textContent = testimonial.linkText;
+  document.getElementById('profile-link').href = testimonial.linkHref;
+  document.getElementById('profile-img').src = testimonial.imgSrc;
+  document.getElementById('testimonial-text').textContent = testimonial.text;
+}
 
-  const testimonials = [
-    {
-      name: "Joren Velas",
-      role: "Founder",
-      linkText: "Legacy Foundation",
-      linkHref: "#",
-      imgSrc:"https://randomuser.me/api/portraits/men/33.jpg",
-      text: "They captured my luxury wellness vibe perfectly. My brand now feels elevated and effortlessly aligned with my clients"
-    },
-    {
-      name: "Jane Doe",
-      role: "CEO",
-      linkText: "Visionary Co.",
-      linkHref: "#",
-      imgSrc: "https://randomuser.me/api/portraits/women/68.jpg",
-      text: "The process was smooth, creative, and honestly kind of fun. In just a few weeks, I had a complete brand identity that finally felt like me, plus a content strategy that makes showing up online effortless. If you want a brand that actually reflects who you are, Pessoals is the team you need."
-    },
-    {
-      name: "Anne william",
-      role: "Content Creator",
-      linkText: "InnovateX",
-      linkHref: "#",
-      imgSrc: "https://randomuser.me/api/portraits/men/62.jpg",
-      text: "Working with Pessoals was a game-changer for me. They didn’t just design a personal brand—they helped me figure out who I really am and how to show that to the world."
-    }
-  ];
+// Go to next testimonial
+function nextTestimonial() {
+  currentIndex = (currentIndex + 1) % testimonials.length;
+  showTestimonial(currentIndex);
+}
 
-    let currentIndex = 1;
+// Go to previous testimonial
+function prevTestimonial() {
+  currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+  showTestimonial(currentIndex);
+}
 
-    function showTestimonial(index) {
-      const testimonial = testimonials[index];
-      document.getElementById('profile-name').textContent = testimonial.name;
-      document.getElementById('profile-link').textContent = testimonial.linkText;
-      document.getElementById('profile-link').href = testimonial.linkHref;
-      document.getElementById('profile-img').src = testimonial.imgSrc;
-      document.getElementById('testimonial-text').textContent = testimonial.text;
-    }
+// Initialize first testimonial display
+showTestimonial(currentIndex);
 
-    function nextTestimonial() {
-      currentIndex = (currentIndex + 1) % testimonials.length;
-      showTestimonial(currentIndex);
-    }
+// Function to navigate to another page
+function openPage() {
+  window.location.href = "drchristianconte.html";
+}
 
-    function prevTestimonial() {
-      currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
-      showTestimonial(currentIndex);
-    }
-
-    showTestimonial(currentIndex);
-
-
-    function openPage() {
-      // Replace 'page2.html' with the actual page you want to navigate to
-      window.location.href = "drchristianconte.html";  // This will open page2.html in the same tab
-  }
-
-  /* POP UP */
+  /* POP UP 
   function openPopup() {
       document.getElementById('popup').style.display = 'flex';
     }
@@ -153,15 +107,79 @@ const testimonial = [
       return false;
     }
 
- /* End of POP UP */
+  End of POP UP */
 
+function openPopup() {
+  document.getElementById('popup').style.display = 'flex';
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const consent = document.getElementById('consent').checked;
+
+  if (!consent) {
+    alert("You must agree to receive emails to proceed.");
+    return false;
+  }
+
+  if (!name || !email) {
+    alert("Please fill in your name and email.");
+    return false;
+  }
+
+  // Mailchimp JSONP URL (update with your own!)
+  const mailchimpUrl = 'https://us15.list-manage.com/subscribe/post-json?u=07e655f1ee6606d6949ea7dbb&id=4798db1474&c=?';
+
+  // Prepare parameters
+  const params = new URLSearchParams();
+  params.append('EMAIL', email);
+  params.append('FNAME', name);
+
+  // JSONP helper
+  function jsonp(url, callback) {
+    const script = document.createElement('script');
+    const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+
+    window[callbackName] = function(data) {
+      delete window[callbackName];
+      document.body.removeChild(script);
+      callback(data);
+    };
+
+    script.src = url.replace('=?', '=' + callbackName);
+    document.body.appendChild(script);
+  }
+
+  // Send to Mailchimp and on success redirect to PayPal
+  jsonp(mailchimpUrl + '&' + params.toString(), function(response) {
+    if (response.result === 'success' || response.result === 'error') {
+      // Close popup just in case
+      closePopup();
+      // Redirect to PayPal checkout
+      window.location.href = 'https://www.paypal.com/ncp/payment/A7CABSKCLJPJE';
+    } else {
+      alert('There was an error submitting your email. Please try again.');
+    }
+  });
+
+  return false;
+}
+
+  
 
  // Start of free chapter download 
 
  function downloadPDF1() {
     const link = document.createElement("a");
-    link.href = "https://github.com/danielayana76/pessoals/raw/refs/heads/main/Downloads/brandlikeacelebritychapteronefreeversion.zip"; // Replace with your actual link
-    link.download = "brandlikeacelebritychapteronefreeversion.zip"; // File name to save as
+    link.href="/Files/BrandlikeaCelebrityChapterOneFreeVersion"; // Replace with your actual link
+    link.download = "Brand Like a Celebrity Chapter One Free"; // File name to save as
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -169,7 +187,7 @@ const testimonial = [
 
   function downloadPDF2() {
     const link = document.createElement("a");
-    link.href = "https://github.com/danielayana76/pessoals/raw/refs/heads/main/Downloads/brandlikeacelebritychaptertwofreeversion.zip"; // Replace with your actual link
+    link.href = "/Files/BrandlikeaCelebrityChapterOneTwoFreeVersion"; // Replace with your actual link
     link.download = "brandlikeacelebritychaptertwofreeversion.zip"; // File name to save as
     document.body.appendChild(link);
     link.click();
@@ -178,7 +196,7 @@ const testimonial = [
 
   function downloadPDF3() {
     const link = document.createElement("a");
-    link.href = "https://github.com/danielayana76/pessoals/raw/refs/heads/main/Downloads/brandlikeacelebritychaptersixfreeversion.zip"; // Replace with your actual link
+    link.href = "/Files/BrandlikeaCelebrityChapterThreeFreeVersion"; // Replace with your actual link
     link.download = "brandlikeacelebritychaptersixfreeversion.zip"; // File name to save as
     document.body.appendChild(link);
     link.click();
@@ -195,8 +213,8 @@ const testimonial = [
 
   function downloadInstead() {
     const link = document.createElement("a");
-    link.href = "https://github.com/danielayana76/pessoals/raw/refs/heads/main/Downloads/brandlikeacelebrity.zip"; // Replace with your actual link
-    link.download = "brandlikeacelebrity.zip"; // File name to save as
+    link.href = "/Files/BrandlikeaCelebrity"; // Replace with your actual link
+    link.download = "Brand Like a Celebrity"; // File name to save as
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -207,39 +225,28 @@ const testimonial = [
 
 
  /* resources data Filter */ 
+ 
+document.addEventListener("DOMContentLoaded", () => {
+      const filterLinks = document.querySelectorAll('.filter-link');
+      const resourceCards = document.querySelectorAll('.resource-card');
 
- // Wait until the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", function() {
-  const filterLinks = document.querySelectorAll('filter-link');
-  const resourceCards = document.querySelectorAll('resource-card');
+      filterLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
 
-  filterLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-    function downloadPDF1() {
-    const link = document.createElement("a");
-    link.href = "https://github.com/danielayana76/pessoals/raw/refs/heads/main/Downloads/brandlikeacelebritychapteronefreeversion.zip"; // Replace with your actual link
-    link.download = "brandlikeacelebritychapteronefreeversion.zip"; // File name to save as
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }  e.preventDefault();
+          filterLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
 
-      const filter = this.getAttribute('data-filter');
+          const filter = link.getAttribute('data-filter').toLowerCase();
 
-      resourceCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-
-        if (filter === 'all' || filter === category) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
+          resourceCards.forEach(card => {
+            const category = card.getAttribute('data-category').toLowerCase();
+            card.style.display = (filter === 'all' || filter === category) ? 'inline-block' : 'none';
+          });
+        });
       });
     });
-  });
-});
-
- 
+    
 /*  resources data filter end */ 
 
 /* pop of paypal payment button */
