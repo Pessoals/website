@@ -6,8 +6,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-  <!-- Styles -->
-  <link rel="stylesheet" href="cookie-policy.css" />
+  <style>
+    :root {
+      /* Colors */
+      --color-primary: #1c1a15;
+      --color-secondary: #faf8ef;
+      --color-text-primary: #1c1a15;
+      --color-text-secondary: #8f8f8c;
+      --color-background: #faf8ef;
+      --color-background-hover: #eaf0f6;
+
+      /* Spacing */
+      --spacing-xs: 8px;
+      --spacing-sm: 16px;
+      --spacing-md: 24px;
+      --spacing-lg: 32px;
+      --spacing-xl: 48px;
+
+      /* Fonts */
+      --font-family-primary: 'Montserrat', sans-serif;
+      --font-family-secondary: 'Lato', sans-serif;
+      --font-family-serif: 'Playfair Display', serif;
+
+      --font-size-sm: 0.875rem;  /* 14px */
+      --font-size-md: 1rem;      /* 16px */
+      --font-size-lg: 1.5rem;    /* 24px */
+      --font-size-xl: 2.625rem;  /* 42px */
+
+      /* Breakpoints */
+      --breakpoint-sm: 600px;
+      --breakpoint-md: 1024px;
+      --breakpoint-lg: 1200px;
+    }
+
+    body {
+      margin: 0;
+      padding: var(--spacing-lg) var(--spacing-md);
+      background-color: var(--color-background);
+      font-family: var(--font-family-secondary);
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    .cookie-policy {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-sm);
+      box-sizing: border-box;
+      text-align: left;
+    }
+
+    h1, h2 {
+      font-family: var(--font-family-primary);
+      color: var(--color-primary);
+      margin: 0 0 var(--spacing-sm) 0;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--spacing-md);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: var(--font-size-lg);
+      margin-top: var(--spacing-lg);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    p {
+      font-size: var(--font-size-md);
+      margin-bottom: var(--spacing-md);
+      color: var(--color-text-primary);
+      font-family: var(--font-family-secondary);
+    }
+
+    ul {
+      margin-left: var(--spacing-lg);
+      margin-bottom: var(--spacing-md);
+      color: var(--color-text-primary);
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-md);
+      list-style-type: disc;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--color-background-hover);
+      outline: none;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: var(--breakpoint-sm)) {
+      body {
+        padding: var(--spacing-md) var(--spacing-sm);
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+        margin-top: var(--spacing-md);
+      }
+
+      p, ul {
+        font-size: var(--font-size-sm);
+      }
+    }
+  </style>
 </head>
 <body>
   <section class="cookie-policy">
@@ -48,59 +163,3 @@
   </section>
 </body>
 </html>
- <style>
-    /* cookie-policy.css */
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #FCFAF8;
-  font-family: 'Montserrat', 'Lato', sans-serif;
-  color: #1C1A15;
-  line-height: 1.7;
-}
-
-.cookie-policy {
-  padding: 60px 20px;
-}
-
-.container {
-  max-width: 800px;
-  margin: auto;
-}
-
-h1, h2 {
-  font-family: 'Playfair Display', serif;
-  color: #1C1A15;
-}
-
-h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
-}
-
-h2 {
-  font-size: 24px;
-  margin-top: 40px;
-  margin-bottom: 10px;
-}
-
-p, ul {
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-ul {
-  padding-left: 20px;
-}
-
-a {
-  color: #1C1A15;
-  text-decoration: underline;
-}
-
-a:hover {
-  color: #333;
-}
-
- </style>
