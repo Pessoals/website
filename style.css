@@ -829,9 +829,11 @@ nav ul li a:hover {
   font-weight: 400;
   line-height: 1;
   margin: 0 auto 2rem;
+  color: #FAF8EF;
 }
 .aboutcontainer .intro-rcg{
   font-size: 1.5rem;
+  color: #FAF8EF;
   max-width: 800px;
   font-family: 'Playfair display',serif;
   font-weight: 400;
@@ -1130,6 +1132,8 @@ nav ul li a:hover {
 .columncontact h2 {
   font-family: 'Montserrat',sans-serif;
   font-weight: 600;
+  color: #FAF8EF;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 .columncontact p {
@@ -2795,9 +2799,10 @@ a:hover {
 }
 
 .casestudycontainer p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-family: 'Playfair Display', serif;
   font-weight: 400;
+  color: #FAF8EF;
   text-align: start;
   line-height: 1.4;
   margin: 0 auto 1rem;
@@ -2814,6 +2819,16 @@ a:hover {
     font-size: 1.5rem;
     line-height: 1.5;
   }
+  .custom-images{
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: #000; /* black background */
+    border-radius: 20px; /* rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /* Phone size and smaller */
@@ -2826,6 +2841,16 @@ a:hover {
   .casestudycontainer p {
     font-size: 1.2rem;
     line-height: 1.6;
+  }
+  .custom-images {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: #000; /* black background */
+    border-radius: 20px; /* rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
