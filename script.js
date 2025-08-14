@@ -12,15 +12,14 @@ function toggleMenu() {
   }
 }
 
-// Testimonials data - ONE array only, consistent naming
 const testimonials = [
   {
-    name: "Joren Velas",
+    name: "Asim",
     role: "Founder",
-    linkText: "Legacy Foundation",
+    linkText: "Connecta Ads",
     linkHref: "#",
-    imgSrc: "Images/drchrstianphoto.png",
-    text: "They captured my luxury wellness vibe perfectly. My brand now feels elevated and effortlessly aligned with my clients."
+    imgSrc: "Images/asimm.png",
+    text: "Working with Pessoals was one of the best investments I’ve made for myself and my business."
   },
   {
     name: "Jane Doe",
@@ -28,11 +27,11 @@ const testimonials = [
     linkText: "Visionary Co.",
     linkHref: "#",
     imgSrc: "https://randomuser.me/api/portraits/women/68.jpg",
-    text: "The process was smooth, creative, and honestly kind of fun. In just a few weeks, I had a complete brand identity that finally felt like me, plus a content strategy that makes showing up online effortless. If you want a brand that actually reflects who you are, Pessoals is the team you need."
+    text: "The process was smooth, creative, and honestly kind of fun. In just a few weeks, I had a complete brand identity that finally felt like me, plus a content strategy that makes showing up online effortless."
   },
   {
     name: "John Smith",
-    role: "Tax Advisory",
+    role: "Tax Advisor",
     linkText: "InnovateX",
     linkHref: "#",
     imgSrc: "https://randomuser.me/api/portraits/men/62.jpg",
@@ -43,39 +42,35 @@ const testimonials = [
     role: "Content Creator",
     linkText: "InnovateX",
     linkHref: "#",
-    imgSrc: "images/drchristianphoto.jpg",
+    imgSrc: "Images/drchristianphoto.jpg",
     text: "Working with Pessoals was a game-changer for me. They didn’t just design a personal brand—they helped me figure out who I really am and how to show that to the world."
   }
 ];
 
-// Track current testimonial index
 let currentIndex = 0;
 
-// Display a testimonial by index
 function showTestimonial(index) {
-  const testimonial = testimonials[index];
-  document.getElementById('profile-name').textContent = testimonial.name;
-  document.getElementById('profile-link').textContent = testimonial.linkText;
-  document.getElementById('profile-link').href = testimonial.linkHref;
-  document.getElementById('profile-img').src = testimonial.imgSrc;
-  document.getElementById('testimonial-text').textContent = testimonial.text;
+  const t = testimonials[index];
+  document.getElementById('profile-name').textContent = t.name;
+  document.getElementById('profile-link').textContent = t.linkText;
+  document.getElementById('profile-link').href = t.linkHref;
+  document.getElementById('profile-img').src = t.imgSrc;
+  document.getElementById('profile-img').alt = `${t.name} - ${t.role}`;
+  document.getElementById('testimonial-text').textContent = t.text;
 }
 
-// Go to next testimonial
 function nextTestimonial() {
   currentIndex = (currentIndex + 1) % testimonials.length;
   showTestimonial(currentIndex);
 }
 
-// Go to previous testimonial
 function prevTestimonial() {
   currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
   showTestimonial(currentIndex);
 }
 
-// Initialize first testimonial display
+// Initial load
 showTestimonial(currentIndex);
-
 // Function to navigate to another page
 function openPage() {
   window.location.href = "drchristianconte.html";
