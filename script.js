@@ -14,7 +14,7 @@ function toggleMenu() {
 
 const testimonials = [
   {
-    name: "Asim",
+    name: "Asim Ahmed",
     role: "Founder",
     linkText: "Connecta Ads",
     linkHref: "#",

@@ -568,13 +568,12 @@ nav ul li a:hover {
   padding-bottom: 40px;
   background-color: #FAF8EF;
 }
-.section-title {
+.service-section h1 {
   color: #1c1a15;
   margin-bottom: 4rem;
   margin-top: 2rem;
-  font-family: 'Playfair Display',serif;
-  font-weight: normal;
-  font-style: italic;
+  font-weight: 550;
+  font-family: 'Montserat',sans-serif;
   text-align: center;
   font-size: 2rem;
 }
@@ -627,12 +626,12 @@ nav ul li a:hover {
 .price span {
   font-size: 1rem;
   font-weight: 600;
-  color: #FAF8EF;
+  color: #8F8F8C;
 }
 
 .pricing-card .btn {
-  background-color: #8f8f8c;
-  color: #FAF8EF;
+  background-color: #FAF8EF;
+  color: #1c1a15;
   margin-top: 1rem;
   border-radius: 0.5em; /* Default large radius */
 }
@@ -650,8 +649,8 @@ nav ul li a:hover {
 
 
 .btn:hover {
-  background-color:#ffffff; ;
-  color: #1c1a15;
+  background-color:#8F8F8C;
+  color: #FAF8EF;
 }
 
 /* Features List */
@@ -722,14 +721,13 @@ nav ul li a:hover {
 
 .section-heading {
   font-size: 1.2rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montseratt', sans-serif;
   font-weight: 600;
-  font-style: italic;
-  max-width: 300px;
   margin: 5rem auto 2rem auto; /* center horizontally using auto margins */
   text-align: center; /* centers the text inside the element */
   color: #1a1a15;
 }
+
 
 
 /* Container for testimonials */
@@ -778,7 +776,8 @@ nav ul li a:hover {
 }
 
 .profile-info h3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
   font-weight: 500;
   margin: 0;
   color: #1a1a15;
@@ -796,14 +795,15 @@ nav ul li a:hover {
 }
 
 .profile-info a:hover {
-  color: #6E6E6B;
+  color: #8F8F8C;
 }
 
 /* Testimonial text */
 .testimonial-text {
   font-size: clamp(0.95rem, 2.5vw, 1rem);
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: italic;
+  font-weight: 500;
   text-align: center;
   line-height: 1.6;
   color: #1a1a15;
@@ -1112,8 +1112,8 @@ nav ul li a:hover {
 
 /* Buttons */
 .btncontact {
-  background: #767674;
-  color: #FAF8EF;
+  background: #FAF8EF;
+  color: #1a1a15;
   padding: 0.75rem 1.5rem;
   display: inline-block;
   margin-top: 1rem;
@@ -1122,12 +1122,11 @@ nav ul li a:hover {
   cursor: pointer;
   text-align: center;
   box-sizing: border-box;
-  width: 100%; /* makes it responsive */
 }
 
 .btncontact:hover {
-  background: #ffffff;
-  color: #1c1a15;
+  background: #8F8F8C;
+  color: #FAF8EF;
 }
 
 /* Email link */
@@ -1166,7 +1165,9 @@ form textarea {
 }
 
 form button {
-  width: 100%;
+  width:auto;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Lato', sans-serif;
   background: #FAF8EF;
   color: #1c1a15;
   padding: 0.75rem 1rem;
@@ -2652,6 +2653,9 @@ form button {
 }
 .popup button[type="submit"] {
     border-radius: 5px;
+    width:auto;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Lato', sans-serif;
   }
 
 .popup button[type="submit"]:hover,
