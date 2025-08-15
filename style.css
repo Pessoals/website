@@ -134,6 +134,7 @@ nav ul li a:hover {
 .burgermenu {
     display: none;
     font-size: 30px;
+    margin: 2rem;
     color: #FAF8EF;
     cursor: pointer;
 }
