@@ -1030,14 +1030,28 @@ nav ul li a:hover::after {
   text-align: center;
 }
 
-.core-values h2 {
-   font-family: 'Playfair Display',serif;
-  font-weight: 600;
+.core-values h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 550;
   font-style: italic;
-  font-size: 1.4rem;
-  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #1c1a15;
+  margin: 1rem 0;
+  font-size: 1.6rem; /* default size */
+  line-height: 1.2;
 }
 
+/* Section subheading */
+.core-values h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-align: center;
+  color: #1a1a15;
+  margin: 0.5rem 0 2rem 0;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
 
 /* Grid for values */
 .values-grid {
