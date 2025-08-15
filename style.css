@@ -1050,7 +1050,7 @@ nav ul li a:hover::after {
   text-align: center;
   color: #1c1a15;
   margin: 0.5rem 0;
-  font-size: 1.2rem; /* default size */
+  font-size: 1.4rem; /* default size */
   line-height: 1.2;
 }
 
@@ -1393,22 +1393,45 @@ form button {
 }
 
 .resourcesintro h1 {
-  font-family: var(--font-family-primary);
-  font-weight: 600;
-  font-size: 1.5rem;
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-xs);
+  font-family: 'Montserrat', sans-serif;
+  font-weight:600;
+  text-align: center;
+  color: #1c1a15;
+  margin: 0.5rem 0;
+  font-size: 1.4rem; /* default size */
+  line-height: 1.2;
 }
 
-.resourcesintro p {
-  font-family: var(--font-family-secondary);
+/* Section subheading */
+.resourcesintro h3 {
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
-  font-size: var(--font-size-md);
+  font-style: normal;
+  text-align: center;
+  color: #1a1a15;
+  margin: 0.5rem 0 2rem 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  padding-left: 1rem;   /* add horizontal padding */
+  padding-right: 1rem;
+}
+.resourcesintro p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 500;
+  text-align: center;
+  color: #1c1a15;
+  font-size: 1rem;
+  line-height: 1.4;
   margin-bottom: var(--spacing-md);
-  color: var(--color-primary);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+}
+.resourcesintro p a {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  text-align: center;
+  color: #8F8F8C;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 /* Filter Links */
@@ -1451,7 +1474,7 @@ form button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--color-backgroundcard);
+  background:#21211c;
   border: 1px solid #ddd;
   border-radius: var(--radius-md);
   width: 100%;
@@ -1497,18 +1520,18 @@ form button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--color-backgroundcard);
   transition: background-color 0.3s ease;
   border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
 .card-lower:hover {
-  background-color:#FFF8E1;
+  background-color:#785b5b;
+  opacity: 0.4;
 }
 
 .resource-card h3 {
   font-size: var(--font-size-md);
-  color: var(--color-primary);
+  color: var(--color-secondary);
   font-weight: 600;
   font-family: var(--font-family-primary);
   margin: 0 0 var(--spacing-xs) 0;
@@ -1546,7 +1569,7 @@ form button {
   font-size: var(--font-size-lg);
   font-weight: 600;
   font-family: var(--font-family-primary);
-  color: var(--color-primary);
+  color: var(--color-background);
 }
 
 .regular-price {
