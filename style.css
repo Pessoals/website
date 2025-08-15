@@ -1036,20 +1036,22 @@ nav ul li a:hover::after {
   text-align: center;
   color: #1c1a15;
   margin: 0.5rem 0;
-  font-size: 1.4rem; /* default size */
+  font-size: 1.2rem; /* default size */
   line-height: 1.2;
 }
 
 /* Section subheading */
 .core-values h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
   font-style: normal;
   text-align: center;
   color: #1a1a15;
   margin: 0.5rem 0 2rem 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.4;
+  padding-left: 1rem;   /* add horizontal padding */
+  padding-right: 1rem;
 }
 
 /* Grid for values */
