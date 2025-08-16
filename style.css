@@ -1784,22 +1784,29 @@ form button {
 
 /* end of hero section of brand like a celebrity sales page */ 
 /* badges section in brand like a celebrity sales page */
-
 .badges {
   background: #1c1a15;
   color: #FAF8EF;
   text-align: center;
   padding: 20px 0;
 }
-
+/* Default gap for smaller screens */
 .containerbadges {
   display: flex;
-  flex-wrap: wrap;           /* Make the badges wrap on small screens */
-  justify-content: center;   /* Center horizontally */
-  align-items: center;       /* Center vertically */
-  gap: 8rem;               /* Space between badges */
-  padding: 0 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;          /* Default smaller gap */
+  padding: 2rem 1rem; /* Padding around badges */
 }
+
+/* Larger screens: increase gap */
+@media (min-width: 1025px) {
+  .containerbadges {
+    gap: 5rem; /* More space between badges on bigger screens */
+  }
+}
+
 
 .badge-wrapper {
   display: flex;
@@ -1812,10 +1819,12 @@ form button {
   border-radius: 8px;
   transition: transform 0.3s ease;
   cursor: default;
+  flex: 1 1 7rem;           /* Allows badges to grow/shrink evenly */
+  max-width: 7rem;           /* Keeps max size */
 }
 
 .badge-wrapper:hover {
-  transform: scale(1.1); /* Subtle zoom effect on hover */
+  transform: scale(1.1);
 }
 
 .badge-wrapper img {
@@ -1838,6 +1847,8 @@ form button {
   .badge-wrapper {
     width: 5rem;
     height: 5rem;
+    flex: 1 1 5rem;
+    max-width: 5rem;
   }
   .badge-wrapper img {
     max-width: 70%;
@@ -1847,10 +1858,11 @@ form button {
     font-size: 0.65rem;
   }
 }
+
  /* end of badges section in brand like a celebrity sales page */
 .section-findout {
   background-color: #FAF8EF;
-  height: 80vh;
+  min-height: auto;
   box-sizing: border-box;
   overflow: hidden;
   color: #1c1a15;
@@ -1860,7 +1872,7 @@ form button {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 2rem;
+  padding: 5rem;
 }
 
 .container-findout {
@@ -1918,11 +1930,11 @@ form button {
   }
 
   .findout-header h2 {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .section-findout p {
-    font-size: 1rem;
+    font-size: 0.85rem;
     margin-bottom: 30px;
   }
 
@@ -1948,7 +1960,7 @@ form button {
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  height: 100vh;
+  min-height: auto;
   padding: 1rem;
   box-sizing: border-box;
 }
@@ -1957,14 +1969,35 @@ form button {
   padding: 50px 1.5rem;  /* top/bottom: 50px, left/right: 1.5rem (~24px) */
   width: 100%;
   box-sizing: border-box;
-}
-.container-testimonials h2{
+}.container-testimonials h2 {
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* default size */
   font-weight: bold;
   margin-bottom: 5rem;
   color: #FAF8EF;
   opacity: 100%;
+}
+
+/* Responsive tweaks for smaller screens */
+@media (max-width: 1024px) {
+  .container-testimonials h2 {
+    font-size: 1.1rem;
+    margin-bottom: 4rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .container-testimonials h2 {
+    font-size: 1rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container-testimonials h2 {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .testimonialsgrid {
@@ -2051,14 +2084,16 @@ form button {
   padding:20px;
    text-align: center;
 }
-.sixreasons{
-  font-weight: 500;
-  color: #1c1a15;
+.sixreasons {
+  font-weight: 600;
+  color: #8F8F8C;
   font-size: 1.1rem;
-  margin-bottom: -35px;
-  font-family: 'Montserrat', sans-serif;
+  margin-bottom: -30px;
+  font-family: 'Playfair Display',serif;
+  font-style: italic;
   line-height: 1.1;
 }
+
 .reasons-content h2 strong {
   font-size: 28px;
   display: block;
@@ -2067,6 +2102,47 @@ form button {
   opacity: 0.8;
   margin-bottom: 1rem;
 }
+
+/* Responsive for smaller screens */
+@media (max-width: 1024px) {
+  .sixreasons {
+    font-size: 1rem;
+    line-height: 1.1;
+    margin-bottom: -30px;
+  }
+  
+  .reasons-content h2 strong {
+    font-size: 24px;
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .sixreasons {
+    font-size: 0.95rem;
+    line-height: 1.05;
+    margin-bottom: -25x;
+  }
+  
+  .reasons-content h2 strong {
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .sixreasons {
+    font-size: 0.9rem;
+    line-height: 1;
+    margin-bottom: -20px;
+  }
+  
+  .reasons-content h2 strong {
+    font-size: 18px;
+    margin-bottom: 0.4rem;
+  }
+}
+
 
 .reasons-grid {
   display: grid;
@@ -2116,17 +2192,31 @@ form button {
     flex-direction: column;
     align-items: center;
     text-align: center; /* centers text in container */
-  }
+  }.ebook-image {
+  max-width: 300px;
+  margin-bottom: 20px;
+}
 
+.ebook-image img {
+  width: 100%;
+  transform: none;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 700px) {
   .ebook-image {
-    max-width: 300px;
-    margin-bottom: 20px;
+    max-width: 200px; /* smaller width on mobile */
+    margin-bottom: 15px;
   }
+}
 
-  .ebook-image img {
-    width: 100%;
-    transform: none;
+@media (max-width: 400px) {
+  .ebook-image {
+    max-width: 150px; /* very small screens */
+    margin-bottom: 10px;
   }
+}
+
 
   .reasons-content {
     flex: 1;
@@ -2166,7 +2256,7 @@ form button {
   color: #FAF8EF;
   display: flex;
   align-items: center;
-  min-height: 100vh;
+  min-height: auto;
   height: auto;
   padding: 40px 0;
 }
@@ -2179,15 +2269,36 @@ form button {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .container-who h2 {
   font-size: 1.7rem;
   font-weight: normal;
   text-align: center;
   color: #faf8ef;
-  font-family: playfair display, serif;
+  font-family: 'Playfair Display', serif;
   font-style: italic;
 }
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .container-who h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 700px) {
+  .container-who h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Extra small screens (very small phones) */
+@media (max-width: 400px) {
+  .container-who h2 {
+    font-size: 1.1rem;
+  }
+}
+
 .content-who{
   display: flex;
   justify-content: space-between;
@@ -2262,7 +2373,7 @@ form button {
 
   .content-who {
     flex-direction: column;
-    gap: 30px;
+    
   }
   .who.left,
   .who.right {
@@ -2403,16 +2514,40 @@ form button {
   align-content: center;      /* vertical center */
   background-color: #FAF8EF;
   padding: 40px 20px;
-}
-.faq-title {
+}.faq-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2rem; /* default for desktop */
   font-weight: 700;
   margin-bottom: 30px;
   color: #1c1a15;
   font-family: 'Lato', sans-serif;
   position: relative;
 }
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .faq-title {
+    font-size: 1.75rem;
+    margin-bottom: 25px;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 700px) {
+  .faq-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+}
+
+/* Extra small screens (very small phones) */
+@media (max-width: 400px) {
+  .faq-title {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+  }
+}
+
 
 /* Optional underline effect for title */
 .faq-title::after {
@@ -2433,6 +2568,7 @@ form button {
     .accordion-item {
       border-bottom: 1px solid transparent;
       margin-bottom: 10px;
+      text-align: start;
     }
 
     .accordion-item input {
@@ -2488,7 +2624,9 @@ form button {
     .accordion-icon::before {
       content: "+";
       display: inline-block;
-    }/* First Footer */
+    }
+
+    /* First  and Second  Footer */
 .footerfirst {
   background-color: #1c1a15;
   color: #FAF8EF;
@@ -2550,7 +2688,6 @@ form button {
   }
 }
 
-/* Footer First styles */
 .footer-container {
   margin: 0 auto;
   display: flex;
@@ -2640,6 +2777,59 @@ form button {
     display: block;
   }
 }
+
+/* End of footer  first  and second */ 
+
+/* Start of Footer Main consistent  */
+.footer-main {
+  background-color: #1c1a15;
+  color: #FAF8EF;
+  padding: 20px 15px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+.footer-main .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-main .footer-links {
+  display: flex;
+  flex-wrap: wrap;       /* allows wrapping on very small screens */
+  justify-content: center;
+  align-items: center;   /* vertically center all items */
+  gap: 20px;             /* space between links and text */
+}
+
+.footer-main .footer-links p {
+  font-size: 0.85rem;
+  margin: 0;             /* remove extra margin */
+  color: #FAF8EF;
+  line-height: 1.5;      /* align vertically with links */
+}
+
+.footer-main .footer-links a {
+  color: #8f8f8c;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: 0.3s;
+  line-height: 1.5;      /* align vertically with text */
+}
+
+.footer-main .footer-links a:hover {
+  color: #FAF8EF;
+  text-decoration: underline;
+}
+
+/* Small screens: stack vertically if needed */
+@media (max-width: 480px) {
+  .footer-main .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+/* End of footer main consitent */ 
 
 .popup-overlay {
   position: fixed;
