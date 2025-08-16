@@ -12,6 +12,21 @@ function toggleMenu() {
   }
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll(".image-slideshow img");
+  let current = 0;
+
+  function showNextImage() {
+    images[current].classList.remove("active");
+    current = (current + 1) % images.length;
+    images[current].classList.add("active");
+  }
+
+  // Change image every 3 seconds
+  setInterval(showNextImage, 1000);
+});
+
+
 const testimonials = [
   {
     name: "Asim Ahmed",
@@ -265,3 +280,21 @@ const toggles = document.querySelectorAll('.accordion-toggle');
   });
 
   /* end of f&q section */ 
+
+
+  // Scroll reveal animation
+document.addEventListener('DOMContentLoaded', function() {
+  const reasons = document.querySelectorAll('.reason');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  reasons.forEach(reason => {
+    observer.observe(reason);
+  });
+});
