@@ -1416,7 +1416,7 @@ form button {
   padding-right: 1rem;
 }
 .resourcesintro p {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Lato', sans-serif;
   font-style: italic;
   font-weight: 500;
   text-align: center;
@@ -1474,25 +1474,23 @@ form button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background:#21211c;
+  background:#EAF0F6;
   border: 1px solid #ddd;
   border-radius: var(--radius-md);
   width: 100%;
   max-width: 300px;
   min-width: 250px;
   height: 400px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-decoration: none;
   color: inherit;
   overflow: hidden;
-  transition: box-shadow 0.3s ease;
 }
 
 .resource-card:hover,
 .resource-card:focus {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   outline: none;
   text-decoration: none;
+  background-color:#ffffff;
 }
 
 /* Card Upper */
@@ -1524,14 +1522,9 @@ form button {
   border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
-.card-lower:hover {
-  background-color:#785b5b;
-  opacity: 0.4;
-}
-
 .resource-card h3 {
   font-size: var(--font-size-md);
-  color: var(--color-secondary);
+  color:var(--color-primary);
   font-weight: 600;
   font-family: var(--font-family-primary);
   margin: 0 0 var(--spacing-xs) 0;
@@ -1546,7 +1539,7 @@ form button {
   margin: 0 0 var(--spacing-xs) 0;
   color: #6E6E6B;
   font-family: var(--font-family-secondary);
-  margin-bottom: auto;
+  
   
 
   
@@ -1561,7 +1554,7 @@ form button {
   margin-top: auto;
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap:var(--color-background);
   flex-wrap: nowrap;
 }
 
@@ -1569,7 +1562,7 @@ form button {
   font-size: var(--font-size-lg);
   font-weight: 600;
   font-family: var(--font-family-primary);
-  color: var(--color-background);
+  color: var(--color-text-primary);
 }
 
 .regular-price {
