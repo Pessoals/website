@@ -273,7 +273,7 @@ nav ul li a:hover::after {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .video-container {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 9 / 16;
     object-fit: contain; /* Show full video */
   border-radius: 15px;
   border: none;
@@ -2096,13 +2096,12 @@ form button {
   color: #8F8F8C;
   font-size: 1.1rem;
   margin-bottom: -30px;
-  font-family: 'Playfair Display',serif;
-  font-style: italic;
+  font-family: 'Montserrat',sans-serif;
   line-height: 1.1;
 }
 
 .reasons-content h2 strong {
-  font-size: 28px;
+  font-size: 3rem;
   display: block;
   margin-top: 5px;
   color: #1c1a15;
@@ -2114,13 +2113,14 @@ form button {
 @media (max-width: 1024px) {
   .sixreasons {
     font-size: 1rem;
-    line-height: 1.1;
-    margin-bottom: -30px;
+    margin-bottom: 0.5rem;
   }
   
   .reasons-content h2 strong {
-    font-size: 24px;
+    font-size: 1.7rem;
     margin-bottom: 0.8rem;
+      line-height: 1;
+
   }
 }
 
@@ -2132,7 +2132,7 @@ form button {
   }
   
   .reasons-content h2 strong {
-    font-size: 20px;
+    font-size: 1.6rem;
     margin-bottom: 0.5rem;
   }
 }
@@ -2140,13 +2140,13 @@ form button {
 @media (max-width: 400px) {
   .sixreasons {
     font-size: 0.9rem;
-    line-height: 1;
     margin-bottom: -20px;
   }
   
   .reasons-content h2 strong {
-    font-size: 18px;
+    font-size: 1.4rem;
     margin-bottom: 0.4rem;
+     line-height: 0.9;
   }
 }
 
