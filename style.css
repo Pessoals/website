@@ -1747,8 +1747,8 @@ form button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background:#EAF0F6;
-  border: 1px solid #ddd;
+  background:#ffffff;
+  border: 0.5px solid #1a1a15;
   border-radius: var(--radius-md);
   width: 100%;
   max-width: 300px;
@@ -1763,7 +1763,7 @@ form button {
 .resource-card:focus {
   outline: none;
   text-decoration: none;
-  background-color:#ffffff;
+  background-color:#EAF0F6;
 }
 
 /* Card Upper */
@@ -1774,6 +1774,8 @@ form button {
   background-color: var(--color-backgroundcard);
   overflow: hidden;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border-bottom: 0.5px solid #1a1a15; /* light gray */
+
 }
 
 .card-upper img {
@@ -1938,27 +1940,6 @@ form button {
   text-decoration: underline;
 }
 
-.buy-button1 {
-  /*
-  padding: 0.75rem 1.5rem;
-  background-color: #000;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px; */ 
-
-  background: #1c1a15;
-  color: #FAF8EF;
-  padding: 0.9rem 2rem;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 5%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-
-}
 
 /* Button styles unchanged */
 .button-container {
