@@ -6,24 +6,238 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-  <!-- Styles -->
-  <link rel="stylesheet" href="careers.css" />
+  <style>
+    :root {
+      /* Colors */
+      --color-primary: #1c1a15;
+      --color-secondary: #faf8ef;
+      --color-accent: #ffffff;
+      --color-text-primary: #1c1a15;
+      --color-text-secondary: #8f8f8c;
+      --color-background: #faf8ef;
+      --color-background-dark: #1c1a15;
+      --color-border: #e5e5e5;
+
+      /* Spacing */
+      --spacing-xs: 8px;
+      --spacing-sm: 16px;
+      --spacing-md: 24px;
+      --spacing-lg: 40px;
+      --spacing-xl: 64px;
+
+      /* Fonts */
+      --font-family-primary: 'Montserrat', sans-serif;
+      --font-family-secondary: 'Lato', sans-serif;
+      --font-family-serif: 'Playfair Display', serif;
+
+      --font-size-sm: 0.875rem;  /* 14px */
+      --font-size-md: 1rem;      /* 16px */
+      --font-size-lg: 1.25rem;   /* 20px */
+      --font-size-xl: 1.5rem;    /* 24px */
+      --font-size-xxl: 3rem;     /* 48px */
+
+      /* Breakpoints */
+      --breakpoint-sm: 600px;
+      --breakpoint-md: 1024px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--color-background);
+      font-family: var(--font-family-secondary);
+      color: var(--color-text-primary);
+      line-height: 1.7;
+    }
+
+    section {
+      padding: var(--spacing-xl) var(--spacing-md);
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-family-primary);
+      color: var(--color-primary);
+      margin: 0 0 var(--spacing-sm);
+    }
+
+    h1 {
+      font-size: var(--font-size-xxl);
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+      margin-top: var(--spacing-lg);
+    }
+
+    /* Smaller, responsive section headings */
+    h2.section-title {
+      font-size: 1.5rem; 
+      font-weight: 600;
+      white-space: nowrap; /* keep on one line */
+    }
+
+    h3 {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+    }
+
+    p {
+      font-size: var(--font-size-md);
+      margin-bottom: var(--spacing-md);
+      font-family: var(--font-family-secondary);
+    }
+
+    /* Hero Section */
+    .hero {
+  background-color: var(--color-background-dark);
+  color: var(--color-accent);
+  text-align: center;
+
+  /* Use relative units for responsive height */
+  padding: 15vh 5vw 10vh 5vw;
+
+  /* Bottom corners rounded only */
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  
+  /* Top corners stay straight */
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Adjust hero text and padding on very small screens */
+@media (max-width: 400px) {
+  .hero {
+    padding: 10vh 4vw 8vh 4vw; /* less vertical padding */
+  }
+
+  .hero h1 {
+    font-size: 1.5rem; /* smaller heading */
+    display: none;
+  }
+
+  .hero p {
+    font-size: 1rem; /* smaller paragraph */
+    max-width: 90%; /* fill more screen */
+  }
+}
+
+
+    .hero h1 {
+      font-size: var(--font-size-xxl);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .hero p {
+      font-size: var(--font-size-lg);
+      font-family: var(--font-family-primary);
+      max-width: 500px;
+      font-weight: 550;
+      margin: 0 auto;
+    }
+
+    /* Job Listings */
+    .job-listing {
+      background: var(--color-accent);
+      border: 1px solid var(--color-border);
+      padding: var(--spacing-lg);
+      margin: var(--spacing-md) 0;
+      border-radius: 12px;
+      text-align: left;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .job-listing h3 {
+      margin-top: 0;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .apply-btn {
+      display: inline-block;
+      margin-top: var(--spacing-sm);
+      background-color: var(--color-primary);
+      color: var(--color-accent);
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .apply-btn:hover {
+      background-color: #333;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: var(--spacing-md);
+      background-color: var(--color-primary);
+      color: var(--color-accent);
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: var(--breakpoint-md)) {
+      h2.section-title {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: var(--breakpoint-sm)) {
+      section {
+        padding: var(--spacing-lg) var(--spacing-sm);
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: var(--font-size-md);
+      }
+
+      h2.section-title {
+        font-size: 1rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      p {
+        font-size: var(--font-size-sm);
+      }
+    }
+  </style>
 </head>
 <body>
   <section class="hero">
     <div class="hero-content">
       <h1>Join Our Mission</h1>
-      <p>We're not just building brands — we're shaping legacies. Join a team driven by purpose, design, and vision.</p>
+      <p>We're not just building brands we're shaping legacies. Join a team driven by purpose, design, and vision.</p>
     </div>
   </section>
 
   <section class="about">
-    <h2>Why Work With Us?</h2>
-    <p>At Pessoals, a division of RCG360, we combine strategy, storytelling, and design to build premium personal brands for leaders and visionaries. We're collaborative, creative, and committed to excellence — in everything we do.</p>
+    <h2 class="section-title">Why Work With Us?</h2>
+    <p>At <strong>Pessoals</strong>, a division of RCG360, we combine strategy, storytelling, and design to build premium personal brands for leaders and visionaries. We're collaborative, creative, and committed to excellence — in everything we do.</p>
   </section>
 
   <section class="jobs">
-    <h2>Open Positions</h2>
+    <h2 class="section-title">Open Positions</h2>
 
     <div class="job-listing">
       <h3>Brand Strategist</h3>
@@ -50,96 +264,3 @@
   </section>
 </body>
 </html>
-
-<style>
-  /* careers.css */
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #FCFAF8;
-  font-family: 'Montserrat', 'Lato', sans-serif;
-  color: #1C1A15;
-  line-height: 1.6;
-}
-
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-  color: #1C1A15;
-}
-
-section {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: auto;
-}
-
-.hero {
-  background-color: #1C1A15;
-  color: #FCFAF8;
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.hero h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 20px;
-  font-family: 'Montserrat', 'Lato', sans-serif;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.about, .jobs, .cta {
-  text-align: center;
-}
-
-.job-listing {
-  background: #fff;
-  border: 1px solid #E5E5E5;
-  padding: 30px;
-  margin: 20px 0;
-  border-radius: 8px;
-  text-align: left;
-}
-
-.job-listing h3 {
-  margin-top: 0;
-}
-
-.apply-btn {
-  display: inline-block;
-  margin-top: 10px;
-  background-color: #1C1A15;
-  color: #FCFAF8;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-
-.apply-btn:hover {
-  background-color: #333;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  background-color: #1C1A15;
-  color: #FCFAF8;
-  padding: 12px 30px;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #333;
-}
-
-</style>
