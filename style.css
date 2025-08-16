@@ -1708,7 +1708,7 @@ form button {
 .buy-button1:hover,
 .buy-button1:focus {
   background-color: #8f8f8c;
-  color: #ffffff;
+  color: #1c1a15;
   outline: none;
   transform: scale(1.05);
 }
@@ -1902,8 +1902,8 @@ form button {
 }
 
 .buy-button2 {
-  background-color: #8f8f8c;
-  color: #FAF8EF;
+  background-color: #FAF8EF;
+  color: #1a1a15;
   padding: 14px 32px;
   font-size: 1rem;
   border: none;
@@ -1915,8 +1915,8 @@ form button {
 
 .buy-button2:hover,
 .buy-button2:focus {
-  background-color: #Ffffff;
-  color: #1c1a15;
+  background-color: #8F8F8C;
+  color: #1a1a15;
   outline: none;
   transform: scale(1.05);
 }
@@ -2040,6 +2040,13 @@ form button {
   .testimonial {
     font-size: 15px;
   }
+}
+
+.testimonial em {
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 10px;
+  color: #8F8F8C;
 }
 /* end of testimonial section in sales page of brand like a celebrity ebook */
 
@@ -2271,7 +2278,7 @@ form button {
 }
 .container-who h2 {
   font-size: 1.7rem;
-  font-weight: normal;
+  font-weight: 500;
   text-align: center;
   color: #faf8ef;
   font-family: 'Playfair Display', serif;
@@ -2295,7 +2302,8 @@ form button {
 /* Extra small screens (very small phones) */
 @media (max-width: 400px) {
   .container-who h2 {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
+
   }
 }
 
@@ -2303,7 +2311,8 @@ form button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 .who.left {
   text-align: left;
@@ -2349,20 +2358,7 @@ form button {
   opacity: 70%;
 }
 
-.button-container {
-  margin-top: 40px;
-  text-align: center;
-  justify-content: center;
-}
-.button-container .buy-button{
-   background-color: #1c1a15;
-   color:#FAF8EF;
-   border-radius: 1rem;
-}
-.button-container .buy-button{
-  background-color: #8f8f8c;
-  color: #Ffffff;
-}
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -2426,7 +2422,6 @@ form button {
   flex: 1 1 300px;
   color: #FAF8EF;
 }
-
 .text-content h1 {
   font-size: 2.5rem;
   font-style: italic;
@@ -2448,11 +2443,54 @@ form button {
   line-height: 1.6;
 }
 
+/* Tablet screens */
+@media (max-width: 1024px) {
+  .text-content h1 {
+    font-size: 2.2rem;
+  }
+  .text-content h2 {
+    font-size: 1.8rem;
+  }
+  .text-content p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .text-content h1 {
+    font-size: 2rem;
+    margin-bottom: -1rem;
+  }
+  .text-content h2 {
+    font-size: 1.5rem;
+  }
+  .text-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .text-content h1 {
+    font-size: 1.8rem;
+  }
+  .text-content h2 {
+    font-size: 1.3rem;
+  }
+  .text-content p {
+    font-size: 0.8rem;
+  }
+}
+
+
 .button-group {
   flex: 1 1 300px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center; /* center buttons in all screens */
 }
 
 .download-button {
@@ -2489,22 +2527,52 @@ form button {
   font-style: normal;
 }
 
-/* ✅ Responsive Styles */
-@media (max-width: 768px) {
-  .container-free-download {
-    flex-direction: column;
-    padding: 40px 20px;
-    text-align: center;
-  }
-
-  .text-content, .button-group {
-    flex: 1 1 100%;
-  }
-
+/* Tablet screens */
+@media (max-width: 1024px) {
   .download-button {
-    max-width: 100%;
+    max-width: 400px;
+    padding: 14px;
+  }
+  .download-button h3 {
+    font-size: 1.1rem;
+  }
+  .download-button p {
+    font-size: 0.9rem;
   }
 }
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .download-button {
+    max-width: 100%;
+    padding: 12px;
+  }
+  .download-button h3 {
+    font-size: 1rem;
+  }
+  .download-button p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .download-button {
+    padding: 10px;
+    border-radius: 6px;
+  }
+  .download-button h3 {
+    font-size: 0.95rem;
+  }
+  .download-button p {
+    font-size: 0.8rem;
+  }
+}
+
 
 /* end of downlaod free chapter section in sales page of brand like a celbrity */  
 
@@ -2559,72 +2627,110 @@ form button {
   margin: 8px auto 0;
   border-radius: 2px;
 }
-
 .accordion {
-      max-width:1200px;
-      margin: 0 auto;
-    }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px; /* Add breathing room on small screens */
+}
 
-    .accordion-item {
-      border-bottom: 1px solid transparent;
-      margin-bottom: 10px;
-      text-align: start;
-    }
+.accordion-item {
+  border-bottom: 1px solid transparent;
+  margin-bottom: 10px;
+  text-align: start;
+}
 
-    .accordion-item input {
-      display: none;
-    }
+.accordion-item input {
+  display: none;
+}
 
-    .accordion-label {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #191714;
-      color: #faf8ef;
-      font-family: 'Lato', sans-serif;
-      font-weight: 400;
-      padding: 16px 20px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s;
-    }
+.accordion-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #191714;
+  color: #faf8ef;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
 
-    .accordion-label:hover {
-      background-color: #8f8f8c;
-    }
+.accordion-label:hover {
+  background-color: #8f8f8c;
+}
 
-    .accordion-icon {
-      font-size: 20px;
-      font-weight: bold;
-      transition: transform 0.3s;
-    }
+.accordion-icon {
+  font-size: 20px;
+  font-weight: bold;
+  transition: transform 0.3s;
+}
 
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      text-align: start;
-      background-color: transparent;
-      padding: 0 20px;
-      font-size: 0.9rem;
-      font-style: italic;
-      color: #1c1a15;
-      transition: all 0.3s ease;
-    }
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  text-align: start;
+  background-color: transparent;
+  padding: 0 20px;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #1c1a15;
+  transition: all 0.3s ease;
+}
 
-    .accordion-item input:checked ~ .accordion-content {
-      max-height: 100px;
-      padding: 15px 20px;
-      text-align: start;
-    }
+.accordion-item input:checked ~ .accordion-content {
+  max-height: 300px; /* Allow more height for text */
+  padding: 15px 20px;
+  text-align: start;
+}
 
-    .accordion-item input:checked ~ .accordion-label .accordion-icon::before {
-      content: "-";
-    }
+.accordion-item input:checked ~ .accordion-label .accordion-icon::before {
+  content: "-";
+}
 
-    .accordion-icon::before {
-      content: "+";
-      display: inline-block;
-    }
+.accordion-icon::before {
+  content: "+";
+  display: inline-block;
+}
+
+/* Tablet adjustments */
+@media (max-width: 768px) {
+  .accordion {
+    max-width: 90%;
+  }
+  .accordion-label {
+    font-size: 0.95rem;
+    padding: 14px 16px;
+  }
+  .accordion-content {
+    font-size: 0.85rem;
+    padding: 0 16px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .accordion {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  .accordion-label {
+    font-size: 0.9rem;
+    padding: 12px 14px;
+    flex-wrap: wrap; /* allow text wrapping if too long */
+    gap: 8px;
+  }
+  .accordion-icon {
+    font-size: 18px;
+  }
+  .accordion-content {
+    font-size: 0.8rem;
+    padding: 10px 14px;
+    line-height: 1.4;
+  }
+}
+
 
     /* First  and Second  Footer */
 .footerfirst {
@@ -2938,19 +3044,33 @@ form button {
   box-shadow: 0 0 0 1.5px #faf8ef inset;
   transition: box-shadow 0.3s ease;
 }
-.popup button[type="submit"] {
-    border-radius: 5px;
-    width:auto;
-    padding: 0.75rem 1.5rem;
-    font-family: 'Lato', sans-serif;
-  }
 
+.popup button[type="submit"] {
+  border-radius: 5px;
+  width: auto;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Lato', sans-serif;
+  margin-top: 1rem; /* adds space above */
+  display: block; /* ensures spacing works well */
+}
+
+/* Hover / focus */
 .popup button[type="submit"]:hover,
 .popup button[type="submit"]:focus {
   background-color: #8f8f8c;
   color: #ffffff;
   outline: none;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .popup button[type="submit"] {
+    width: 100%;         /* make it full width on mobile */
+    padding: 1rem;       /* bigger touch area */
+    margin-top: 0rem; /* spacing above */
+  }
+}
+
 
 .close-btn {
   position: absolute;
