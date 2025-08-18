@@ -6,6 +6,9 @@ html, body{
     height: 100%;
     background-color: #FAF8EF;
     justify-content: center;
+    text-align: center;
+ 
+
   
 }
 
@@ -374,12 +377,7 @@ nav ul li a:hover::after {
 .work-item {
   background-color: #1c1a15;
   overflow: hidden;
-  border-radius: 8px;
   transition: transform 0.3s ease;
-}
-
-.work-item:hover {
-  transform: translateY(-5px);
 }
 
 .work-item img {
@@ -390,7 +388,7 @@ nav ul li a:hover::after {
 }
 
 .work-item:hover img {
-  filter: brightness(70%);
+  filter: brightness(60%);
 }
 
 /* Work info text */
@@ -676,12 +674,6 @@ nav ul li a:hover::after {
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   transition: transform 0.3s ease;
 }
-
-.pricing-card:hover {
-  transform: scale(1.05); /* zoom in 5% */
-  transition: transform 0.3s ease; /* smooth transition */
-}
-
 
 .pricing-card h2 {
   font-size: 1.6rem;
@@ -3381,90 +3373,72 @@ form button {
 
 
 /* start of Thank you page */ 
-/* Base styles */
-body {
-  font-family: 'Helvetica Neue', sans-serif;
-  background: #FAF8EF;
-  margin: 0;
-  padding: 0;
-  color: #222;
-  text-align: center;
-}
 
-.container {
-  padding: 2rem 1rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
-h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-h2, h3 {
-  font-size: 1.5rem;
-  margin-top: 2rem;
-}
 
 .checkmark {
-  margin-top: 6rem;   /* Adds vertical space before the image */
-  width: 30vw;      /* 30% of viewport width */
-  max-width: 40px; /* limit how big it can get */
-  height: auto;
+  display: inline-block;              /* makes it behave like an icon */
+  margin-top: 6rem;                   /* keeps spacing */
+  width: clamp(3rem, 6rem, 12rem);      /* min 20px, scales with viewport, max 60px */
+  height: auto;                       /* keep proportions */
+  color: #1c1a15;                     /* lets SVGs using currentColor adapt */
 }
 
-a {
-  color: #0077cc;
-  text-decoration: none;
-}
 
-a:hover {
-  text-decoration: underline;
-}
-
-.btn {
-  display: inline-block;
-  margin: 1rem auto;
-  padding: 0.75rem 1.5rem;
-  background: #000;
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
-}
-
-.btn.secondary {
-  margin-top: 3rem;
-  background: #333;
-}
-
-.recommendations {
-  margin-top: 3rem;
-  text-align: left;
-}
-
-.recommendations > h3,
-.recommendations > p {
+/* Intro Section */
+.thankyouintro {
   text-align: center;
+  align-items: center;
+  margin-top: var(--spacing-lg);
+  gap: var(--spacing-sm);
+  margin-bottom: 5rem;
+}
+
+.thankyouintro h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight:700;
+  text-align: center;
+  color: #1c1a15;
+  font-size: 1.6rem; /* default size */
+  line-height: 1.2;
+}
+
+/* Section subheading */
+.thankyouintro p {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  max-width: 500px;
+  text-align: center;
+  font-style: normal;
+  color: #8F8F8C;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom:2rem;
+}
+
+.buy-button-checkout {
+  background-color: #1c1a15; 
+  color:#FAF8EF;
+  padding: 14px 32px;
+
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buy-button-checkout:hover,
+.buy-button-checkout:focus {
+  background-color: #8f8f8c;
+  color: #1c1a15;
+  outline: none;
+  transform: scale(1.05);
 }
 
 
-/* 🔧 Responsive Typography Tweaks */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
 
-  h2, h3 {
-    font-size: 1.3rem;
-  }
 
-  .btn {
-    width: 100%;
-    max-width: 300px;
-  }
-}
 
 /* case study page */ 
 
