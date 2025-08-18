@@ -469,7 +469,9 @@ nav ul li a:hover::after {
 .viewmore a:active {
   color: #8f8f8c;
 
-}.process {
+}
+
+.process {
   display: block;
   padding: 60px 20px;
   background-color: #1c1a15;
@@ -2260,7 +2262,9 @@ form button {
   gap: 80px;
   width: 100%;
   max-width: 1000px;
-  margin: 0 auto; /* Centers the grid container horizontally */
+  margin: 0 auto; /* centers the grid container horizontally */
+  justify-items: center; /* centers grid items horizontally within each column */
+  text-align: center; /* optional: centers text/content inside items */
 }
 
 .testimonial {
@@ -2270,15 +2274,18 @@ form button {
 
 .testimonial em {
   font-style: italic;
+  text-align: start;
   font-size: 16px;
   display: block;
   margin-bottom: 10px;
+  max-width: 350px;
   color: #8F8F8C;
 }
 
 .author {
   font-weight: bold;
   font-size: 14px;
+  text-align: start;
   margin-bottom: 4px;
   color: #FAF8EF;
 }
@@ -2286,6 +2293,7 @@ form button {
 .role {
   font-style: italic;
   font-size: 13px;
+  text-align: start;
   color: #faf8ef;
   font-family: playfair display, serif;
 }
@@ -3643,3 +3651,153 @@ a:focus {
   }
 }
 /* End of Disclaimer Page Design */
+/* Start of Resource page What's inside Design */
+.inside {
+  display: block;
+  padding: 60px 20px;
+  background-color: #FAF8EF;
+  color: #1c1a15;
+}
+
+/* Header Inside Section */
+.headerinside {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.headerinside h5 {
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #1c1a15;
+  margin-bottom: -1rem;
+}
+
+.headerinside h2 {
+  font-size: 1.6rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 500;
+  color: #1c1a15;
+  margin-bottom: 1rem;
+}
+
+/* Steps container */
+.insidecontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+}
+
+/* Individual step */
+.inside-step {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px;
+  background-color: #FAF8EF;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Alternate images left/right */
+.inside-step:nth-child(odd) {
+  flex-direction: row;
+}
+
+.inside-step:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* Alternate text alignment */
+.inside-step:nth-child(odd) .right-column {
+  text-align: left;
+}
+
+.inside-step:nth-child(even) .right-column {
+  text-align: right;
+}
+
+/* Left column inside step */
+.left-column {
+  flex: 1 1 40%;
+  min-width: 250px;
+}
+
+.left-column img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+}
+
+/* Right column inside step */
+.right-column {
+  flex: 1 1 55%;
+  min-width: 250px;
+}
+
+.right-column h2 {
+  font-size: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #1c1a15;
+  margin-bottom: 15px;
+}
+
+.right-column p {
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: #1c1a15;
+  line-height: 1.8;
+}
+
+/* Responsive Typography */
+@media (max-width: 900px) {
+  .inside-step {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .left-column,
+  .right-column {
+    flex: 1 1 100%;
+  }
+
+  .right-column p {
+    font-size: 0.95rem;
+  }
+
+  .right-column h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .headerinside h2 {
+    font-size: 1.25rem;
+  }
+
+  .headerinside h5 {
+    font-size: 1rem;
+    margin-bottom: -1rem;
+  }
+
+  .right-column h2 {
+    font-size: 20px;
+  }
+
+  .right-column p {
+    font-size: 0.85rem;
+  }
+
+  .inside-step {
+    padding: 20px;
+    gap: 20px;
+  }
+}
