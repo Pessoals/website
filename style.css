@@ -1,16 +1,15 @@
-
-html, body{
-    margin: 0%;
-    padding-left: 0%;
-    width:100%;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
     height: 100%;
     background-color: #FAF8EF;
     justify-content: center;
     text-align: center;
- 
-
-  
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; /* ✅ makes all body text bold */
 }
+
 
 :root {
   /* Colors */
@@ -527,12 +526,12 @@ nav ul li a:hover::after {
 }
 
 /* Left column inside step */
-.left-column {
+.leftcolumn {
   flex: 1 1 40%;
   min-width: 250px;
 }
 
-.left-column h2 {
+.leftcolumn h2 {
   font-size: 1.2rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -540,7 +539,7 @@ nav ul li a:hover::after {
   margin-bottom: 15px;
 }
 
-.left-column h3 {
+.leftcolumn h3 {
   font-size: 16px;
   font-family: 'Playfair Display', serif;
   font-style: italic;
@@ -549,7 +548,7 @@ nav ul li a:hover::after {
   margin-bottom: -1rem;
 }
 
-.left-column img {
+.leftcolumn img {
   width: 100%;
   height: auto;
   display: block;
@@ -557,12 +556,12 @@ nav ul li a:hover::after {
 }
 
 /* Right column inside step */
-.right-column {
+.rightcolumn {
   flex: 1 1 55%;
   min-width: 250px;
 }
 
-.right-column p {
+.rightcolumn p {
   font-size: 1rem;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
@@ -572,21 +571,21 @@ nav ul li a:hover::after {
 
 /* Responsive Typography */
 @media (max-width: 900px) {
-  .left-column, .right-column {
+  .leftcolumn, .right-column {
     flex: 1 1 100%;
     text-align: center;
   }
 
-  .left-column h2 {
+  .leftcolumn h2 {
     font-size: 24px;
   }
 
-  .left-column h3 {
+  .leftcolumn h3 {
     font-size: 1.25rem;
     margin-bottom: -1.5rem;
   }
 
-  .right-column p {
+  .rightcolumn p {
     font-size: 0.95rem;
   }
 }
@@ -631,13 +630,23 @@ nav ul li a:hover::after {
   padding-bottom: 40px;
   background-color: #FAF8EF;
 }
-.service-section h1 {
+.section-heading {
   font-family: 'Montserrat', sans-serif;
-  font-weight:600;
+  font-weight: 600;
   text-align: center;
   color: #1c1a15;
   margin: 0.5rem 0;
-  font-size: 1.4rem; /* default size */
+  font-size: clamp(1rem, 1.2vw + 0.5rem, 2rem); /* responsive font size */
+  line-height: 1.2;
+}
+
+.service-section h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  color: #1c1a15;
+  margin: 1rem 0;
+  font-size: clamp(1.5rem, 3vw, 1.5rem); /* responsive */
   line-height: 1.2;
 }
 
@@ -728,6 +737,7 @@ nav ul li a:hover::after {
 .features {
   list-style: none;
   text-align: left;
+  margin-bottom: 2rem;
 }
 
 .feature-item {
@@ -783,6 +793,7 @@ nav ul li a:hover::after {
   box-sizing: border-box;
   width: 100%;
   background-color: #FAF8EF;
+  overflow: visible;
   color: #1c1a15;
   text-align: center;
   padding: 60px 20px; /* default mobile/tablet */
@@ -796,39 +807,39 @@ nav ul li a:hover::after {
   .testimonialssection {
     padding-top: 120px; /* increased top space */
   }
-}
-
-/* Container for testimonials with padding */
-.testimonial-container {
+}.testimonial-container {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-wrap: wrap;       /* allows multiple rows */
   gap: 1.5rem;
-  flex-wrap: wrap; 
+  overflow: visible;
+  justify-content: center;
+  padding: 3rem 2rem;    /* responsive padding */
   max-width: 1000px;
   margin: 0 auto;
-  padding: 3rem 100px; /* more horizontal padding for space and breathing room */
-  position: relative;
+  height: auto;
 }
 
-/* Individual testimonial cards */
 .testimonial-card {
   background-color: #FAF8EF;
   color: #1a1a15;
   border-radius: 1em;
   padding: 2rem;
   text-align: left;
-  max-width: 700px;
-  flex: 1 1 300px;
-  min-height: 320px;
+  width: 100%;          /* fit container */
+  max-width: 700px;     /* cap width on large screens */
+  flex: 1 1 100%;       /* allow shrinking */
+  height: auto;         /* let height adjust to content */
+  min-height: auto;     /* remove forced min height */
+  overflow: visible;    /* prevent scrollbars */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   transition: transform 0.3s ease;
   box-sizing: border-box;
   position: relative;
-  z-index: 1; /* below arrows */
+  z-index: 1;
 }
+
 
 /* Profile section */
 .profile {
@@ -870,8 +881,6 @@ nav ul li a:hover::after {
 .profile-info a:hover {
   color: #8F8F8C;
 }
-
-/* Testimonial text */
 .testimonial-text {
   font-size: clamp(0.95rem, 2.5vw, 1rem);
   font-family: 'Montserrat', sans-serif;
@@ -882,18 +891,9 @@ nav ul li a:hover::after {
   color: #1a1a15;
   margin-top: 0.5rem;
   flex-grow: 1;
-  overflow-y: auto;
-  max-height: 220px;
-  padding-right: 8px;
-}
-
-/* Scrollbar styling */
-.testimonial-text::-webkit-scrollbar {
-  width: 6px;
-}
-.testimonial-text::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 3px;
+  overflow: visible;  /* allow text to expand */
+  max-height: none;   /* remove height limit */
+  padding-right: 0;   /* optional, remove extra padding for scrollbar */
 }
 
 /* ===== Arrows ===== */
@@ -3477,7 +3477,7 @@ form button {
   background-color: #000;    /* black background */
   border-radius: 20px;       /* rounded corners */
   display: flex;
-  border-radius: 1.25em 1.25em 1.25em 1.25em;
+  border-radius: clamp(0.5rem, 2vw, 1.25rem);
   justify-content: center;
   align-items: center;
 }
@@ -3501,7 +3501,7 @@ form button {
 }
 
 .casestudycontainer p {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
   font-family: 'Playfair Display', serif;
   font-weight: 400;
   color: #FAF8EF;
@@ -3511,25 +3511,11 @@ form button {
   max-width: 800px; /* Keeps text from stretching too wide */
 }
 
+
 /* Tablet size and smaller */
 @media (max-width: 768px) {
   .casestudycontainer {
     padding: 3rem 2rem; /* Reduce padding */
-  }
-
-  .casestudycontainer p {
-    font-size: 1.5rem;
-    line-height: 1.5;
-  }
-  .custom-images{
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background-color: #000; /* black background */
-    border-radius: 20px; /* rounded corners */
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 
@@ -3538,21 +3524,6 @@ form button {
   .casestudycontainer {
     padding: 2rem 1.5rem; /* Even smaller padding */
     text-align: left; /* Prevent awkward centered text on narrow screens */
-  }
-
-  .casestudycontainer p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-  }
-  .custom-images {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background-color: #000; /* black background */
-    border-radius: 20px; /* rounded corners */
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 
