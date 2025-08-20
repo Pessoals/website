@@ -626,18 +626,8 @@ nav ul li a:hover::after {
 
 
 .service-section{
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 60px 20px; /* default mobile/tablet */
   background-color: #FAF8EF;
-}
-.section-heading {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  text-align: center;
-  color: #1c1a15;
-  margin: 0.5rem 0;
-  font-size: clamp(1rem, 1.2vw + 0.5rem, 2rem); /* responsive font size */
-  line-height: 1.2;
 }
 
 .service-section h1 {
@@ -784,8 +774,7 @@ nav ul li a:hover::after {
   .pricing-container {
     flex-direction: column;
     align-items: center;
-  }
-}/* ===== Testimonials Section ===== */
+  }/* ===== Testimonials Section ===== */
 .testimonialssection {
   display: flex;
   justify-content: center;
@@ -796,24 +785,35 @@ nav ul li a:hover::after {
   overflow: visible;
   color: #1c1a15;
   text-align: center;
-  padding: 60px 20px; /* default mobile/tablet */
+  padding: 60px 20px;
   min-height: auto; 
   height: auto;
-  position: relative; /* needed for arrow positioning */
+  position: relative;
 }
 
-/* On desktops add more breathing room at the top */
+.section-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  color: #1c1a15;
+  margin: 0.5rem 0;
+  font-size: clamp(1rem, 1.2vw + 0.5rem, 2rem);
+  line-height: 1.2;
+}
+
 @media (min-width: 1024px) {
   .testimonialssection {
-    padding-top: 120px; /* increased top space */
+    padding-top: 120px;
   }
-}.testimonial-container {
+}
+
+.testimonial-container {
   display: flex;
-  flex-wrap: wrap;       /* allows multiple rows */
+  flex-wrap: wrap;
   gap: 1.5rem;
-  overflow: visible;
   justify-content: center;
-  padding: 3rem 2rem;    /* responsive padding */
+  align-items: stretch; /* makes all cards same height */
+  padding: 3rem 2rem;
   max-width: 1000px;
   margin: 0 auto;
   height: auto;
@@ -824,22 +824,19 @@ nav ul li a:hover::after {
   color: #1a1a15;
   border-radius: 1em;
   padding: 2rem;
-  text-align: left;
-  width: 100%;          /* fit container */
-  max-width: 700px;     /* cap width on large screens */
-  flex: 1 1 100%;       /* allow shrinking */
-  height: auto;         /* let height adjust to content */
-  min-height: auto;     /* remove forced min height */
-  overflow: visible;    /* prevent scrollbars */
+  width: 100%;
+  max-width: 700px;
+  flex: 1 1 300px; /* responsive width */
   display: flex;
   flex-direction: column;
+  align-items: center; /* centers content inside card */
+  text-align: center;  /* ensures text is centered */
   justify-content: flex-start;
   transition: transform 0.3s ease;
   box-sizing: border-box;
   position: relative;
   z-index: 1;
 }
-
 
 /* Profile section */
 .profile {
@@ -850,15 +847,13 @@ nav ul li a:hover::after {
   gap: 0.5rem;
 }
 
-/* Smaller circular profile images */
 .profile img {
-  width: 50px; /* smaller size */
+  width: 50px;
   height: 50px;
-  border-radius: 50%; /* perfect circle */
+  border-radius: 50%;
   object-fit: cover;
 }
 
-/* Profile info */
 .profile-info h3 {
   font-family: 'Playfair Display', serif;
   font-style: italic;
@@ -870,9 +865,8 @@ nav ul li a:hover::after {
 
 .profile-info a {
   color: #1a1a15;
-  text-align: center;
-  font-family: 'Lato', sans-serif;
   text-decoration: underline;
+  font-family: 'Lato', sans-serif;
   font-size: clamp(0.8rem, 2vw, 0.9rem);
   display: block;
   margin-top: 0.25rem;
@@ -881,19 +875,17 @@ nav ul li a:hover::after {
 .profile-info a:hover {
   color: #8F8F8C;
 }
+
 .testimonial-text {
   font-size: clamp(0.95rem, 2.5vw, 1rem);
   font-family: 'Montserrat', sans-serif;
   font-style: italic;
   font-weight: 500;
-  text-align: center;
   line-height: 1.6;
   color: #1a1a15;
   margin-top: 0.5rem;
-  flex-grow: 1;
-  overflow: visible;  /* allow text to expand */
-  max-height: none;   /* remove height limit */
-  padding-right: 0;   /* optional, remove extra padding for scrollbar */
+  overflow: visible;
+  max-height: none;
 }
 
 /* ===== Arrows ===== */
@@ -910,9 +902,7 @@ nav ul li a:hover::after {
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease, opacity 0.3s ease;
-  user-select: none;
   border: none;
-  padding: 0;
   z-index: 10;
   opacity: 0.8;
 }
@@ -936,12 +926,8 @@ nav ul li a:hover::after {
   stroke: #FAF8EF;
 }
 
-.arrow.left {
-  left: 10px;
-}
-.arrow.right {
-  right: 10px;
-}
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
 
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
@@ -956,14 +942,14 @@ nav ul li a:hover::after {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    padding: 2rem 40px;
+    padding: 2rem 20px;
   }
   .arrow.left { left: 5px; }
   .arrow.right { right: 5px; }
-  .testimonial-card { min-height: 280px; padding: 1.5rem; max-width: 90%; }
-  .testimonial-text { max-height: 180px; font-size: 0.95rem; }
+  .testimonial-card { padding: 1.5rem; max-width: 90%; }
+  .testimonial-text { font-size: 0.95rem; }
 }
-
+}
 /* ============================================= */
 /* Reasons Section - Professional Enhancement */
 /* ============================================= */

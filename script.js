@@ -32,33 +32,33 @@ const testimonials = [
     name: "Asim Ahmed",
     role: "Founder",
     linkText: "Connecta Ads",
-    linkHref: "#",
+    linkHref: "",
     imgSrc: "Images/asimm.png",
-    text: "Working with Pessoals was one of the best investments I’ve made for myself and my business."
+    text: "”Working with Pessoals was honestly one of the best investments I’ve made. It gave me so much clarity and really helped me move forward with my business.”"
   },
   {
-    name: "Jane Doe",
+    name: "Sofia Bennett",
     role: "CEO",
-    linkText: "Visionary Co.",
+    linkText: "BrightPath Solutions.",
     linkHref: "#",
     imgSrc: "https://randomuser.me/api/portraits/women/68.jpg",
-    text: "The process was smooth, creative, and honestly kind of fun. In just a few weeks, I had a complete brand identity that finally felt like me, plus a content strategy that makes showing up online effortless."
+    text: "”The process was smooth, creative, working with them felt so easy, and they really understood what I needed. The difference it made in both me and my business was huge.”"
   },
   {
-    name: "John Smith",
+    name: "Emily Dawson",
     role: "Tax Advisor",
-    linkText: "InnovateX",
+    linkText: "NextWave Consulting.",
     linkHref: "#",
-    imgSrc: "https://randomuser.me/api/portraits/men/62.jpg",
-    text: "Working with Pessoals was a game-changer for me. They didn’t just design a personal brand—they helped me figure out who I really am and how to show that to the world."
+    imgSrc: "https://randomuser.me/api/portraits/women/45.jpg",
+    text: "”Working with Pessoals was a game-changer for me. They didn’t just design a personal brand they helped me figure out who I really am and how to show that to the world.”"
   },
   {
-    name: "Anne William",
+    name: "James Carter",
     role: "Content Creator",
-    linkText: "InnovateX",
+    linkText: "HorizonWorks.",
     linkHref: "#",
-    imgSrc: "Images/drchristianphoto.jpg",
-    text: "Working with Pessoals was a game-changer for me. They didn’t just design a personal brand—they helped me figure out who I really am and how to show that to the world."
+    imgSrc: "https://randomuser.me/api/portraits/men/32.jpg",
+    text: "”I honestly didn’t know where to start with my personal brand, but Pessoals made it simple and real. Now I feel like I’m finally being seen for who I am, and I’ve started getting so much more traffic and attention online.”"
   }
 ];
 
