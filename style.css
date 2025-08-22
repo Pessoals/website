@@ -767,14 +767,7 @@ nav ul li a:hover::after {
 .features li::before {
   content: '';
   margin-right: 0.5rem;
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .pricing-container {
-    flex-direction: column;
-    align-items: center;
-  }/* ===== Testimonials Section ===== */
+}/* ===== Testimonials Section ===== */
 .testimonialssection {
   display: flex;
   justify-content: center;
@@ -786,8 +779,6 @@ nav ul li a:hover::after {
   color: #1c1a15;
   text-align: center;
   padding: 60px 20px;
-  min-height: auto; 
-  height: auto;
   position: relative;
 }
 
@@ -801,20 +792,14 @@ nav ul li a:hover::after {
   line-height: 1.2;
 }
 
-@media (min-width: 1024px) {
-  .testimonialssection {
-    padding-top: 120px;
-  }
-}
-
 .testimonial-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
-  align-items: stretch; /* makes all cards same height */
+  align-items: stretch;
   padding: 3rem 2rem;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   height: auto;
 }
@@ -826,11 +811,11 @@ nav ul li a:hover::after {
   padding: 2rem;
   width: 100%;
   max-width: 700px;
-  flex: 1 1 300px; /* responsive width */
+  flex: 1 1 300px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* centers content inside card */
-  text-align: center;  /* ensures text is centered */
+  align-items: center;
+  text-align: center;
   justify-content: flex-start;
   transition: transform 0.3s ease;
   box-sizing: border-box;
@@ -847,9 +832,10 @@ nav ul li a:hover::after {
   gap: 0.5rem;
 }
 
+/* Profile image responsive for all screen sizes */
 .profile img {
-  width: 50px;
-  height: 50px;
+  width: clamp(50px, 5vw, 70px); /* min 50px, max 70px, scales with viewport */
+  height: clamp(50px, 5vw, 70px);
   border-radius: 50%;
   object-fit: cover;
 }
@@ -860,7 +846,7 @@ nav ul li a:hover::after {
   font-weight: 500;
   margin: 0;
   color: #1a1a15;
-  font-size: clamp(1rem, 3vw, 1.15rem);
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
 }
 
 .profile-info a {
@@ -872,23 +858,18 @@ nav ul li a:hover::after {
   margin-top: 0.25rem;
 }
 
-.profile-info a:hover {
-  color: #8F8F8C;
-}
-
 .testimonial-text {
-  font-size: clamp(0.95rem, 2.5vw, 1rem);
+  font-size: clamp(0.95rem, 2vw, 1rem);
   font-family: 'Montserrat', sans-serif;
   font-style: italic;
   font-weight: 500;
   line-height: 1.6;
+  min-width: 200px;
   color: #1a1a15;
   margin-top: 0.5rem;
-  overflow: visible;
-  max-height: none;
 }
 
-/* ===== Arrows ===== */
+/* Arrows */
 .arrow {
   position: absolute;
   top: 50%;
@@ -937,6 +918,13 @@ nav ul li a:hover::after {
   }
 }
 
+@media (max-width: 992px) {
+  .pricing-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 @media (max-width: 768px) {
   .testimonial-container {
     flex-direction: column;
@@ -949,7 +937,7 @@ nav ul li a:hover::after {
   .testimonial-card { padding: 1.5rem; max-width: 90%; }
   .testimonial-text { font-size: 0.95rem; }
 }
-}
+
 /* ============================================= */
 /* Reasons Section - Professional Enhancement */
 /* ============================================= */
