@@ -91,98 +91,6 @@ function openPage() {
   window.location.href = "drchristianconte.html";
 }
 
-  /* POP UP 
-  function openPopup() {
-      document.getElementById('popup').style.display = 'flex';
-    }
-
-    function closePopup() {
-      document.getElementById('popup').style.display = 'none';
-    }
-
-    function handleSubmit(event) {
-      event.preventDefault();
-
-      // You can collect the data if needed
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const consent = document.getElementById('consent').checked;
-
-      if (consent) {
-        // Redirect to PayPal Checkout
-        window.location.href = "https://www.paypal.com/ncp/payment/A7CABSKCLJPJE";
-      } else {
-        alert("You must agree to receive emails to proceed.");
-      }
-      return false;
-    }
-
-  End of POP UP */
-
-function openPopup() {
-  document.getElementById('popup').style.display = 'flex';
-}
-
-function closePopup() {
-  document.getElementById('popup').style.display = 'none';
-}
-
-function handleSubmit(event) {
-  event.preventDefault();
-
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const consent = document.getElementById('consent').checked;
-
-  if (!consent) {
-    alert("You must agree to receive emails to proceed.");
-    return false;
-  }
-
-  if (!name || !email) {
-    alert("Please fill in your name and email.");
-    return false;
-  }
-
-  // Mailchimp JSONP URL (update with your own!)
-  const mailchimpUrl = 'https://us15.list-manage.com/subscribe/post-json?u=07e655f1ee6606d6949ea7dbb&id=4798db1474&c=?';
-
-  // Prepare parameters
-  const params = new URLSearchParams();
-  params.append('EMAIL', email);
-  params.append('FNAME', name);
-
-  // JSONP helper
-  function jsonp(url, callback) {
-    const script = document.createElement('script');
-    const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
-
-    window[callbackName] = function(data) {
-      delete window[callbackName];
-      document.body.removeChild(script);
-      callback(data);
-    };
-
-    script.src = url.replace('=?', '=' + callbackName);
-    document.body.appendChild(script);
-  }
-
-  // Send to Mailchimp and on success redirect to PayPal
-  jsonp(mailchimpUrl + '&' + params.toString(), function(response) {
-    if (response.result === 'success' || response.result === 'error') {
-      // Close popup just in case
-      closePopup();
-      // Redirect to PayPal checkout
-      window.location.href = 'https://www.paypal.com/ncp/payment/A7CABSKCLJPJE';
-    } else {
-      alert('There was an error submitting your email. Please try again.');
-    }
-  });
-
-  return false;
-}
-
-  
 
  // Start of free chapter download 
 
@@ -298,3 +206,66 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(reason);
   });
 });
+
+
+/* Pop up free download */ 
+
+
+function showModal() {
+  document.getElementById('subscribeModal').style.display = 'flex';
+}
+
+function hideModal() {
+  document.getElementById('subscribeModal').style.display = 'none';
+}
+
+function processForm(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('userName').value.trim();
+  const email = document.getElementById('userEmail').value.trim();
+  const consent = document.getElementById('userConsent').checked;
+
+  if (!consent) {
+    alert("You must agree to receive emails to proceed.");
+    return false;
+  }
+
+  if (!name || !email) {
+    alert("Please fill in your name and email.");
+    return false;
+  }
+
+  const mailchimpUrl = 'https://us15.list-manage.com/subscribe/post-json?u=07e655f1ee6606d6949ea7dbb&id=4798db1474&c=?';
+
+  const params = new URLSearchParams();
+  params.append('EMAIL', email);
+  params.append('FNAME', name);
+
+  function jsonp(url, callback) {
+    const script = document.createElement('script');
+    const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+
+    window[callbackName] = function(data) {
+      delete window[callbackName];
+      document.body.removeChild(script);
+      callback(data);
+    };
+
+    script.src = url.replace('=?', '=' + callbackName);
+    document.body.appendChild(script);
+  }
+
+  jsonp(mailchimpUrl + '&' + params.toString(), function(response) {
+    if (response.result === 'success' || response.result === 'error') {
+      hideModal();
+      window.location.href = '/personalbrandcompetetiveanalysis.html';
+    } else {
+      alert('There was an error submitting your email. Please try again.');
+    }
+  });
+
+  return false;
+}
+
+/* Pop up free download end */ 
