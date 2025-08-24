@@ -335,11 +335,11 @@ nav ul li a:hover::after {
 .ourworkssection h1 {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   text-align: center;
   color: #FAF8EF;
   margin: 1rem 0;
-  font-size: 2.5rem; /* default size */
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
   line-height: 1.2;
 }
 
@@ -484,15 +484,16 @@ nav ul li a:hover::after {
 .headerprocess h5 {
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
+  font-style: italic;
   font-weight: 400;
   color: #8F8F8C;
   margin-bottom: -1rem;
 }
 
 .headerprocess h2 {
-  font-size: 1.6rem;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
   font-family: 'Playfair Display', serif;
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   color: #FAF8EF;
   margin-bottom: 1rem;
@@ -596,7 +597,7 @@ nav ul li a:hover::after {
   }
 
   .headerprocess h2 {
-    font-size: 1.25rem;
+    font-size: 1.6rem;
   }
 
   .headerprocess h5 {
@@ -631,12 +632,13 @@ nav ul li a:hover::after {
 }
 
 .service-section h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  font-family: 'Playfair Dispaly', serif;
+  font-weight: normal;
   text-align: center;
   color: #1c1a15;
   margin: 1rem 0;
-  font-size: clamp(1.5rem, 3vw, 1.5rem); /* responsive */
+  font-size: clamp(2rem, 3vw, 2.2rem);
+
   line-height: 1.2;
 }
 
@@ -783,12 +785,12 @@ nav ul li a:hover::after {
 }
 
 .section-heading {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  font-weight: normal;
   text-align: center;
   color: #1c1a15;
   margin: 0.5rem 0;
-  font-size: clamp(1rem, 1.2vw + 0.5rem, 2rem);
+  font-size: clamp(1.6rem, 1.4vw + 0.5rem, 2.4rem);
   line-height: 1.2;
 }
 
@@ -1266,9 +1268,9 @@ nav ul li a:hover::after {
 }
 
 .columnabout h2{
-  font-family: 'Montserrat',sans-serif;
-  font-weight: 600;
-  font-size: 1.2rem;
+  font-family: 'Playfair Display',serif;
+  font-weight: normal;
+  font-size: 1.8rem;
   text-align: start;
   margin-bottom: 1.5rem;
 }
@@ -1286,12 +1288,12 @@ nav ul li a:hover::after {
 }
 
 .core-values h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight:600;
+  font-family: 'Playfair Display', serif;
+  font-weight:normal;
   text-align: center;
   color: #1c1a15;
-  margin: 0.5rem 0;
-  font-size: 1.4rem; /* default size */
+  margin: 1rem 0;
+  font-size: 1.8rem; /* default size */
   line-height: 1.2;
 }
 
@@ -1302,7 +1304,7 @@ nav ul li a:hover::after {
   font-style: normal;
   text-align: center;
   color: #1a1a15;
-  margin: 0.5rem 0 2rem 0;
+  margin: 0.5rem 0 3rem 0;
   font-size: 1rem;
   line-height: 1.4;
   padding-left: 1rem;   /* add horizontal padding */
@@ -1634,12 +1636,12 @@ form button {
 }
 
 .resourcesintro h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight:600;
+  font-family: 'Playfair Display', serif;
+  font-weight:normal;
   text-align: center;
   color: #1c1a15;
   margin: 0.5rem 0;
-  font-size: 1.4rem; /* default size */
+  font-size: clamp(1.8rem, 3vw, 2rem);
   line-height: 1.2;
 }
 
@@ -2102,10 +2104,10 @@ form button {
 }
 
 .findout-header h2 {
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   color: #1c1a15;
-  line-height: 1.2;
-  font-family: 'Montserrat', sans-serif;
+  line-height: 1.2;font-weight: normal;
+  font-family: 'Playfair Dispaly', serif;
   margin-bottom: 24px;
 }
 
@@ -2152,7 +2154,7 @@ form button {
   }
 
   .findout-header h2 {
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
 
   .section-findout p {
@@ -2193,8 +2195,9 @@ form button {
   box-sizing: border-box;
 }.container-testimonials h2 {
   text-align: center;
-  font-size: 1.25rem; /* default size */
-  font-weight: bold;
+  font-size: 1.6rem; /* default size */
+  font-weight: normal;
+    font-family: 'Playfair Dispaly', serif;
   margin-bottom: 5rem;
   color: #FAF8EF;
   opacity: 100%;
@@ -2203,21 +2206,21 @@ form button {
 /* Responsive tweaks for smaller screens */
 @media (max-width: 1024px) {
   .container-testimonials h2 {
-    font-size: 1.1rem;
+    font-size: 1.6rem;
     margin-bottom: 4rem;
   }
 }
 
 @media (max-width: 700px) {
   .container-testimonials h2 {
-    font-size: 1rem;
+    font-size: 1.4rem;
     margin-bottom: 3rem;
   }
 }
 
 @media (max-width: 400px) {
   .container-testimonials h2 {
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     margin-bottom: 2rem;
   }
 }
@@ -2505,31 +2508,34 @@ form button {
   justify-content: center;
 }
 .container-who h2 {
-  font-size: 1.25rem;
+  text-align: center;
+  font-size: 1.6rem; /* default size */
+  font-family: 'Playfair Display',serif; 
+  font-weight: normal;
+  margin-bottom: 5rem;
   color: #FAF8EF;
-  line-height: 1.2;
-  font-family: 'Montserrat', sans-serif;
+  opacity: 100%;
 }
 
-/* Medium screens (tablets) */
+/* Responsive tweaks for smaller screens */
 @media (max-width: 1024px) {
   .container-who h2 {
-    font-size: 1.1rem;
+    font-size: 1.6rem;
+    margin-bottom: 4rem;
   }
 }
 
-/* Small screens (phones) */
 @media (max-width: 700px) {
   .container-who h2 {
-    font-size: 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
   }
 }
 
-/* Extra small screens (very small phones) */
 @media (max-width: 400px) {
   .container-who h2 {
-    font-size: 1rem;
-
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -2800,49 +2806,19 @@ form button {
 
 
 /* end of downlaod free chapter section in sales page of brand like a celbrity */  
-
-/* start of queastion section in ebook sale page */ 
-.faq{
-  justify-content: center;  /* horizontal center */
-  align-content: center;      /* vertical center */
-  background-color: #FAF8EF;
- 
-}.faq-title {
+/* start of question section in ebook sale page */ 
+/* FAQ Question Container */
+/* FAQ Title */
+.faq-title {
   text-align: center;
-  font-size: 2rem; /* default for desktop */
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: normal;
   margin-bottom: 30px;
   color: #1c1a15;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Playfair Display', serif;
   position: relative;
 }
 
-/* Medium screens (tablets) */
-@media (max-width: 1024px) {
-  .faq-title {
-    font-size: 1.75rem;
-    margin-bottom: 25px;
-  }
-}
-
-/* Small screens (phones) */
-@media (max-width: 700px) {
-  .faq-title {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-}
-
-/* Extra small screens (very small phones) */
-@media (max-width: 400px) {
-  .faq-title {
-    font-size: 1.25rem;
-    margin-bottom: 15px;
-  }
-}
-
-
-/* Optional underline effect for title */
 .faq-title::after {
   content: "";
   display: block;
@@ -2852,102 +2828,97 @@ form button {
   margin: 8px auto 0;
   border-radius: 2px;
 }
+
+/* Accordion container */
 .accordion {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px; /* Add breathing room on small screens */
+  padding: 0 15px;
 }
 
+/* Accordion item */
 .accordion-item {
-  border-bottom: 1px solid transparent;
   margin-bottom: 10px;
-  text-align: start;
+  border-bottom: 1px solid #ddd; /* optional separator */
 }
 
+/* Hide checkbox */
 .accordion-item input {
   display: none;
 }
 
+/* Accordion label */
 .accordion-label {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* text left, icon right */
   align-items: center;
   background-color: #191714;
   color: #faf8ef;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
+  font-size: 1rem;
   padding: 16px 20px;
   cursor: pointer;
-  font-size: 1rem;
   transition: background 0.3s;
+  border-radius: 0; /* sharp edges */
+  position: relative; /* for span positioning */
 }
 
-.accordion-label:hover {
-  background-color: #8f8f8c;
+/* Text wrapper */
+.accordion-label .text-wrapper {
+  flex: 1;
+  text-align: left;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
+/* Icon at the end */
 .accordion-icon {
-  font-size: 20px;
+  flex-shrink: 0;
   font-weight: bold;
+  font-size: 20px;
+  position: relative; /* stays at the end */
+  margin-left: 15px;
   transition: transform 0.3s;
 }
 
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  text-align: start;
-  background-color: transparent;
-  padding: 0 20px;
-  font-size: 0.9rem;
-  font-style: italic;
-  color: #1c1a15;
-  transition: all 0.3s ease;
-}
-
-.accordion-item input:checked ~ .accordion-content {
-  max-height: 300px; /* Allow more height for text */
-  padding: 15px 20px;
-  text-align: start;
+.accordion-icon::before {
+  content: "+";
 }
 
 .accordion-item input:checked ~ .accordion-label .accordion-icon::before {
   content: "-";
 }
 
-.accordion-icon::before {
-  content: "+";
-  display: inline-block;
+/* Accordion content */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  background-color: transparent;
+  padding: 0 20px;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #1c1a15;
+  text-align: left; /* answers aligned left */
+  transition: all 0.3s ease;
 }
 
-/* Tablet adjustments */
-@media (max-width: 768px) {
-  .accordion {
-    max-width: 90%;
-  }
-  .accordion-label {
-    font-size: 0.95rem;
-    padding: 14px 16px;
-  }
-  .accordion-content {
-    font-size: 0.85rem;
-    padding: 0 16px;
-  }
+.accordion-item input:checked ~ .accordion-content {
+  max-height: 500px; 
+  padding: 15px 20px;
 }
 
-/* Mobile adjustments */
+/* Responsive adjustments */
 @media (max-width: 480px) {
-  .accordion {
-    max-width: 100%;
-    padding: 0 10px;
-  }
   .accordion-label {
-    font-size: 0.9rem;
-    padding: 12px 14px;
-    flex-wrap: wrap; /* allow text wrapping if too long */
-    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .accordion-label .text-wrapper {
+    max-width: calc(100% - 40px);
+    margin-bottom: 5px;
   }
   .accordion-icon {
-    font-size: 18px;
+    margin-left: auto; /* always at the end */
   }
 }
 
@@ -3392,7 +3363,7 @@ form button {
   border: 1.8px solid transparent;
   border-radius: 8px;
   background: #2e2e2e;
-  color: #faf8ef;
+  color: #1c1a15;
   font-size: 0.8rem;
   outline-offset: 2px;
   outline-color: transparent;
@@ -3413,7 +3384,7 @@ form button {
   gap: 10px;
   font-family: lato, sans-serif;
   font-size: 0.7rem;
-  color: #8f8f8c;
+  color: #EAF0F6;
   margin-bottom: 2rem;
   user-select: none;
   cursor: pointer;
@@ -3756,7 +3727,6 @@ a:focus {
 .headerinside h2 {
   font-size: 1.6rem;
   font-family: 'Playfair Display', serif;
-  font-style: italic;
   font-weight: 500;
   color: #1c1a15;
   margin-bottom: 1rem;
@@ -3792,15 +3762,11 @@ a:focus {
 .inside-step:nth-child(even) {
   flex-direction: row-reverse;
 }
-
-/* Alternate text alignment */
-.inside-step:nth-child(odd) .right-column {
-  text-align: left;
+/* Always align right-column text to left */
+.right-column {
+  text-align: left !important;
 }
 
-.inside-step:nth-child(even) .right-column {
-  text-align: right;
-}
 
 /* Left column inside step */
 .left-column {
@@ -3823,7 +3789,7 @@ a:focus {
 
 .right-column h2 {
   font-size: 1.2rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display',serif;
   font-weight: 500;
   color: #1c1a15;
   margin-bottom: 15px;
@@ -3860,7 +3826,7 @@ a:focus {
 
 @media (max-width: 600px) {
   .headerinside h2 {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
   }
 
   .headerinside h5 {
@@ -3880,4 +3846,28 @@ a:focus {
     padding: 20px;
     gap: 20px;
   }
+  @media (max-width: 480px) {
+  .headerinside h2 {
+    font-size: 1.2rem;
+  }
+
+  .headerinside h5 {
+    font-size: 1rem;
+    margin-bottom: -1rem;
+  }
+
+  .right-column h2 {
+    font-size: 20px;
+  }
+
+  .right-column p {
+    font-size: 0.85rem;
+  }
+
+  .inside-step {
+    padding: 20px;
+    gap: 20px;
+  }
+}
+
 }
