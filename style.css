@@ -3145,189 +3145,24 @@ form button {
   }
 }
 /* End of footer main consitent */ 
-
-.popup-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  display: flex;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-
-.popup {
-  background: #1a1a15;
-  padding: 2rem 2.5rem;
-  border-radius: 16px;
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.1);
-  color: #faf8ef;
-  font-family: 'Arial', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.popup img {
-  width: 140px;
-  height: auto;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s ease;
-}
-.popup img:hover {
-  transform: scale(1.05);
-}
-
-.popup input[type="text"],
-.popup input[type="email"] {
-  width: 100%;
-  padding: 0.7rem 1rem;
-  margin-bottom: 1.2rem;
-  border: 1.8px solid transparent;
-  border-radius: 8px;
-  background: #2e2e2e;
-  color: #faf8ef;
-  font-size: 0.8rem;
-  outline-offset: 2px;
-  outline-color: transparent;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-  box-sizing: border-box;
-}
-
-.popup input[type="text"]:focus,
-.popup input[type="email"]:focus {
-  border-color: #EAF0F6;
-  background: #EAF0F6;
-  outline-color: #1c1a15;
-}
-
-.popup label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family:lato, sans-serif;
-  font-size: 0.7rem;
-  color: #8f8f8c;
-  margin-bottom: 2rem;
-  user-select: none;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-}
-
-.popup input[type="checkbox"] {
-  width: 0.7rem;
-  height: 0.7rem;
-  cursor: pointer;
-  accent-color: #faf8ef;
-  flex-shrink: 0;
-  border-radius: 2px;
-  box-shadow: 0 0 0 1.5px #faf8ef inset;
-  transition: box-shadow 0.3s ease;
-}
-
-.popup button[type="submit"] {
-  border-radius: 5px;
-  width: auto;
-  padding: 0.75rem 1.5rem;
-  font-family: 'Lato', sans-serif;
-  margin-top: 1rem; /* adds space above */
-  display: block; /* ensures spacing works well */
-}
-
-/* Hover / focus */
-.popup button[type="submit"]:hover,
-.popup button[type="submit"]:focus {
-  background-color: #8f8f8c;
-  color: #ffffff;
-  outline: none;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 600px) {
-  .popup button[type="submit"] {
-    width: 100%;         /* make it full width on mobile */
-    padding: 1rem;       /* bigger touch area */
-    margin-top: 0rem; /* spacing above */
-  }
-}
-
-
-.close-btn {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  background: none;
-  border: none;
-  color: #8f8f8c;
-  font-size: 1.6rem;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
-  transition: color 0.25s ease;
-  user-select: none;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-  color: #ffffff;
-  outline: none;
-}
-
-/* Responsive tweaks */
-@media (max-width: 400px) {
-  .popup {
-    padding: 1.5rem 1.8rem;
-    max-width: 320px;
-  }
-
-  .popup h2 {
-    font-size: 1.5rem;
-  }
-
-  .popup img {
-    width: 120px;
-    margin-bottom: 1rem;
-  }
-
-  .popup input[type="text"],
-  .popup input[type="email"] {
-    font-size: 0.9rem;
-    padding: 0.6rem 0.9rem;
-  }
-
-  .popup button[type="submit"] {
-    font-size: 1rem;
-    padding: 12px 0;
-  }
-}
-
-
-/* start of Popup free download */ 
+/* ===== Popup Overlay ===== */
+.popup-overlay,
 .modal-overlay {
   position: fixed;
   top: 0; left: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.85);
+  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  display: flex;
   padding: 1rem;
   box-sizing: border-box;
 }
 
+/* ===== Popup / Modal Box ===== */
+.popup,
 .modal-box {
   background: #1a1a15;
   padding: 2rem 2.5rem;
@@ -3342,19 +3177,29 @@ form button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden; /* prevent scrolling */
+  overflow: hidden;
 }
 
+/* ===== Images ===== */
+.popup img,
 .modal-box img {
-  width: 140px;       /* fixed width */
-  height: auto;       /* maintain aspect ratio */
-  max-height: 220px;  /* ensures it doesn't overflow modal */
+  width: 140px;
+  height: auto;
+  max-height: 220px;
   border-radius: 12px;
   margin-bottom: 1.5rem;
   transition: transform 0.3s ease;
-  object-fit: contain;  /* keeps proportions consistent */
+  object-fit: contain;
 }
 
+.popup img:hover,
+.modal-box img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Input Fields ===== */
+.popup input[type="text"],
+.popup input[type="email"],
 .modal-box input[type="text"],
 .modal-box input[type="email"] {
   width: 100%;
@@ -3362,27 +3207,41 @@ form button {
   margin-bottom: 1.2rem;
   border: 1.8px solid transparent;
   border-radius: 8px;
-  background: #2e2e2e;
-  color: #1c1a15;
-  font-size: 0.8rem;
+  background: #2e2e2e;      /* dark background */
+  color: #faf8ef;           /* light text */
+  font-size: 0.9rem;
   outline-offset: 2px;
   outline-color: transparent;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   box-sizing: border-box;
 }
 
+/* Focus State */
+.popup input[type="text"]:focus,
+.popup input[type="email"]:focus,
 .modal-box input[type="text"]:focus,
 .modal-box input[type="email"]:focus {
-  border-color: #EAF0F6;
-  background: #EAF0F6;
-  outline-color: #1c1a15;
+  border-color: #faf8ef;
+  background: #faf8ef;      /* light background on focus */
+  color: #1a1a15;           /* dark text on focus */
+  outline-color: #faf8ef;
 }
 
+/* Placeholder */
+.popup input::placeholder,
+.popup input[type="email"]::placeholder,
+.modal-box input::placeholder,
+.modal-box input[type="email"]::placeholder {
+  color: #c0c0c0;
+}
+
+/* ===== Labels ===== */
+.popup label,
 .modal-box label {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: lato, sans-serif;
+  font-family: Lato, sans-serif;
   font-size: 0.7rem;
   color: #EAF0F6;
   margin-bottom: 2rem;
@@ -3392,16 +3251,21 @@ form button {
   text-align: left;
 }
 
+/* ===== Checkbox ===== */
+.popup input[type="checkbox"],
 .modal-box input[type="checkbox"] {
   width: 0.7rem;
   height: 0.7rem;
   cursor: pointer;
   accent-color: #faf8ef;
   flex-shrink: 0;
+  border-radius: 2px;
   box-shadow: 0 0 0 1.5px #faf8ef inset;
   transition: box-shadow 0.3s ease;
 }
 
+/* ===== Buttons ===== */
+.popup button[type="submit"],
 .modal-box button[type="submit"] {
   border-radius: 5px;
   width: auto;
@@ -3409,15 +3273,25 @@ form button {
   font-family: 'Lato', sans-serif;
   margin-top: 1rem;
   display: block;
-}
-
-.modal-box button[type="submit"]:hover,
-.modal-box button[type="submit"]:focus {
   background-color: #8f8f8c;
   color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover / Focus Button */
+.popup button[type="submit"]:hover,
+.popup button[type="submit"]:focus,
+.modal-box button[type="submit"]:hover,
+.modal-box button[type="submit"]:focus {
+  background-color: #faf8ef;
+  color: #1a1a15;
   outline: none;
 }
 
+/* ===== Close / Dismiss Buttons ===== */
+.close-btn,
 .dismiss-btn {
   position: absolute;
   top: 12px;
@@ -3433,14 +3307,17 @@ form button {
   user-select: none;
 }
 
+.close-btn:hover,
+.close-btn:focus,
 .dismiss-btn:hover,
 .dismiss-btn:focus {
   color: #ffffff;
   outline: none;
 }
 
-/* Mobile responsiveness */
+/* ===== Mobile Responsiveness ===== */
 @media (max-width: 600px) {
+  .popup button[type="submit"],
   .modal-box button[type="submit"] {
     width: 100%;
     padding: 1rem;
@@ -3449,23 +3326,28 @@ form button {
 }
 
 @media (max-width: 400px) {
+  .popup,
   .modal-box {
     padding: 1.5rem 1.8rem;
     max-width: 320px;
   }
 
+  .popup img,
   .modal-box img {
-    max-width: 100%;
-    max-height: 150px; /* smaller on very small screens */
+    width: 120px;
+    max-height: 150px;
     margin-bottom: 1rem;
   }
 
+  .popup input[type="text"],
+  .popup input[type="email"],
   .modal-box input[type="text"],
   .modal-box input[type="email"] {
     font-size: 0.9rem;
     padding: 0.6rem 0.9rem;
   }
 
+  .popup button[type="submit"],
   .modal-box button[type="submit"] {
     font-size: 1rem;
     padding: 12px 0;
