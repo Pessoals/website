@@ -12,7 +12,7 @@ function toggleMenu() {
   }
 }
 
-
+/*
 document.addEventListener("DOMContentLoaded", function () {
   const images = document.querySelectorAll(".desktop-slideshow img");
   let current = 0;
@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Change image every 3 seconds
   setInterval(showNextImage, 1000);
 });
+
+*/
 
 document.addEventListener("DOMContentLoaded", function () {
   const images = document.querySelectorAll(".image-slideshow img");
