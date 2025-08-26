@@ -393,6 +393,7 @@
 </footer>
 
 
+
 <script>
     // Filter
     document.addEventListener("DOMContentLoaded", () => {
@@ -474,6 +475,22 @@
       });
       return false;
     }
+
+
+    // Menu toggle code
+const menulist = document.getElementById("menulist");
+const burgermenu = document.getElementById("burgermenu");
+
+menulist.style.maxHeight = "0px";
+
+function toggleMenu() {
+  if (menulist.style.maxHeight === "0px") {
+    menulist.style.maxHeight = "350px";
+  } else {
+    menulist.style.maxHeight = "0px";
+  }
+}
+
   </script>
 
 </body>
