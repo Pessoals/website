@@ -12,6 +12,21 @@ function toggleMenu() {
   }
 }
 
+
+document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelectorAll(".desktop-slideshow img");
+  let current = 0;
+
+  function showNextImage() {
+    images[current].classList.remove("active");
+    current = (current + 1) % images.length;
+    images[current].classList.add("active");
+  }
+
+  // Change image every 3 seconds
+  setInterval(showNextImage, 1000);
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const images = document.querySelectorAll(".image-slideshow img");
   let current = 0;
