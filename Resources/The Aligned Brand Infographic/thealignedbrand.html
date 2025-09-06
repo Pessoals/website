@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Brand Competetive Analysis</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="Images/favicon.png" type="image/x-icon">
+</head>
+<body>
+
+
+<section class="resourcescontainer">
+    <div class="thankyouintro">
+      <img src="The Aligned Brand Cover.png" alt="The Aligned Brand Cover">
+      <h1>Thank you for downloading this Infographic.</h1>
+      <p>
+        Thank you for purchasing the eBook. You will receive an email message shortly. 
+      If you didn’t receive any email contact <a href="mailto:hello@pessoals.com">hello@pessoals.com
+      </p> 
+       <a href="/Resources/The Aligned Brand Infographic/The Aligned Brand Cover.png"
+   class="buy-button1" 
+   download>
+   Download
+       </a>
+    </div>
+    <div class="resourcesintro">
+      <h1>Reccomended For You</h1>
+      <h3>
+        Explore a curated collection of ebooks, tools, guides, templates, and reports all crafted to elevate your personal brand and accelerate your growth.
+      </h3> 
+    </div>
+
+ <div class="resourcesgridcontainer">
+
+    <div class="resources-grid">
+      <!-- Resource Card -->
+
+
+<a class="resource-card" data-category="e-Books"
+   data-title="Brand Like a Celebrity"
+   data-description="Thanks for the clarification! You're referring to the price styling..."
+   data-image="Resources/Brand Like a Celebrity eBook/Brand like a Celebrity eBook Cover.jpg"
+   data-sale="$25"
+   data-regular="$80"
+   data-url="Resources/Brand Like a Celebrity eBook/brandlikeacelebrity.html"
+   onclick="event.preventDefault(); showModal(this);" >
+  <div class="card-upper">
+    <img src="/Resources/Brand Like a Celebrity eBook/Brand like a Celebrity eBook Cover.jpg" alt="The 30-Day Personal Brand Launchpad">
+  </div>
+  <div class="card-lower">
+    <p>E-Book</p>
+    <h3>Brand Like A Celebrity</h3>
+   <p>How to craft a personal brand that's memorable, magnetic, and influential using strategies like semiotic branding, sensory branding and more.</p>
+    <div class="price-box">
+      <span class="sale-price">$19.99</span>
+      <span class="regular-price">$49.99</span>
+    </div>
+  </div>
+</a>
+
+<a class="resource-card" data-category="Guide"
+   data-title="Personal Brand Adjectives List Guide"
+   data-description="A curated list of powerful adjectives to help you define your brand personality and communicate it with clarity."
+   data-image="Resources/Personal Brand Adjectives Guide/Personal Brand Adjectives Guide Cover.png"
+   data-sale="$"
+   data-regular="$"
+   data-url="Resources/Personal Brand Adjectives List Guide/personalbrandadjectives.html" 
+   onclick="event.preventDefault(); showModal(this);" >
+  <div class="card-upper">
+    <img src="/Resources/Personal Brand Adjectives List Guide/Personal Brand Adjectives List Cover.png" alt="Personal Brand Adjectives List Cover">
+  </div>
+  <div class="card-lower">
+  <p>Guide</p>
+  <h3>Personal Brand Adjectives List</h3>
+   <p>A curated list of powerful adjectives to help you define your brand personality and communicate it with clarity.</p>
+    <div class="price-box">
+      <span class="sale-price">Free</span>
+      <span class="regular-price"></span>
+    </div>
+  </div>
+</a>
+
+<a class="resource-card" data-category="Checklist"
+   data-title="Personal Brand Checklist"
+   data-description="An all-in-one checklist to ensure your personal brand is polished, consistent, and positioned for maximum impact."
+   data-image="Resources/Personal Brand Checklist/Personal Brand Checklist Cover"
+   data-sale="$"
+   data-regular="$"
+   data-url="Resources/Personal Brand Checklist/personalbrandingchecklist.html" 
+   onclick="event.preventDefault(); showModal(this);" >
+  <div class="card-upper">
+    <img src="/Resources/Personal Brand Checklist/Personal Branding Checklist Cover.png" alt="Personal Branding Checklist Cover">
+  </div>
+  <div class="card-lower">
+  <p>Checklist</p>
+  <h3>Personal Brand Checklist</h3>
+   <p>A structured template to analyze competitors and identify opportunities to differentiate and strengthen your brand.</p>
+    <div class="price-box">
+      <span class="sale-price">Free</span>
+      <span class="regular-price"></span>
+    </div>
+  </div>
+</a>
+
+
+
+   </div>
+ </div>
+ <a href="/index.html" class="buy-button1">Back to Homepage</a>
+
+</section>
+
+
+  
+
+<footer class="footer-main">
+  <div class="container">
+    <div class="footer-links">
+      <a href="privacypolicy.html">Privacy Policy</a>
+      <a href="cookiespolicy.html">Cookie Policy</a>
+      <a href="privacypolicy.html">Your Privacy Choices</a>
+      <p>©2025 Pessoals. All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+
+  .modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: flex;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.modal-box {
+  background: #1a1a15;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.1);
+  color: #faf8ef;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-box img {
+  width: 140px;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+.modal-box img:hover {
+  transform: scale(1.05);
+}
+
+.modal-box input[type="text"],
+.modal-box input[type="email"] {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.2rem;
+  border: 1.8px solid transparent;
+  border-radius: 8px;
+  background: #2e2e2e;
+  color: #faf8ef;
+  font-size: 0.8rem;
+  outline-offset: 2px;
+  outline-color: transparent;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.modal-box input[type="text"]:focus,
+.modal-box input[type="email"]:focus {
+  border-color: #EAF0F6;
+  background: #EAF0F6;
+  outline-color: #1c1a15;
+}
+
+.modal-box label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: lato, sans-serif;
+  font-size: 0.7rem;
+  color: #8f8f8c;
+  margin-bottom: 2rem;
+  user-select: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.modal-box input[type="checkbox"] {
+  width: 0.7rem;
+  height: 0.7rem;
+  cursor: pointer;
+  accent-color: #faf8ef;
+  flex-shrink: 0;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1.5px #faf8ef inset;
+  transition: box-shadow 0.3s ease;
+}
+
+.modal-box button[type="submit"] {
+  border-radius: 5px;
+  width: auto;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Lato', sans-serif;
+  margin-top: 1rem;
+  display: block;
+}
+
+/* Hover / focus */
+.modal-box button[type="submit"]:hover,
+.modal-box button[type="submit"]:focus {
+  background-color: #8f8f8c;
+  color: #ffffff;
+  outline: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .modal-box button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 0rem;
+  }
+}
+
+.dismiss-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: #8f8f8c;
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.25s ease;
+  user-select: none;
+}
+
+.dismiss-btn:hover,
+.dismiss-btn:focus {
+  color: #ffffff;
+  outline: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 400px) {
+  .modal-box {
+    padding: 1.5rem 1.8rem;
+    max-width: 320px;
+  }
+
+  .modal-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-box img {
+    width: 120px;
+    margin-bottom: 1rem;
+  }
+
+  .modal-box input[type="text"],
+  .modal-box input[type="email"] {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.9rem;
+  }
+
+  .modal-box button[type="submit"] {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+}
+
+</style>
+
+   <script>
+    function showModal() {
+  document.getElementById('subscribeModal').style.display = 'flex';
+}
+
+function hideModal() {
+  document.getElementById('subscribeModal').style.display = 'none';
+}
+
+function processForm(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('userName').value.trim();
+  const email = document.getElementById('userEmail').value.trim();
+  const consent = document.getElementById('userConsent').checked;
+
+  if (!consent) {
+    alert("You must agree to receive emails to proceed.");
+    return false;
+  }
+
+  if (!name || !email) {
+    alert("Please fill in your name and email.");
+    return false;
+  }
+
+  const mailchimpUrl = 'https://us15.list-manage.com/subscribe/post-json?u=07e655f1ee6606d6949ea7dbb&id=4798db1474&c=?';
+
+  const params = new URLSearchParams();
+  params.append('EMAIL', email);
+  params.append('FNAME', name);
+
+  function jsonp(url, callback) {
+    const script = document.createElement('script');
+    const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+
+    window[callbackName] = function(data) {
+      delete window[callbackName];
+      document.body.removeChild(script);
+      callback(data);
+    };
+
+    script.src = url.replace('=?', '=' + callbackName);
+    document.body.appendChild(script);
+  }
+
+  jsonp(mailchimpUrl + '&' + params.toString(), function(response) {
+    if (response.result === 'success' || response.result === 'error') {
+      hideModal();
+      window.location.href = '/personalbrandcompetetiveanalysis.html';
+    } else {
+      alert('There was an error submitting your email. Please try again.');
+    }
+  });
+
+  return false;
+}
+
+   </script>
+</body>
+</html>

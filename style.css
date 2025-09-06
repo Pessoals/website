@@ -17,6 +17,7 @@ html, body {
   --color-secondary: #faf8ef;
   --color-text-primary: #1c1a15;
   --color-text-secondary: #6E6E6B;
+  --color-text-teritary:#bd9d5c;
   --color-background: #faf8ef;
   --color-background-hover: #6E6E6B;
   --color-backgroundcard: #ffffff;
@@ -148,12 +149,12 @@ nav ul li a::after {
     bottom: -3px;
     width: 0;
     height: 2px;
-    background-color: var(--color-text-secondary, #f4a261); /* Accent color */
+    background-color: var(--color-text-teritary,#bd9d5c); /* Accent color */
     transition: width 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: var(--color-text-secondary, #f4a261);
+    color: #bd9d5c;
 }
 
 nav ul li a:hover::after {
@@ -738,8 +739,8 @@ nav ul li a:hover::after {
 
 
 .btn:hover {
-  background-color:#8F8F8C;
-  color: #FAF8EF;
+  background-color:#bd9d5c;
+  color: #1c1a15;
 }
 
 /* Features List */
@@ -861,7 +862,7 @@ nav ul li a:hover::after {
 
 .profile-info h3 {
   font-family: 'Playfair Display', serif;
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   margin: 0;
   color: #1a1a15;
@@ -1348,10 +1349,8 @@ nav ul li a:hover::after {
   margin: 0.5rem 0;
   box-sizing: border-box;
   transition: transform 0.2s, box-shadow 0.2s;
-
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-
   text-align: center;
   color: #1c1a15;
 }
@@ -1677,10 +1676,10 @@ form button {
 }
 .resourcesintro p {
   font-family: 'Lato', sans-serif;
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   text-align: center;
-  color: #1c1a15;
+  color: #8F8F8C;
   font-size: 1rem;
   line-height: 1.4;
   margin-bottom: var(--spacing-md);
@@ -1705,7 +1704,7 @@ form button {
 
 .filter-link.active,
 .filter-link:hover {
-  color: var(--color-primary);
+  color:#bd9d5c;
   font-weight: 700;
   text-decoration: underline;
 }
@@ -1823,8 +1822,9 @@ form button {
 .sale-price {
   font-size: var(--font-size-lg);
   font-weight: 600;
-  font-family: var(--font-family-primary);
+  font-family: var(--font-family-secondary);
   color: var(--color-text-primary);
+  margin-right: 10px; /* Adds space to the right of the first span */
 }
 
 .regular-price {
@@ -1892,6 +1892,7 @@ form button {
   justify-content: center;
   padding: 4rem 2rem;
   gap: 2rem;
+  min-height: auto;
   color: #FAF8EF;
   flex-wrap: wrap;
   flex-direction: row;
@@ -1948,20 +1949,20 @@ form button {
 
 .buy-button1:hover,
 .buy-button1:focus {
-  background-color: #8f8f8c;
+  background-color: #bd9d5c;
   color: #1c1a15;
   outline: none;
   transform: scale(1.05);
 }
 
 
-/* Hero image */
 .hero img {
-  flex: 1;                /* allows the image to grow/shrink inside flex container */
-  max-width: 30%;        /* makes sure it never exceeds its container's width */
-  height: auto;           /* lets height adjust proportionally */
-  object-fit: contain;    /* keeps the entire image visible without cropping */
+  flex: 1;
+  max-width: 30%;
+  height: 70vh;       /* reduced from 80vh */
+  object-fit: contain;
 }
+
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -2156,7 +2157,7 @@ form button {
 
 .buy-button2:hover,
 .buy-button2:focus {
-  background-color: #8F8F8C;
+  background-color: #bd9d5c;
   color: #1a1a15;
   outline: none;
   transform: scale(1.05);
@@ -2259,7 +2260,7 @@ form button {
 }
 
 .testimonial em {
-  font-style: italic;
+  font-style: normal;
   text-align: start;
   font-size: 16px;
   display: block;
@@ -2660,7 +2661,9 @@ form button {
   max-width: 1200px;
   margin: 0 auto;
   background-color: #1c1a15;
-  padding: 60px 40px;
+  padding: 40px;
+  gap: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   z-index: 1;
   position: relative;
@@ -2669,20 +2672,30 @@ form button {
 .text-content {
   flex: 1 1 300px;
   color: #FAF8EF;
+  max-width: 600px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
 }
 .text-content h1 {
-  font-size: 2.5rem;
-  font-style: italic;
-  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-style: 'Montserrat', sans-serif;
   color: #8F8F8C;
-  margin-bottom: -1.5rem;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
 }
 
 .text-content h2 {
   font-size: 2rem;
+  font-family: 'Playfair Display', serif;
   color: #FAF8EF;
-  line-height: 120%;
-  margin-bottom: 10px;
+  font-weight: normal;
+  font-style: normal;
+  margin: 10px 0 20px 0;
+  line-height: 1.2;
 }
 
 .text-content p {
@@ -2694,7 +2707,7 @@ form button {
 /* Tablet screens */
 @media (max-width: 1024px) {
   .text-content h1 {
-    font-size: 2.2rem;
+    font-size: 1.2rem;
   }
   .text-content h2 {
     font-size: 1.8rem;
@@ -2707,11 +2720,10 @@ form button {
 /* Mobile screens */
 @media (max-width: 768px) {
   .text-content h1 {
-    font-size: 2rem;
-    margin-bottom: -1rem;
+    font-size: 1rem;
   }
   .text-content h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   .text-content p {
     font-size: 0.85rem;
@@ -2722,10 +2734,10 @@ form button {
 /* Small mobile */
 @media (max-width: 480px) {
   .text-content h1 {
-    font-size: 1.8rem;
+    font-size: 1rem;
   }
   .text-content h2 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
   .text-content p {
     font-size: 0.8rem;
@@ -2758,15 +2770,15 @@ form button {
 }
 
 .download-button:hover {
-  background-color: #8f8f8c;
-  color: #ffffff;
+  background-color: #bd9d5c;
+  color: #1c1a15;
 }
 
 .download-button h3 {
   font-size: 1.2rem;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  font-family: playfair display, serif;
+  font-weight:500;
 }
 
 .download-button p {
@@ -2914,7 +2926,8 @@ form button {
   background-color: transparent;
   padding: 0 20px;
   font-size: 0.9rem;
-  font-style: italic;
+  font-family: montserrat, sans-serif;
+  font-style: normal;
   color: #1c1a15;
   text-align: left; /* answers aligned left */
   transition: all 0.3s ease;
@@ -2988,7 +3001,7 @@ form button {
 }
 
 .footersecond .footer-links a:hover {
-  color: #FAF8EF;
+  color: #bd9d5c;
   text-decoration: underline;
 }
 
@@ -3068,7 +3081,7 @@ form button {
 
 .footer-links a:hover {
   text-decoration: underline;
-  color: #FAF8EF;
+  color: #bd9d5c;
   opacity: 1;
 }
 
@@ -3150,7 +3163,7 @@ form button {
 }
 
 .footer-main .footer-links a:hover {
-  color: #FAF8EF;
+  color: #bd9d5c;
   text-decoration: underline;
 }
 
@@ -3290,8 +3303,8 @@ form button {
   font-family: 'Lato', sans-serif;
   margin-top: 1rem;
   display: block;
-  background-color: #8f8f8c;
-  color: #ffffff;
+  background-color: #faf8ef;
+  color: #1a1a15;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -3302,7 +3315,7 @@ form button {
 .popup button[type="submit"]:focus,
 .modal-box button[type="submit"]:hover,
 .modal-box button[type="submit"]:focus {
-  background-color: #faf8ef;
+  background-color: #bd9d5c;
   color: #1a1a15;
   outline: none;
 }
@@ -3328,7 +3341,7 @@ form button {
 .close-btn:focus,
 .dismiss-btn:hover,
 .dismiss-btn:focus {
-  color: #ffffff;
+  color: #bd9d5c;
   outline: none;
 }
 
@@ -3391,21 +3404,40 @@ form button {
 
 /* Intro Section */
 .thankyouintro {
-  text-align: center;
-  align-items: center;
-  margin-top: var(--spacing-lg);
-  gap: var(--spacing-sm);
-  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;   /* Stack items vertically */
+  align-items: center;      /* Center horizontally */
+  justify-content: center;  /* Center vertically if needed */
+  text-align: center;       /* Center text inside elements */
+  padding: 1rem;            /* Optional: add some padding */
+}
+.thankyouintro img {
+  height: 50vh;             /* 50% of viewport height */
+  width: auto;              /* Maintain aspect ratio */
+  max-width: 100%;          /* Never exceed container width */
+  display: block;           /* Remove extra space below image */
+  margin: 0 auto;           /* Center horizontally if needed */
+  object-fit: contain;      /* Fit inside container without cropping */
+  transition: transform 0.3s ease;
+}
+@media (max-width: 600px) {
+  .thankyouintro img {
+    height: 30vh;          /* Slightly smaller on small devices */
+  }
 }
 
+
 .thankyouintro h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight:700;
+  font-family: 'Playfair Display',serif;
+  font-weight:normal;
   text-align: center;
   color: #1c1a15;
-  font-size: 1.6rem; /* default size */
+  font-size: clamp(1.8rem, 1vw, 3rem); /* Scales with viewport, min 1.2rem, max 2rem */
   line-height: 1.2;
+  margin: 1rem 0 1rem; /* spacing above and below */
+  max-width: 600px;    /* Prevents stretching too wide on large screens */
 }
+
 
 /* Section subheading */
 .thankyouintro p {
@@ -3435,7 +3467,7 @@ form button {
 
 .buy-button-checkout:hover,
 .buy-button-checkout:focus {
-  background-color: #8f8f8c;
+  background-color: #bd9d5c;
   color: #1c1a15;
   outline: none;
   transform: scale(1.05);
@@ -3616,7 +3648,7 @@ a:focus {
 }
 
 .headerinside h5 {
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   color: #1c1a15;
@@ -3687,7 +3719,7 @@ a:focus {
 }
 
 .right-column h2 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-family: 'Playfair Display',serif;
   font-weight: 500;
   color: #1c1a15;
@@ -3715,15 +3747,37 @@ a:focus {
   }
 
   .right-column p {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .right-column h2 {
-    font-size: 24px;
+    font-size: 1,2rem;
   }
 }
 
 @media (max-width: 600px) {
+  .headerinside h2 {
+    font-size: 1.6rem;
+  }
+
+  .headerinside h5 {
+    font-size: 1.3rem;
+    margin-bottom: -1rem;
+  }
+
+  .right-column h2 {
+    font-size: 1.4rem;
+  }
+
+  .right-column p {
+    font-size: 1rem;
+  }
+
+  .inside-step {
+    padding: 20px;
+    gap: 20px;
+  }
+  @media (max-width: 480px) {
   .headerinside h2 {
     font-size: 1.4rem;
   }
@@ -3734,38 +3788,16 @@ a:focus {
   }
 
   .right-column h2 {
-    font-size: 20px;
-  }
-
-  .right-column p {
-    font-size: 0.85rem;
-  }
-
-  .inside-step {
-    padding: 20px;
-    gap: 20px;
-  }
-  @media (max-width: 480px) {
-  .headerinside h2 {
     font-size: 1.2rem;
   }
 
-  .headerinside h5 {
-    font-size: 1rem;
-    margin-bottom: -1rem;
-  }
-
-  .right-column h2 {
-    font-size: 20px;
-  }
-
   .right-column p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .inside-step {
     padding: 20px;
-    gap: 20px;
+    gap: 10px;
   }
 }
 
