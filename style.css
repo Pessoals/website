@@ -1884,7 +1884,6 @@ form button {
 
 /* Brand like a celebrity sales page */ 
 
-
 /* Style the hero section */
 .hero {
   display: flex;
@@ -1897,26 +1896,21 @@ form button {
   flex-wrap: wrap;
   flex-direction: row;
 }
+
 /* Text column */
 .lefthero {
   flex: 1;
   max-width: 600px;
 }
 
-.maintexthero h3 {
-  font-size: 2.5rem;
-  color: #1c1a15;
-  opacity: 0.7;
-  margin-bottom: -1.5rem;
-  line-height: 1.2;
-}
-
 .maintexthero h1 {
-  font-size: 4rem;
+  font-family: 'Playfair Display', serif; /* Playfair Display */
+  font-weight: 400; /* Normal weight */
+  font-size: 2.5rem;/* Responsive font size */
   color: #1c1a15;
   opacity: 0.9;
   margin-bottom: 1rem;
-  line-height: 5.5rem;
+  line-height: 1; /* Adjust line-height for better readability */
 }
 
 .lefthero p {
@@ -1928,7 +1922,6 @@ form button {
   text-decoration: underline;
 }
 
-
 /* Button styles unchanged */
 .button-container {
   display: flex;
@@ -1936,8 +1929,8 @@ form button {
 }
 
 .buy-button1 {
-  background-color: #1c1a15; 
-  color:#FAF8EF;
+  background-color: #1c1a15;
+  color: #FAF8EF;
   padding: 14px 32px;
   font-size: 1rem;
   border: none;
@@ -1955,14 +1948,13 @@ form button {
   transform: scale(1.05);
 }
 
-
+/* Image styling */
 .hero img {
   flex: 1;
   max-width: 30%;
-  height: 70vh;       /* reduced from 80vh */
+  height: 70vh; /* Adjusted size */
   object-fit: contain;
 }
-
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -1972,15 +1964,8 @@ form button {
     text-align: center;
     height: auto;
   }
-
   .maintexthero h1 {
-    font-size: 3.5rem;
-    line-height: 4.5rem;
-  }
-
-  .maintexthero h3 {
-    font-size: 1.7rem;
-    margin-bottom: -1rem;
+    font-size: 2rem;
   }
 
   .lefthero p {
@@ -2004,11 +1989,7 @@ form button {
 
 @media (max-width: 480px) {
   .maintexthero h1 {
-    font-size: 3rem;
-  }
-
-  .maintexthero h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   .lefthero p {
@@ -2018,11 +1999,13 @@ form button {
   .lefthero a {
     font-size: 0.95rem;
   }
+  
   .hero img {
     max-width: 50%;
     height: auto;
   }
 }
+
 
 /* end of hero section of brand like a celebrity sales page */ 
 /* badges section in brand like a celebrity sales page */
@@ -2101,9 +2084,85 @@ form button {
   }
 }
 
+.featured {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #fcf8ef; /* light background for premium feel */
+}
+
+.featured-heading {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #1c1a15;
+  font-weight: normal;
+  letter-spacing: -1px;
+  font-family: "Playfair Display", serif;
+}
+
+.logo-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo-wrapper img {
+  max-height: 50px;
+  max-width: 150px;
+  width: auto;
+  height: auto;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.logo-wrapper img:hover {
+  opacity: 1;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .logo-wrapper {
+    gap: 25px;
+  }
+  .logo-wrapper img {
+    max-height: 45px;
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-heading {
+    font-size: 1.5rem;
+  }
+  .logo-wrapper {
+    gap: 20px;
+  }
+  .logo-wrapper img {
+    max-height: 40px;
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-heading {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+  .logo-wrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .logo-wrapper img {
+    max-height: 35px;
+    max-width: 90px;
+  }
+}
+
+
  /* end of badges section in brand like a celebrity sales page */
 .section-findout {
-  background-color: #FAF8EF;
+  background-color: #1c1a15;
   min-height: auto;
   box-sizing: border-box;
   overflow: hidden;
@@ -2123,20 +2182,12 @@ form button {
 
 .findout-header h2 {
   font-size: 1.6rem;
-  color: #1c1a15;
+  color: #FAF8EF;
+  text-align: start;
   line-height: 1.2;font-weight: normal;
   font-family: 'Playfair Dispaly', serif;
   margin-bottom: 24px;
 }
-
-
-.section-findout p {
-  font-size: 1rem;
-  font-family: 'Montserrat'sans-serif;
-  color: #1c1a15;
-  margin-bottom: 40px;
-}
-
 /* Button styles unchanged */
 .button-container {
   display: flex;
@@ -2194,109 +2245,98 @@ form button {
 /* end of section findout in sales page of brand like a celebrity */ 
 
 /* start of testimonials section in sales page of brand like a celebrity */
-
-.section-testimonaials{
-  display: flex;
-  align-items: center;
-  background-color: #1a1a15;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  min-height: auto;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-.container-testimonials {
+.section-testimonials {
+  padding: 4rem 2rem;
   background-color: #1c1a15;
-  padding: 50px 1.5rem;  /* top/bottom: 50px, left/right: 1.5rem (~24px) */
-  width: 100%;
-  box-sizing: border-box;
-}.container-testimonials h2 {
+  color: #1c1a15;
   text-align: center;
-  font-size: 1.6rem; /* default size */
-  font-weight: normal;
-    font-family: 'Playfair Dispaly', serif;
-  margin-bottom: 5rem;
+}
+
+.section-testimonials h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(1.75rem, 1vw, 2.5rem); /* Smaller and responsive */
+  margin-bottom: 3rem;
   color: #FAF8EF;
-  opacity: 100%;
-}
-
-/* Responsive tweaks for smaller screens */
-@media (max-width: 1024px) {
-  .container-testimonials h2 {
-    font-size: 1.6rem;
-    margin-bottom: 4rem;
-  }
-}
-
-@media (max-width: 700px) {
-  .container-testimonials h2 {
-    font-size: 1.4rem;
-    margin-bottom: 3rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .container-testimonials h2 {
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
-  }
+  letter-spacing: -1px;
 }
 
 .testimonialsgrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 80px;
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto; /* centers the grid container horizontally */
-  justify-items: center; /* centers grid items horizontally within each column */
-  text-align: center; /* optional: centers text/content inside items */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
 }
 
 .testimonial {
-  font-size: 16px;
-  line-height: 1.6;
+  background-color:#292524;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  max-width: 400px;
+  text-align: left;
 }
 
-.testimonial em {
-  font-style: normal;
-  text-align: start;
-  font-size: 16px;
-  display: block;
-  margin-bottom: 10px;
-  max-width: 350px;
-  color: #8F8F8C;
+.testimonial-stars {
+  color: #f5c518; /* Gold stars */
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
-.author {
-  font-weight: bold;
-  font-size: 14px;
-  text-align: start;
-  margin-bottom: 4px;
-  color: #FAF8EF;
-}
-
-.role {
-  font-style: italic;
-  font-size: 13px;
-  text-align: start;
+.testimonial-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
   color: #faf8ef;
-  font-family: playfair display, serif;
 }
 
-@media (max-width: 600px) {
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  color: #faf8ef;
+  gap: 1rem;
+}
+
+.author-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-info .author-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.author-info .author-role {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
   .testimonial {
-    font-size: 15px;
+    padding: 1.5rem;
+  }
+
+  .author-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+  }
+
+  .section-testimonials h2 {
+    font-size: 1.8rem; /* Slightly smaller on mobile */
   }
 }
 
-.testimonial em {
-  font-size: 0.85rem;
-  display: block;
-  margin-bottom: 10px;
-  color: #8F8F8C;
-}
 /* end of testimonial section in sales page of brand like a celebrity ebook */
 
 
@@ -2506,138 +2546,104 @@ form button {
 /* end of section resons in sales page brand like a celebrity ebook  */
 
 /* start of section who should read this book in brand like a celebrity ebook */ 
-
+/* Section Styling */
 .section-who { 
   background-color: #1c1a15;
   color: #FAF8EF;
-  display: flex;
-  align-items: center;
-  min-height: auto;
-  height: auto;
-  padding: 40px 0;
+  padding: 60px 20px;
+  font-family: 'Lato', sans-serif;
 }
 
+/* Container */
 .container-who {
+  max-width: 1200px;
   margin: 0 auto;
-  color: #FAF8EF;
-  display: block;
-  padding: 0 20px; /* ✅ Add this */
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.container-who h2 {
   text-align: center;
-  font-size: 1.6rem; /* default size */
-  font-family: 'Playfair Display',serif; 
+}
+
+.container-who h2 {
+  font-family: 'Playfair Display', serif;
   font-weight: normal;
-  margin-bottom: 5rem;
+  line-height: -1px;
+  font-size: 2rem;
+  margin-bottom: 60px;
   color: #FAF8EF;
-  opacity: 100%;
 }
 
-/* Responsive tweaks for smaller screens */
-@media (max-width: 1024px) {
-  .container-who h2 {
-    font-size: 1.6rem;
-    margin-bottom: 4rem;
-  }
-}
-
-@media (max-width: 700px) {
-  .container-who h2 {
-    font-size: 1.4rem;
-    margin-bottom: 3rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .container-who h2 {
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
-  }
-}
-
-.content-who{
+/* Content Flex */
+.content-who {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  justify-content:center;
+  align-items: flex-start;
+  gap: 30px;
+  margin-bottom: 5%;
 }
-.who.left {
+
+/* Boxes */
+.who-box {
+  background-color: #2a281f;
+  border-radius: 15px;
+  padding: 40px 30px;
+  max-width: 500px;
+  flex: 1;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.who-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: normal;
+  letter-spacing: -1px;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  color: #fcf8ef;
   text-align: left;
-  max-width: 300px;
-  color: #8F8F8C;
-  display: flex;
-  padding: 30px;
-  flex-direction: column;
-  gap: 30px;
 }
 
-.who.right {
-  text-align: right;
-  color: #8F8F8C;
-  display: flex;
-  flex-direction: column;
-  max-width: 300px;
-  padding: 30px;
-  gap: 30px;
+.who-box ul {
+  list-style: none;
+  padding: 0;
 }
 
-.reason {
+.who-box ul li {
   font-size: 1rem;
-  font-style: italic;
-  color: #FAF8EF;
-  max-width: 300px;
-  gap: 50px;
+  line-height: 1.8;
+  color: #d0cfc8;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 15px;
+  text-align: start;
 }
 
-.icon {
-  flex: 0 0 250px;
-  opacity: 0.7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 100px;
-}
-
-.icon img {
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  opacity: 70%;
+/* Add custom bullet */
+.who-box ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #fcf8ef;
+  font-size: 1.2rem;
 }
 
 
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .section-who {
-    height: auto;
-    padding: 40px 20px;
-  }
-
+/* Responsive */
+@media (max-width: 900px) {
   .content-who {
     flex-direction: column;
-    
+    align-items: center;
+    gap: 40px;
   }
-  .who.left,
-  .who.right {
-    text-align: left;
+  .who-box {
+    max-width: 100%;
+    text-align: center;
   }
-
-  .icon {
-     display: none;
+  .who-box h3 {
+    text-align: center;
   }
-
-  .reason {
-    font-size: 0.65rem;
+  .who-box ul li {
+    padding-left: 0;
   }
-
-  .button-container button {
-    width: 100%;
-    max-width: 280px;
-    font-size: 0.95rem;
+  .who-box ul li::before {
+    display: none;
   }
 }
 
@@ -2840,7 +2846,8 @@ form button {
 /* FAQ Title */
 .faq-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  letter-spacing: -1px;
   font-weight: normal;
   margin-bottom: 30px;
   color: #1c1a15;
@@ -3642,20 +3649,24 @@ a:focus {
 }
 
 /* Header Inside Section */
-.headerinside {
+.headerinside h2{
   text-align: center;
   margin-bottom: 40px;
+  font-family: playfair display, serif;
+  letter-spacing: -1px;
+  font-weight: normal;
+  font-size: 2rem;
 }
-
-.headerinside h5 {
-  font-size: 1.4rem;
+.right-column .chapter-label {
+  font-size: 0.9rem;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  color: #1c1a15;
-  margin-bottom: -1rem;
+  font-weight: 500;
+  color: #bd9d5c; /* gold color to highlight chapter */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
 }
-
-.headerinside h2 {
+.right-column .chapter-title {
   font-size: 1.6rem;
   font-family: 'Playfair Display', serif;
   font-weight: 500;
@@ -3800,5 +3811,180 @@ a:focus {
     gap: 10px;
   }
 }
+}/* Early Bird Section */
+.early-bird {
+  background-color: #FAF8EF;
+  color: #1c1a15;
+  padding: 80px 20px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
 
+.early-bird h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: normal;
+  font-size: 2.5rem;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+  color: #1c1a15;
+}
+
+.subtitleurgent {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #eb1809;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.early-bird .subtitle {
+  font-size: 1.125rem;
+  margin-bottom: 40px;
+  color: #8f8f8c;
+}
+
+/* Progress Bar */
+.progress-container {
+  width: 100%;
+  max-width: 500px;
+  background-color: #e8e6dc;
+  border-radius: 12px;
+  margin: 0 auto 25px;
+  overflow: hidden;
+  border: 2px solid #1c1a15;
+  position: relative;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+  background-color: #1c1a15;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  color: #fcfaf8;
+  font-size: 1rem;
+  font-weight: 600;
+  width: 74%; /* Example: 37/50 claimed */
+  transition: width 0.5s ease;
+  border-radius: 10px 0 0 10px;
+}
+
+/* Spots */
+.spots {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #1c1a15;
+  font-weight: 600;
+}
+
+/* Pricing Tiers */
+.pricing-tiers {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.tier {
+  background-color: #fcfaf8;
+  border: 2px solid #1c1a15;
+  border-radius: 16px;
+  padding: 30px 25px;
+  width: 220px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.tier.highlight {
+  border-color: #bd9d5c;
+  background-color: #fff8e1;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.tier .badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #bd9d5c;
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tier .price {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: normal;
+  margin-bottom: 10px;
+  color: #1c1a15;
+}
+
+.tier .save {
+  display: block;
+  font-family: lato, sans-serif;
+  font-size: 0.9rem;
+  color: #bd9d5c;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.tier-desc {
+  font-size: 0.95rem;
+  color: #8f8f8c;
+  margin-top: 10px;
+}
+
+/* Buy Button */
+.buy-btn {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2rem;
+  padding: 14px 35px;
+  border: none;
+  border-radius: 10px;
+  background-color: #1c1a15;
+  color: #fcfaf8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.buy-btn:hover {
+  background-color: #bd9d5c;
+  color: #1c1a15;
+  transform: scale(1.05);
+}
+
+.trust {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #8f8f8c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pricing-tiers {
+    flex-direction: column;
+    align-items: center;  
+    gap: 20px;
+  }
+
+  .tier {
+    width: 90%;
+    max-width: 280px;    
+  }
+
+  .progress-container {
+    max-width: 90%; 
+  }
 }

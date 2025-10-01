@@ -286,3 +286,32 @@ function processForm(event) {
 }
 
 /* Pop up free download end */ 
+
+// Auto tick squares every second
+const squares = document.querySelectorAll(".progress-squares .square");
+let filled = 0;
+const totalFilled = 37; // how many should be filled initially
+
+function tickSquare() {
+  if (filled < totalFilled) {
+    squares[filled].classList.add("filled");
+    filled++;
+  }
+}
+
+// Fill initial squares instantly
+for (let i = 0; i < 37; i++) {
+  squares[i].classList.add("filled");
+  filled++;
+}
+
+// Optional: simulate live sales after page load
+let liveIndex = 37; // starting after initial filled
+const liveInterval = setInterval(() => {
+  if (liveIndex >= squares.length) {
+    clearInterval(liveInterval);
+  } else {
+    squares[liveIndex].classList.add("filled");
+    liveIndex++;
+  }
+}, 2000); // tick every 2 seconds
