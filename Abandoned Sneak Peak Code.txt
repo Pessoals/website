@@ -1,0 +1,223 @@
+<section class="section-free-download">
+  
+  <div class="container-free-download">
+    <!-- Left Text Section -->
+    <div class="text-content">
+      <h1>What’s Inside?</h1>
+      <h2>Get 3 Free Pages From the eBook to Kickstart Your Personal Brand</h2>
+      <p>Unlock 3 free pages and discover proven strategies to elevate your style, design like the pros, and make your brand truly unforgettable.</p>
+    </div>
+
+    <!-- Right Buttons Section -->
+    <div class="button-group">
+      <a href="/Resources/Brand Like a Celebrity eBook/Free Preview From Chapter Two.png" class="download-button" download>
+        <p>What is Personal Branding?</p>
+        <h3>Download a Free Preview from Chapter Two</h3>
+      </a>
+
+      <a href="/Resources/Brand Like a Celebrity eBook/Free Preview From Chapter Four.png" class="download-button" download>
+        <p>Choose Your Brand Strategy</p>
+       <h3>Download a Free Preview from Chapter Four</h3>
+      </a>
+
+      <a href="/Resources/Brand Like a Celebrity eBook/Free Preview From Chapter Six.png" class="download-button" download>
+         <p>Choose Your Aesthetics</p>
+       <h3>Download a Free Preview from Chapter Six</h3>
+      </a>
+    </div>
+  </div>
+  
+</section>
+ and the following is css  
+/* Section for downloading each section in sales page of brand like a celbrity */
+.section-free-download {
+  background-color: #FAF8EF;
+  position: relative;
+  padding: 60px 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: auto; /* adjusts height to content */
+}
+
+.container-free-download {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #1c1a15;
+  padding: 40px;
+  gap: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  z-index: 1;
+  position: relative;
+}
+
+.text-content {
+  flex: 1 1 300px;
+  color: #FAF8EF;
+  max-width: 600px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+.text-content h1 {
+  font-size: 1.4rem;
+  font-style: 'Montserrat', sans-serif;
+  color: #8F8F8C;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+}
+
+.text-content h2 {
+  font-size: 2rem;
+  font-family: 'Playfair Display', serif;
+  color: #FAF8EF;
+  font-weight: normal;
+  font-style: normal;
+  margin: 10px 0 20px 0;
+  line-height: 1.2;
+}
+
+.text-content p {
+  font-size: 0.95rem;
+  color: #8f8f8c;
+  line-height: 1.6;
+}
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+  .text-content h1 {
+    font-size: 1.2rem;
+  }
+  .text-content h2 {
+    font-size: 1.8rem;
+  }
+  .text-content p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .text-content h1 {
+    font-size: 1rem;
+  }
+  .text-content h2 {
+    font-size: 1.6rem;
+  }
+  .text-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .text-content h1 {
+    font-size: 1rem;
+  }
+  .text-content h2 {
+    font-size: 1.4rem;
+  }
+  .text-content p {
+    font-size: 0.8rem;
+  }
+}
+
+
+.button-group {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center; /* center buttons in all screens */
+}
+
+.download-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #faf8ef;
+  color: #1c1a15;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+  background-color: #bd9d5c;
+  color: #1c1a15;
+}
+
+.download-button h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-family: playfair display, serif;
+  font-weight:500;
+}
+
+.download-button p {
+  font-size: 0.95rem;
+  margin: 4px 0 0;
+  font-style: normal;
+}
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+  .download-button {
+    max-width: 400px;
+    padding: 14px;
+  }
+  .download-button h3 {
+    font-size: 1.1rem;
+  }
+  .download-button p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .download-button {
+    max-width: 100%;
+    padding: 12px;
+  }
+  .download-button h3 {
+    font-size: 1rem;
+  }
+  .download-button p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .download-button {
+    padding: 10px;
+    border-radius: 6px;
+  }
+  .download-button h3 {
+    font-size: 0.95rem;
+  }
+  .download-button p {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* end of downlaod free chapter section in sales page of brand like a celbrity */  

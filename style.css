@@ -1904,13 +1904,29 @@ form button {
 }
 
 .maintexthero h1 {
-  font-family: 'Playfair Display', serif; /* Playfair Display */
-  font-weight: 400; /* Normal weight */
+  font-family: 'Playfair Display',serif; /* Playfair Display */
+  font-weight: 500; /* Normal weight */
   font-size: 2.5rem;/* Responsive font size */
   color: #1c1a15;
   opacity: 0.9;
+  letter-spacing: -1px;
   margin-bottom: 1rem;
-  line-height: 1; /* Adjust line-height for better readability */
+  line-height: 110%; /* Adjust line-height for better readability */
+}
+/* Limited Offer Banner Style */
+.limited-offer-banner {
+  width: 100%;
+  background-color: #f5220b; /* Gold/Amber background */
+  color: #FFFFFF;            /* White text */
+  text-align: center;
+  padding: 0.5rem 0;           /* Vertical padding */
+  font-size: clamp(0.9rem, 1vw, 1.2rem); /* Responsive font scaling */
+  font-weight: 600;
+  text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: Montserrat, sans-serif;
+  position: relative;        /* Normal flow */
+  margin-bottom: 20px;       /* Space below banner */
 }
 
 .lefthero p {
@@ -1932,6 +1948,7 @@ form button {
   background-color: #1c1a15;
   color: #FAF8EF;
   padding: 14px 32px;
+   margin-top: 20px;
   font-size: 1rem;
   border: none;
   border-radius: 8px;
@@ -2083,16 +2100,15 @@ form button {
     font-size: 0.65rem;
   }
 }
-
 .featured {
   padding: 40px 20px;
   text-align: center;
-  background-color: #fcf8ef; /* light background for premium feel */
+  background-color: #FAF8EF; /* light background for premium feel */
 }
 
 .featured-heading {
   font-size: 1.8rem;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   color: #1c1a15;
   font-weight: normal;
   letter-spacing: -1px;
@@ -2104,30 +2120,33 @@ form button {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 50px; /* increased gap between logos */
 }
 
 .logo-wrapper img {
-  max-height: 50px;
-  max-width: 150px;
-  width: auto;
-  height: auto;
-  opacity: 0.8;
+  width: 150px; /* uniform size */
+  height: 80px; /* fixed height for consistency */
+  object-fit: contain; /* keeps logos properly scaled */
+  opacity: 0.85;
   transition: opacity 0.3s ease;
+   filter: grayscale(100%);
+  opacity: 0.7; /* optional: softens the look */
+  transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
 .logo-wrapper img:hover {
+   filter: grayscale(0%);
   opacity: 1;
 }
 
 /* Responsive breakpoints */
 @media (max-width: 1024px) {
   .logo-wrapper {
-    gap: 25px;
+    gap: 40px;
   }
   .logo-wrapper img {
-    max-height: 45px;
-    max-width: 120px;
+    width: 130px;
+    height: 70px;
   }
 }
 
@@ -2136,33 +2155,34 @@ form button {
     font-size: 1.5rem;
   }
   .logo-wrapper {
-    gap: 20px;
+    gap: 30px;
   }
   .logo-wrapper img {
-    max-height: 40px;
-    max-width: 100px;
+    width: 110px;
+    height: 60px;
   }
 }
 
 @media (max-width: 480px) {
   .featured-heading {
     font-size: 1.3rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
   .logo-wrapper {
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
   }
   .logo-wrapper img {
-    max-height: 35px;
-    max-width: 90px;
+    width: 100px;
+    height: 55px;
   }
 }
 
 
+
  /* end of badges section in brand like a celebrity sales page */
 .section-findout {
-  background-color: #1c1a15;
+  background-color: #FAF8EF;
   min-height: auto;
   box-sizing: border-box;
   overflow: hidden;
@@ -2182,12 +2202,29 @@ form button {
 
 .findout-header h2 {
   font-size: 1.6rem;
-  color: #FAF8EF;
+  color: #1c1a15;
   text-align: start;
   line-height: 1.2;font-weight: normal;
   font-family: 'Playfair Dispaly', serif;
   margin-bottom: 24px;
 }
+.highlightfindout {
+   background-color: #ecf001;
+  background-image: linear-gradient(
+    115deg,
+    rgba(255, 255, 0, 0.15) 25%,
+    rgba(255, 255, 0, 0.3) 50%,
+    rgba(255, 255, 0, 0.15) 75%
+  );
+  padding: 0 6px;
+  border-radius: 10px 3px 8px 5px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  color: #1a1a15;
+  font-weight: 600;
+}
+
+
 /* Button styles unchanged */
 .button-container {
   display: flex;
@@ -2198,6 +2235,7 @@ form button {
   background-color: #FAF8EF;
   color: #1a1a15;
   padding: 14px 32px;
+  margin-top: 20px;
   font-size: 1rem;
   border: none;
   border-radius: 8px;
@@ -2269,7 +2307,7 @@ form button {
 }
 
 .testimonial {
-  background-color:#292524;
+  background-color:#ffffff;
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -2290,13 +2328,13 @@ form button {
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
-  color: #faf8ef;
+  color: #1c1a15;
 }
 
 .testimonial-author {
   display: flex;
   align-items: center;
-  color: #faf8ef;
+  color: #1a1a15;
   gap: 1rem;
 }
 
@@ -2582,7 +2620,6 @@ form button {
 /* Boxes */
 .who-box {
   background-color: #2a281f;
-  border-radius: 15px;
   padding: 40px 30px;
   max-width: 500px;
   flex: 1;
@@ -2649,198 +2686,6 @@ form button {
 
 /* end of section who should read this book in brand like a celebrity ebook */ 
 
-/* Section for downloading each section in sales page of brand like a celbrity */
-.section-free-download {
-  background-color: #FAF8EF;
-  position: relative;
-  padding: 60px 20px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: auto; /* adjusts height to content */
-}
-
-.container-free-download {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
-  background-color: #1c1a15;
-  padding: 40px;
-  gap: 40px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  z-index: 1;
-  position: relative;
-}
-
-.text-content {
-  flex: 1 1 300px;
-  color: #FAF8EF;
-  max-width: 600px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px;
-}
-.text-content h1 {
-  font-size: 1.4rem;
-  font-style: 'Montserrat', sans-serif;
-  color: #8F8F8C;
-  font-weight: 600;
-  margin: 0 0 10px 0;
-  line-height: 1.2;
-}
-
-.text-content h2 {
-  font-size: 2rem;
-  font-family: 'Playfair Display', serif;
-  color: #FAF8EF;
-  font-weight: normal;
-  font-style: normal;
-  margin: 10px 0 20px 0;
-  line-height: 1.2;
-}
-
-.text-content p {
-  font-size: 0.95rem;
-  color: #8f8f8c;
-  line-height: 1.6;
-}
-
-/* Tablet screens */
-@media (max-width: 1024px) {
-  .text-content h1 {
-    font-size: 1.2rem;
-  }
-  .text-content h2 {
-    font-size: 1.8rem;
-  }
-  .text-content p {
-    font-size: 0.9rem;
-  }
-}
-
-/* Mobile screens */
-@media (max-width: 768px) {
-  .text-content h1 {
-    font-size: 1rem;
-  }
-  .text-content h2 {
-    font-size: 1.6rem;
-  }
-  .text-content p {
-    font-size: 0.85rem;
-    line-height: 1.5;
-  }
-}
-
-/* Small mobile */
-@media (max-width: 480px) {
-  .text-content h1 {
-    font-size: 1rem;
-  }
-  .text-content h2 {
-    font-size: 1.4rem;
-  }
-  .text-content p {
-    font-size: 0.8rem;
-  }
-}
-
-
-.button-group {
-  flex: 1 1 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center; /* center buttons in all screens */
-}
-
-.download-button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #faf8ef;
-  color: #1c1a15;
-  padding: 16px;
-  border: none;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 500px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-.download-button:hover {
-  background-color: #bd9d5c;
-  color: #1c1a15;
-}
-
-.download-button h3 {
-  font-size: 1.2rem;
-  margin: 0;
-  font-family: playfair display, serif;
-  font-weight:500;
-}
-
-.download-button p {
-  font-size: 0.95rem;
-  margin: 4px 0 0;
-  font-style: normal;
-}
-
-/* Tablet screens */
-@media (max-width: 1024px) {
-  .download-button {
-    max-width: 400px;
-    padding: 14px;
-  }
-  .download-button h3 {
-    font-size: 1.1rem;
-  }
-  .download-button p {
-    font-size: 0.9rem;
-  }
-}
-
-/* Mobile screens */
-@media (max-width: 768px) {
-  .button-group {
-    flex-direction: column;
-    gap: 15px;
-  }
-  .download-button {
-    max-width: 100%;
-    padding: 12px;
-  }
-  .download-button h3 {
-    font-size: 1rem;
-  }
-  .download-button p {
-    font-size: 0.85rem;
-  }
-}
-
-/* Small mobile */
-@media (max-width: 480px) {
-  .download-button {
-    padding: 10px;
-    border-radius: 6px;
-  }
-  .download-button h3 {
-    font-size: 0.95rem;
-  }
-  .download-button p {
-    font-size: 0.8rem;
-  }
-}
-
-
-/* end of downlaod free chapter section in sales page of brand like a celbrity */  
 /* start of question section in ebook sale page */ 
 /* FAQ Question Container */
 /* FAQ Title */
@@ -3504,6 +3349,19 @@ form button {
   object-fit: cover;  /* fills container, cropping if needed */
   display: block;
 }
+
+
+.text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  padding: 0 20px; /* Adds padding to left and right */
+  max-width: 800px; /* Optional: ensures text doesn’t stretch too wide */
+  width: 100%;
+}
 .casestudyimageswrapper {
   display:flex;
   flex-direction: column;
@@ -3643,9 +3501,9 @@ a:focus {
 /* Start of Resource page What's inside Design */
 .inside {
   display: block;
-  padding: 60px 20px;
-  background-color: #FAF8EF;
-  color: #1c1a15;
+  padding: 20px 20px;
+  background-color: #1a1a15;
+  color: #FAF8EF;
 }
 
 /* Header Inside Section */
@@ -3655,22 +3513,26 @@ a:focus {
   font-family: playfair display, serif;
   letter-spacing: -1px;
   font-weight: normal;
+  color: #FAF8EF;
   font-size: 2rem;
 }
 .right-column .chapter-label {
   font-size: 0.9rem;
+  text-align: start;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   color: #bd9d5c; /* gold color to highlight chapter */
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin-bottom: -20px;
   display: block;
 }
 .right-column .chapter-title {
   font-size: 1.6rem;
+  text-align: start;
   font-family: 'Playfair Display', serif;
   font-weight: 500;
-  color: #1c1a15;
+  color: #FAF8EF;
   margin-bottom: 1rem;
 }
 
@@ -3678,7 +3540,7 @@ a:focus {
 .insidecontainer {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 0px;
   width: 100%;
 }
 
@@ -3690,25 +3552,12 @@ a:focus {
   justify-content: center;
   gap: 30px;
   padding: 40px;
-  background-color: #FAF8EF;
+  background-color: #1a1a15;
+  color: #FAF8EF;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
-
-/* Alternate images left/right */
-.inside-step:nth-child(odd) {
-  flex-direction: row;
-}
-
-.inside-step:nth-child(even) {
-  flex-direction: row-reverse;
-}
-/* Always align right-column text to left */
-.right-column {
-  text-align: left !important;
-}
-
 
 /* Left column inside step */
 .left-column {
@@ -3733,16 +3582,25 @@ a:focus {
   font-size: 1.4rem;
   font-family: 'Playfair Display',serif;
   font-weight: 500;
-  color: #1c1a15;
-  margin-bottom: 15px;
+  color: #FAF8EF;
 }
 
 .right-column p {
   font-size: 1rem;
+  text-align: start;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  color: #1c1a15;
+  color: #8F8F8C;
   line-height: 1.8;
+}
+.right-column h1{
+  font-size: 1.2rem;
+  text-align: start;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: #db2d0e;
+  line-height: 1.8;
+  margin-bottom: 1rem;
 }
 
 /* Responsive Typography */
@@ -3832,7 +3690,7 @@ a:focus {
 .subtitleurgent {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #eb1809;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
@@ -3840,36 +3698,83 @@ a:focus {
 }
 
 .early-bird .subtitle {
-  font-size: 1.125rem;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
   margin-bottom: 40px;
-  color: #8f8f8c;
+  color: #8F8F8C;
 }
-
-/* Progress Bar */
+/* Progress Bar Container */
 .progress-container {
   width: 100%;
   max-width: 500px;
-  background-color: #e8e6dc;
+  background-color: #8F8F8C; /* dark background for contrast */
   border-radius: 12px;
   margin: 0 auto 25px;
   overflow: hidden;
-  border: 2px solid #1c1a15;
   position: relative;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
 }
+.descearlybird {
+  font-size: 1.2rem;
+  color: #1c1a15;
+  line-height: 1.8;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 24px;
 
+}
+/* Progress Bar */
 .progress-bar {
-  background-color: #1c1a15;
+  position: relative;
+  background: linear-gradient(90deg, #ff2a2a, #ff4d4d, #ff2a2a);
   height: 28px;
   line-height: 28px;
   text-align: center;
-  color: #fcfaf8;
-  font-size: 1rem;
-  font-weight: 600;
-  width: 74%; /* Example: 37/50 claimed */
-  transition: width 0.5s ease;
+  color: #fff;
+  font-size: 0.8rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
   border-radius: 10px 0 0 10px;
+  border-color: #8F8F8C;
+  overflow: hidden;
+  transition: width 0.6s ease;
 }
+
+/* Moving light effect */
+.progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0)
+  );
+  animation: shine 2.5s infinite;
+}
+
+@keyframes shine {
+  0% { left: -50%; }
+  100% { left: 100%; }
+}
+
+/* Subtle outer glow */
+.progress-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 50, 50, 0.6);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 6px rgba(255, 50, 50, 0.4); }
+  to { box-shadow: 0 0 15px rgba(255, 50, 50, 0.8); }
+}
+
 
 /* Spots */
 .spots {
@@ -3897,13 +3802,11 @@ a:focus {
   text-align: center;
   transition: all 0.3s ease;
   position: relative;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .tier.highlight {
   border-color: #bd9d5c;
   background-color: #fff8e1;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
 }
 
 .tier .badge {
@@ -3987,4 +3890,75 @@ a:focus {
   .progress-container {
     max-width: 90%; 
   }
+}.fullscreen-sales {
+  display: flex;
+  flex-direction: column; /* stacks text on top, image below */
+  align-items: center;
+  padding: 30px 20px; /* reduced top/bottom padding */
+  background-color:#1c1a15;
+}
+
+.text-contentsales {
+  max-width: 600px;
+  text-align: start;
+  color: #FAF8EF;
+}
+
+.text-contentsalestop h1 {
+  font-size: 2.5rem;
+  letter-spacing: -1px;
+  color: #bd9d5c;
+  text-align: center;
+  font-weight: normal;
+  font-family: 'Playfair Display', serif;
+  margin-top: 50px;
+}
+
+.text-contentsalestop h2 {
+  font-size: 1.8rem;
+  color: #FAF8EF;
+  text-align: center;
+  font-weight: normal;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 16px; /* reduced bottom margin */
+}
+  
+.inheading{
+  font-weight: bold;
+  color: #bd9d5c; /* Red color */
+  position: relative; /* Position relative to allow for the bullet */
+}
+.text-contentsales .inparagraph {
+  font-size: 1.3rem;
+  color: #8F8F8C;
+  line-height: 1.8;
+  text-align: start;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 40px; /* Reduced space after paragraph */
+  position: relative; /* Position relative to allow for the bullet */
+}
+
+
+.inheading::before {
+  content: ''; /* Required for pseudo-element */
+  position: absolute;
+  left: -40px; /* Push the circle a little to the front */
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center the bullet */
+  
+  width: 15px; /* Outer circle size */
+  height: 15px; /* Outer circle size */
+  border-radius: 50%; /* Make it circular */
+  background-color: rgba(239, 152, 12, 0.9); /* Transparent outer circle */
+  box-shadow: 0 0 0 5px rgba(199, 198, 198, 0.2); /* Inner circle, red with transparency */
+}
+
+/* full-screen image part */
+.fullscreen-sales img {
+  width: 100%;
+  height: auto; /* auto height to maintain aspect ratio */
+  object-fit: cover; /* ensures the image fills the space without distortion */
+  margin: 0;
+  padding: 0;
+  border-radius: 12px; /* optional */
 }
