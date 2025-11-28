@@ -1,0 +1,2417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Brat Marketing Masterclass Casestudy</title>
+<style>
+:root {
+  --progress-height: 8px;
+  --progress-color: #bd9d5c;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+/* 🔒 LOCK SCREEN */
+#lock-screen {
+  position: fixed;
+  inset: 0;
+  background: #1c1a15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 99999;
+  text-align: center;
+}
+#lock-screen h2 {
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  font-weight: normal;
+  font-size: 2rem;
+}
+#lock-screen h1 {
+  margin-bottom: 30px;
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  font-size: 1rem;
+}
+#lock-screen input {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+#lock-screen button {
+  padding: 10px 15px;
+  margin-left: 5px;
+  background: #bd9d5c;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+#lock-screen button:hover {
+  background: #a17c4a;
+}
+
+/* Slideshow */
+.slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.slide-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-left, .bg-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 0;
+}
+.bg-left { left: 0; background-color: #FAF8EF; }
+.bg-right { right: 0; background-color: #1c1a15; }
+
+.slide-content {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex;
+  z-index: 2;
+  display: none;
+}
+.slide-content.active { display: flex; }
+
+.left-side1, .right-side1 {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Left side background */
+.left-side1 {
+
+  justify-content: center;
+  align-items: start;
+  position: relative;
+  flex: 1; /* Make sure it takes available space */
+  width: 100%; /* Ensure full width */
+  height: 100%; /* Ensure full height */
+  overflow: hidden; /* Hide any overflowing content */
+}
+
+.visual-image {
+  position: absolute;
+  top: 0; /* Start at the top of the container */
+  left: 0; /* Start at the left of the container */
+  width: 100%; /* Fill the entire width of the container */
+  height: 100%; /* Fill the entire height of the container */
+  object-fit: cover; /* Ensure the image covers the entire container without distortion */
+  z-index: 1;
+}
+
+
+/* Top and Bottom Headings with 1rem gap from video */
+.left-side1 h2.top-heading {
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+.left-side1 h2.bottom-heading {
+  margin-top: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: normal;
+  font-size: 1.3rem;
+}
+
+.audio-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.3s ease;
+}
+.audio-toggle:hover { background: rgba(0,0,0,0.7); }
+
+
+.right-side1 {
+  background: linear-gradient(to bottom, rgba(28,26,21,0.95), rgba(28,26,21,0.8));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 40px 30px;
+  height: 100%;
+  box-sizing: border-box;
+}
+/* --- Smooth fade animation --- */
+.right-side1 .content > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.right-side1 .content > *:nth-child(2) { animation-delay: .2s; }
+.right-side1 .content > *:nth-child(3) { animation-delay: .4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.right-side1 .content{
+  padding: 40px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+ /* vertically centered */
+  justify-content: center;
+}
+
+.right-side1 .content {
+  flex-grow: 1; /* content takes available space above footer */
+}
+
+/* Heading */
+.right-side1 .content h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem); /* Larger, responsive heading */
+  font-weight: normal;
+  font-style: normal;
+  color: #FAF8EF;
+  margin-bottom: 1.5rem; /* Increased spacing for a more balanced layout */
+  line-height: 1.3; /* Slightly more line height for elegance */
+  letter-spacing: -0.5px; /* Slightly tighter letter-spacing for a premium feel */
+  font-family: 'Playfair Display', serif; /* Classic serif for a luxurious feel */
+}
+
+.right-side1 .content h2 {
+  font-size: 2rem;
+  font-weight: normal;
+  font-style: normal;
+  color: #FAF8EF;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif; /* Classic serif for a luxurious feel */
+}
+/* Body Copy */
+.right-side1 .content p {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(16px, 2vw, 18px); /* Responsive body font size */
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #a2a1a1; /* Softer gray for the text to avoid harsh contrast */
+  margin-bottom: 1.5rem; /* Add spacing between paragraphs */
+}
+.right-side1 .content .date{
+  font-family: "Lato", sans-serif;
+  font-size: clamp(16px, 2vw, 18px); /* Responsive body font size */
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #bd9d5c; /* Softer gray for the text to avoid harsh contrast */
+  margin-bottom: 1.5rem; /* Add spacing between paragraphs */
+}
+
+
+
+.right-side1 .content li {
+  font-size: 0.9rem;
+  color: #d0d0d0;
+  line-height: 1.5;
+}
+
+.rightsidebutton {
+
+  display: inline-block; /* ensures button only takes up content width */
+  width: auto;           /* overrides any width:100% from parent/global */
+  text-align: center;    /* center text inside */
+
+  color: #1c1a15;
+  width: auto;
+  background-color: #FAF8EF;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.right-side1 .content button:hover {
+  background-color: #bd9d5c;
+  transform: scale(1.05);
+}
+
+/* Footer aligned with logo */
+.right-side1 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 15px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.right-side1 .footer .logo img {
+  max-width: 50px;
+  height: auto;
+}
+
+.right-side1 .footer .copyright {
+  line-height: 1;
+  font-size: 0.7rem;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.progress-track {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 5px;  /* Adjust height as needed */
+  background: rgba(255,255,255,0.06);
+  z-index: 3;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ffc404, #fed005);
+  transition: width 450ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+
+
+/* 📱 Rotate Message Overlay */
+#rotate-message {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  color: white;
+  font-size: 1.5rem;
+  z-index: 999999;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+@media (orientation: portrait) {
+  #rotate-message { display: flex; }
+  .slideshow { filter: blur(10px); pointer-events: none; }
+}
+
+.right-side1 {
+  position: relative; /* makes positioning inside work */
+}
+
+.keyboard-hint {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem; /* distance from right edge */
+  text-align: right;
+}
+
+.keyboard-hint img {
+  width: 200px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.keyboard-hint .hand {
+  position: absolute;
+  bottom: 45px;
+  right: 5px;
+  width: 50px;
+  height: 50px;
+  background: url('/Resources/The\ Most\ Insane\ Music\ Artist\ Brand\ Partnerships/thehand.png') no-repeat center/contain;
+  animation: pressKey 1.2s infinite ease-in-out;
+}
+
+@keyframes pressKey {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(5px) scale(0.97); opacity: 0.9; }
+}
+
+
+
+/* From now on this is the video 2 part or slide Update for video slides */
+/* Keep the right-side content to 75% of the slide */
+/* Slide 4 Layout */
+
+
+
+
+
+
+
+
+.left-side2, .right-side2 {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box; /* Ensure padding and borders are included in width/height */
+}
+.right-side2 {
+  width: 70%;
+  object-fit: fill;
+}
+/* --- Smooth fade animation --- */
+.right-side2 .content > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.right-side2 .content > *:nth-child(2) { animation-delay: .2s; }
+.right-side2 .content > *:nth-child(3) { animation-delay: .4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Left side background */
+/* Left side container */
+.left-side2 {
+  width: 30%; /* 30% of the screen */
+  background-color: #FAF8EF;
+  color: #1c1a15;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Start alignment for the video */
+  height: 100%; /* Ensure it takes up full height */
+  padding: 0; /* Remove any unnecessary padding */
+}
+
+
+/* Wrapper adds spacing */
+.left-side2 .video-wrapper2 {
+  width: 100%;
+  height: 100%;
+  padding: 20px; /* controls top, bottom, left, right spacing */
+  box-sizing: border-box;
+}
+
+/* Video adjusts inside wrapper */
+.video-wrapper2 video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px; /* optional */
+  overflow: hidden;
+}
+
+.right-side2 {
+  background:#1c1a15;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 40px 30px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.right-side2 .content {
+  flex-grow: 1; /* content takes available space above footer */
+}
+
+.right-side2 .content h1 {
+  font-size: 3rem;
+  font-weight: normal;
+  font-style: normal;
+  color: #FAF8EF;
+  margin-bottom: 1rem;
+  line-height: 80%;
+  letter-spacing: -1%;
+  font-family: 'Playfair Display', serif;
+}
+.right-side2 .content h2 {
+  font-size: 2rem;
+  font-weight: normal;
+  font-style: normal;
+  color: #FAF8EF;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif; /* Classic serif for a luxurious feel */
+}
+
+.right-side2 .content p{
+  font-family: "Lato", sans-serif;
+  font-size: clamp(16px, 2vw, 18px); /* Responsive body font size */
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #a2a1a1; /* Softer gray for the text to avoid harsh contrast */
+  margin-bottom: 1.5rem; /* Add spacing between paragraphs */
+}
+.right-side2 .content .date{
+  font-family: "Lato", sans-serif;
+  font-size: clamp(16px, 2vw, 18px); /* Responsive body font size */
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #bd9d5c; /* Softer gray for the text to avoid harsh contrast */
+  margin-bottom: 1.5rem; /* Add spacing between paragraphs */
+}
+
+.rightsidebutton {
+
+  display: inline-block; /* ensures button only takes up content width */
+  width: auto;           /* overrides any width:100% from parent/global */
+  text-align: center;    /* center text inside */
+
+  color: #1c1a15;
+  width: auto;
+  background-color: #FAF8EF;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.right-side2 .content button:hover {
+  background-color: #bd9d5c;
+  transform: scale(1.05);
+}
+
+/* Footer aligned with logo */
+.right-side2 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 15px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.right-side2 .footer .logo img {
+  max-width: 50px;
+  height: auto;
+}
+
+.right-side2 .footer .copyright {
+  line-height: 1;
+  font-size: 0.7rem;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.5px;
+/* Slide type 2 over    */
+
+
+
+
+
+
+}.left-side3, .right-side3 {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* BIG SIDE (70%) — video */
+.left-side3 {
+  width: 70%;
+  background-color: #FAF8EF;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  padding: 0;
+}
+
+.video-wrapper3 {
+  width: 100%;
+  height: auto;
+  overflow: hidden;               /* required for visible rounded corners */
+  border-radius: 20px;            /* adjust radius */
+  margin: 20px;                   /* space around video */
+}
+
+.video-wrapper3 video {
+  width: 100%;
+  height: auto;                   /* RESPONSIVE height */
+  object-fit: cover;              /* keeps it nicely cropped */
+  display: block;                 /* removes bottom gaps */
+}
+
+
+/* SMALL SIDE (30%) — content */
+.right-side3 {
+  width: 30%;
+  background: #1c1a15;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 40px 30px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.right-side3 .content {
+  flex-grow: 1;
+}
+
+/* --- Smooth fade animation --- */
+.right-side3 .content > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.right-side3 .content > *:nth-child(2) { animation-delay: .2s; }
+.right-side3 .content > *:nth-child(3) { animation-delay: .4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.right-side3 .content h1 {
+  font-size: 3rem;
+  font-weight: normal;
+  font-style: normal;
+  color: #FAF8EF;
+  margin-bottom: 1rem;
+  line-height: 80%;
+  letter-spacing: -1%;
+  font-family: 'Playfair Display', serif;
+}
+
+.right-side3 .content h2 {
+  font-size: 2rem;
+  font-weight: normal;
+  font-style: normal;
+  color: #FAF8EF;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif; /* Classic serif for a luxurious feel */
+}
+
+.right-side3 .content p{
+  font-family: "Lato", sans-serif;
+  font-size: clamp(16px, 2vw, 18px); /* Responsive body font size */
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #8f8f8f; /* Softer gray for the text to avoid harsh contrast */
+  margin-bottom: 1.5rem; /* Add spacing between paragraphs */
+}
+
+.right-side3 .content .date{
+  font-family: "Lato", sans-serif;
+  font-size: clamp(16px, 2vw, 18px); /* Responsive body font size */
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #bd9d5c; /* Softer gray for the text to avoid harsh contrast */
+  margin-bottom: 1.5rem; /* Add spacing between paragraphs */
+}
+
+
+/* Footer aligned with logo */
+.right-side3 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 15px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.right-side3 .footer .logo img {
+  max-width: 50px;
+  height: auto;
+}
+
+.right-side3 .footer .copyright {
+  line-height: 1;
+  font-size: 0.7rem;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.5px;
+/* Slide type 2 over    */}
+
+
+</style>
+</head>
+<body>
+
+<!-- 🔒 Lock Screen -->
+<div id="lock-screen">
+  <h2>Enter Passcode</h2>
+  <h1>You Must Put the Password to get access to the case study.</h1>
+  <div>
+    <input type="password" id="passcode" placeholder="PASSCODE" />
+    <button onclick="unlock()">Unlock</button>
+  </div>
+</div>
+
+<!-- 🎥 Slideshow -->
+<div class="slideshow">
+
+  <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+
+  <div class="slide-layer">
+
+
+<!-- Slide 1 Type 01  -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/charliiexcx.png" alt="Kanye West x Adidas">
+  </div>
+
+  <div class="right-side1">
+    <div class="content">
+      <p class="date"> LAST UPDATED: November 20/2025</p>
+      <h2>What to know about 'brat summer,' the trend taking over pop culture and politics and what artists can learn from brat's genius marketing.</h2>
+      <p> STORY DURATION: 4 MIN</p>
+
+
+      <!-- 🔽 Keyboard Arrow Hint on RIGHT SIDE -->
+      <div class="keyboard-hint">
+        <img src="/Resources/Brat Summer/keyboard.png" alt="Keyboard Arrows">
+        <div class="hand"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">© 2025 Pessoals </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 2 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide2.png" alt="Kanye West x Adidas">
+  </div>
+
+  <div class="right-side1">
+    <div class="content">
+      <h2>The BRAT album rollout is a masterclass in claiming a color, shaping culture through music marketing, and selling music as a lifestyle rather than just a product.</h2>
+      <p>We studied Charli and her team’s entire strategy. Charli XCX’s sixth studio album  took over the world and  It became instantly recognizable not only for its sound but for a bold, cohesive brand universe that showed exactly who the record spoke to, while still inviting anyone who wanted in. </p>
+
+      
+        
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">© 2025 Pessoals </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Slide 3 Type 01 -->
+<div class="slide-content">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/info10.png" alt="Kanye West x Adidas">
+     </div>
+
+      <div class="right-side1">
+        <div class="content">
+          <p>November 2024</p>
+          <h2>Collins Dictionary named <i>"brat"</i> the 2024 Word of the Year,</h2>
+            <p>
+              Defining the term as "a confident, independent, and hedonistic attitude." A blog post by the dictionary called it a "fitting" term for the year, where "hedonism and anxiety have combined to form an intoxicating brew.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 4 Type 01 -->
+<div class="slide-content">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide2.png" alt="Kanye West x Adidas">
+     </div>
+
+      <div class="right-side1">
+        <div class="content">
+          <h2>How Charli XCX's Iconic Green Transformed an Album into a Viral Phenomenon</h2>
+            <p>Charli XCX’s “BRAT Summer” ignited a cultural moment, with the album’s bold green becoming instantly iconic both online and offline. Fans flooded social platforms with UGC, labeling anything green as “brat” and turning the aesthetic into a viral movement. This organic, fan-driven wave amplified the album’s visibility and cemented its place in pop culture.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 5 Type 01 -->
+<div class="slide-content">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide5.jpg" alt="Kanye West x Adidas">
+     </div>
+
+      <div class="right-side1">
+        <div class="content">
+          <h2>As Charli announced <i>“BRAT Summer”,</i>and the concept and lifestyle gained traction</h2>
+            <p>This distinctive green became synonymous with Charli both online and in the real world. Thousands of fans and online users began generating user-created content (UGC), incorporating the green color and stylized BRAT album cover and calling everything green “brat”, effectively turning the album’s branding into a viral sensation and generating lot so of conversation online and IRL. This organic fan engagement served as free promotion, further solidifying the album’s cultural impact. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 6 Type 01 -->
+<div class="slide-content">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide6.png" alt="Kanye West x Adidas">
+     </div>
+
+      <div class="right-side1">
+        <div class="content">
+          <h2>Brands have also jumped on the trend, showcasing their products in brat green frosting.</h2>
+            <p>This strategy works because it lets companies engage with their audience in a fun and creative way, encouraging social sharing, which leads to a wider reach and the potential to attract new customers. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 7 Type 01 -->
+<div class="slide-content active">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide7.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <h2>Much of Brat's virality was due to its heavy promotion. </h2>
+          <p>In the weeks leading up to the album's release, a wall in Greenpoint, Brooklyn (called the "brat wall" by fans) was painted and repainted with the album's signature green color and various messages.
+          Over the summer, its messages changed frequently in line with the album's promotional cycle, such as the lyrics from the song "360" (2024) or the name of its accompanying remix album. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 PESSOALS</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 8 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/Slide8.mp4"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+        <div class="content">
+             <h2>But What's Brat?</h2> 
+             <p>According to the singer, a brat is “that girl who is a little messy and likes to party and maybe says some dumb things some times.” “Who feels like herself but maybe also has a breakdown. But kind of, like, parties through it, is very honest, very blunt. A little bit volatile. Like, does dumb things. But it’s brat. You’re brat. That’s brat,”. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals.</div>
+        </div>
+      </div>
+    </div>
+  
+<!-- Slide 9 Type 01 -->
+<div class="slide-content active">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide9.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <h2>But It all started at August 2022</h2>
+        <p>
+         Charlie Created   the @Brat_360 burner account , private Instagram  account to engage with her superfans, the account providing inside-look content. This resonated particularly well with younger audiences, who are accustomed to using social media and “finstas” in this way. 
+         And this strategy allowed Charli to connect with her most dedicated fans on a more personal level, building excitement and loyalty. 
+        </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 PESSOALS</div>
+        </div>
+      </div>
+    </div>
+  
+<!-- Slide 10 Type 01 -->
+<div class="slide-content active">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide10.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <h2>Charli kept the account private</h2>
+        <p>
+          Opening it up and accepting new followers in phases, before closing it again. 
+         And this created a sense amongst her fanbase of wanting to get into this inner circle. She started using the account to tease information about the upcoming album as well (which was announced 1.5 years later).
+        </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 PESSOALS</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 11 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/Slide11.mp4"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+        <div class="content">
+          <p>February 22,2024</p>
+          <h2>Charli’s Boiler Room set took place in Brooklyn on February 22</h2>
+            <p> The featured appearances by Addison Rae and Julia Fox. 
+              Following the first few hours of the show’s announcement, Boiler Room received a staggering 25,000 RSVPs, the largest count in Boiler Room history. </p>
+              <p>Charli teased new music by playing multiple snippets of tracks from her album, which was not yet announced at this time. Videos of the set circulated online, with many fans already falling in love with some of the unreleased tracks. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals.</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 12 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide12.png" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p class="date">February 28, 2024</p>
+          <h2>After 6 days she officially announced ‘BRAT’ her 6th studio album via her social media </h2>
+            <p>The Album featuring the now infamous album cover. Initially criticized, the simplicity and memorability of the album cover would later on benefit the campaign in various ways sparking lots of user-generated content utilizing the font and style of the artwork.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals.</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 13 Type 03 -->
+<div class="slide-content">
+
+  <div class="left-side3">
+    <div class="video-wrapper3">
+    <video class="horizontal" autoplay muted loop src="/Resources/Brat Summer/Slide13.mp4"></video>
+    </div>
+  </div>
+
+  <!-- SMALL SIDE (content) -->
+  <div class="right-side3">
+    <div class="content">
+      <p class="date">February 29, 2024</p>
+      <h2>Charli releases Von Dutch as her first single of the album</h2>
+      <p> A day after the album announcement  at February 29, Charli releases Von Dutch as her first single of the album, accompanying it with the release of the official music video.</p>
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">
+        ©2025 Pessoals.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Slide 14 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/Slide14.mp4"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+        <div class="content">
+          <p class="date">March 15, 2024</p>
+          <h2>Before releasing the remix Charli hinted at the collab with video posted on her socials on March 15.</h2>
+            <p>And then, she released The von dutch remix featuring Addison Rae and A.G. Cook, released at March 22. 
+              Then finally a second remix featuring Skream and Benga was released at April 12.
+            </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 15 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide15.png" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p>March 25, 2025</p>
+          <h2>Charli announces her month of June shows </h2>
+            <p>At  March 25 Charli announces her month of June shows on March 25 with live shows and DJ sets dubbed Party girl.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals.</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 16 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide16.png" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p>April 3, 2024</p>
+          <h2>She Released Two More Single</h2>
+            <p>She Released Club Classics and B2B.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals.</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 17 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide17.png" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p>April 3, 2024</p>
+          <h2>Charile announced UK shows</h2>
+            <p>She announced UK shows that takes place in November And December.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals.</div>
+        </div>
+      </div>
+</div>
+
+
+<!-- Slide 18 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide18.png" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p>April 16, 2024</p>
+          <h2> Charli teases a collaboration with Troye Sivan </h2>
+            <p>Charli teases a collaboration with Troye Sivan via socials by posting an image showing a white top drenched in sweat with “Charli XCX”, “Troye Sivan”, and “sweat” written across it.
+              Troye shared a similiar image on his social media as well.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals.</div>
+        </div>
+      </div>
+</div>
+
+
+<!-- Slide 19 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide19.png" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p>April 17, 20224</p>
+          <h2>Charlie announces a North America co headline arena tour with Troye </h2>
+            <p>The following day, at April 17 she announces a North America co headline arena tour with Troye with another post.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals.</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 20 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide20.png" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p>April 20, 2024</p>
+            <p>The album’s official track list was revealed.</p>
+            <p>At April 20 the album’s official track list was revealed on her socials.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals.</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 21 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide21.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <h2>Charli livestreamed the creation of the BRAT wall multiple times,</h2>
+          <p> It allowed her to creat a viral sensation as viewers eagerly speculated on social media about what was being revealed. 
+            As letters were slowly painted, fans flooded online platforms with guesses and theories, generating buzz and building suspense. 
+            The gradual reveal became a shared experience, with fans documenting every moment and fuelling the campaign’s momentum. 
+            It was also a clever way of generating content and keeping viewers attention.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Slide 22 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide22.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>May 3,2024</p>
+          <h2>Charli XCX teased by tweeting a time and location</h2>
+          <p>At 6:06 PM  Charli XCX teased by tweeting a time and location and the fans flooded the scene.
+            As a result, hundreds of fans flocked to the location. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 23 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/Slide23.mp4"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+        <div class="content">
+          <h2>She performed in front of the Brat Wall</h2>
+                      <p>
+            Fans are rewarded with a surprise performance and DJ set from the queen herself in front of the Brat Wall, including the live release of the next single off the upcoming album</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 24 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/slide24.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>A lot of UGC content resulted from this pop-up with hundreds of fans sharing content and clips online of the performance – this created a look of true buzz
+             and excitement for the artist as well as FOMO for those who weren’t there to. bea part of it. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 25 Type 03 -->
+<div class="slide-content">
+
+  <div class="left-side3">
+    <div class="video-wrapper3">
+    <video class="horizontal" autoplay muted loop src="/Resources/Brat Summer/Slide25.mp4"></video>
+    </div>
+  </div>
+
+  <!-- SMALL SIDE (content) -->
+  <div class="right-side3">
+    <div class="content">
+      <p class="date">May 2, 2024</p>
+      <h2>Charli xcx spun some tracks inside the Lot radio DJ booth</h2>
+      <p> Following her Lot Radio and Brooklyn Pop-up the BRAT wall became a symbol and dynamic canvas for 
+        Charli’s updates and album campaign. 
+        The wall saw various transformations, from lyrics to cryptic messages, 
+        each sparking excitement and speculation among her fans. For example, it was updated when the deluxe
+        version was released (see below), where fans thought the BRAT wall would be gone, but instead a new campaign 
+        message was revealed.</p>
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">
+        ©2025 Pessoals.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Slide 26 Type 03 -->
+<div class="slide-content">
+
+  <div class="left-side3">
+    <div class="video-wrapper3">
+    <video class="horizontal" autoplay muted loop src="/Resources/Brat Summer/Slide13.mp4"></video>
+    </div>
+  </div>
+
+  <!-- SMALL SIDE (content) -->
+  <div class="right-side3">
+    <div class="content">
+      <p> Then on May 10  she released 360  which is the fourth single and its official music video  directed by Aidan Zamiri. The video is full of It Girls and featuring many iconic scenes that made the internet go wild  it became an instant classic for the artist.</p>
+      <p>360 music video features many iconic and familiar faces: Julia Fox, Chloë Sevigny, Gabbriette, Alex Consani, Rachel Sennott, Emma Chamberlain, A. G. Cook, Hari Nef, Isamaya Ffrench, Matisse Andrews, Quenlin Blackwell, Sakura Bready, Chloe Cherry, Greer Cohen, Anna Collins, Blizzy McGuire, Tess McMillan, Salem Mitchell, Peri Rosenzweig, Richie Shazam and Niki Takesh.</p>
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">
+        ©2025 Pessoals.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Slide 27 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/Slide277.mp4"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+        <div class="content">
+                      <p>
+            She also she shared this behind-the-scenes content piece , which serves as an excellent example of how to effectively shoot and leverage phone-based content.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 28 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/slide28.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>May 14, 2024
+            Lookin’ like an icon
+            Atlantic Records + Charli XCX show the west coast some love and San Francisco gets its own Brat Wall </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 29 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/slide29.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>June 5, 2024
+I’m your number one
+We returned to the Brat Wall to repaint it as the album cover the day before its release. Atlantic Records + Charli XCX  live-streamed our team at work to build audience anticipation. When Colossal finished painting, her team posted a photo of the updated Brat Wall online before the full album dropped at midnight. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 30 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/slide300.png"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+        <div class="content">
+                      <p>June 6: Charli made a surprise appearance at London’s Dalston Superstore on the night of the album release, arriving in her Bratmobile for an impromptu set. The album launch in the East London queer bar demonstrates the power of surprise in generating buzz and engagement. This unexpected experience not only heightened fan excitement but also amplified social media chatter, showcasing how creating FOMO (fear of missing out) can significantly enhance the impact of an album release.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 31 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide31.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>June 6: On the day of the album release, Lorde took to Instagram Stories to praise Charli’s album and confirm that there were no hard feelings between them. However, she did not mention the track “Girl, so confusing.”</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 32 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide32.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>Charli also updates all of her previous album artwork on DSPs to be in line with the BRAT branding – creating even more visibility for the album and branding coherence in the campaign.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 33 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide33.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>After the album's cover art started to gain traction online, Charli XCX and Atlantic Records created a website called "Brat Generator", allowing users to make images with custom text in the same style as the cover. As noted by Hofstra Chronicle, the website's simple user interface helped parodies of the cover go viral.[5] Brandon Davis, head of A&R at Atlantic Records, also believed that the website helped expand the album's "cultural cachet."[6]</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 34 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide34.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>Brat was born!
+            On June 7, the 32-year-old singer released the album Brat, which has dominated pop culture at every level, from underground clubs to mini crossword clues, and lime green is everywhere. Brat Summer is a vibe coined from Charli XCX’s newest album Brat that’s absolutely smashed charts around the world (and I have to admit, it’s a bloody vibe).</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 35 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/Slide35.mp4"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+        <div class="content">
+                      <p>
+            June 7: On the album release day, BRAT trucks appeared in London, roaming the streets to promote Charli’s new album. 
+            The trucks sparked even more speculation when one of them displayed the name “Kesha,” leading fans to speculate if a collaboration with Kesha was on the horizon.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+  
+<!-- Slide 36 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide36.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>June 9: Only 3 days after the release of the album, Charli released three new songs as part of the deluxe edition, “brat and its the same but there’s three more songs so it’s not“.  </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 37 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/Slide37.mp4"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+        <div class="content">
+                      <p>
+           June 9: The day of Charli’s slotted performance at the music festival, Charli had an impromptu DJ set alongside A.G. Cook and George Daniel. Charli accompanied the unexpected pop-up with the following TikTok post–creating a surge of excitement and anticipation among festival goers for her performance later that night. 
+           Her subsequent performance featured a giant “brat” themed stage background, showcasing the power of the visual marketing behind the campaign.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 38 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide38.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>On June 10. Charli shared the updated album cover on her Instagram page and posted a TikTok clip featuring a
+             livestream of the BRAT Wall to celebrate the occasion. This album cover sparked a lot of meme content which helped promote the album. The album also contained some fan favorite songs fans got to know through her Boiler Room set and were expecting to hear on the album – a genius move to create conversation and delight. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+  
+<!-- Slide 39 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide39.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>London and NYC (June 7 & 10): Charli hosted exclusive signing events at Rough Trade East in London on June 7 and Rough Trade in NYC on June 10. These events highlighted Charli’s connection with her fans. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 40 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide40.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>
+            At both signings, Charli autographed brat vinyl records and spent time engaging with fans, turning the events into memorable moments. Adding a unique twist, “BRAT”-themed cars were featured at the signings, reinforcing the album’s branding and creating a buzzworthy spectacle that fans eagerly shared on social media.
+            She promoted the events by showcasing her fans on Instagram, further emphasising her appreciation for their support.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Slide 41 Type 03 -->
+<div class="slide-content">
+
+  <div class="left-side3">
+    <div class="video-wrapper3">
+    <video class="horizontal" autoplay muted loop src="/Resources/Brat Summer/Slide41.mp4"></video>
+    </div>
+  </div>
+
+  <!-- SMALL SIDE (content) -->
+  <div class="right-side3">
+    <div class="content">
+      <p> June 21: Charli revealed her collaboration with Lorde on a remix of her track “Girl, so sonfusing,” a song originally inspired by Charli’s awkward relationship with Lorde. 
+        Charli shared a screenshot on social media of Lorde’s entire verse, which Lorde had apparently texted to her. Charli’s humorous response, added to the buzz around the remix.</p>
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">
+        ©2025 Pessoals.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Slide 42 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide42.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>
+            June 21: Charli revealed her collaboration with Lorde on a remix of her track “Girl, so sonfusing,” a song originally inspired by Charli’s awkward relationship with Lorde. Charli shared a screenshot on social media of Lorde’s entire verse, which Lorde had apparently texted to her. 
+            Charli’s humorous response, added to the buzz around the remix.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 43 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/Slide37.mp4"> </video>
+  </div>
+  </div>
+
+
+  <div class="right-side2">
+        <div class="content">
+                      <p>
+          June 27: Troye Sivan’s ‘Something To Give Each Other’ tour made a memorable stop at London’s Wembley Arena. 
+          During his set, Sivan surprised the audience by inviting Charli XCX on stage for a duet of their 2018 hit, “1999.” This surprise appearance not only generated significant fan-generated content on social media but also built excitement for their upcoming joint tour in fall 2024.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 44 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/Slide44.mp4"> </video>
+  </div>
+  </div>
+
+
+  <div class="right-side2">
+        <div class="content">
+          <h2>One of the most viral brat trends on TikTok is a high-energy dance routine to the song “Apple” from the album. 
+            TikTok creator Kelley Heyer, a longtime Charli XCX fan, created a dance routine to “Apple” that quickly went viral among the singer's fan base. 
+          </h2>
+          <h2>
+            Heyer was “starstruck” to see her idol performing her choreography. 
+            “It makes me so happy,” Heyer said. “It’s so cool how everyone has elevated my dance into something so much bigger.”
+            To Heyer, “brat is everything.” The brat ethos, as she describes it, involves elements of partying, authenticity and community.
+            “Brat is party, brat is fun, brat is messy, brat is sexy. Brat can be anything,” she said.
+          </h2>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 45 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide45.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>
+           Just as Charli planned, fan reactions exploded online. Fan engagement is always climbing so we stopped counting when the Brat Wall reached more than 13M+ people on social media worldwide.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 46 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide46.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>
+         July 1: Despite being retired on July 1 with a final “ok, bye!” message, the wall left a lasting impact, symbolising the chaotic energy of the Brat summer era. 
+         Even as it was retired, Charli assured fans on X that “brat summer is only just beginning,” leaving many to admire the blend of physical and digital engagement it brought to her music promotion.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 47 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide47.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>
+           July 1 & 2, 2024
+           Brat wall 4ever
+           Charli bid fans farewell with a final creative change on the Brat Wall (live-streamed in progress, of course). Though the mural read “ok, bye !”, its indelible legacy lives on. 
+           The next day, we restored the wall to its original solid green shade.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 48 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide48.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>
+          Kamala IS brat (July 22): Charli took to Twitter and endorsed Kamala Harris in the U.S. presidential election. The endorsement quickly went viral, igniting widespread conversation across social media and spawning a wave of memes. 
+          This not only amplified discussions around Harris, with her team even updating their header image on X to match the design of “brat”. but also boosted more hype and conversation around brat, leading to a surge in UGC and increased online buzz surrounding her tracks and overall campaign.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 49 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide49.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <h2>Shortly after, the official Biden-Harris campaign account rebranded itself as "Kamala HQ", updating its banner to mimic the Brat album cover.[8][3][1][10] While Charli XCX clarified that her tweet was not a formal endorsement, she added that she was "happy to help prevent democracy from failing forever.</h2>
+          <p>The campaign launched in October 2021 with a Western-themed short film and other creative marketing materials, such as music video-style ads.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 50 Type 02 -->
+<div class="slide-content active">
+      <div class="left-side2">
+        <div class="video-wrapper2">
+        <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/Slide50.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        </div>
+        
+      </div>
+      <div class="right-side2">
+        <div class="content">
+          <h2>"Brat" edits of Harris went viral on TikTok and Instagram, with users pairing clips of remarks such as "I love Venn diagrams" and "you think you just fell out of a coconut tree?" with Charli XCX's music.</h2>
+          <h2>Ryan Long, who helped popularize the meme format, felt that Harris "does such a good job at embodying what people call 'Brat summer.' The way she presents herself, she's happy, laughing, she'll dance. She is like a walking content farm." </h2>
+          <h2>BBC felt that the campaign's adoption of the movement helped Harris appeal to younger voting demographics, "who now, thanks in part to Charli XCX, see her as the 'cool girl' option."</h2>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 PESSOALS</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 51 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide51.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>
+           Teasing (July 31): Charli sparked more excitement by teasing a new collaboration and prompting fans to speculate who the collaborator could be by posting the following image.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 52 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide52.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>
+          Shortly before the release of the “Guess” remix, some media outlets and people started claiming BRAT summer was over due to its ubiquity. Charli incorporated this into her communication strategy and responded to this with a tongue-in-cheek message, hinting at something new coming up.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 53 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide53.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>August 1: The mystery was unveiled the following day when Charli revealed the collaboration was with Billie Eilish on the track “Guess” from her deluxe album edition. The announcement featured clips from their music video.
+After the track was released, Charli followed with another post featuring a clip from the music video. To date, this is her most popular reel with 32.5M views, 1M likes, and 16K comments.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 54 Type 02 -->
+<div class="slide-content active">
+      <div class="left-side2">
+        <div class="video-wrapper2">
+        <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/Slide50.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        </div>
+        
+      </div>
+      <div class="right-side2">
+        <div class="content">
+          <p>August 2: The weekend of the Guess remix release, Charli celebrated her 32nd birthday in L.A. with many celebrities present which was covered a lot in the press and online. Notably, both her collaborators Lorde and Billie Eilish were there, and they all sang along to their tracks generating new content for the campaign and continuing to showcase the lifestyle that encapsulates BRAT.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 PESSOALS</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 55 Type 02 -->
+<div class="slide-content active">
+      <div class="left-side2">
+        <div class="video-wrapper2">
+        <video class="vertical" autoplay muted loop src="/Resources/Brat Summer/Slide50.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        </div>
+        
+      </div>
+      <div class="right-side2">
+        <div class="content">
+          <p>“Guess” Dance Challenge (August 9): Although not as viral as the “Apple” dance challenge, Charli kept the momentum going by posting a new dance, featuring Troye Sivan and Terrence O’Connor, both of whom were part of the original “Apple” dance video. This time, they followed the choreography created by popular influencer Jake Shane, known as @octopusslover8. The “Guess” dance challenge has generated significant engagement, demonstrating Charli’s ability to keep fans excited and involved in her campaign through creative collaborations and trending content.</p>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 PESSOALS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Slide 56 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide56.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>
+         Collaborations with various culture pages have been central to Charli’s campaign, amplifying her visibility and solidifying her status as a cultural icon. These partnerships have kept her constantly in the public eye by consistently placing her at the forefront of people’s feeds, and promoting her personality and lifestyle.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 57 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide5.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>August 3: Charli posts a nostalgic recap of BRAT summer, officially announcing it’s over – showcasing her agency in announcing and ending the movement.</p>>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Slide 58 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide58.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>
+         September 3: Teases an upcoming collaboration by posting a faceless picture on Instagram with no caption.
+          Troye Sivan posted the exact same image the same day. While rehearsing for their “Sweat” tour, both artists have been dropping hints on TikTok.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 59 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide59.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p> September 11: Charli reveals the track name and collaboration with Troye, announcing its release in 24 hours. Dua Lipa, rumored to be involved after a leak, also contributed on the track, as shared by Charli on X.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 60 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide60.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>September 12: Charli starred in H&M’s latest campaign for its Autumn/Winter 2024 collection. To celebrate the collaboration, Charli performed at the label’s launch party in London on September 12, the opening day of London Fashion Week.
+             The event, held at the Copper Box Arena, was part of ‘H&M&London’, celebrating H&M’s new collection and featured DJ sets from Jamie xx and Sherelle. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 61 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide47.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>
+          The performance came the night after dropping her Talk Talk track with Troye Sivan, and announcing the Brat remix album, Brat and it’s completely different but also still brat. With over 3,000 attendees, the event was buzzing with influencers, colleagues, musicians, and fans. Charli delivered a 10-song set celebrating ‘Brat,’ opening and closing with ‘365,’ and covering Caroline Polachek’s ‘Welcome To My Island’ (Setlist.FM).</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 62 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide62.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>September 12: Charli announced her remix album, Brat and It’s Completely Different but Also Still Brat, set for release on October 11. The album features remixes from Brat, including both original and deluxe tracks. The announcement follows Troye Sivan’s remix of Talk Talk released the same day. Timed to align with the Sweat concert tour with Troye, Charli posted on social media: “Brat and it’s completely different but also still Brat – out Oct 11,” along with the album cover and a pre-order link.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 63 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide63.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>October 1: Brat-themed billboards and posters begin appearing in cities around the globe, including London, Manchester, Wisconsin, Pasadena, and Stockholm. The neon green, mirrored text has proven to be an eye-catching feature for fans and passersby.
+October 5: Charli shares on her socials the billboards and posters.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+
+</div>
+
+<!-- Slide 64 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide64.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>October 6: At her Florida show, Charli XCX leaked her tracklist by personally handing it to a front-row fan, urging them to post it on social media.
+            October 7: After a lot of build up and speculation, Charli shares the official track list and track features on her accounts.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+
+</div>
+
+<!-- Slide 65 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide65.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>October 8: Charli teased New Yorkers on her second Instagram account, 360_brat (with a cryptic message, “nyyyy! maybe plan to get off work early thursday?”), 
+            and on her main Instagram account with a listening party for October 10, along with an RSVP link. With limited details, the event sparked suspense and intrigue.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+
+</div>
+
+<!-- Slide 66 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide66.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>October 10: On release day, green, brat-themed cubes representing the al
+            bum’s vinyl cover were spotted at the event. Charli appeared in front of this giant installation and played her full album. Here is Charli’s recap of the listening party.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+
+</div>
+
+<!-- Slide 67 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide67.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>October 6: At her Florida show, Charli XCX leaked her tracklist by personally handing it to a front-row fan, urging them to post it on social media.
+October 7: After a lot of build up and speculation, Charli shares the official track list and track features on her accounts.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+
+</div>
+
+<!-- Slide 68 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide68.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>Nov 18: H&M and Charli XCX surprised fans with a 15-minute open-air performance at Times Square’s TSX Stage, announced just 30 minutes prior. Celebrating H&M’s Holiday Collection, Charli performed hits like “Von Dutch” “360” and “Guess (Remix)” in a custom H&M look, with the event featuring billboard takeovers and music by DJ Pee .Wee (Anderson Paak). The star-studded crowd included Amelia Gray, Irina Shayk, Lila Moss, 
+            and Julia Fox, with an afterparty at The Hotel Chelsea wrapping up the night. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+
+</div>
+
+<!-- Slide 69 Type 03 -->
+<div class="slide-content">
+
+  <div class="left-side3">
+    <div class="video-wrapper3">
+    <video class="horizontal" autoplay muted loop src="/Resources/Brat Summer/Slide41.mp4"></video>
+    </div>
+  </div>
+
+  <!-- SMALL SIDE (content) -->
+  <div class="right-side3">
+    <div class="content">
+      <p> Dec 18: During Billie Eilish’s Hit Me Hard and Soft tour, Charli XCX joined her on stage at the Los Angeles stop to perform Guess live for the very first time. </p>
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">
+        ©2025 Pessoals.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Slide 70 Type 03 -->
+<div class="slide-content">
+
+  <div class="left-side3">
+    <div class="video-wrapper3">
+    <video class="horizontal" autoplay muted loop src="/Resources/Brat Summer/Slide41.mp4"></video>
+    </div>
+  </div>
+
+  <!-- SMALL SIDE (content) -->
+  <div class="right-side3">
+    <div class="content">
+      <p> Dec 27: Charli XCX and Troye Sivan’s SWEAT Tour comes to virtual reality through Meta Quest on December 27, as part of a partnership with iHeartMedia and Meta. 
+        The event features 3D immersive footage of their October Los Angeles show, streamed in Music Valley, Meta’s virtual music hub. Fans can relive the exciting performance</p>
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">
+        ©2025 Pessoals.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Slide 71 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide71.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p> June 7, 2025 Charli’s Angels got another miracle with an anniversary mural to bring the community together again for another Brat Summer. She matched the tribute Williamsburg wall with another in Los Angeles, giving fans bicoastal backdrops for social content. Charli shared the murals with her 8.3M followers, earning over 1M likes. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+
+</div>
+
+<!-- Slide 72 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide72.jpg" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>The Brat Wall is now immortalized on Google Maps a monument for Angels to visit for years to come.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+
+</div>
+
+<!-- Slide 73 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide73.jpg" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>October 6: At her Florida show, Charli XCX leaked her tracklist by personally handing it to a front-row fan, urging them to post it on social media.
+October 7: After a lot of build up and speculation, Charli shares the official track list and track features on her accounts.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+
+</div>
+
+<!-- Slide 74 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Brat Summer/Slide74.jpg" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p>October 6: At her Florida show, Charli XCX leaked her tracklist by personally handing it to a front-row fan, urging them to post it on social media.
+October 7: After a lot of build up and speculation, Charli shares the official track list and track features on her accounts. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+
+</div>
+
+<!-- Slide 75 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+   <img class="visual-image" src="/Resources/Brand Like a Celebrity eBook/greenmockup.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <h2>Proven Strategy Used by Hollywood Celebrities</h2>
+          <p>These strategies are used by hollywood celebrities to create irresistible buzz Around your music and Help You stand out from the competition,
+            to craft a magnetic proven strategy used by hollywood celbrties to create irresistible buzz around your music and stand out from the comepetition.
+          </p>
+                   <a  class="rightsidebutton" href="/Resources/Brand Like a Celebrity eBook/brandlikeacelebrity.html">Learn More</a>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+
+</div>
+
+<!-- Slide 76 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+   <img class="visual-image" src="/Resources/Brand Like a Celebrity eBook/greenmockup.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <h1>Congratss</h1>
+          <p>
+            You made it to the end. Now you understand the full architecture behind Brat Summer’s viral power.
+          Ready to read more case studies? 
+          </p>
+                   <a  class="rightsidebutton" href="/Resources/Brand Like a Celebrity eBook/brandlikeacelebrity.html">Learn More</a>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+
+</div>
+
+
+
+
+<!-- 📱 Rotate Message -->
+<div id="rotate-message">
+  <p>🔄 Please rotate your device for the best experience</p>
+</div>
+
+</div>
+
+</div>
+
+
+
+<script>
+const correctCode = "9";
+
+function unlock() {
+  const enteredCode = document.getElementById("passcode").value;
+  if (enteredCode === correctCode) {
+    document.getElementById("lock-screen").style.display = "none";
+    document.querySelector(".slideshow").style.display = "block";
+  } else {
+    alert("Incorrect passcode. Try again.");
+  }
+}
+
+function toggleMute(button) {
+  const video = button.parentElement.querySelector('video');
+  if (!video) return;
+  video.muted = !video.muted;
+  button.textContent = video.muted ? '🔇' : '🔊';
+}
+
+const slides = document.querySelectorAll('.slide-content');
+const progressBar = document.getElementById('progressBar');
+let currentIndex = 0;
+
+// Function to show the current slide based on the index
+function showSlide(index) {
+  if (index < 0) index = slides.length - 1;
+  if (index >= slides.length) index = 0;
+  currentIndex = index;
+
+  slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex));
+  slides.forEach(slide => {
+    const video = slide.querySelector('video');
+    if (video) video.pause();
+  });
+
+  const currentVideo = slides[currentIndex].querySelector('video');
+  if (currentVideo) {
+    currentVideo.muted = false;
+    currentVideo.play().catch(() => console.log('User interaction required to play sound.'));
+  }
+
+  // Update progress bar width
+  progressBar.style.width = ((currentIndex + 1) / slides.length) * 100 + '%';
+}
+
+// Handle clicking anywhere on the screen to show the next slide
+document.addEventListener('click', () => {
+  showSlide(currentIndex + 1); // Navigate to the next slide on any click
+  const currentVideo = slides[currentIndex].querySelector('video');
+  if (currentVideo) currentVideo.play(); // Ensure video plays if clicked
+});
+
+// Handle keydown events for left and right arrow keys
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') showSlide(currentIndex + 1);
+  if (e.key === 'ArrowLeft') showSlide(currentIndex - 1);
+});
+
+// Initialize first slide
+showSlide(0);
+</script>
+
+</body>
+</html>

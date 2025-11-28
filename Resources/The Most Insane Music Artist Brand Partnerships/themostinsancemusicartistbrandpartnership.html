@@ -3,180 +3,968 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Fullscreen Slides with Progress</title>
+<title>Locked Multi-Slide Video Slideshow</title>
 <style>
-  :root { --progress-height: 8px; --bg: #000; --progress-color:#bd9d5c; }
-  html,body { height:100%; margin:0; background:var(--bg); overflow:hidden; font-family: Arial, Helvetica, sans-serif; }
+:root {
+  --progress-height: 8px;
+  --progress-color: #bd9d5c;
+}
 
-  .slideshow {
-    display:flex; /* show by default */
-    position:fixed; inset:0; z-index:10000;
-    background:#000; align-items:center; justify-content:center; overflow:hidden;
-  }
-  .slideshow img {
-    width:100%; height:100%; object-fit:contain; border-radius:0;
-    user-select:none; -webkit-user-drag:none;
-  }
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #111;
+  color: #fff;
+}
 
-  .progress-track {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: var(--progress-height);
-    background: rgba(255,255,255,0.06);
-    z-index: 11001;
-  }
-  .progress-bar {
-    height: 100%;
-    width: 0%;
-    background: var(--progress-color);
-    transition: width 220ms ease;
-  }
+/* 🔒 LOCK SCREEN */
+#lock-screen {
+  position: fixed;
+  inset: 0;
+  background: #1c1a15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 99999;
+  text-align: center;
+}
+#lock-screen h2 {
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  font-weight: normal;
+  font-size: 2rem;
+}
+#lock-screen h1 {
+  margin-bottom: 30px;
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  font-size: 1rem;
+}
+#lock-screen input {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+#lock-screen button {
+  padding: 10px 15px;
+  margin-left: 5px;
+  background: #bd9d5c;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+#lock-screen button:hover {
+  background: #a17c4a;
+}
 
-  .popup {
-    position: absolute;
-    bottom: 48px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(20,20,20,0.92);
-    color: #fff;
-    padding: 12px 18px;
-    border-radius: 10px;
-    font-size: 16px;
-    z-index: 11002;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 220ms ease;
-    display:flex; gap:.6rem; align-items:center;
-  }
-  .popup.show { opacity: 1; pointer-events:auto; }
-  .hint-emoji { background:#fff1; padding:6px; border-radius:6px; display:inline-block; }
+/* Slideshow */
+.slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
 
-  /* Rotate hint overlay */
-  #rotateHint {
-    position: fixed;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(0,0,0,0.85);
-    color:#fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    text-align: center;
-    z-index:12000;
-    padding: 20px;
-    display: none;
-  }
-  #rotateHint .phone-icon {
-    font-size: 50px;
-    margin-bottom: 20px;
-    animation: wiggle 1s infinite alternate;
-  }
+.slide-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
-  @keyframes wiggle {
-    0% { transform: rotate(-10deg); }
-    50% { transform: rotate(10deg); }
-    100% { transform: rotate(-10deg); }
-  }
+.bg-left, .bg-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 0;
+}
+.bg-left { left: 0; background-color: #FAF8EF; }
+.bg-right { right: 0; background-color: #1c1a15; }
 
-  @media (max-width:720px){
-    .popup { font-size:14px; padding:10px 14px; bottom: 36px; }
-    #rotateHint { font-size:18px; }
-    #rotateHint .phone-icon { font-size:40px; }
-  }
+.slide-content {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex;
+  z-index: 2;
+  display: none;
+}
+.slide-content.active { display: flex; }
+
+.left-side, .right-side {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Left side background */
+.left-side {
+  background-color: #FAF8EF;
+  color: #1c1a15;
+  justify-content: center;
+  align-items: start;
+}
+
+/* Top and Bottom Headings with 1rem gap from video */
+.left-side h2.top-heading {
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+.left-side h2.bottom-heading {
+  margin-top: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: normal;
+  font-size: 1.3rem;
+}
+
+.video, .slide-fg {
+  width: 100%;
+  height: auto;
+  max-height: 80%;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #111a;
+  backdrop-filter: blur(6px);
+  z-index: 1;
+}
+
+.image{
+  width: 100%;
+  height: auto;
+  max-height: 80%;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #111a;
+  backdrop-filter: blur(6px);
+  z-index: 1;
+}
+.audio-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.3s ease;
+}
+.audio-toggle:hover { background: rgba(0,0,0,0.7); }
+
+.video-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #FAF8EF;
+  letter-spacing: -0.5px;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1rem;
+}
+
+.right-side {
+  background: linear-gradient(to bottom, rgba(28,26,21,0.95), rgba(28,26,21,0.8));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 40px 30px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.right-side .content {
+  flex-grow: 1; /* content takes available space above footer */
+}
+
+.right-side .content h1 {
+  font-size: 3rem;
+  font-weight: normal;
+  font-style: italic;
+  color: #FAF8EF;
+  margin-bottom: 1rem;
+  line-height: 80%;
+  letter-spacing: -1%;
+  font-family: 'Playfair Display', serif;
+}
+.right-side .content h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #FAF8EF;
+  margin-bottom: 1rem;
+  font-family: lato, sans-serif;
+}
+
+.right-side .content p {
+  font-size: 0.6rem;
+  color: #d0d0d0;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.rightsidebutton {
+
+  display: inline-block; /* ensures button only takes up content width */
+  width: auto;           /* overrides any width:100% from parent/global */
+  text-align: center;    /* center text inside */
+
+  color: #1c1a15;
+  width: auto;
+  background-color: #FAF8EF;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.right-side .content button:hover {
+  background-color: #bd9d5c;
+  transform: scale(1.05);
+}
+
+/* Footer aligned with logo */
+.right-side .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 15px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.right-side .footer .logo img {
+  max-width: 50px;
+  height: auto;
+}
+
+.right-side .footer .copyright {
+  line-height: 1;
+  font-size: 0.7rem;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.progress-track {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: var(--progress-height);
+  background: rgba(255,255,255,0.06);
+  z-index: 3;
+}
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--progress-color);
+  transition: width 220ms ease;
+}
+
+.popup {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 20, 0.92);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  z-index: 4;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+.popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 📱 Rotate Message Overlay */
+#rotate-message {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  color: white;
+  font-size: 1.5rem;
+  z-index: 999999;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+@media (orientation: portrait) {
+  #rotate-message { display: flex; }
+  .slideshow { filter: blur(10px); pointer-events: none; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .left-side, .right-side { width: 100%; padding: 20px; }
+  .video, .slide-fg { max-height: 300px; }
+  .left-side h2.top-heading,
+  .left-side h2.bottom-heading { font-size: 1.2rem; margin: 0.5rem 0; }
+}
+.right-side {
+  position: relative; /* makes positioning inside work */
+}
+
+.keyboard-hint {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem; /* distance from right edge */
+  text-align: right;
+}
+
+.keyboard-hint img {
+  width: 200px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.keyboard-hint .hand {
+  position: absolute;
+  bottom: 45px;
+  right: 5px;
+  width: 50px;
+  height: 50px;
+  background: url('/Resources/The\ Most\ Insane\ Music\ Artist\ Brand\ Partnerships/thehand.png') no-repeat center/contain;
+  animation: pressKey 1.2s infinite ease-in-out;
+}
+
+@keyframes pressKey {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(5px) scale(0.97); opacity: 0.9; }
+}
+
+
+/* Left side — full-cover image */
+.visual-panel {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.visual-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+
 </style>
 </head>
 <body>
 
-<div id="slideshow" class="slideshow" role="dialog" aria-modal="true" aria-label="Slide viewer">
+<!-- 🔒 Lock Screen -->
+<div id="lock-screen">
+  <h2>Enter Passcode</h2>
+  <h1>You Must Put the Password to get access to the case study.</h1>
+  <div>
+    <input type="password" id="passcode" placeholder="PASSCODE" />
+    <button onclick="unlock()">Unlock</button>
+  </div>
+</div>
+
+<!-- 🎥 Slideshow -->
+<div class="slideshow">
   <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
-  <img id="slideImage" src="" alt="Slide" draggable="false" />
-  <div id="popup" class="popup" role="status" aria-live="polite">
+  <div class="slide-layer">
+
+<!-- Slide 2 -->
+<div class="slide-content">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Brand Like a Celebrity eBook/greenmockup.png" alt="Kanye West x Adidas">
+  </div>
+
+  <div class="right-side">
+    <div class="content">
+      <h1>The Most Insane Music Artist Brand Partnerships Ever.</h1>
+      <p> STORY DURATION: 4 MIN</p>
+
+
+      <!-- 🔽 Keyboard Arrow Hint on RIGHT SIDE -->
+      <div class="keyboard-hint">
+        <img src="/Resources/The Most Insane Music Artist Brand Partnerships/keyboard.png" alt="Keyboard Arrows">
+        <div class="hand"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">© 2025 Pessoals </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Slide 2 -->
+    <div class="slide-content">
+      <div class="visual-panel">
+    <img class="visual-image" src="/Resources/The Most Insane Music Artist Brand Partnerships/ice.jpg" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side">
+        <div class="content">
+          <h1 class="top-heading">Ice Spice X Robolox</h1>
+          <h2>In September 2020, Megan Thee Stallion share an exciting update about her growing business ventures. As part of her highly publicized partnership with Popeyes for the Hottie Sauce promotion, she revealed that she had become a franchisee and would be directly involved in the opening of her own Popeyes locations.</h2>
+          <p>Megan’s social media post, which generated significant buzz, highlighted her commitment to the project as she expressed her eagerness to visit the stores before they opened their doors to the public. This personal touch not only strengthened her connection with her fans but also emphasized her active role in the business, showcasing that her collaboration with Popeyes went far beyond a mere endorsement.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+
+ <!-- Slide 2 -->
+    <div class="slide-content">
+      <div class="left-side">
+        <h2 class="top-heading">Megan Thee Stallion X Popeyes</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info1.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+          <h1 class="top-heading">Ice Spice X Robolox</h1>
+          <h2>In September 2020, Megan Thee Stallion share an exciting update about her growing business ventures. As part of her highly publicized partnership with Popeyes for the Hottie Sauce promotion, she revealed that she had become a franchisee and would be directly involved in the opening of her own Popeyes locations.</h2>
+          <p>Megan’s social media post, which generated significant buzz, highlighted her commitment to the project as she expressed her eagerness to visit the stores before they opened their doors to the public. This personal touch not only strengthened her connection with her fans but also emphasized her active role in the business, showcasing that her collaboration with Popeyes went far beyond a mere endorsement.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Slide 3 -->
+    <div class="slide-content">
+      <div class="left-side">
+        <h2 class="top-heading">Megan Thee Stallion X Popeyes</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info14.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+          <h2>In September 2020, Megan Thee Stallion share an exciting update about her growing business ventures. As part of her highly publicized partnership with Popeyes for the Hottie Sauce promotion, she revealed that she had become a franchisee and would be directly involved in the opening of her own Popeyes locations.</h2>
+          <p>Megan’s social media post, which generated significant buzz, highlighted her commitment to the project as she expressed her eagerness to visit the stores before they opened their doors to the public. This personal touch not only strengthened her connection with her fans but also emphasized her active role in the business, showcasing that her collaboration with Popeyes went far beyond a mere endorsement.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-content">
+       <div class="visual-panel">
+    <img class="visual-image" src="/Resources/The Most Insane Music Artist Brand Partnerships/megan.png" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side">
+        <div class="content">
+           <h1 class="top-heading">Megan Thee Stallion X Popeyes</h1>
+          <h2>In September 2020, Megan Thee Stallion share an exciting update about her growing business ventures. As part of her highly publicized partnership with Popeyes for the Hottie Sauce promotion, she revealed that she had become a franchisee and would be directly involved in the opening of her own Popeyes locations.</h2>
+          <p>Megan’s social media post, which generated significant buzz, highlighted her commitment to the project as she expressed her eagerness to visit the stores before they opened their doors to the public. This personal touch not only strengthened her connection with her fans but also emphasized her active role in the business, showcasing that her collaboration with Popeyes went far beyond a mere endorsement.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-content">
+      <div class="left-side">
+        <h2 class="top-heading">Megan Thee Stallion X Popeyes</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info2.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+           <h1 class="top-heading">Megan Thee Stallion X Popeyes</h1>
+          <h2>In September 2020, Megan Thee Stallion share an exciting update about her growing business ventures. As part of her highly publicized partnership with Popeyes for the Hottie Sauce promotion, she revealed that she had become a franchisee and would be directly involved in the opening of her own Popeyes locations.</h2>
+          <p>Megan’s social media post, which generated significant buzz, highlighted her commitment to the project as she expressed her eagerness to visit the stores before they opened their doors to the public. This personal touch not only strengthened her connection with her fans but also emphasized her active role in the business, showcasing that her collaboration with Popeyes went far beyond a mere endorsement.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-content">
+      <div class="left-side">
+        <h2 class="top-heading">Megan Thee Stallion X Popeyes</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info5.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+          <h2>Megan Thee Stallion and Popeyes did an ad campaign, which was a major partnership that included developing her "Hottie Sauce," releasing merchandise, and her becoming a Popeyes franchise owner.</h2>
+          <p>The campaign launched in October 2021 with a Western-themed short film and other creative marketing materials, such as music video-style ads.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+
+     <!-- Slide 1 -->
+    <div class="slide-content active">
+      <div class="visual-panel">
+    <img class="visual-image" src="/Resources/The Most Insane Music Artist Brand Partnerships/sabrina.jpg" alt="Kanye West x Adidas">
+      </div>
+      <div class="right-side">
+        <div class="content">
+           <h1 class="top-heading">Sabrina Carpenter x Dunkin</h1>
+          <h2>Sabrina Carpenter and Dunkin' have partnered for several limited-time collaborations, starting with "Sabrina's Brown Sugar Shakin' Espresso" in late 2024 and continuing with the "Strawberry Daydream Refresher" in June 2025. These partnerships include special menu items and associated marketing campaigns, with the initial drink inspired by her hit song "Espresso". </h2>
+          <p>Dunkin’ Donuts partnered with Sabrina Carpenter, one of the boldest and most audacious artists in the music industry, for their Brown Sugar ‘Shaking Espresso’ campaign. Known for her fearless, playful, and provocative persona, Carpenter brought a unique energy to the campaign. 
+The act of shaking espresso was used as a tongue-in-cheek, suggestive metaphor, perfectly aligning with her edgy public image while adding a humorous twist that captured attention.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 PESSOALS</div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Slide 1 -->
+    <div class="slide-content active">
+      <div class="left-side">
+        <h2 class="top-heading">Sabrina Carpenter x Dunkin</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info3.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+           <h1 class="top-heading">Sabrina Carpenter x Dunkin</h1>
+          <h2>Sabrina Carpenter and Dunkin' have partnered for several limited-time collaborations, starting with "Sabrina's Brown Sugar Shakin' Espresso" in late 2024 and continuing with the "Strawberry Daydream Refresher" in June 2025. These partnerships include special menu items and associated marketing campaigns, with the initial drink inspired by her hit song "Espresso". </h2>
+          <p>Dunkin’ Donuts partnered with Sabrina Carpenter, one of the boldest and most audacious artists in the music industry, for their Brown Sugar ‘Shaking Espresso’ campaign. Known for her fearless, playful, and provocative persona, Carpenter brought a unique energy to the campaign. 
+The act of shaking espresso was used as a tongue-in-cheek, suggestive metaphor, perfectly aligning with her edgy public image while adding a humorous twist that captured attention.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 PESSOALS</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Slide 1 -->
+    <div class="slide-content active">
+      <div class="left-side">
+        <h2 class="top-heading">Sabrina Carpenter x Dunkin</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info6.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+          <h2>Sabrina Carpenter and Dunkin' have partnered for several limited-time collaborations, starting with "Sabrina's Brown Sugar Shakin' Espresso" in late 2024 and continuing with the "Strawberry Daydream Refresher" in June 2025. These partnerships include special menu items and associated marketing campaigns, with the initial drink inspired by her hit song "Espresso". </h2>
+          <p>Dunkin’ Donuts partnered with Sabrina Carpenter, one of the boldest and most audacious artists in the music industry, for their Brown Sugar ‘Shaking Espresso’ campaign. Known for her fearless, playful, and provocative persona, Carpenter brought a unique energy to the campaign. 
+The act of shaking espresso was used as a tongue-in-cheek, suggestive metaphor, perfectly aligning with her edgy public image while adding a humorous twist that captured attention.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 PESSOALS</div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Slide 2 -->
+    <div class="slide-content">
+       <div class="visual-panel">
+    <img class="visual-image" src="/Resources/The Most Insane Music Artist Brand Partnerships/katy.avif" alt="Kanye West x Adidas">
+      </div>
+      <div class="right-side">
+        <div class="content">
+           <h1 class="top-heading">Katy Perry X The Sims</h1>
+          <h2>Katy Perry once partnered with The Sims, releasing an expansion pack for The Sims 3 that featured new clothing, adventures, and experiences inspired by her real-life style.</h2>
+          <p>his collaboration was a natural fit, aligning Perry’s vibrant, playful persona with the creative and imaginative world of The Sims. 
+            What made the campaign particularly notable was Perry’s release of an entire song in Simlish, the fictional language of the game. This bold move demonstrated her willingness to fully immerse herself in the brand experience, creating a unique and memorable connection between her music and The Sims universe. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-content">
+      <div class="left-side">
+        <h2 class="top-heading">Katy Perry X The Sims</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info4.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+           <h1 class="top-heading">Katy Perry X The Sims</h1>
+          <h2>Katy Perry once partnered with The Sims, releasing an expansion pack for The Sims 3 that featured new clothing, adventures, and experiences inspired by her real-life style.</h2>
+          <p>his collaboration was a natural fit, aligning Perry’s vibrant, playful persona with the creative and imaginative world of The Sims. 
+            What made the campaign particularly notable was Perry’s release of an entire song in Simlish, the fictional language of the game. This bold move demonstrated her willingness to fully immerse herself in the brand experience, creating a unique and memorable connection between her music and The Sims universe. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-content">
+      <div class="left-side">
+        <h2 class="top-heading">Katy Perry X The Sims</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info7.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+          <h2>In 2012, Katy Perry recorded a Simlish version of her hit “Last Friday Night (T.G.I.F.)” for The Sims 3: Katy Perry’s Sweet Treats expansion pack.</h2>
+          <p>This collaboration aligned with her vibrant, candy-themed aesthetic, promoting the dessert-inspired content. The Simlish rendition, sung in the game’s gibberish language, became iconic among fans.
+The recording was part of Perry’s broader partnership with The Sims franchise, including The Sims 3: Showtime. Released in June 2012, the Simlish track added a playful element to the game’s radio, sparking memes and fan enthusiasm online. It remains a nostalgic highlight for Sims players. Overall, the collaboration successfully married Perry’s celebrity identity with The Sims’ playful and expressive platform. By integrating her fashion sense and music into the game, Perry enhanced the brand’s appeal while reinforcing her own image as an innovative, fun, and engaging artist willing to push creative boundaries.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide-content">
+       <div class="visual-panel">
+    <img class="visual-image" src="/Resources/The Most Insane Music Artist Brand Partnerships/travis.avif" alt="Kanye West x Adidas">
+      </div>
+      <div class="right-side">
+       <div class="content">
+        <h1 class="top-heading">Travis Scott x Mcdonalds</h1>
+          <h2>The Popeyes x Megan Thee Stallion collaboration is a bold example of brand alignment, with some controversial elements.</h2>
+          <p>Popeyes, known for its raw and unpolished identity, was fully embraced by Megan, who built a storyline around it. The ‘Hottie Sauce’ concept perfectly complements her bold and fiery persona.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="logo2.png" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Your Company</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide-content">
+      <div class="left-side">
+        <h2 class="top-heading">Travis Scott x Mcdonalds</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info8.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+       <div class="content">
+        <h1 class="top-heading">Travis Scott x Mcdonalds</h1>
+          <h2>The Popeyes x Megan Thee Stallion collaboration is a bold example of brand alignment, with some controversial elements.</h2>
+          <p>Popeyes, known for its raw and unpolished identity, was fully embraced by Megan, who built a storyline around it. The ‘Hottie Sauce’ concept perfectly complements her bold and fiery persona.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="logo2.png" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Your Company</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-content">
+      <div class="left-side">
+        <h2 class="top-heading">Travis Scott x Mcdonalds</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info9.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+          <h2>Roblox is primarily a platform designed for children, while Ice Spice’s image is clearly not suited for younger audiences.</h2>
+          <p>Editable content for slide 2. You can put buttons, links, text, anything.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="logo2.png" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Your Company</div>
+        </div>
+      </div>
+    </div>
+
+
+     <!-- Slide 2 -->
+    <div class="slide-content">
+      <div class="left-side">
+        <h2 class="top-heading">Travis Scott x Mcdonalds</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info10.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+          <h2>Roblox is primarily a platform designed for children, while Ice Spice’s image is clearly not suited for younger audiences.</h2>
+          <p>Editable content for slide 2. You can put buttons, links, text, anything.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="logo2.png" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Your Company</div>
+        </div>
+      </div>
+    </div>
+
+
+    
+    <!-- Slide 2 -->
+    <div class="slide-content">
+     <div class="visual-panel">
+    <img class="visual-image" src="/Resources/The Most Insane Music Artist Brand Partnerships/kanye.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side">
+        <div class="content">
+          <h1 class="top-heading">Kanye West X Adidas</h1>
+          <h2>Roblox is primarily a platform designed for children, while Ice Spice’s image is clearly not suited for younger audiences.</h2>
+          <p>Editable content for slide 2. You can put buttons, links, text, anything.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="logo2.png" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Your Company</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-content">
+      <div class="left-side">
+        <h2 class="top-heading">Travis Scott x Mcdonalds</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info11.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+          <h1 class="top-heading">Kanye West X Adidas</h1>
+          <h2>Roblox is primarily a platform designed for children, while Ice Spice’s image is clearly not suited for younger audiences.</h2>
+          <p>Editable content for slide 2. You can put buttons, links, text, anything.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="logo2.png" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Your Company</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-content">
+      <div class="left-side">
+        <h2 class="top-heading">Travis Scott x Mcdonalds</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info12.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+          <h2>Roblox is primarily a platform designed for children, while Ice Spice’s image is clearly not suited for younger audiences.</h2>
+          <p>Editable content for slide 2. You can put buttons, links, text, anything.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="logo2.png" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Your Company</div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Slide 2 -->
+    <div class="slide-content">
+      <div class="left-side">
+        <h2 class="top-heading">Kanye West x Adidas</h2>
+        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info13.mp4"></video>
+        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
+        <h2 class="bottom-heading">Brand Partnerships</h2>
+      </div>
+      <div class="right-side">
+        <div class="content">
+          <h2>Roblox is primarily a platform designed for children, while Ice Spice’s image is clearly not suited for younger audiences.</h2>
+          <p>Editable content for slide 2. You can put buttons, links, text, anything.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="logo2.png" alt="Logo">
+          </div>
+          <div class="copyright">© 2025 Your Company</div>
+        </div>
+      </div>
+    </div>
+<!-- Slide 2 -->
+<div class="slide-content">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Brand Like a Celebrity eBook/greenmockup.png" alt="Kanye West x Adidas">
+  </div>
+
+  <div class="right-side">
+        <div class="content">
+          <h1 class="top-heading">Hold On.</h1>
+          <h2>It Includes a Proven Strategy Used by Hollywood Celebrities to Create Irresistible Buzz Around Your Music and Help You Stand Out From the Competition.</h2>
+          <p>HOW TO CRAFT A MAGNETIC PERSONAL BRAND AS AN ARTIST AND MARKET YOUR MUSIC WITH EXAMPLES FROM SUCCESSFUL ARTISTS.</p>
+          <a  class="rightsidebutton" href="/Resources/Brand Like a Celebrity eBook/brandlikeacelebrity.html">Learn More</a>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
+        </div>
+      </div>
+</div>
+
+
+
+
+  </div>
+
+  <div id="popup" class="popup">
     <span class="hint-emoji">⬅️➡️</span>
     <span>Use your arrow keys to watch the story</span>
   </div>
 </div>
 
-<!-- Rotate hint -->
-<div id="rotateHint">
-  <div class="phone-icon">📱</div>
-  <div>Please rotate your device to <strong>landscape</strong> for the best experience ⬅️➡️</div>
+<!-- 📱 Rotate Message -->
+<div id="rotate-message">
+  <p>🔄 Please rotate your device for the best experience</p>
 </div>
 
 <script>
-const slides = [
-  "/Resources/The Most Insane Music Artist Brand Partnerships/slide1.jpg",
-  "/Resources/The Most Insane Music Artist Brand Partnerships/slide2.jpg",
-  "/Resources/The Most Insane Music Artist Brand Partnerships/slide3.jpg",
-  "/Resources/The Most Insane Music Artist Brand Partnerships/slide4.jpg",
-  "/Resources/The Most Insane Music Artist Brand Partnerships/slide5.jpg",
-  "/Resources/The Most Insane Music Artist Brand Partnerships/slide6.jpg",
-  "/Resources/The Most Insane Music Artist Brand Partnerships/slide7.jpg",
-  "/Resources/The Most Insane Music Artist Brand Partnerships/slide8.jpg",
-  "/Resources/The Most Insane Music Artist Brand Partnerships/slide9.jpg",
-  "/Resources/The Most Insane Music Artist Brand Partnerships/slide10.jpg",
-  "/Resources/The Most Insane Music Artist Brand Partnerships/slide11.jpg",
-];
-// preload
-slides.forEach(src => { const i = new Image(); i.src = src; });
-
-const slideshow = document.getElementById('slideshow');
-const slideImage = document.getElementById('slideImage');
-const progressBar = document.getElementById('progressBar');
-const popup = document.getElementById('popup');
-const rotateHint = document.getElementById('rotateHint');
-
-let currentIndex = 0;
-let isOpen = true; // slideshow is open by default
-
-function updateProgressBar() {
-  const percent = Math.round(((currentIndex + 1) / slides.length) * 100);
-  progressBar.style.width = percent + '%';
+const correctCode = "1234";
+function unlock() {
+  const enteredCode = document.getElementById("passcode").value;
+  if (enteredCode === correctCode) {
+    document.getElementById("lock-screen").style.display = "none";
+    document.querySelector(".slideshow").style.display = "block";
+  } else {
+    alert("Incorrect passcode. Try again.");
+  }
 }
 
+function toggleMute(button) {
+  const video = button.parentElement.querySelector('video');
+  if (!video) return;
+  video.muted = !video.muted;
+  button.textContent = video.muted ? '🔇' : '🔊';
+}
+
+const slides = document.querySelectorAll('.slide-content');
+const progressBar = document.getElementById('progressBar');
+const popup = document.getElementById('popup');
+let currentIndex = 0;
+
 function showSlide(index) {
-  if (window.innerHeight > window.innerWidth) return; // don't show slide in portrait
   if (index < 0) index = slides.length - 1;
   if (index >= slides.length) index = 0;
   currentIndex = index;
-  slideImage.src = slides[currentIndex];
-  updateProgressBar();
+
+  slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex));
+  slides.forEach(slide => {
+    const video = slide.querySelector('video');
+    if (video) video.pause();
+  });
+
+  const currentVideo = slides[currentIndex].querySelector('video');
+  if (currentVideo) {
+    currentVideo.muted = false;
+    currentVideo.play().catch(() => console.log('User interaction required to play sound.'));
+  }
+
+  progressBar.style.width = ((currentIndex + 1) / slides.length) * 100 + '%';
+
   if (currentIndex === 0) {
     popup.classList.add('show');
-    clearTimeout(popup._hideTimeout);
-    popup._hideTimeout = setTimeout(() => popup.classList.remove('show'), 3000);
-  } else {
-    popup.classList.remove('show');
-    clearTimeout(popup._hideTimeout);
+    setTimeout(() => popup.classList.remove('show'), 3000);
   }
 }
 
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-  if (!isOpen) return;
-  if (e.key === 'ArrowRight') { showSlide(currentIndex + 1); e.preventDefault(); }
-  else if (e.key === 'ArrowLeft') { showSlide(currentIndex - 1); e.preventDefault(); }
-  else if (e.key === 'Escape') { isOpen = false; slideshow.style.display='none'; document.body.style.overflow=''; }
+document.addEventListener('click', () => {
+  const currentVideo = slides[currentIndex].querySelector('video');
+  if (currentVideo) currentVideo.play();
 });
 
-// Click anywhere to next
-slideshow.addEventListener('click', (ev) => {
-  if (ev.target === popup || popup.contains(ev.target)) return;
-  showSlide(currentIndex + 1);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') showSlide(currentIndex + 1);
+  if (e.key === 'ArrowLeft') showSlide(currentIndex - 1);
 });
 
-// Show rotate hint
-function checkOrientation() {
-  if(window.innerHeight > window.innerWidth){ // portrait
-    rotateHint.style.display = 'flex';
-    slideshow.style.display = 'none';
-  } else {
-    rotateHint.style.display = 'none';
-    if(isOpen) slideshow.style.display = 'flex';
-  }
-}
-window.addEventListener('load', () => { showSlide(0); checkOrientation(); });
-window.addEventListener('resize', checkOrientation);
-window.addEventListener('orientationchange', checkOrientation);
+showSlide(0);
 </script>
 </body>
 </html>
