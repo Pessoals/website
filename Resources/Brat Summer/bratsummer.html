@@ -130,21 +130,6 @@ html, body {
   z-index: 1;
 }
 
-
-/* Top and Bottom Headings with 1rem gap from video */
-.left-side1 h2.top-heading {
-  margin-bottom: 1rem;
-  font-family: 'Playfair Display', serif;
-  font-weight: normal;
-  font-size: 1.5rem;
-}
-.left-side1 h2.bottom-heading {
-  margin-top: 1rem;
-  font-family: 'Playfair Display', serif;
-  font-weight: normal;
-  font-size: 1.3rem;
-}
-
 .audio-toggle {
   position: absolute;
   top: 15px;
@@ -161,17 +146,31 @@ html, body {
 }
 .audio-toggle:hover { background: rgba(0,0,0,0.7); }
 
-
 .right-side1 {
   background: linear-gradient(to bottom, rgba(28,26,21,0.95), rgba(28,26,21,0.8));
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 40px 30px;
+  padding: 20px 20px;     /* Desktop */
   height: 100%;
   box-sizing: border-box;
-  overflow: hidden;  /* Prevent layout breaking */
+  overflow: hidden;
 }
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .right-side1 {
+    padding: 10px 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .right-side1 {
+    padding: 5px 5px;
+  }
+}
+
 /* --- Smooth fade animation --- */
 .right-side1 .content > * {
   opacity: 0;
@@ -189,26 +188,18 @@ html, body {
   }
 }
 
-.right-side1 .content{
-  padding: 40px;
+.right-side1 .content {
+  padding: 20px; /* remove bottom padding */
   color: #fff;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  flex-grow: 1; /* content takes available space above footer */
-
-  flex: 1;                 /* Take remaining space */
-  overflow-y: auto;        /* Make content scrollable if long */
-  padding-right: 10px;     /* Optional: prevents cutoff when scrolling */
-
-   flex: 1;
+  flex-grow: 1;
+  flex: 1;
   overflow-y: auto;
-  padding-right: 10px;
-
-  /* Hide scrollbar for Chrome, Safari */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge legacy */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
 }
+
 
 .right-side1 .content::-webkit-scrollbar {
   display: none;
@@ -220,7 +211,6 @@ html, body {
   font-weight: normal;
   font-style: normal;
   color: #FAF8EF;
-  margin-bottom: 1.5rem; /* Increased spacing for a more balanced layout */
   line-height: 1.3; /* Slightly more line height for elegance */
   letter-spacing: -0.5px; /* Slightly tighter letter-spacing for a premium feel */
   font-family: 'Playfair Display', serif; /* Classic serif for a luxurious feel */
@@ -231,7 +221,6 @@ html, body {
  font-weight: normal;
  font-style: normal;
  color: #FAF8EF;
- margin-bottom: 0.5rem;
  font-family: 'Playfair Display', serif;
 
 }
@@ -242,7 +231,6 @@ html, body {
   line-height: 1.75; /* Slightly increased line height for readability */
   max-width: 85%;
   color: #a2a1a1; /* Softer gray for the text to avoid harsh contrast */
-  margin-bottom: 0.5rem; /* Add spacing between paragraphs */
 }
 .right-side1 .content .date{
   font-family: "Lato", sans-serif;
@@ -250,7 +238,6 @@ html, body {
   line-height: 1.75; /* Slightly increased line height for readability */
   max-width: 85%;
   color: #bd9d5c; /* Softer gray for the text to avoid harsh contrast */
-  margin-bottom: 1.5rem; /* Add spacing between paragraphs */
 }
 
 
@@ -280,33 +267,56 @@ html, body {
 .right-side1 .content button:hover {
   background-color: #bd9d5c;
   transform: scale(1.05);
-}
-
-/* Footer aligned with logo */
+}/* Footer aligned with logo */
 .right-side1 .footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  flex-wrap: nowrap;             /* keep it on one line on desktop */
+  gap: 12px;
   border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 15px;
+  padding: 12px 0;               /* professional spacing */
   font-size: 13px;
   color: #aaa;
-  margin-top: auto;        /* Forces footer to bottom */
-  padding: 15px 0;         /* Looks clean */
+  margin-top: auto;
 }
 
 .right-side1 .footer .logo img {
-  max-width: 50px;
+  max-width: 42px;
   height: auto;
 }
 
 .right-side1 .footer .copyright {
-  line-height: 1;
-  font-size: 0.7rem;
+  line-height: 1.4;
+  font-size: 0.75rem;
   font-family: 'Lato', sans-serif;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
 }
+
+
+/* MOBILE FIX */
+@media (max-width: 600px) {
+
+  .right-side1 .footer {
+    flex-direction: column;      /* stack items cleanly */
+    text-align: center;
+    justify-content: center;
+    gap: 6px;                    /* tighter spacing */
+    padding: 10px 0;             /* clean mobile look */
+  }
+
+  .right-side1 .footer .logo img {
+    max-width: 32px;             /* smaller, polished */
+  }
+
+  .right-side1 .footer .copyright {
+    font-size: 0.8rem;           /* readable on mobile */
+    line-height: 1.3;
+  }
+}
+
+
+
 
 .progress-track {
   position: absolute;
@@ -394,9 +404,17 @@ html, body {
   height: 100%;
   box-sizing: border-box; /* Ensure padding and borders are included in width/height */
 }
-.right-side2 {
-  width: 70%;
-  object-fit: fill;
+
+/* Left side container */
+.left-side2 {
+  width: 30%; /* 30% of the screen */
+  background-color: #FAF8EF;
+  color: #1c1a15;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Start alignment for the video */
+  height: 100%; /* Ensure it takes up full height */
+  padding: 0; /* Remove any unnecessary padding */
 }
 /* --- Smooth fade animation --- */
 .right-side2 .content > * {
@@ -416,17 +434,6 @@ html, body {
 }
 
 /* Left side background */
-/* Left side container */
-.left-side2 {
-  width: 30%; /* 30% of the screen */
-  background-color: #FAF8EF;
-  color: #1c1a15;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Start alignment for the video */
-  height: 100%; /* Ensure it takes up full height */
-  padding: 0; /* Remove any unnecessary padding */
-}
 
 
 /* Wrapper adds spacing */
@@ -447,14 +454,29 @@ html, body {
 }
 
 .right-side2 {
+  width: 70%;
+  object-fit: fill;
   background:#1c1a15;
   width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 40px 30px;
+  padding: 20px 20px;
   height: 100%;
   box-sizing: border-box;
+}
+/* Tablet */
+@media (max-width: 1024px) {
+  .right-side2 {
+    padding: 10px 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .right-side2 {
+    padding: 5px 5px;
+  }
 }
 
 
@@ -462,6 +484,7 @@ html, body {
   flex: 1;
   overflow-y: auto;
   padding-right: 10px;
+  gap: 5px;
 
   /* Hide scrollbar for Chrome, Safari */
   scrollbar-width: none; /* Firefox */
@@ -556,10 +579,6 @@ html, body {
 /* Slide type 2 over    */
 
 
-
-
-
-
 }.left-side3, .right-side3 {
   position: relative;
   height: 100%;
@@ -600,9 +619,22 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 40px 30px;
+  padding: 20px 20px;
   height: 100%;
   box-sizing: border-box;
+}
+/* Tablet */
+@media (max-width: 1024px) {
+  .right-side3 {
+    padding: 10px 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .right-side3 {
+    padding: 5px 5px;
+  }
 }
 .right-side3 .content {
   flex: 1;
