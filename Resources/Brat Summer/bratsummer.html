@@ -23,7 +23,7 @@ html, body {
 #lock-screen {
   position: fixed;
   inset: 0;
-  background: #1c1a15;
+  background: rgba(28, 26, 21, 0.9); /* Slightly transparent dark background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,24 +31,32 @@ html, body {
   z-index: 99999;
   text-align: center;
 }
+
 #lock-screen h2 {
   margin-bottom: 10px;
   font-family: 'Playfair Display', serif;
   font-weight: normal;
   font-size: 2rem;
 }
+
 #lock-screen h1 {
   margin-bottom: 30px;
   font-family: 'Lato', sans-serif;
   font-weight: normal;
+  color: #8c8c8c;
   font-size: 1rem;
 }
+
 #lock-screen input {
   padding: 10px;
   font-size: 16px;
   border: none;
   outline: none;
+  width: 250px; /* default width */
+  max-width: 90%; /* responsive */
+  box-sizing: border-box;
 }
+
 #lock-screen button {
   padding: 10px 15px;
   margin-left: 5px;
@@ -58,8 +66,50 @@ html, body {
   font-size: 16px;
   cursor: pointer;
 }
+
 #lock-screen button:hover {
   background: #a17c4a;
+}
+/* Responsive adjustments for smaller screens */
+@media (max-width: 480px) {
+  #lock-screen h2 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+  
+  #lock-screen h1 {
+    font-size: 0.9rem; /* Smaller font for smaller screens */
+    margin-bottom: 20px;
+  }
+
+  #lock-screen input {
+    font-size: 14px; /* Smaller font size for input */
+    padding: 8px; /* Adjust padding */
+    width: 90%; /* Make input width responsive */
+  }
+
+  #lock-screen button {
+    font-size: 14px; /* Smaller font size for button */
+    padding: 8px 12px; /* Adjust padding */
+    margin-left: 0; /* No left margin on smaller screens */
+    margin-top: 10px; /* Add some space above the button */
+    width: 90%; /* Make button width responsive */
+  }
+}
+
+/* Optional: Medium screens (tablets) */
+@media (max-width: 768px) {
+  #lock-screen h2 {
+    font-size: 1.75rem; /* Slightly smaller font for medium screens */
+  }
+
+  #lock-screen h1 {
+    font-size: 1rem;
+  }
+
+  #lock-screen input, #lock-screen button {
+    margin-top: 15px;
+    width: 70%; /* Slightly smaller width for medium screens */
+  }
 }
 
 /* Slideshow */
@@ -350,10 +400,29 @@ html, body {
   text-align: center;
   padding: 2rem;
 }
-@media (orientation: portrait) {
-  #rotate-message { display: flex; }
-  .slideshow { filter: blur(10px); pointer-events: none; }
+
+/* GIF styling */
+.rotate {
+  width: 50%;  /* Adjust width to 50% of container */
+  max-width: 150px; /* Limit the size of the GIF */
+  height: auto; /* Keep aspect ratio intact */
+  margin-bottom: 1.5rem;
 }
+@media (orientation: portrait) {
+  #rotate-message { display: flex; 
+  animation: fadeIn 0.5s ease-in-out;
+}  .slideshow { filter: blur(10px); pointer-events: none; }}
+  
+/* Adding a fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 
 .right-side1 {
   position: relative; /* makes positioning inside work */
@@ -738,10 +807,10 @@ html, body {
 
 <!-- 🔒 Lock Screen -->
 <div id="lock-screen">
-  <h2>Enter Passcode</h2>
-  <h1>You Must Put the Password to get access to the case study.</h1>
+  <h2>Please enter the passcode to proceed.</h2>
+  <h1>Access to this case study is restricted to invited users and Pessolas subscribers.</h1>
   <div>
-    <input type="password" id="passcode" placeholder="PASSCODE" />
+    <input type="password" id="passcode" placeholder="Enter your passcode" />
     <button onclick="unlock()">Unlock</button>
   </div>
 </div>
@@ -2464,7 +2533,7 @@ October 7: After a lot of build up and speculation, Charli shares the officia
 <!-- Slide 76 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-   <img class="visual-image" src="/Resources/Brand Like a Celebrity eBook/greenmockup.webp" alt="Kanye West x Adidas">
+   <img class="visual-image" src="/Images/congrats.png" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2497,6 +2566,9 @@ October 7: After a lot of build up and speculation, Charli shares the officia
 
 </div>
 
+<div id="rotate-message">
+  <img  class="rotate" src="/Images/rotate.gif" alt="Rotate Device">
+</div>
 
 
 <script>
@@ -2506,18 +2578,12 @@ function unlock() {
   const enteredCode = document.getElementById("passcode").value;
   if (enteredCode === correctCode) {
     document.getElementById("lock-screen").style.display = "none";
-    document.querySelector(".slideshow").style.display = "block";
+    document.querySelector(".slideshow").style.display = "block"
   } else {
     alert("Incorrect passcode. Try again.");
   }
 }
 
-function toggleMute(button) {
-  const video = button.parentElement.querySelector('video');
-  if (!video) return;
-  video.muted = !video.muted;
-  button.textContent = video.muted ? '🔇' : '🔊';
-}
 
 const slides = document.querySelectorAll('.slide-content');
 const progressBar = document.getElementById('progressBar');
