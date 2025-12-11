@@ -315,3 +315,18 @@ const liveInterval = setInterval(() => {
     liveIndex++;
   }
 }, 2000); // tick every 2 seconds
+ // Initialize Clipboard.js for all buttons with class 'accesscodecopybutton'
+    var clipboard = new ClipboardJS('.accesscodecopybutton');
+
+    clipboard.on('success', function(e) {
+    const btn = e.trigger;
+    btn.innerHTML = '✓ Copied';
+    setTimeout(() => {
+      btn.innerHTML = 'Copy code';
+    }, 2000);
+    e.clearSelection();
+  });
+
+    clipboard.on('error', function(e) {
+      console.error('Copy failed:', e);
+    });

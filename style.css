@@ -1783,6 +1783,7 @@ form button {
   border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
+
 .resource-card h3 {
   font-size: var(--font-size-md);
   color:var(--color-primary);
@@ -1798,16 +1799,16 @@ form button {
 .resource-card p {
   font-size: var(--font-size-sm);
   margin: 0 0 var(--spacing-xs) 0;
-  color: #6E6E6B;
+  color: #8c8c8c;
   font-family: var(--font-family-secondary);
-  
-  
-
-  
   display: -webkit-box;
   -webkit-line-clamp: 2; /* Number of lines you want to show */
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+.resource-card p.resourcetype{
+  color:#bd9d5c;
+  font-weight: bold;
 }
 
 /* Price Box */
@@ -1823,14 +1824,24 @@ form button {
   font-size: var(--font-size-lg);
   font-weight: 600;
   font-family: var(--font-family-secondary);
-  color: var(--color-text-primary);
+  color: #019b01;
   margin-right: 10px; /* Adds space to the right of the first span */
 }
 
 .regular-price {
   font-size: var(--font-size-sm);
   text-decoration: line-through;
-  color: var(--color-text-secondary);
+  color:#f00606;
+}
+
+.passcoderequired {
+  font-size: var(--font-size-sm);
+  color:#f00606;
+}
+
+.freeresource {
+  font-size: var(--font-size-sm);
+  color:#02b429;
 }
 
 /* Responsive Breakpoints */
@@ -2201,15 +2212,15 @@ form button {
 }
 
 .findout-header h2 {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #1c1a15;
   text-align: start;
   line-height: 1.2;font-weight: normal;
-  font-family: 'Playfair Dispaly', serif;
+  font-family: 'Lato', sans-serif;
   margin-bottom: 24px;
 }
 .highlightfindout {
-   background-color: #ecf001;
+   background-color: #FEF553;
   background-image: linear-gradient(
     115deg,
     rgba(255, 255, 0, 0.15) 25%,
@@ -2217,11 +2228,10 @@ form button {
     rgba(255, 255, 0, 0.15) 75%
   );
   padding: 0 6px;
-  border-radius: 10px 3px 8px 5px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   color: #1a1a15;
-  font-weight: 600;
+  font-weight: normal;
 }
 
 
@@ -2319,9 +2329,10 @@ form button {
 }
 
 .testimonial-stars {
-  color: #f5c518; /* Gold stars */
-  font-size: 1.2rem;
+  color: #01bd1d; /* Gold stars */
+  font-size: 1.8rem;
   margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .testimonial-text {
@@ -2645,7 +2656,7 @@ form button {
 .who-box ul li {
   font-size: 1rem;
   line-height: 1.8;
-  color: #d0cfc8;
+  color: #8c8c8c;
   position: relative;
   padding-left: 20px;
   margin-bottom: 15px;
@@ -2653,13 +2664,24 @@ form button {
 }
 
 /* Add custom bullet */
-.who-box ul li::before {
-  content: '•';
+
+.who-box.left ul li::before {
+  content: '✔'; /* Unicode check mark */
   position: absolute;
   left: 0;
-  color: #fcf8ef;
+  color: #8c8c8c; /* Change color */
   font-size: 1.2rem;
 }
+
+/* Right list (X) */
+.who-box.right ul li::before {
+  content: '✖'; /* Unicode X mark */
+  position: absolute;
+  left: 0;
+  color: #8c8c8c; /* Change color */
+  font-size: 1.2rem;
+}
+
 
 
 /* Responsive */
@@ -3502,8 +3524,8 @@ a:focus {
 .inside {
   display: block;
   padding: 20px 20px;
-  background-color: #1a1a15;
-  color: #FAF8EF;
+  background-color: #FAF8EF;
+  color: #1a1a15;
 }
 
 /* Header Inside Section */
@@ -3513,7 +3535,7 @@ a:focus {
   font-family: playfair display, serif;
   letter-spacing: -1px;
   font-weight: normal;
-  color: #FAF8EF;
+  color: #1a1a15;
   font-size: 2rem;
 }
 .right-column .chapter-label {
@@ -3532,7 +3554,7 @@ a:focus {
   text-align: start;
   font-family: 'Playfair Display', serif;
   font-weight: 500;
-  color: #FAF8EF;
+  color: #1a1a15;
   margin-bottom: 1rem;
 }
 
@@ -3552,8 +3574,8 @@ a:focus {
   justify-content: center;
   gap: 30px;
   padding: 40px;
-  background-color: #1a1a15;
-  color: #FAF8EF;
+  background-color: #FAF8EF;
+  color: #1c1a15;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -3582,7 +3604,7 @@ a:focus {
   font-size: 1.4rem;
   font-family: 'Playfair Display',serif;
   font-weight: 500;
-  color: #FAF8EF;
+  color: #1c1a15;
 }
 
 .right-column p {
@@ -3590,7 +3612,7 @@ a:focus {
   text-align: start;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  color: #8F8F8C;
+  color: #1a1a15;
   line-height: 1.8;
 }
 .right-column h1{
@@ -3681,7 +3703,7 @@ a:focus {
 .early-bird h2 {
   font-family: 'Playfair Display', serif;
   font-weight: normal;
-  font-size: 2.5rem;
+  font-size: 2rem;
   letter-spacing: -1px;
   margin-bottom: 10px;
   color: #1c1a15;
@@ -3714,8 +3736,8 @@ a:focus {
   position: relative;
 }
 .descearlybird {
-  font-size: 1.2rem;
-  color: #1c1a15;
+  font-size: 1.1rem;
+  color: #8c8c8c;
   line-height: 1.8;
   text-align: center;
   font-family: 'Lato', sans-serif;
@@ -3835,7 +3857,25 @@ a:focus {
   display: block;
   font-family: lato, sans-serif;
   font-size: 0.9rem;
-  color: #bd9d5c;
+  color: #03ac0e;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.tier .save2 {
+  display: block;
+  font-family: lato, sans-serif;
+  font-size: 0.9rem;
+  color: #e0d908;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.tier .save3 {
+  display: block;
+  font-family: lato, sans-serif;
+  font-size: 0.9rem;
+  color: #e43605;
   font-weight: bold;
   margin-top: 5px;
 }
@@ -3894,64 +3934,45 @@ a:focus {
   display: flex;
   flex-direction: column; /* stacks text on top, image below */
   align-items: center;
-  padding: 30px 20px; /* reduced top/bottom padding */
+  padding: 5rem;
   background-color:#1c1a15;
+  color: #FAF8EF;
 }
 
 .text-contentsales {
   max-width: 600px;
-  text-align: start;
   color: #FAF8EF;
 }
 
-.text-contentsalestop h1 {
-  font-size: 2.5rem;
-  letter-spacing: -1px;
-  color: #bd9d5c;
+.text-contentsales h1 {
+  font-size: 1.9rem;
+  color: #e0dfda;
   text-align: center;
   font-weight: normal;
   font-family: 'Playfair Display', serif;
-  margin-top: 50px;
+  margin-top: 3rem;
+   margin-bottom: 3rem; /* reduced bottom margin */
 }
 
-.text-contentsalestop h2 {
+.text-contentsales h2 {
   font-size: 1.8rem;
   color: #FAF8EF;
-  text-align: center;
-  font-weight: normal;
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 16px; /* reduced bottom margin */
-}
-  
-.inheading{
-  font-weight: bold;
-  color: #bd9d5c; /* Red color */
-  position: relative; /* Position relative to allow for the bullet */
-}
-.text-contentsales .inparagraph {
-  font-size: 1.3rem;
-  color: #8F8F8C;
-  line-height: 1.8;
   text-align: start;
+  font-weight: normal;
   font-family: 'Lato', sans-serif;
-  margin-bottom: 40px; /* Reduced space after paragraph */
-  position: relative; /* Position relative to allow for the bullet */
+  margin-bottom: 1rem; /* reduced bottom margin */
 }
 
-
-.inheading::before {
-  content: ''; /* Required for pseudo-element */
-  position: absolute;
-  left: -40px; /* Push the circle a little to the front */
-  top: 50%;
-  transform: translateY(-50%); /* Vertically center the bullet */
+.text-contentsales p {
+  font-size: 1.2rem;
+  letter-spacing: 10%;
+  color: #8c8c8c;
+  text-align: start;
+  font-weight: normal;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 1rem; /* reduced bottom margin */
+}
   
-  width: 15px; /* Outer circle size */
-  height: 15px; /* Outer circle size */
-  border-radius: 50%; /* Make it circular */
-  background-color: rgba(239, 152, 12, 0.9); /* Transparent outer circle */
-  box-shadow: 0 0 0 5px rgba(199, 198, 198, 0.2); /* Inner circle, red with transparency */
-}
 
 /* full-screen image part */
 .fullscreen-sales img {
@@ -3962,3 +3983,534 @@ a:focus {
   padding: 0;
   border-radius: 12px; /* optional */
 }
+
+/* This is the chapter for the brand like a celebrity sales page section */
+
+
+
+.thechapters {
+  display: block;
+  padding: 20px 20px;
+  background-color: #1c1a15;
+  color: #FAF8EF;
+}
+
+/* Header Inside Section */
+.thechaptersheader h2{
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: playfair display, serif;
+  letter-spacing: -1px;
+  font-weight: normal;
+  color: #1a1a15;
+  font-size: 2rem;
+}
+
+.chapter-section {
+  max-width: 100%;
+  padding: 50px;
+  background-color: #1a1a15;
+}
+
+/* WRAPPER: 50/50 LAYOUT */
+.chapter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 15px;
+}
+
+.chapter-image {
+  flex: 1;
+}
+
+.chapter-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* RIGHT SIDE CONTENT */
+.chapter-content {
+  flex: 1;
+  align-items: flex-start; /* forces everything to align left */
+  text-align: left; /* ensures text is left-aligned too */
+  
+}
+
+.chapter-label1 {
+  color: #bd9d5c;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-align: start;
+}
+
+.chapter-title1 {
+  font-size: 1.8rem;
+  margin: 12px 0 15px;
+  text-align: start;
+  font-weight: normal;
+  color: #FAF8EF;
+  font-family: playfair display, serif;
+}
+
+.chapter-desc {
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: start;
+  margin-bottom: 10px;
+  color: #8c8c8c;
+  font-family: lat0, sans-serif;
+  opacity: 0.85;
+}
+
+/* READ MORE BUTTON */
+.readmore-btn {
+  background: none;
+  border: none;
+  color: #bd9d5c;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  text-align: start;
+  gap: 5px;
+}
+
+.readmore-btn .icon {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #b89b63;
+  border-bottom: 2px solid #b89b63;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+/* TOGGLE SYSTEM (hidden checkbox) */
+.chapter-toggle-checkbox {
+  display: none;
+}
+
+/* EXPANDING BOX + SALES STYLE MERGED */
+.chapter-more {
+  max-height: 0;
+  overflow: hidden;
+
+  /* Background + border */
+  background: #1c1a15;
+  border-left: 3px solid #b89b63;
+  border-radius: 0 0 5px 5px;
+
+  /* Typography */
+  max-width: 100%;
+  font-family: 'Lato', sans-serif;
+  text-align: start;
+  color: #FAF8EF;
+
+  /* Animation */
+  padding: 0;
+  line-height: 1.8;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+
+/* OPEN STATE */
+.chapter-toggle-checkbox:checked ~ .chapter-more {
+  max-height: 2000px; /* allow full expansion */
+  padding: 40px 60px;
+}
+
+/* Paragraphs */
+.chapter-more .inparagraph {
+  font-size: 1rem;
+  color: #8F8F8C;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Headers */
+.chapter-more .inheading {
+  font-weight: bold;
+  color: #bd9d5c;
+  position: relative;
+}
+
+/* Bullet decoration */
+.chapter-more .inheading::before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color:#bd9d5c;
+  box-shadow: 0 0 0 5px rgba(199, 198, 198, 0.2);
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 950px) {
+  .chapter-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .chapter-title {
+    font-size: 1.8rem;
+  }
+
+  .chapter-image img {
+    max-width: 90%;
+  }
+}
+
+/* This is the end of the brand like a celebrity sales page chapters section */
+
+
+
+/* Access Code Cards In Thank You Page Container */
+
+
+
+/* Intro Section */
+.accessthankyouintro {
+  display: flex;
+  flex-direction: column;   /* Stack items vertically */
+  align-items: center;      /* Center horizontally */
+  justify-content: center;  /* Center vertically if needed */
+  text-align: center;       /* Center text inside elements */
+  padding: 1rem;            /* Optional: add some padding */
+}
+.accessthankyouintro img {
+  height: 50vh;             /* 50% of viewport height */
+  width: auto;              /* Maintain aspect ratio */
+  max-width: 100%;          /* Never exceed container width */
+  display: block;           /* Remove extra space below image */
+  margin: 0 auto;           /* Center horizontally if needed */
+  object-fit: contain;      /* Fit inside container without cropping */
+  transition: transform 0.3s ease;
+}
+@media (max-width: 600px) {
+  .accessthankyouintro img {
+    height: 30vh;          /* Slightly smaller on small devices */
+  }
+}
+
+
+.accessthankyouintro h1 {
+  font-family: 'Playfair Display',serif;
+  font-weight:normal;
+  text-align: center;
+  color: #1c1a15;
+  font-size: clamp(1.8rem, 1vw, 3rem); /* Scales with viewport, min 1.2rem, max 2rem */
+  line-height: 1.2;
+  margin: 1rem 0 1rem; /* spacing above and below */
+  max-width: 600px;    /* Prevents stretching too wide on large screens */
+}
+
+
+/* Section subheading */
+.accessthankyouintro p {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  max-width: 500px;
+  text-align: center;
+  font-style: normal;
+  color: #8c8c8c;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom:2rem;
+}
+.accessthankyouintro p a {
+  color: #8c8c8c;
+}
+
+.accessthankyouintro p a:hover {
+  color: #bd9d5c;
+  font-weight: bold;
+}
+
+
+.buy-button-checkout {
+  background-color: #1c1a15; 
+  color:#FAF8EF;
+  padding: 14px 32px;
+
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buy-button-checkout:hover,
+.buy-button-checkout:focus {
+  background-color: #bd9d5c;
+  color: #1c1a15;
+  outline: none;
+  transform: scale(1.05);
+}
+
+
+
+
+.accesscontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg) var(--spacing-md);
+  background-color: var(--color-secondary);
+  box-sizing: border-box;
+}
+
+/* Intro Section */
+.accessintro {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  gap: var(--spacing-sm);
+  max-width: 900px;
+}
+
+.accessintro h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight:normal;
+  text-align: center;
+  color: #1c1a15;
+  margin: 0.5rem 0;
+  font-size: clamp(1.8rem, 3vw, 2rem);
+  line-height: 1.2;
+}
+
+/* Section subheading */
+.accessintro h3 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  color: #1a1a15;
+  margin: 0.5rem 0 2rem 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  padding-left: 1rem;   /* add horizontal padding */
+  padding-right: 1rem;
+}
+.accessintro p {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  color: #8F8F8C;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: var(--spacing-md);
+}
+.accessintro p a {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  text-align: center;
+  color: #8F8F8C;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Grid Container */
+.accessgridcontainer {
+  max-width: var(--breakpoint-lg);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  box-sizing: border-box;
+  transition: min-height 0.3s ease;
+}
+
+/* Resources Grid */
+.access-grid {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 80vh;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin: var(--spacing-md) 0 5rem;
+}
+
+/* Resource Card */
+.access-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background:#ffffff;
+  border: 0.5px solid #1a1a15;
+  border-radius: var(--radius-md);
+  width: 100%;
+  max-width: 300px;
+  min-width: 250px;
+  height: 400px;
+  text-decoration: none;
+  color: inherit;
+  overflow: visible;
+  position: relative;
+}
+
+.access-card:hover,
+.access-card:focus {
+  outline: none;
+  text-decoration: none;
+  background-color:#EAF0F6;
+}
+
+/* Card Upper */
+.accesscard-upper {
+  flex: 0 0 50%;
+  height: 50%;
+  padding: var(--spacing-xs);
+  background-color: var(--color-backgroundcard);
+  overflow: hidden;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border-bottom: 0.5px solid #1a1a15; /* light gray */
+  position: relative; /* ensures the button stays inside the card */
+
+}
+
+.accesscard-upper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+ /* Copy Button */
+  /* The Copy Button */
+ .accesscodecopybutton {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      box-shadow: #bd9d5c;
+      padding: 5px 10px;
+      font-size: 12px;
+      background-color: #db2d0e;
+      color: #FAF8EF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 10;
+      transition: 0.3s;
+    }
+  .accesscodecopybutton:hover {
+      background-color: #bd9d5c;
+      color: #1c1a15;
+    }
+
+/* Card Lower */
+.accesscard-lower {
+  flex: 1;
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-lg);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.3s ease;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.access-card h3 {
+  font-size: var(--font-size-md);
+  color:var(--color-primary);
+  font-weight: 600;
+  font-family: var(--font-family-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines you want to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.access-card p {
+  font-size: var(--font-size-sm);
+  margin: 0 0 var(--spacing-xs) 0;
+  color: #6E6E6B;
+  font-family: var(--font-family-secondary);
+  
+  
+
+  
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines you want to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Price Box */
+.accessbox {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap:var(--color-background);
+  flex-wrap: nowrap;
+}
+
+.accesscodefinal {
+  font-size: 1em;
+  font-weight: bold;
+  color: #d61a10;
+  margin-left: 5px;
+}
+
+.accessregular-price {
+  font-size: var(--font-size-sm);
+  text-decoration: line-through;
+  color: var(--color-text-secondary);
+}
+
+/* Responsive Breakpoints */
+
+/* ≥ 600px (Large phones / Small tablets) */
+@media (min-width: var(--breakpoint-sm)) {
+  .access-card {
+    max-width: 45%;
+    flex: 1 1 45%;
+  }
+}
+
+/* ≥ 1024px (Tablets / Small laptops) */
+@media (min-width: var(--breakpoint-md)) {
+  .access-card {
+    max-width: 30%;
+    flex: 1 1 30%;
+  }
+
+  .accessintro h1 {
+    font-size: 2rem;
+  }
+
+  .accessintro p {
+    font-size: 1.125rem;
+  }
+}
+
+/* ≥ 1200px (Large desktops) */
+@media (min-width: var(--breakpoint-lg)) {
+  .accesscontainer {
+    padding: var(--spacing-lg) var(--spacing-lg);
+  }
+
+  .accessintro h1 {
+    font-size: 2.5rem;
+  }
+
+  .accessintro p {
+    font-size: 1.25rem;
+  }
+}
+
+/* Utility class */
+.hidden {
+  display: none !important;
+}
+
+
+/* This is the end for the access code cards in thank you page section */

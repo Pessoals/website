@@ -1,905 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Locked Multi-Slide Video Slideshow</title>
-<style>
-:root {
-  --progress-height: 8px;
-  --progress-color: #bd9d5c;
-}
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-20NJ10DBNQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-20NJ10DBNQ');
+  </script>
 
-html, body {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #111;
-  color: #fff;
-}
-
-/* 🔒 LOCK SCREEN */
-#lock-screen {
-  position: fixed;
-  inset: 0;
-  background: #1c1a15;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 99999;
-  text-align: center;
-}
-#lock-screen h2 {
-  margin-bottom: 10px;
-  font-family: 'Playfair Display', serif;
-  font-weight: normal;
-  font-size: 2rem;
-}
-#lock-screen h1 {
-  margin-bottom: 30px;
-  font-family: 'Lato', sans-serif;
-  font-weight: normal;
-  font-size: 1rem;
-}
-#lock-screen input {
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  outline: none;
-}
-#lock-screen button {
-  padding: 10px 15px;
-  margin-left: 5px;
-  background: #bd9d5c;
-  border: none;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-#lock-screen button:hover {
-  background: #a17c4a;
-}
-
-/* Slideshow */
-.slideshow {
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  display: none;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: #000;
-}
-
-.slide-layer {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.bg-left, .bg-right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  z-index: 0;
-}
-.bg-left { left: 0; background-color: #FAF8EF; }
-.bg-right { right: 0; background-color: #1c1a15; }
-
-.slide-content {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  display: flex;
-  z-index: 2;
-  display: none;
-}
-.slide-content.active { display: flex; }
-
-.left-side, .right-side {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  padding: 5%;
-  box-sizing: border-box;
-  position: relative;
-}
-
-/* Left side background */
-.left-side {
-  background-color: #FAF8EF;
-  color: #1c1a15;
-  justify-content: center;
-  align-items: start;
-}
-
-/* Top and Bottom Headings with 1rem gap from video */
-.left-side h2.top-heading {
-  margin-bottom: 1rem;
-  font-family: 'Playfair Display', serif;
-  font-weight: normal;
-  font-size: 1.5rem;
-}
-.left-side h2.bottom-heading {
-  margin-top: 1rem;
-  font-family: 'Playfair Display', serif;
-  font-weight: normal;
-  font-size: 1.3rem;
-}
-
-.video, .slide-fg {
-  width: 100%;
-  height: auto;
-  max-height: 80%;
-  object-fit: cover;
-  border-radius: 12px;
-  background: #111a;
-  backdrop-filter: blur(6px);
-  z-index: 1;
-}
-
-.image{
-  width: 100%;
-  height: auto;
-  max-height: 80%;
-  object-fit: cover;
-  border-radius: 12px;
-  background: #111a;
-  backdrop-filter: blur(6px);
-  z-index: 1;
-}
-.audio-toggle {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  font-size: 18px;
-  padding: 6px 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 3;
-  transition: background 0.3s ease;
-}
-.audio-toggle:hover { background: rgba(0,0,0,0.7); }
-
-.video-heading {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #FAF8EF;
-  letter-spacing: -0.5px;
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 1rem;
-}
-
-.right-side {
-  background: linear-gradient(to bottom, rgba(28,26,21,0.95), rgba(28,26,21,0.8));
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 40px 30px;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.right-side .content {
-  flex-grow: 1; /* content takes available space above footer */
-}
-
-.right-side .content h1 {
-  font-size: 3rem;
-  font-weight: normal;
-  font-style: italic;
-  color: #FAF8EF;
-  margin-bottom: 1rem;
-  line-height: 80%;
-  letter-spacing: -1%;
-  font-family: 'Playfair Display', serif;
-}
-.right-side .content h2 {
-  font-size: 1.5rem;
-  font-weight: normal;
-  color: #FAF8EF;
-  margin-bottom: 1rem;
-  font-family: lato, sans-serif;
-}
-
-.right-side .content p {
-  font-size: 0.6rem;
-  color: #d0d0d0;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.rightsidebutton {
-
-  display: inline-block; /* ensures button only takes up content width */
-  width: auto;           /* overrides any width:100% from parent/global */
-  text-align: center;    /* center text inside */
-
-  color: #1c1a15;
-  width: auto;
-  background-color: #FAF8EF;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.right-side .content button:hover {
-  background-color: #bd9d5c;
-  transform: scale(1.05);
-}
-
-/* Footer aligned with logo */
-.right-side .footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 15px;
-  font-size: 13px;
-  color: #aaa;
-}
-
-.right-side .footer .logo img {
-  max-width: 50px;
-  height: auto;
-}
-
-.right-side .footer .copyright {
-  line-height: 1;
-  font-size: 0.7rem;
-  font-family: 'Lato', sans-serif;
-  letter-spacing: 0.5px;
-}
-
-.progress-track {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: var(--progress-height);
-  background: rgba(255,255,255,0.06);
-  z-index: 3;
-}
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background: var(--progress-color);
-  transition: width 220ms ease;
-}
-
-.popup {
-  position: absolute;
-  bottom: 48px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(20, 20, 20, 0.92);
-  color: #fff;
-  padding: 12px 18px;
-  border-radius: 10px;
-  font-size: 16px;
-  z-index: 4;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 220ms ease;
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-}
-.popup.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* 📱 Rotate Message Overlay */
-#rotate-message {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  color: white;
-  font-size: 1.5rem;
-  z-index: 999999;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-}
-@media (orientation: portrait) {
-  #rotate-message { display: flex; }
-  .slideshow { filter: blur(10px); pointer-events: none; }
-}
-
-/* Responsive adjustments */
-@media (max-width: 900px) {
-  .left-side, .right-side { width: 100%; padding: 20px; }
-  .video, .slide-fg { max-height: 300px; }
-  .left-side h2.top-heading,
-  .left-side h2.bottom-heading { font-size: 1.2rem; margin: 0.5rem 0; }
-}
-.right-side {
-  position: relative; /* makes positioning inside work */
-}
-
-.keyboard-hint {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem; /* distance from right edge */
-  text-align: right;
-}
-
-.keyboard-hint img {
-  width: 200px;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-}
-
-.keyboard-hint .hand {
-  position: absolute;
-  bottom: 45px;
-  right: 5px;
-  width: 50px;
-  height: 50px;
-  background: url('/Resources/The\ Most\ Insane\ Music\ Artist\ Brand\ Partnerships/thehand.png') no-repeat center/contain;
-  animation: pressKey 1.2s infinite ease-in-out;
-}
-
-@keyframes pressKey {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
-  50% { transform: translateY(5px) scale(0.97); opacity: 0.9; }
-}
-
-
-/* Left side — full-cover image */
-.visual-panel {
-  position: relative;
-  flex: 1;
-  overflow: hidden;
-}
-
-.visual-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
-
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank You</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/Images/favicon.png" type="image/x-icon">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 </head>
 <body>
 
-<!-- 🔒 Lock Screen -->
-<div id="lock-screen">
-  <h2>Enter Passcode</h2>
-  <h1>You Must Put the Password to get access to the case study.</h1>
-  <div>
-    <input type="password" id="passcode" placeholder="PASSCODE" />
-    <button onclick="unlock()">Unlock</button>
-  </div>
-</div>
-
-<!-- 🎥 Slideshow -->
-<div class="slideshow">
-  <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
-  <div class="slide-layer">
-
-<!-- Slide 1 -->
-<div class="slide-content">
-  <div class="visual-panel">
-    <img class="visual-image" src="/Resources/Brat Summer/charliiexcx.png" alt="Kanye West x Adidas">
+<section class="accesscontainer">
+  <div class="accessthankyouintro">
+    <img src="/Resources/Brand Like a Celebrity eBook/Brand like a Celebrity eBook Cover.jpg" alt="Brand Like A Celebrity eBook Cover">
+    <h1>Thank you for purchasing this eBook.</h1>
+    <p>Click the download button below to start your download immediately. If it doesn’t start, please contact us at <a href="mailto:hello@pessoals.com">hello@pessoals.com</a>.</p>
+    <a href="/Resources/Brand Like a Celebrity eBook/Brand Like a Celebrity.pdf" class="buy-button1" download>Download</a>
   </div>
 
-  <div class="right-side">
-    <div class="content">
-      <h1>What to know about 'brat summer,' the trend taking over pop culture and politics and what artists can learn from brat's genius marketing.</h1>
-      <p> STORY DURATION: 4 MIN</p>
-
-
-      <!-- 🔽 Keyboard Arrow Hint on RIGHT SIDE -->
-      <div class="keyboard-hint">
-        <img src="/Resources/The Most Insane Music Artist Brand Partnerships/keyboard.png" alt="Keyboard Arrows">
-        <div class="hand"></div>
-      </div>
-    </div>
-
-    <div class="footer">
-      <div class="logo">
-        <img src="/Images/pessoalslogo.svg" alt="Logo">
-      </div>
-      <div class="copyright">© 2025 Pessoals </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Slide 2 -->
-<div class="slide-content">
-  <div class="visual-panel">
-    <img class="visual-image" src="/Resources/Brat Summer/info01.webp" alt="Kanye West x Adidas">
+  <div class="accessintro">
+    <h1>Access Codes For The Bonus Resources</h1>
+    <h3>As promised, here are your additional resources designed to take your learning further and provide real-world insights. We've also sent the access codes to your email. In the meantime, you can take a look at the codes here.</h3>
   </div>
 
-  <div class="right-side">
-        <div class="content">
-          <h2>On June 7, the 32-year-old singer released the album Brat, which has dominated pop culture at every level, from underground clubs to mini crossword clues, and lime green is everywhere. Brat Summer is a vibe coined from Charli XCX’s newest album Brat that’s absolutely smashed charts around the world (and I have to admit, it’s a bloody vibe).</h2>
-          <p>Guess what? Collins Dictionary just named “brat” its 2024 word of the year! 🥳 It means being confident, independent, and fun-loving.
-
-Charli XCX’s album Brat has taken over pop culture — from TikTok dances to fashion trends — making this summer the official “Brat Summer.” Even though summer’s over, the vibe continues with “Brat Autumn” celebrations, a remix album, and her Sweat tour with Troye Sivan.
-
-Basically? Brat is everywhere 💚</p>
+  <div class="accessgridcontainer">
+    <div class="access-grid">
+      <!-- Resource Card 1 -->
+      <a class="access-card" data-category="Case Study" data-title="The Aligned Brand Infographic" data-description="A guide to aligning your visuals, messaging, and values, so every part of your brand works together seamlessly." data-image="Resource/The Aligned Brand Infographic/The Aligned Brand Cover.png" data-sale="$" data-regular="$" data-url="/Resources/Brat Summer/bratsummer.html" onclick="event.preventDefault(); showModal(this);">
+        <div class="accesscard-upper">
+          <video src="/Resources/Brat Summer/intro.mp4" autoplay muted loop playsinline style="width:100%; height:auto; border-radius:8px;">Your browser does not support the video tag.</video>
+          <button class="accesscodecopybutton" data-clipboard-text="BRAT922">Copy</button>
         </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
+        <div class="accesscard-lower">
+          <p>Case Study</p>
+          <h3>Brat Genius Marketing Masterclass</h3>
+          <p>A guide to aligning your visuals, messaging, and values, so every part of your brand works together seamlessly.</p>
+          <div class="accessbox">
+            <span>Access Code</span>
+            <span class="accesscodefinal">BRAT922</span>
           </div>
-          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
         </div>
-      </div>
-</div>
+      </a>
 
-<!-- Slide 3 -->
-<div class="slide-content">
-  <div class="visual-panel">
-    <img class="visual-image" src="/Resources/Brat Summer/info.mp4" alt="Kanye West x Adidas">
+      <!-- Resource Card 2 -->
+      <a class="access-card" data-category="Infographic" data-title="The Three Layer of Content Marketing Infographic" data-description="An easy-to-follow framework that explains the three layers of content marketing and how they work together to grow your brand." data-image="Resource/The Three Layers of Content Marketing/The Three Layers of Marketing Cover.png" data-sale="$" data-regular="$" data-url="/Resources/The Three Layers of Content Marketing Infographic/thethreelayersofcontentmarketing.html" onclick="event.preventDefault(); showModal(this);">
+        <div class="accesscard-upper">
+          <img src="/Resources/The Three Layers of Content Marketing Infographic/The Three Layers of Content Marketing Guide Cover.png" alt="Personal Brand Voice Cheat Sheet Cover.png">
+          <button class="accesscodecopybutton" data-clipboard-text="BRAT922">Copy</button>
+        </div>
+        <div class="accesscard-lower">
+          <p>Infographic</p>
+          <h3>The Three Layers of Content Marketing</h3>
+          <p>An easy-to-follow framework that explains the three layers of content marketing and how they work together to grow your brand.</p>
+          <div class="accessbox">
+            <span>Access Code</span>
+            <span class="accesscodefinal">BRAT922</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Resource Card 3 -->
+      <a class="access-card" data-category="Infographic" data-title="The Aligned Brand Infographic" data-description="A guide to aligning your visuals, messaging, and values, so every part of your brand works together seamlessly." data-image="Resource/The Aligned Brand Infographic/The Aligned Brand Cover.png" data-sale="$" data-regular="$" data-url="/Resources/The Aligned Brand Infographic/thealignedbrand.html" onclick="event.preventDefault(); showModal(this);">
+        <div class="accesscard-upper">
+          <img src="/Resources/The Aligned Brand Infographic/The Aligned Brand Cover.png" alt="The Aligned Brand Infographic Cover.png">
+          <button class="accesscodecopybutton" data-clipboard-text="BRAT922">Copy</button>
+        </div>
+        <div class="accesscard-lower">
+          <p>Infographic</p>
+          <h3>The Aligned Brand</h3>
+          <p>A guide to aligning your visuals, messaging, and values, so every part of your brand works together seamlessly.</p>
+          <div class="accessbox">
+            <span>Access Code</span>
+            <span class="accesscodefinal">BRAT922</span>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 
-  <div class="right-side">
-        <div class="content">
-          <h2>According to the singer, a brat is “that girl who is a little messy, likes to party, and maybe says some dumb things sometimes. Brat Summer can be quite luxurious, but she mainly characterized it as trashy: ‘Just, like, a pack of cigs, and, like, a Bic lighter, and, like, a strappy white top with no bra. That’s, like, kind of all you need.’”</h2>
-          <h2>Charli XCX further explained: “It’s about someone who feels like herself but maybe also has a breakdown. But kind of, like, parties through it, is very honest, very blunt, a little bit volatile, does dumb things — but it’s brat. You’re brat. That’s brat.”</h2>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
-        </div>
-      </div>
-</div>
+  <a href="index.html" class="buy-button1">Back to Homepage</a>
+</section>
 
- <!-- Slide 4 -->
-<div class="slide-content">
-      <div class="left-side">
-        <h2 class="top-heading">Megan Thee Stallion X Popeyes</h2>
-        <video class="slide-fg" autoplay muted loop src="/Resources/Brat Summer/info1.mp4"></video>
-        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
-        <h2 class="bottom-heading">Brand Partnerships</h2>
-      </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>“Brat green” quickly became the color of the season, a far cry from last summer’s ubiquitous Barbie pink.
-
-For some New Yorkers, brat green is inescapable: Charli XCX kicked off the "Brat" album release with a live performance in front of a giant green wall in Williamsburg.</h2>
-          <p>Megan’s social media post, which generated significant buzz, highlighted her commitment to the project as she expressed her eagerness to visit the stores before they opened their doors to the public. This personal touch not only strengthened her connection with her fans but also emphasized her active role in the business, showcasing that her collaboration with Popeyes went far beyond a mere endorsement.</p>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
-        </div>
-      </div>
-</div>
-
-<!-- Slide 5 -->
-<div class="slide-content">
-  
-      <div class="left-side">
-        <h2 class="top-heading">Megan Thee Stallion X Popeyes</h2>
-        <video class="slide-fg" autoplay muted loop src="/Resources/Brat Summer/info5.mp4"></video>
-
-        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
-        <h2 class="bottom-heading">Brand Partnerships</h2>
-      </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>One of the most viral brat trends on TikTok is a high-energy dance routine to the song “Apple” from the album. 
-            TikTok creator Kelley Heyer, a longtime Charli XCX fan, created a dance routine to “Apple” that quickly went viral among the singer's fan base. 
-          </h2>
-          <h2>
-            Heyer was “starstruck” to see her idol performing her choreography. 
-            “It makes me so happy,” Heyer said. “It’s so cool how everyone has elevated my dance into something so much bigger.”
-            To Heyer, “brat is everything.” The brat ethos, as she describes it, involves elements of partying, authenticity and community.
-            “Brat is party, brat is fun, brat is messy, brat is sexy. Brat can be anything,” she said.
-          </h2>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
-        </div>
-      </div>
+<footer class="footer-main">
+  <div class="container">
+    <div class="footer-links">
+      <a href="privacypolicy.html">Privacy Policy</a>
+      <a href="cookiespolicy.html">Cookie Policy</a>
+      <a href="privacypolicy.html">Your Privacy Choices</a>
+      <p>Copyright ©2025 – Pessoals. All Rights Reserved</p>
     </div>
-
-
-<!-- Slide 6 -->
-<div class="slide-content">
-      <div class="left-side">
-        <h2 class="top-heading">Charli xcx & Atlantic Record Brat Generator Webstie </h2>
-        <video class="slide-fg" autoplay muted loop src="/Resources/Brat Summer/info2.mp4"></video>
-        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
-        <h2 class="bottom-heading">Brand Partnerships</h2>
-      </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>After the album's cover art started to gain traction online, Charli XCX and Atlantic Records created a website called "Brat Generator", allowing users to make images with custom text in the same style as the cover. </h2>
-          <h2>As noted by Hofstra Chronicle, the website's simple user interface helped parodies of the cover go viral.</h2>
-          <h2>Brandon Davis, head of A&R at Atlantic Records, also believed that the website helped expand the album's "cultural cachet.</h2>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
-        </div>
-      </div>
-    </div>
-
-<!-- Slide 7 -->
-<div class="slide-content">
-       <div class="visual-panel">
-    <img class="visual-image" src="/Resources/Brat Summer/info3.jpg" alt="Kanye West x Adidas">
   </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>After then-US president Joe Biden announced he would not seek re-election in 2024 and endorsed Kamala Harris as the Democratic nominee, Charli XCX tweeted "kamala IS brat" on Twitter.</h2>
-          <h2>Shortly after, the official Biden-Harris campaign account rebranded itself as "Kamala HQ", updating its banner to mimic the Brat album cover.[8][3][1][10] While Charli XCX clarified that her tweet was not a formal endorsement, she added that she was "happy to help prevent democracy from failing forever.</h2>
-          <p>The campaign launched in October 2021 with a Western-themed short film and other creative marketing materials, such as music video-style ads.</p>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">© 2025 Pessoals</div>
-        </div>
-      </div>
-    </div>
+</footer>
 
-<!-- Slide 8 -->
-<div class="slide-content active">
-      <div class="left-side">
-        <h2 class="top-heading">Sabrina Carpenter x Dunkin</h2>
-        <video class="slide-fg" autoplay muted loop src="/Resources/Brat Summer/info4.mp4"></video>
-        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
-        <h2 class="bottom-heading">Brand Partnerships</h2>
-      </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>"Brat" edits of Harris went viral on TikTok and Instagram, with users pairing clips of remarks such as "I love Venn diagrams" and "you think you just fell out of a coconut tree?" with Charli XCX's music.</h2>
-          <h2>Ryan Long, who helped popularize the meme format, felt that Harris "does such a good job at embodying what people call 'Brat summer.' The way she presents herself, she's happy, laughing, she'll dance. She is like a walking content farm." </h2>
-          <h2>BBC felt that the campaign's adoption of the movement helped Harris appeal to younger voting demographics, "who now, thanks in part to Charli XCX, see her as the 'cool girl' option."</h2>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">© 2025 PESSOALS</div>
-        </div>
-      </div>
-    </div>
-
-
-<!-- Slide 9 -->
-<div class="slide-content active">
-      <div class="visual-panel">
-    <img class="visual-image" src="/Resources/Brat Summer/info6.png" alt="Kanye West x Adidas">
-  </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>Much of Brat's virality was due to its heavy promotion. In the weeks leading up to the album's release, a wall in Greenpoint, Brooklyn (called the "brat wall" by fans) was painted and repainted with the album's signature green color and various messages.</h2>
-          <h2>Over the summer, its messages changed frequently in line with the album's promotional cycle, such as the lyrics from the song "360" (2024) or the name of its accompanying remix album. </h2>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">© 2025 PESSOALS</div>
-        </div>
-      </div>
-    </div>
-
-<!-- Slide 9 -->
-<div class="slide-content active">
-      <div class="visual-panel">
-    <img class="visual-image" src="/Resources/Brat Summer/info6.png" alt="Kanye West x Adidas">
-  </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>Much of Brat's virality was due to its heavy promotion. In the weeks leading up to the album's release, a wall in Greenpoint, Brooklyn (called the "brat wall" by fans) was painted and repainted with the album's signature green color and various messages.</h2>
-          <h2>Over the summer, its messages changed frequently in line with the album's promotional cycle, such as the lyrics from the song "360" (2024) or the name of its accompanying remix album. </h2>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">© 2025 PESSOALS</div>
-        </div>
-      </div>
-    </div>
-
-
-<!-- Slide 10 -->
-<div class="slide-content">
-      <div class="visual-panel">
-    <img class="visual-image" src="/Resources/Brat Summer/info10.png" alt="Kanye West x Adidas">
-  </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>In November 2024, Collins Dictionary named "brat" the 2024 Word of the Year, defining the term as "a confident, independent, and hedonistic attitude." A blog post by the dictionary called it a "fitting" term for the year, where "hedonism and anxiety have combined to form an intoxicating brew.</h2>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">© 2025 Pessoals</div>
-        </div>
-      </div>
-    </div>
-
-<!-- Slide 11 -->
-<div class="slide-content">
-      <div class="left-side">
-        <h2 class="top-heading">Katy Perry X The Sims</h2>
-        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info7.mp4"></video>
-        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
-        <h2 class="bottom-heading">Brand Partnerships</h2>
-      </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>In 2012, Katy Perry recorded a Simlish version of her hit “Last Friday Night (T.G.I.F.)” for The Sims 3: Katy Perry’s Sweet Treats expansion pack.</h2>
-          <p>This collaboration aligned with her vibrant, candy-themed aesthetic, promoting the dessert-inspired content. The Simlish rendition, sung in the game’s gibberish language, became iconic among fans.
-The recording was part of Perry’s broader partnership with The Sims franchise, including The Sims 3: Showtime. Released in June 2012, the Simlish track added a playful element to the game’s radio, sparking memes and fan enthusiasm online. It remains a nostalgic highlight for Sims players. Overall, the collaboration successfully married Perry’s celebrity identity with The Sims’ playful and expressive platform. By integrating her fashion sense and music into the game, Perry enhanced the brand’s appeal while reinforcing her own image as an innovative, fun, and engaging artist willing to push creative boundaries.</p>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">© 2025 Pessoals</div>
-        </div>
-      </div>
-    </div>
-
-
-<!-- Slide 12 -->
-<div class="slide-content">
-      <div class="left-side">
-        <h2 class="top-heading">Travis Scott x Mcdonalds</h2>
-        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info8.mp4"></video>
-        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
-        <h2 class="bottom-heading">Brand Partnerships</h2>
-      </div>
-      <div class="right-side">
-       <div class="content">
-        <h1 class="top-heading">Travis Scott x Mcdonalds</h1>
-          <h2>The Popeyes x Megan Thee Stallion collaboration is a bold example of brand alignment, with some controversial elements.</h2>
-          <p>Popeyes, known for its raw and unpolished identity, was fully embraced by Megan, who built a storyline around it. The ‘Hottie Sauce’ concept perfectly complements her bold and fiery persona.</p>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="logo2.png" alt="Logo">
-          </div>
-          <div class="copyright">© 2025 Your Company</div>
-        </div>
-      </div>
-    </div>
-
-<!-- Slide 13 -->
-<div class="slide-content">
-      <div class="left-side">
-        <h2 class="top-heading">Travis Scott x Mcdonalds</h2>
-        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info9.mp4"></video>
-        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
-        <h2 class="bottom-heading">Brand Partnerships</h2>
-      </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>Roblox is primarily a platform designed for children, while Ice Spice’s image is clearly not suited for younger audiences.</h2>
-          <p>Editable content for slide 2. You can put buttons, links, text, anything.</p>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="logo2.png" alt="Logo">
-          </div>
-          <div class="copyright">© 2025 Your Company</div>
-        </div>
-      </div>
-    </div>
-
-
-<!-- Slide 14 -->
-<div class="slide-content">
-      <div class="left-side">
-        <h2 class="top-heading">Travis Scott x Mcdonalds</h2>
-        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info10.mp4"></video>
-        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
-        <h2 class="bottom-heading">Brand Partnerships</h2>
-      </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>Roblox is primarily a platform designed for children, while Ice Spice’s image is clearly not suited for younger audiences.</h2>
-          <p>Editable content for slide 2. You can put buttons, links, text, anything.</p>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="logo2.png" alt="Logo">
-          </div>
-          <div class="copyright">© 2025 Your Company</div>
-        </div>
-      </div>
-    </div>
-
-<!-- Slide 15 -->
-<div class="slide-content">
-      <div class="left-side">
-        <h2 class="top-heading">Travis Scott x Mcdonalds</h2>
-        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info11.mp4"></video>
-        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
-        <h2 class="bottom-heading">Brand Partnerships</h2>
-      </div>
-      <div class="right-side">
-        <div class="content">
-          <h1 class="top-heading">Kanye West X Adidas</h1>
-          <h2>Roblox is primarily a platform designed for children, while Ice Spice’s image is clearly not suited for younger audiences.</h2>
-          <p>Editable content for slide 2. You can put buttons, links, text, anything.</p>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="logo2.png" alt="Logo">
-          </div>
-          <div class="copyright">© 2025 Your Company</div>
-        </div>
-      </div>
-    </div>
-
-<!-- Slide 16 -->
-<div class="slide-content">
-      <div class="left-side">
-        <h2 class="top-heading">Travis Scott x Mcdonalds</h2>
-        <video class="slide-fg" autoplay muted loop src="/Resources/The Most Insane Music Artist Brand Partnerships/info12.mp4"></video>
-        <button class="audio-toggle" onclick="toggleMute(this)">🔇</button>
-        <h2 class="bottom-heading">Brand Partnerships</h2>
-      </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>Roblox is primarily a platform designed for children, while Ice Spice’s image is clearly not suited for younger audiences.</h2>
-          <p>Editable content for slide 2. You can put buttons, links, text, anything.</p>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="logo2.png" alt="Logo">
-          </div>
-          <div class="copyright">© 2025 Your Company</div>
-        </div>
-      </div>
-    </div>
-
-<!-- Slide 17 -->
-<div class="slide-content">
-     <div class="visual-panel">
-    <img class="visual-image" src="/Resources/Inside the Visual Identity and Aesthetic Strategy of an Artist’s Personal Brand Case Study/When we fall asleep.png" alt="Kanye West x Adidas">
-  </div>
-      <div class="right-side">
-        <div class="content">
-          <h2>Roblox is primarily a platform designed for children, while Ice Spice’s image is clearly not suited for younger audiences.</h2>
-          <p>Editable content for slide 2. You can put buttons, links, text, anything.</p>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="logo2.png" alt="Logo">
-          </div>
-          <div class="copyright">© 2025 Your Company</div>
-        </div>
-      </div>
-    </div>
-
-<!-- Slide 18 -->
-<div class="slide-content">
-  <div class="visual-panel">
-    <img class="visual-image" src="/Resources/Brand Like a Celebrity eBook/greenmockup.png" alt="Kanye West x Adidas">
-  </div>
-
-  <div class="right-side">
-        <div class="content">
-          <h1 class="top-heading">Hold On.</h1>
-          <h2>It Includes a Proven Strategy Used by Hollywood Celebrities to Create Irresistible Buzz Around Your Music and Help You Stand Out From the Competition.</h2>
-          <p>HOW TO CRAFT A MAGNETIC PERSONAL BRAND AS AN ARTIST AND MARKET YOUR MUSIC WITH EXAMPLES FROM SUCCESSFUL ARTISTS.</p>
-          <a  class="rightsidebutton" href="/Resources/Brand Like a Celebrity eBook/brandlikeacelebrity.html">Learn More</a>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">©2025 Pessoals. All Rights Reserved</div>
-        </div>
-      </div>
-</div>
-
-
-
-
-  </div>
-
-  <div id="popup" class="popup">
-    <span class="hint-emoji">⬅️➡️</span>
-    <span>Use your arrow keys to watch the story</span>
-  </div>
-</div>
-
-<!-- 📱 Rotate Message -->
-<div id="rotate-message">
-  <p>🔄 Please rotate your device for the best experience</p>
-</div>
-
+<script src="/script.js"></script>
 <script>
-const correctCode = "9";
-function unlock() {
-  const enteredCode = document.getElementById("passcode").value;
-  if (enteredCode === correctCode) {
-    document.getElementById("lock-screen").style.display = "none";
-    document.querySelector(".slideshow").style.display = "block";
-  } else {
-    alert("Incorrect passcode. Try again.");
-  }
-}
+  // Clipboard.js initialization
+  var clipboard = new ClipboardJS('.accesscodecopybutton');
 
-function toggleMute(button) {
-  const video = button.parentElement.querySelector('video');
-  if (!video) return;
-  video.muted = !video.muted;
-  button.textContent = video.muted ? '🔇' : '🔊';
-}
+  clipboard.on('success', function(e) {
+    console.log('Text copied to clipboard: ' + e.text); // Debugging message
 
-const slides = document.querySelectorAll('.slide-content');
-const progressBar = document.getElementById('progressBar');
-const popup = document.getElementById('popup');
-let currentIndex = 0;
+    // Change button text to 'Copied' with a checkmark
+    const btn = e.trigger;
+    btn.textContent = 'Copied ✔';
+    btn.classList.add('copied');
 
-function showSlide(index) {
-  if (index < 0) index = slides.length - 1;
-  if (index >= slides.length) index = 0;
-  currentIndex = index;
-
-  slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex));
-  slides.forEach(slide => {
-    const video = slide.querySelector('video');
-    if (video) video.pause();
+    // Reset the button text after 2 seconds
+    setTimeout(function() {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
   });
 
-  const currentVideo = slides[currentIndex].querySelector('video');
-  if (currentVideo) {
-    currentVideo.muted = false;
-    currentVideo.play().catch(() => console.log('User interaction required to play sound.'));
-  }
-
-  progressBar.style.width = ((currentIndex + 1) / slides.length) * 100 + '%';
-
-  if (currentIndex === 0) {
-    popup.classList.add('show');
-    setTimeout(() => popup.classList.remove('show'), 3000);
-  }
-}
-
-document.addEventListener('click', () => {
-  const currentVideo = slides[currentIndex].querySelector('video');
-  if (currentVideo) currentVideo.play();
-});
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight') showSlide(currentIndex + 1);
-  if (e.key === 'ArrowLeft') showSlide(currentIndex - 1);
-});
-
-showSlide(0);
+  clipboard.on('error', function(e) {
+    console.error('Failed to copy text: ' + e.action); // Debugging message
+  });
 </script>
+
 </body>
 </html>
