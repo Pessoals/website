@@ -1949,7 +1949,6 @@ form button {
   text-decoration: underline;
 }
 
-/* Button styles unchanged */
 .button-container {
   display: flex;
   justify-content: center;
@@ -1958,23 +1957,36 @@ form button {
 .buy-button1 {
   background-color: #1c1a15;
   color: #FAF8EF;
-  padding: 14px 32px;
-   margin-top: 20px;
+  padding: 12px 20px; /* slightly smaller padding for mobile */
+  margin-top: 20px;
   font-size: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  white-space: nowrap;
+  white-space: normal; /* allow wrapping */
+  max-width: 90%; /* prevent overflow on mobile */
+  text-align: center; /* center text if it wraps */
+  box-sizing: border-box; 
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Hover (desktop) */
 .buy-button1:hover,
 .buy-button1:focus {
   background-color: #bd9d5c;
-  color: #1c1a15;
+  color: #1a1a15;
   outline: none;
   transform: scale(1.05);
 }
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .buy-button2 {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+}
+
 
 /* Image styling */
 .hero img {
@@ -2112,7 +2124,7 @@ form button {
   }
 }
 .featured {
-  padding: 40px 20px;
+  padding-top: 50px;
   text-align: center;
   background-color: #FAF8EF; /* light background for premium feel */
 }
@@ -2180,8 +2192,8 @@ form button {
     margin-bottom: 25px;
   }
   .logo-wrapper {
-    flex-direction: column;
-    gap: 20px;
+    flex-direction:row;
+    gap: 10px;
   }
   .logo-wrapper img {
     width: 100px;
@@ -2208,17 +2220,30 @@ form button {
 }
 
 .container-findout {
-  max-width: 800px;
+  max-width: 650px;
 }
 
-.findout-header h2 {
+.findout-header h1 {
+  font-size: 2.4rem;
+  color: #1c1a15;
+  text-align: center;
+  font-weight: normal;
+  font-family: 'Playfair Display', serif;
+  margin-top: 3rem;
+   margin-bottom: 3rem; /* reduced bottom margin */
+}
+
+.findout-header p {
   font-size: 1.5rem;
+  word-spacing: 0.1rem;
+  line-height: 1.9;
   color: #1c1a15;
   text-align: start;
-  line-height: 1.2;font-weight: normal;
+  font-weight:normal;
   font-family: 'Lato', sans-serif;
-  margin-bottom: 24px;
+  margin-bottom: 1.4rem; /* reduced bottom margin */
 }
+
 .highlightfindout {
    background-color: #FEF553;
   background-image: linear-gradient(
@@ -2235,7 +2260,6 @@ form button {
 }
 
 
-/* Button styles unchanged */
 .button-container {
   display: flex;
   justify-content: center;
@@ -2244,16 +2268,20 @@ form button {
 .buy-button2 {
   background-color: #FAF8EF;
   color: #1a1a15;
-  padding: 14px 32px;
+  padding: 12px 20px; /* slightly smaller padding for mobile */
   margin-top: 20px;
   font-size: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  white-space: nowrap;
+  white-space: normal; /* allow wrapping */
+  max-width: 90%; /* prevent overflow on mobile */
+  text-align: center; /* center text if it wraps */
+  box-sizing: border-box; 
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Hover (desktop) */
 .buy-button2:hover,
 .buy-button2:focus {
   background-color: #bd9d5c;
@@ -2261,6 +2289,15 @@ form button {
   outline: none;
   transform: scale(1.05);
 }
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .buy-button2 {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+}
+
 
 /* Responsive */
 
@@ -2639,10 +2676,9 @@ form button {
 }
 
 .who-box h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: normal;
-  letter-spacing: -1px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 25px;
   color: #fcf8ef;
   text-align: left;
@@ -3930,14 +3966,55 @@ a:focus {
   .progress-container {
     max-width: 90%; 
   }
-}.fullscreen-sales {
+}
+ .fullscreen-sales {
   display: flex;
   flex-direction: column; /* stacks text on top, image below */
   align-items: center;
-  padding: 5rem;
-  background-color:#1c1a15;
+  padding: 5rem;           /* default for desktop */
+  background-color: #1c1a15;
   color: #FAF8EF;
 }
+.salestop {
+  max-width: 650px;
+  color: #FAF8EF;
+  margin-bottom: 3rem; /* space between text and image */
+}
+.salestop h1{
+   font-size: 2.4rem;
+  color: #e0dfda;
+  text-align: center;
+  font-weight: normal;
+  font-family: 'Playfair Display', serif;
+  margin-top: 3rem;
+   margin-bottom: 3rem; /* reduced bottom margin */
+}
+.salestop p{
+  font-size: 1.5rem;
+  word-spacing: 0.1rem;
+  line-height: 1.9;
+  color: #8F8F8C;
+  text-align: start;
+  font-weight:normal;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 1.4rem; /* reduced bottom margin */
+}
+
+/* RESPONSIVE FOR SMALLER SCREENS */
+@media (max-width: 768px) {
+  .fullscreen-sales {
+    padding: 3rem 2rem;    /* smaller padding on mobile */
+  }
+
+  /* Optional: center text and reduce font size */
+  .fullscreen-sales h1,
+  .fullscreen-sales h2,
+  .fullscreen-sales p {
+    text-align: center;
+    font-size: 90%;        /* scale down text slightly */
+  }
+}
+
 
 .text-contentsales {
   max-width: 600px;
@@ -3954,23 +4031,25 @@ a:focus {
    margin-bottom: 3rem; /* reduced bottom margin */
 }
 
-.text-contentsales h2 {
-  font-size: 1.8rem;
-  color: #FAF8EF;
-  text-align: start;
+.text-contentsales h1 {
+  font-size: 2.4rem;
+  color: #e0dfda;
+  text-align: center;
   font-weight: normal;
-  font-family: 'Lato', sans-serif;
-  margin-bottom: 1rem; /* reduced bottom margin */
+  font-family: 'Playfair Display', serif;
+  margin-top: 3rem;
+   margin-bottom: 3rem; /* reduced bottom margin */
 }
 
 .text-contentsales p {
-  font-size: 1.2rem;
-  letter-spacing: 10%;
-  color: #8c8c8c;
+  font-size: 1.5rem;
+  word-spacing: 0.1rem;
+  line-height: 1.9;
+  color: #8F8F8C;
   text-align: start;
-  font-weight: normal;
+  font-weight:normal;
   font-family: 'Lato', sans-serif;
-  margin-bottom: 1rem; /* reduced bottom margin */
+  margin-bottom: 1.4rem; /* reduced bottom margin */
 }
   
 
@@ -3987,10 +4066,9 @@ a:focus {
 /* This is the chapter for the brand like a celebrity sales page section */
 
 
-
 .thechapters {
   display: block;
-  padding: 20px 20px;
+  padding: 50px 20px; /* default padding for desktop */
   background-color: #1c1a15;
   color: #FAF8EF;
 }
@@ -4033,9 +4111,8 @@ a:focus {
 /* RIGHT SIDE CONTENT */
 .chapter-content {
   flex: 1;
-  align-items: flex-start; /* forces everything to align left */
-  text-align: left; /* ensures text is left-aligned too */
-  
+  align-items: flex-start;
+  text-align: left;
 }
 
 .chapter-label1 {
@@ -4061,7 +4138,7 @@ a:focus {
   text-align: start;
   margin-bottom: 10px;
   color: #8c8c8c;
-  font-family: lat0, sans-serif;
+  font-family: lato, sans-serif;
   opacity: 0.85;
 }
 
@@ -4094,23 +4171,17 @@ a:focus {
   display: none;
 }
 
-/* EXPANDING BOX + SALES STYLE MERGED */
+/* EXPANDING BOX */
 .chapter-more {
   max-height: 0;
   overflow: hidden;
-
-  /* Background + border */
   background: #1c1a15;
   border-left: 3px solid #b89b63;
   border-radius: 0 0 5px 5px;
-
-  /* Typography */
   max-width: 100%;
   font-family: 'Lato', sans-serif;
   text-align: start;
   color: #FAF8EF;
-
-  /* Animation */
   padding: 0;
   line-height: 1.8;
   transition: all 0.3s ease;
@@ -4119,7 +4190,7 @@ a:focus {
 
 /* OPEN STATE */
 .chapter-toggle-checkbox:checked ~ .chapter-more {
-  max-height: 2000px; /* allow full expansion */
+  max-height: 2000px;
   padding: 40px 60px;
 }
 
@@ -4152,22 +4223,65 @@ a:focus {
   box-shadow: 0 0 0 5px rgba(199, 198, 198, 0.2);
 }
 
+/* ----------------------------------
+   RESPONSIVE (MOBILE)
+---------------------------------- */
+@media (max-width: 768px) {
 
-/* RESPONSIVE */
-@media (max-width: 950px) {
+  /* Make the entire section responsive */
+  .thechapters {
+    height: auto;
+    padding: 40px 1.5rem;
+  }
+
+  .chapter-section {
+    padding: 20px 15px;
+  }
+
+  /* Wrapper becomes vertical */
   .chapter-wrapper {
     flex-direction: column;
     text-align: center;
+    gap: 30px;
   }
 
-  .chapter-title {
-    font-size: 1.8rem;
-  }
-
+  /* Images */
   .chapter-image img {
-    max-width: 90%;
+    max-width: 100%;
+  }
+
+  /* Titles */
+  .chapter-title1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  /* Content */
+  .chapter-content {
+    text-align: center;
+    align-items: center;
+  }
+
+  /* Read more box adjustments for desktop */
+  .chapter-more {
+    border-left: none;
+    border-radius: 5px;
+    padding: 15px 20px;
+  }
+
+  /* Bullet fixes */
+  .chapter-more .inheading::before {
+    left: 0;
+  }
+
+  /* ⛔ HIDE read more + expanded content + checkbox */
+  .readmore-btn,
+  .chapter-more,
+  .chapter-toggle-checkbox {
+    display: none !important;
   }
 }
+
 
 /* This is the end of the brand like a celebrity sales page chapters section */
 
