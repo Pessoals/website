@@ -330,3 +330,23 @@ const liveInterval = setInterval(() => {
     clipboard.on('error', function(e) {
       console.error('Copy failed:', e);
     });
+     // Total number of copies and how many are sold
+  const totalCopies = 50;
+  const soldCopies = 37;
+
+  // Access the progress container where segments will be added
+  const container = document.getElementById('progress');
+
+  // Create 50 segments based on sold and remaining copies
+  for (let i = 1; i <= totalCopies; i++) {
+    const segment = document.createElement('div');
+    segment.classList.add('segment');
+    
+    // If the segment is sold, mark it as sold
+    if (i <= soldCopies) {
+      segment.classList.add('sold');
+    }
+    
+    // Append the segment to the container
+    container.appendChild(segment);
+  }

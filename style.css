@@ -417,7 +417,7 @@ nav ul li a:hover::after {
 .work-info h3 {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   color: #FAF8EF;
   font-size: 1.5rem;
   margin-bottom: 0.2rem;
@@ -551,18 +551,18 @@ nav ul li a:hover::after {
 }
 
 .leftcolumn h2 {
-  font-size: 1.2rem;
-  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  font-family: 'Playfair Display',serif;
   font-weight: 500;
   color: #FAF8EF;
   margin-bottom: 15px;
 }
 
 .leftcolumn h3 {
-  font-size: 16px;
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-weight: 400;
+  font-size: 1.2rem;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: normal;
   color: #8F8F8C;
   margin-bottom: -1rem;
 }
@@ -656,7 +656,6 @@ nav ul li a:hover::after {
   color: #1c1a15;
   margin: 1rem 0;
   font-size: clamp(2rem, 3vw, 2.2rem);
-
   line-height: 1.2;
 }
 
@@ -686,7 +685,6 @@ nav ul li a:hover::after {
 /* Pricing Card */
 .pricing-card {
   background-color: #1c1a15;
-  border-radius: 12px;
   padding: 2rem 1.5rem;
   text-align: center;
   width: 500px;
@@ -1433,12 +1431,13 @@ nav ul li a:hover::after {
 
 /* Buttons */
 .btncontact {
-  background: #FAF8EF;
+  background-color: #FAF8EF;
+  text-decoration: none;
   color: #1a1a15;
+  border: 1.5px solid #FAF8EF;
   padding: 0.75rem 1.5rem;
   display: inline-block;
   margin-top: 1rem;
-  border-radius: 0.5em;
   transition: all 0.2s;
   cursor: pointer;
   text-align: center;
@@ -1446,7 +1445,7 @@ nav ul li a:hover::after {
 }
 
 .btncontact:hover {
-  background: #8F8F8C;
+  background: #1c1a15;
   color: #FAF8EF;
 }
 
@@ -1487,13 +1486,11 @@ form textarea {
 
 form button {
   width:auto;
-  padding: 0.75rem 1.5rem;
   font-family: 'Lato', sans-serif;
   background: #FAF8EF;
   color: #1c1a15;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 0.75rem;
   border: none;
-  border-radius: 0.5em;
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -1735,7 +1732,6 @@ form button {
   justify-content: space-between;
   background:#ffffff;
   border: 0.5px solid #1a1a15;
-  border-radius: var(--radius-md);
   width: 100%;
   max-width: 300px;
   min-width: 250px;
@@ -1911,12 +1907,12 @@ form button {
 /* Text column */
 .lefthero {
   flex: 1;
-  max-width: 600px;
+  max-width: 650px;
 }
 
 .maintexthero h1 {
   font-family: 'Playfair Display',serif; /* Playfair Display */
-  font-weight: 500; /* Normal weight */
+  font-weight: normal; /* Normal weight */
   font-size: 2.5rem;/* Responsive font size */
   color: #1c1a15;
   opacity: 0.9;
@@ -1944,9 +1940,12 @@ form button {
   font-size: 1.125rem;
   line-height: 1.6;
   margin-bottom: 2rem;
+  max-width: 600px;
   color: #1c1a15;
   opacity: 0.7;
-  text-decoration: underline;
+  text-decoration: none;
+  font-weight:500;
+  font-family: 'Lato',sans-serif;
 }
 
 .button-container {
@@ -1956,32 +1955,31 @@ form button {
 
 .buy-button1 {
   background-color: #1c1a15;
+  text-decoration: none;
   color: #FAF8EF;
   padding: 12px 20px; /* slightly smaller padding for mobile */
   margin-top: 20px;
   font-size: 1rem;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
   white-space: normal; /* allow wrapping */
   max-width: 90%; /* prevent overflow on mobile */
   text-align: center; /* center text if it wraps */
   box-sizing: border-box; 
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: 1.5px solid #1c1a15;
 }
 
 /* Hover (desktop) */
 .buy-button1:hover,
 .buy-button1:focus {
-  background-color: #bd9d5c;
-  color: #1a1a15;
-  outline: none;
-  transform: scale(1.05);
+  background-color: #FAF8EF;
+  color: #1c1a15;
+ 
 }
 
 /* Mobile tweaks */
 @media (max-width: 480px) {
-  .buy-button2 {
+  .buy-button1 {
     font-size: 0.9rem;
     padding: 10px 16px;
   }
@@ -2102,7 +2100,8 @@ form button {
   color: #8f8f8c;
   font-size: 0.75rem;
   margin-top: 6px;
-  font-family: 'Lato', sans-serif;
+  font-weight:normal;
+  font-family: 'lato',sans-serif;
   user-select: none;
   pointer-events: none;
 }
@@ -2124,7 +2123,7 @@ form button {
   }
 }
 .featured {
-  padding-top: 50px;
+  padding: 3rem;
   text-align: center;
   background-color: #FAF8EF; /* light background for premium feel */
 }
@@ -2224,23 +2223,23 @@ form button {
 }
 
 .findout-header h1 {
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   color: #1c1a15;
+  line-height: 1.1;
   text-align: center;
-  font-weight: normal;
-  font-family: 'Playfair Display', serif;
+  font-weight:normal;
+  font-family: 'Playfair Display',serif;
   margin-top: 3rem;
    margin-bottom: 3rem; /* reduced bottom margin */
 }
 
 .findout-header p {
-  font-size: 1.5rem;
-  word-spacing: 0.1rem;
-  line-height: 1.9;
-  color: #1c1a15;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: #1a1a15;
   text-align: start;
   font-weight:normal;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lato',sans-serif;
   margin-bottom: 1.4rem; /* reduced bottom margin */
 }
 
@@ -2267,27 +2266,27 @@ form button {
 
 .buy-button2 {
   background-color: #FAF8EF;
+  text-decoration: none;
   color: #1a1a15;
   padding: 12px 20px; /* slightly smaller padding for mobile */
   margin-top: 20px;
   font-size: 1rem;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
   white-space: normal; /* allow wrapping */
   max-width: 90%; /* prevent overflow on mobile */
   text-align: center; /* center text if it wraps */
   box-sizing: border-box; 
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: 1.5px solid #FAF8EF;
 }
 
 /* Hover (desktop) */
 .buy-button2:hover,
 .buy-button2:focus {
-  background-color: #bd9d5c;
-  color: #1a1a15;
+  background-color: #1c1a15;
+  color: #FAF8EF;
   outline: none;
-  transform: scale(1.05);
+
 }
 
 /* Mobile tweaks */
@@ -2356,7 +2355,6 @@ form button {
 .testimonial {
   background-color:#ffffff;
   padding: 2rem;
-  border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
@@ -2377,6 +2375,8 @@ form button {
   line-height: 1.5;
   margin-bottom: 1.5rem;
   color: #1c1a15;
+  font-weight:normal;
+  font-family: 'Lato',sans-serif;
 }
 
 .testimonial-author {
@@ -2396,6 +2396,7 @@ form button {
 .author-info .author-name {
   font-weight: 600;
   font-size: 1rem;
+  font-family: 'Montserrat',sans-serif;
 }
 
 .author-info .author-role {
@@ -2471,7 +2472,7 @@ form button {
   color: #8F8F8C;
   font-size: 1.1rem;
   margin-bottom: -30px;
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   line-height: 1.1;
 }
 
@@ -2564,7 +2565,7 @@ form button {
   margin: 0;
   font-style: normal;
   color: #1c1a15;
-  font-family: lato, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   opacity: 0.7;
 }
 
@@ -2677,8 +2678,8 @@ form button {
 
 .who-box h3 {
   font-family: 'Montserrat', sans-serif;
-  font-weight: normal;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 1.2rem;
   margin-bottom: 25px;
   color: #fcf8ef;
   text-align: left;
@@ -2694,7 +2695,7 @@ form button {
   line-height: 1.8;
   color: #8c8c8c;
   position: relative;
-  padding-left: 20px;
+  padding-left: 30px;
   margin-bottom: 15px;
   text-align: start;
 }
@@ -3731,7 +3732,7 @@ a:focus {
 .early-bird {
   background-color: #FAF8EF;
   color: #1c1a15;
-  padding: 80px 20px;
+  padding: 3rem;
   text-align: center;
   font-family: 'Lato', sans-serif;
 }
@@ -3741,7 +3742,7 @@ a:focus {
   font-weight: normal;
   font-size: 2rem;
   letter-spacing: -1px;
-  margin-bottom: 10px;
+ margin-bottom: 1.8rem;
   color: #1c1a15;
 }
 
@@ -3761,19 +3762,40 @@ a:focus {
   margin-bottom: 40px;
   color: #8F8F8C;
 }
-/* Progress Bar Container */
-.progress-container {
-  width: 100%;
-  max-width: 500px;
-  background-color: #8F8F8C; /* dark background for contrast */
-  border-radius: 12px;
-  margin: 0 auto 25px;
-  overflow: hidden;
-  position: relative;
-}
+
+    .progress-wrapper {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .progress-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 500px;
+      background-color: #8f8f8c; /* gray background for the bar */
+      padding: 5px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .segment {
+      flex: 1;
+      height: 20px;
+      margin: 0 1px; /* small spacing between segments */
+      background-color: #4d4d4d; /* gray for remaining */
+      border-radius: 3px;
+      transition: background-color 0.3s;
+    }
+
+    .segment.sold {
+      background-color: #ff6a00; /* red for sold */
+    }
+
 .descearlybird {
   font-size: 1.1rem;
-  color: #8c8c8c;
+  color: #1c1a15;
   line-height: 1.8;
   text-align: center;
   font-family: 'Lato', sans-serif;
@@ -3854,7 +3876,6 @@ a:focus {
 .tier {
   background-color: #fcfaf8;
   border: 2px solid #1c1a15;
-  border-radius: 16px;
   padding: 30px 25px;
   width: 220px;
   text-align: center;
@@ -3916,12 +3937,18 @@ a:focus {
   margin-top: 5px;
 }
 
-.tier-desc {
+.tier-desc2 {
   font-size: 0.95rem;
   color: #8f8f8c;
   margin-top: 10px;
 }
-
+.tier-desc1 {
+  font-size: 1rem;
+  color: #1c1a15;
+  font-weight: normal;
+  font-family: playfair display, serif;
+  margin-top: 10px;
+}
 /* Buy Button */
 .buy-btn {
   font-family: 'Lato', sans-serif;
@@ -3971,7 +3998,7 @@ a:focus {
   display: flex;
   flex-direction: column; /* stacks text on top, image below */
   align-items: center;
-  padding: 5rem;           /* default for desktop */
+  padding: 3rem;           /* default for desktop */
   background-color: #1c1a15;
   color: #FAF8EF;
 }
@@ -3981,23 +4008,25 @@ a:focus {
   margin-bottom: 3rem; /* space between text and image */
 }
 .salestop h1{
-   font-size: 2.4rem;
-  color: #e0dfda;
+  font-size: 1.8rem;
+  color: #FAF8EF;
+  line-height: 1.1;
   text-align: center;
-  font-weight: normal;
-  font-family: 'Playfair Display', serif;
+  font-weight:normal;
+  font-family: 'Playfir Display', serif;
   margin-top: 3rem;
    margin-bottom: 3rem; /* reduced bottom margin */
 }
 .salestop p{
-  font-size: 1.5rem;
-  word-spacing: 0.1rem;
-  line-height: 1.9;
+  font-size: 1.3rem;
+  word-spacing: normal;
+  line-height: 1.5;
   color: #8F8F8C;
   text-align: start;
   font-weight:normal;
   font-family: 'Lato', sans-serif;
   margin-bottom: 1.4rem; /* reduced bottom margin */
+  padding-bottom: 0rem;
 }
 
 /* RESPONSIVE FOR SMALLER SCREENS */
@@ -4017,11 +4046,98 @@ a:focus {
 
 
 .text-contentsales {
-  max-width: 600px;
+  max-width: 650px;
   color: #FAF8EF;
 }
 
 .text-contentsales h1 {
+ font-size: 1.8rem;
+  color: #FAF8EF;
+  line-height: 1.1;
+  text-align: center;
+  font-weight:normal;
+  font-family: 'Playfair Display', serif;
+  margin-top: 3rem;
+   margin-bottom: 3rem; /* reduced bottom margin */
+}
+
+.text-contentsales p {
+  font-size: 1.3rem;
+  word-spacing: 0.1rem;
+  line-height: 1.5;
+  color: #8F8F8C;
+  text-align: start;
+  font-weight:normal;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 1.5rem; /* reduced bottom margin */
+}
+  
+
+/* full-screen image part */
+.fullscreen-sales img {
+  width: 100%;
+  height: auto; /* auto height to maintain aspect ratio */
+  object-fit: cover; /* ensures the image fills the space without distortion */
+  margin: 0;
+  padding: 0;
+}
+
+ .fullscreen-sales2 {
+  display: flex;
+  flex-direction: column; /* stacks text on top, image below */
+  align-items: center;
+  padding: 3rem;           /* default for desktop */
+  background-color: #FAF8EF;
+  color: #1c1a15;
+  
+}
+.salestop2 {
+  max-width: 650px;
+  color: #1a1a15;
+  margin-bottom: 3rem; /* space between text and image */
+}
+.salestop2 h1{
+   font-size: 1.8rem;
+  color: #1c1a15;
+  line-height: 1.1;
+  text-align: center;
+  font-weight:normal;
+  font-family: 'Playfir Display', serif;
+  margin-top: 3rem;
+   margin-bottom: 3rem; /* reduced bottom margin */
+}
+.salestop2 p{
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: #1a1a15;
+  text-align: start;
+  font-weight:normal;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 1.4rem; /* reduced bottom margin */
+}
+
+/* RESPONSIVE FOR SMALLER SCREENS */
+@media (max-width: 768px) {
+  .fullscreen-sales2 {
+    padding: 3rem 2rem;    /* smaller padding on mobile */
+  }
+
+  /* Optional: center text and reduce font size */
+  .fullscreen-sales2 h1,
+  .fullscreen-sales2 h2,
+  .fullscreen-sales2 p {
+    text-align: center;
+    font-size: 90%;        /* scale down text slightly */
+  }
+}
+
+
+.text-contentsales2 {
+  max-width: 650px;
+  color: #FAF8EF;
+}
+
+.text-contentsales2 h1 {
   font-size: 1.9rem;
   color: #e0dfda;
   text-align: center;
@@ -4031,7 +4147,7 @@ a:focus {
    margin-bottom: 3rem; /* reduced bottom margin */
 }
 
-.text-contentsales h1 {
+.text-contentsales2 h1 {
   font-size: 2.4rem;
   color: #e0dfda;
   text-align: center;
@@ -4041,11 +4157,11 @@ a:focus {
    margin-bottom: 3rem; /* reduced bottom margin */
 }
 
-.text-contentsales p {
+.text-contentsales2 p {
   font-size: 1.5rem;
   word-spacing: 0.1rem;
   line-height: 1.9;
-  color: #8F8F8C;
+  color: #1c1a15;
   text-align: start;
   font-weight:normal;
   font-family: 'Lato', sans-serif;
@@ -4054,7 +4170,7 @@ a:focus {
   
 
 /* full-screen image part */
-.fullscreen-sales img {
+.fullscreen-sales2 img {
   width: 100%;
   height: auto; /* auto height to maintain aspect ratio */
   object-fit: cover; /* ensures the image fills the space without distortion */
@@ -4080,7 +4196,7 @@ a:focus {
   font-family: playfair display, serif;
   letter-spacing: -1px;
   font-weight: normal;
-  color: #1a1a15;
+  color: #FAF8EF;
   font-size: 2rem;
 }
 
@@ -4105,7 +4221,7 @@ a:focus {
 .chapter-image img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  
 }
 
 /* RIGHT SIDE CONTENT */
@@ -4137,17 +4253,18 @@ a:focus {
   line-height: 1.8;
   text-align: start;
   margin-bottom: 10px;
-  color: #8c8c8c;
-  font-family: lato, sans-serif;
-  opacity: 0.85;
+  color: #8f8f8c;
+  font-family: 'lato', sans-serif;
+ 
 }
 
 /* READ MORE BUTTON */
 .readmore-btn {
   background: none;
   border: none;
-  color: #bd9d5c;
-  font-weight: 700;
+  color: #8F8F8C;
+  font-family: 'Montserrat',sans-serif;
+  font-weight: Medium;
   cursor: pointer;
   font-size: 1rem;
   padding: 0;
@@ -4354,7 +4471,6 @@ a:focus {
   background-color: #1c1a15; 
   color:#FAF8EF;
   padding: 14px 32px;
-
   font-size: 1rem;
   border: none;
   border-radius: 8px;

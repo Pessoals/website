@@ -1,177 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-20NJ10DBNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-20NJ10DBNQ');
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-20NJ10DBNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-20NJ10DBNQ');
-</script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Branding Case Study - Opella</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segmented Progress Bar</title>
   <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Body Styling */
     body {
       font-family: 'Arial', sans-serif;
-      line-height: 1.6;
-      background-color: #f4f4f4;
-      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+      background: #1c1c1c;
     }
 
-    /* Hero Section */
-    .hero {
-      background: #333;
-      color: white;
-      padding: 50px 20px;
+    .container {
       text-align: center;
-      cursor: pointer;
+      width: 80%;
     }
 
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
+    .subtitleurgent {
       font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
+      color: #fff;
     }
 
-    /* Sections: Challenge, Solution, Results */
-    section {
-      padding: 40px 20px;
-      margin: 20px auto;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    .highlight {
+      color: #ff6a00;
     }
 
-    section h2 {
-      margin-bottom: 15px;
-      font-size: 1.8rem;
-      color: #1c1a15;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-    }
-
-    section p {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #555;
-    }
-
-    /* Gallery Section */
-    .gallery {
-      background: white;
-      max-width: 1100px;
-      margin: 40px auto 80px auto;
-      padding: 40px 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .gallery h2 {
-      margin-bottom: 25px;
+    .progress-wrapper {
       text-align: center;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      color: #1c1a15;
+      margin-top: 20px;
     }
 
-    .image-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .image-grid img {
+    .progress-container {
+      display: flex;
+      justify-content: space-between;
       width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      cursor: pointer;
+      max-width: 500px;
+      background-color: #8f8f8c; /* gray background for the bar */
+      padding: 5px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
     }
 
-    .image-grid img:hover {
-      transform: scale(1.05);
+    .segment {
+      flex: 1;
+      height: 20px;
+      margin: 0 1px; /* small spacing between segments */
+      background-color: #4d4d4d; /* gray for remaining */
+      border-radius: 3px;
+      transition: background-color 0.3s;
     }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 1.8rem;
-      }
+    .segment.sold {
+      background-color: #ff6a00; /* red for sold */
+    }
 
-      .gallery {
-        padding: 20px 10px;
-      }
+    .progress-text {
+      margin-top: 16px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .remaining-count {
+      color: #bbb;
+    }
+
+    .descearlybird {
+      font-size: 1.1rem;
+      color: #1c1a15;
+      line-height: 1.8;
+      text-align: center;
+      font-family: 'Lato', sans-serif;
+      margin-bottom: 24px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <section class="hero" title="Click to scroll to top">
-    <h1>Opella: Reinventing Self-Care</h1>
-    <p>Discover how we transformed Opella into a challenger brand in the self-care industry.</p>
-  </section>
-
-  <!-- Challenge Section -->
-  <section class="challenge">
-    <h2>The Challenge</h2>
-    <p>Sanofi Consumer Healthcare sought to simplify self-care amidst growing complexity.</p>
-  </section>
-
-  <!-- Solution Section -->
-  <section class="solution">
-    <h2>The Solution</h2>
-    <p>We developed a bold visual identity and clear messaging to resonate with modern consumers.</p>
-  </section>
-
-  <!-- Results Section -->
-  <section class="results">
-    <h2>Results</h2>
-    <img class="results" src="Images/docconte.png" alt="Logo Design" />
-  </section>
-
-  <!-- Gallery Section -->
-  <section class="gallery">
-    <h2>Visual Identity</h2>
-    <div class="image-grid">
-      <img src="Images/docconte.png" alt="Logo Design" />
-      <img src="Images/casestudy04.png" alt="Packaging Design" />
-      <img src="image3.jpg" alt="Website Design" />
-      <!-- Add more images as needed -->
+<div class="container">
+  <p class="subtitleurgent">Only <span class="highlight">13 of 50 copies</span> left at <strong>$19.99</strong></p>
+  
+  <!-- Progress Bar -->
+  <div class="progress-wrapper">
+    <div class="progress-container" id="progress">
+      <!-- Segments will be generated here -->
     </div>
-  </section>
+    <div class="progress-text">
+      <span class="remaining-count">37 Sold | 13 Left | 50 Total Copies</span>
+    </div>
+  </div>
+  
+  <h2>Extremely Limited Early Bird Offer!</h2>
+  
+  <p class="descearlybird">
+    This special early bird offer is available because the ebook hasn’t officially launched yet. 
+    Once we launch, the price will increase. Secure your copy today and lock in this exclusive deal before it’s gone!
+  </p>
+</div>
 
-  <script>
-    // Smooth scroll to top on hero click
-    document.querySelector('.hero').addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
+<script>
+  // Total number of copies and how many are sold
+  const totalCopies = 50;
+  const soldCopies = 37;
+
+  // Access the progress container where segments will be added
+  const container = document.getElementById('progress');
+
+  // Create 50 segments based on sold and remaining copies
+  for (let i = 1; i <= totalCopies; i++) {
+    const segment = document.createElement('div');
+    segment.classList.add('segment');
+    
+    // If the segment is sold, mark it as sold
+    if (i <= soldCopies) {
+      segment.classList.add('sold');
+    }
+    
+    // Append the segment to the container
+    container.appendChild(segment);
+  }
+</script>
+
 </body>
 </html>
