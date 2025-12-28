@@ -1896,12 +1896,9 @@ form button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
-  gap: 2rem;
-  min-height: auto;
+  gap: clamp(1.5rem, 4vw, 2rem);
+  padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 4vw, 2rem);
   color: #FAF8EF;
-  flex-wrap: wrap;
-  flex-direction: row;
 }
 
 /* Text column */
@@ -1910,16 +1907,14 @@ form button {
   max-width: 650px;
 }
 
-.maintexthero h1 {
-  font-family: 'Playfair Display',serif; /* Playfair Display */
-  font-weight: normal; /* Normal weight */
-  font-size: 2.5rem;/* Responsive font size */
-  color: #1c1a15;
-  opacity: 0.9;
-  letter-spacing: -1px;
-  margin-bottom: 1rem;
-  line-height: 110%; /* Adjust line-height for better readability */
+ .hero img {
+  width: clamp(220px, 35vw, 220px);
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
+
+
 /* Limited Offer Banner Style */
 .limited-offer-banner {
   width: 100%;
@@ -1933,19 +1928,28 @@ form button {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   font-family: Montserrat, sans-serif;
   position: relative;        /* Normal flow */
-  margin-bottom: 20px;       /* Space below banner */
+}
+.maintexthero h1 {
+   font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: #1c1a15;
+  line-height: 1.1;
+  text-align: center;
+  font-weight: normal;
+  font-family: 'Playfair Display', serif;
+  margin-top: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: clamp(1.5rem, 5vw, 3rem);
+  line-height: 110%; /* Adjust line-height for better readability */
 }
 
 .lefthero p {
-  font-size: 1.125rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  max-width: 600px;
+  font-size: clamp(1.2rem, 2.5vw, 1rem);
+  word-spacing: 0.1rem;
+  line-height: 1.5;
   color: #1c1a15;
-  opacity: 0.7;
-  text-decoration: none;
-  font-weight:500;
-  font-family: 'Lato',sans-serif;
+  text-align: center;
+  font-weight: normal;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
 }
 
 .button-container {
@@ -1986,13 +1990,6 @@ form button {
 }
 
 
-/* Image styling */
-.hero img {
-  flex: 1;
-  max-width: 30%;
-  height: 70vh; /* Adjusted size */
-  object-fit: contain;
-}
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -2001,21 +1998,6 @@ form button {
     padding: 2rem 1rem;
     text-align: center;
     height: auto;
-  }
-  .maintexthero h1 {
-    font-size: 2rem;
-  }
-
-  .lefthero p {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  .hero img {
-    max-width: 50%;
-    height: auto;
-    margin-bottom: 1.5rem;
   }
 
   .lefthero a {
@@ -2026,22 +2008,12 @@ form button {
 }
 
 @media (max-width: 480px) {
-  .maintexthero h1 {
-    font-size: 1.5rem;
-  }
-
-  .lefthero p {
-    font-size: 0.95rem;
-  }
-
+  
   .lefthero a {
     font-size: 0.95rem;
   }
   
-  .hero img {
-    max-width: 50%;
-    height: auto;
-  }
+ 
 }
 
 
@@ -2123,18 +2095,20 @@ form button {
   }
 }
 .featured {
-  padding: 3rem;
+  padding: clamp(1.25rem, 5vw, 3rem);
   text-align: center;
   background-color: #FAF8EF; /* light background for premium feel */
 }
 
 .featured-heading {
-  font-size: 1.8rem;
-  margin-bottom: 40px;
+  font-size: clamp(1.8rem, 4vw, 2rem);
   color: #1c1a15;
+  line-height: 1.1;
+  text-align: center;
   font-weight: normal;
-  letter-spacing: -1px;
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
+  margin-top: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: clamp(1.5rem, 5vw, 3rem);
 }
 
 .logo-wrapper {
@@ -2142,106 +2116,63 @@ form button {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 50px; /* increased gap between logos */
+  gap: clamp(1.25rem, 5vw, 3.125rem); /* ~20px → 50px */
 }
-
 .logo-wrapper img {
-  width: 150px; /* uniform size */
-  height: 80px; /* fixed height for consistency */
-  object-fit: contain; /* keeps logos properly scaled */
-  opacity: 0.85;
-  transition: opacity 0.3s ease;
-   filter: grayscale(100%);
-  opacity: 0.7; /* optional: softens the look */
+  width: clamp(90px, 18vw, 150px);
+  height: clamp(50px, 10vw, 80px);
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+
   transition: filter 0.3s ease, opacity 0.3s ease;
 }
+
 
 .logo-wrapper img:hover {
    filter: grayscale(0%);
   opacity: 1;
 }
 
-/* Responsive breakpoints */
-@media (max-width: 1024px) {
-  .logo-wrapper {
-    gap: 40px;
-  }
-  .logo-wrapper img {
-    width: 130px;
-    height: 70px;
-  }
-}
-
-@media (max-width: 768px) {
-  .featured-heading {
-    font-size: 1.5rem;
-  }
-  .logo-wrapper {
-    gap: 30px;
-  }
-  .logo-wrapper img {
-    width: 110px;
-    height: 60px;
-  }
-}
-
-@media (max-width: 480px) {
-  .featured-heading {
-    font-size: 1.3rem;
-    margin-bottom: 25px;
-  }
-  .logo-wrapper {
-    flex-direction:row;
-    gap: 10px;
-  }
-  .logo-wrapper img {
-    width: 100px;
-    height: 55px;
-  }
-}
 
 
 
  /* end of badges section in brand like a celebrity sales page */
 .section-findout {
-  background-color: #FAF8EF;
-  min-height: auto;
-  box-sizing: border-box;
-  overflow: hidden;
-  color: #1c1a15;
-  line-height: 1.6;
-  /* Center content vertically and horizontally */
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* stacks text on top, image below */
   align-items: center;
-  text-align: center;
-  padding: 5rem;
+  padding: clamp(1.25rem, 5vw, 3rem);
+  color: #1c1a15;
+  background-color: #FAF8EF;
 }
 
 .container-findout {
   max-width: 650px;
 }
 
-.findout-header h1 {
-  font-size: 1.8rem;
+
+ .findout-header h1{
+  font-size: clamp(1.8rem, 4vw, 2rem);
   color: #1c1a15;
   line-height: 1.1;
   text-align: center;
-  font-weight:normal;
-  font-family: 'Playfair Display',serif;
-  margin-top: 3rem;
-   margin-bottom: 3rem; /* reduced bottom margin */
+  font-weight: normal;
+  font-family: 'Playfair Display', serif;
+  margin-top: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: clamp(1.5rem, 5vw, 3rem);
+}
+.findout-header p {
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+  word-spacing: 0.1rem;
+  line-height: 1.5;
+  color: #1c1a15;
+  text-align: start;
+  font-weight: normal;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
 }
 
-.findout-header p {
-  font-size: 1.3rem;
-  line-height: 1.4;
-  color: #1a1a15;
-  text-align: start;
-  font-weight:normal;
-  font-family: 'Lato',sans-serif;
-  margin-bottom: 1.4rem; /* reduced bottom margin */
-}
 
 .highlightfindout {
    background-color: #FEF553;
@@ -2274,7 +2205,7 @@ form button {
   border: none;
   cursor: pointer;
   white-space: normal; /* allow wrapping */
-  max-width: 90%; /* prevent overflow on mobile */
+ 
   text-align: center; /* center text if it wraps */
   box-sizing: border-box; 
   border: 1.5px solid #FAF8EF;
@@ -2294,34 +2225,6 @@ form button {
   .buy-button2 {
     font-size: 0.9rem;
     padding: 10px 16px;
-  }
-}
-
-
-/* Responsive */
-
-@media (max-width: 768px) {
-  .section-findout {
-    height: auto; /* let height adjust naturally on small screens */
-    padding: 40px 1.5rem;
-  }
-
-  .findout-header h2 {
-    font-size: 1.4rem;
-  }
-
-  .section-findout p {
-    font-size: 0.85rem;
-    margin-bottom: 30px;
-  }
-
-  .buy-button1 {
-    width: 100%;
-    max-width: 300px;
-  }
-  .buy-button2 {
-    width: 100%;
-    max-width: 300px;
   }
 }
 
@@ -2749,14 +2652,14 @@ form button {
 /* FAQ Question Container */
 /* FAQ Title */
 .faq-title {
-  text-align: center;
-  font-size: 2.5rem;
-  letter-spacing: -1px;
-  font-weight: normal;
-  margin-bottom: 30px;
+  font-size: clamp(1.8rem, 4vw, 2rem);
   color: #1c1a15;
+  line-height: 1.1;
+  text-align: center;
+  font-weight: normal;
   font-family: 'Playfair Display', serif;
-  position: relative;
+  margin-top: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: clamp(1.5rem, 5vw, 3rem);
 }
 
 .faq-title::after {
@@ -3728,7 +3631,7 @@ a:focus {
 .early-bird {
   background-color: #FAF8EF;
   color: #1c1a15;
-  padding: 3rem;
+  padding: clamp(1.25rem, 5vw, 3rem);
   text-align: center;
   font-family: 'Lato', sans-serif;
 }
@@ -3790,12 +3693,14 @@ a:focus {
     }
 
 .descearlybird {
-  font-size: 1.1rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+  word-spacing: 0.1rem;
+  line-height: 1.5;
   color: #1c1a15;
-  line-height: 1.8;
   text-align: center;
+  font-weight: normal;
   font-family: 'Lato', sans-serif;
-  margin-bottom: 24px;
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
 
 }
 /* Progress Bar */
@@ -3990,55 +3895,57 @@ a:focus {
     max-width: 90%; 
   }
 }
- .fullscreen-sales {
+.fullscreen-sales {
   display: flex;
   flex-direction: column; /* stacks text on top, image below */
   align-items: center;
-  padding: 3rem;           /* default for desktop */
+  padding: clamp(1.25rem, 5vw, 3rem);
   background-color: #1c1a15;
   color: #FAF8EF;
 }
+
 .salestop {
-  max-width: 650px;
+  max-width: clamp(320px, 90vw, 650px);
   color: #FAF8EF;
-  margin-bottom: 3rem; /* space between text and image */
+  margin-bottom: clamp(0.75rem, 3vw, 1rem);
 }
-.salestop h1{
-  font-size: 1.8rem;
+
+.salestop h1 {
+  font-size: clamp(1.8rem, 4vw, 2rem);
   color: #FAF8EF;
   line-height: 1.1;
   text-align: center;
-  font-weight:normal;
-  font-family: 'Playfir Display', serif;
-  margin-top: 3rem;
-   margin-bottom: 3rem; /* reduced bottom margin */
+  font-weight: normal;
+  font-family: 'Playfair Display', serif;
+  margin-top: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: clamp(1.5rem, 5vw, 3rem);
 }
-.salestop p{
-  font-size: 1.3rem;
-  word-spacing: normal;
+.salestop p {
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+  word-spacing: 0.1rem;
   line-height: 1.5;
   color: #8F8F8C;
   text-align: start;
-  font-weight:normal;
+  font-weight: normal;
   font-family: 'Lato', sans-serif;
-  margin-bottom: 1.4rem; /* reduced bottom margin */
-  padding-bottom: 0rem;
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
 }
 
-/* RESPONSIVE FOR SMALLER SCREENS */
-@media (max-width: 768px) {
-  .fullscreen-sales {
-    padding: 3rem 2rem;    /* smaller padding on mobile */
-  }
-
-  /* Optional: center text and reduce font size */
-  .fullscreen-sales h1,
-  .fullscreen-sales h2,
-  .fullscreen-sales p {
-    text-align: center;
-    font-size: 90%;        /* scale down text slightly */
-  }
+.sales-image {
+  width: 100%;
+  max-width: clamp(280px, 60vw, 520px);
+  aspect-ratio: 3 / 4; /* perfect for ebook / portrait */
+  overflow: hidden;
+  margin: 2rem auto;
 }
+
+ .sales-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 
 
 .text-contentsales {
@@ -4046,28 +3953,27 @@ a:focus {
   color: #FAF8EF;
 }
 
+
 .text-contentsales h1 {
- font-size: 1.8rem;
+  font-size: clamp(1.8rem, 4vw, 2rem);
   color: #FAF8EF;
   line-height: 1.1;
   text-align: center;
-  font-weight:normal;
+  font-weight: normal;
   font-family: 'Playfair Display', serif;
-  margin-top: 3rem;
-   margin-bottom: 3rem; /* reduced bottom margin */
+  margin-top: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: clamp(1.5rem, 5vw, 3rem);
 }
-
 .text-contentsales p {
-  font-size: 1.3rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
   word-spacing: 0.1rem;
   line-height: 1.5;
   color: #8F8F8C;
   text-align: start;
-  font-weight:normal;
+  font-weight: normal;
   font-family: 'Lato', sans-serif;
-  margin-bottom: 1.5rem; /* reduced bottom margin */
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
 }
-  
 
 /* full-screen image part */
 .fullscreen-sales img {
@@ -4079,21 +3985,21 @@ a:focus {
 }
 
  .fullscreen-sales2 {
-  display: flex;
+ display: flex;
   flex-direction: column; /* stacks text on top, image below */
   align-items: center;
-  padding: 3rem;           /* default for desktop */
-  background-color: #FAF8EF;
+  padding: clamp(1.25rem, 5vw, 3rem);
   color: #1c1a15;
+  background-color: #FAF8EF;
   
 }
 .salestop2 {
-  max-width: 650px;
-  color: #1a1a15;
-  margin-bottom: 3rem; /* space between text and image */
+  max-width: clamp(320px, 90vw, 650px);
+  color: #FAF8EF;
+  margin-bottom: clamp(0.75rem, 3vw, 1rem);
 }
 .salestop2 h1{
-   font-size: 1.8rem;
+   font-size: 2.4rem;
   color: #1c1a15;
   line-height: 1.1;
   text-align: center;
@@ -4103,44 +4009,19 @@ a:focus {
    margin-bottom: 3rem; /* reduced bottom margin */
 }
 .salestop2 p{
-  font-size: 1.3rem;
-  line-height: 1.4;
-  color: #1a1a15;
+   font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+  word-spacing: 0.1rem;
+  line-height: 1.5;
+  color: #1c1a15;
   text-align: start;
-  font-weight:normal;
+  font-weight: normal;
   font-family: 'Lato', sans-serif;
-  margin-bottom: 1.4rem; /* reduced bottom margin */
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
 }
-
-/* RESPONSIVE FOR SMALLER SCREENS */
-@media (max-width: 768px) {
-  .fullscreen-sales2 {
-    padding: 3rem 2rem;    /* smaller padding on mobile */
-  }
-
-  /* Optional: center text and reduce font size */
-  .fullscreen-sales2 h1,
-  .fullscreen-sales2 h2,
-  .fullscreen-sales2 p {
-    text-align: center;
-    font-size: 90%;        /* scale down text slightly */
-  }
-}
-
 
 .text-contentsales2 {
   max-width: 650px;
   color: #FAF8EF;
-}
-
-.text-contentsales2 h1 {
-  font-size: 1.9rem;
-  color: #e0dfda;
-  text-align: center;
-  font-weight: normal;
-  font-family: 'Playfair Display', serif;
-  margin-top: 3rem;
-   margin-bottom: 3rem; /* reduced bottom margin */
 }
 
 .text-contentsales2 h1 {
