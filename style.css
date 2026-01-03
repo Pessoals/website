@@ -1814,7 +1814,12 @@ form button {
   align-items: center;
   gap:var(--color-background);
   flex-wrap: nowrap;
+  display: flex;
+  align-items: baseline;   /* aligns numbers nicely */
+  justify-content: flex-start; /* aligns to text start */
+  gap: 0.5rem;
 }
+
 
 .sale-price {
   font-size: var(--font-size-lg);
@@ -1891,66 +1896,51 @@ form button {
 
 /* Brand like a celebrity sales page */ 
 
-/* Style the hero section */
+
 .hero {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: clamp(1.5rem, 4vw, 2rem);
-  padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 4vw, 2rem);
-  color: #FAF8EF;
+  justify-content: space-between;
+  padding: 50px;
+  background-color: #FAF8EF;
 }
 
-/* Text column */
-.lefthero {
+/* Content on the right (heading, subheading, and button) */
+.hero-content {
   flex: 1;
-  max-width: 650px;
+  max-width: 700px; /* Controls the width of the text section */
 }
 
- .hero img {
-  width: clamp(220px, 35vw, 220px);
+.maintexthero {
   max-width: 100%;
-  height: auto;
-  object-fit: contain;
 }
 
-
-/* Limited Offer Banner Style */
-.limited-offer-banner {
-  width: 100%;
-  background-color: #f5220b; /* Gold/Amber background */
-  color: #FFFFFF;            /* White text */
-  text-align: center;
-  padding: 0.5rem 0;           /* Vertical padding */
-  font-size: clamp(0.9rem, 1vw, 1.2rem); /* Responsive font scaling */
-  font-weight: 600;
-  text-transform: uppercase;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  font-family: Montserrat, sans-serif;
-  position: relative;        /* Normal flow */
-}
 .maintexthero h1 {
-   font-size: clamp(1.8rem, 4vw, 2.5rem);
-  color: #1c1a15;
-  line-height: 1.1;
-  text-align: center;
+  font-size: clamp(1rem, 5vw, 2rem); /* Minimum size: 2rem, Preferred size: 5vw, Maximum size: 3.5rem */
   font-weight: normal;
-  font-family: 'Playfair Display', serif;
-  margin-top: clamp(1.5rem, 5vw, 3rem);
-  margin-bottom: clamp(1.5rem, 5vw, 3rem);
-  line-height: 110%; /* Adjust line-height for better readability */
+  color: #333;
+  font-family: playfair display, serif;
+  margin-bottom: 20px;
 }
 
-.lefthero p {
-  font-size: clamp(1.2rem, 2.5vw, 1rem);
-  word-spacing: 0.1rem;
-  line-height: 1.5;
-  color: #1c1a15;
-  text-align: center;
-  font-weight: normal;
-  font-family: 'Lato', sans-serif;
-  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+.maintexthero p {
+  font-size: clamp(1rem, 2vw, 1rem); /* Minimum size: 1rem, Preferred size: 3vw, Maximum size: 1.5rem */
+  color: #555;
+  margin-bottom: 30px;
 }
+
+/* Content on the left (image) */
+.hero-image {
+  flex: 1;
+  max-width: 500px; /* Controls the image size */
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
 
 .button-container {
   display: flex;
@@ -3478,9 +3468,8 @@ a:focus {
   font-size: 0.9rem;
   text-align: start;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
+  font-weight: bold;
   color: #bd9d5c; /* gold color to highlight chapter */
-  text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: -20px;
   display: block;
@@ -3508,8 +3497,8 @@ a:focus {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 30px;
-  padding: 40px;
+  gap: 20px;
+  padding: 20px;
   background-color: #FAF8EF;
   color: #1c1a15;
   width: 100%;
@@ -3521,6 +3510,8 @@ a:focus {
 .left-column {
   flex: 1 1 40%;
   min-width: 250px;
+  align-items: center;      /* vertical center */
+  justify-content: center;  /* horizontal center */
 }
 
 .left-column img {
@@ -3529,6 +3520,28 @@ a:focus {
   display: block;
   border-radius: 0;
 }
+/* iPad / Tablet Mockup */
+/* Center the video container */
+
+.device-mockup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #b0b0b0;  /* Device frame */
+    border-radius: 1rem;         /* Outer radius for smooth curve */
+    overflow: hidden;            /* Clip video to match radius */
+    max-width: 400px;            /* Device width */
+    margin: 0 auto;              /* Center horizontally */
+}
+
+.device-mockup video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;            /* No radius, container handles it */
+}
+
+
 
 /* Right column inside step */
 .right-column {
@@ -3895,6 +3908,80 @@ a:focus {
     max-width: 90%; 
   }
 }
+
+/* This is hero section for the sales page */
+
+/* Brand like a celebrity sales page hero */ 
+
+/* Style the hero section */
+/* General styles for the section */
+/* General section styles *//* General section styles */
+/* Limited Offer Banner Style */
+
+.limited-offer-banner {
+  width: 100%;
+  background-color: #f5220b; /* Gold/Amber background */
+  color: #FFFFFF;            /* White text */
+  text-align: center;
+  padding: 0.5rem 0;           /* Vertical padding */
+  font-size: clamp(0.9rem, 1vw, 1.2rem); /* Responsive font scaling */
+  font-weight: 600;
+  text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: Montserrat, sans-serif;
+  position: relative;        /* Normal flow */
+}
+
+
+
+.hero-sales {
+  display: flex;
+  flex-direction: column; /* stacks text on top, image below */
+  align-items: center;
+  padding: clamp(1.25rem, 5vw, 3rem);
+  background-color: #1c1a15;
+  color: #FAF8EF;
+}
+
+.herotop {
+  color: #FAF8EF;
+  margin-bottom: clamp(0.75rem, 3vw, 1rem);
+}
+
+.herotop h1 {
+  font-size: clamp(1.8rem, 4vw, 5rem);
+  color: #FAF8EF;
+  line-height: 1.1;
+  text-align: center;
+  word-spacing: -1%;
+  font-weight: normal;
+  font-family: 'Playfair Display', serif;
+  margin-top: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: clamp(1.5rem, 5vw, 3rem);
+}
+.herotop p {
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+  word-spacing: 0.1rem;
+  line-height: 1.5;
+  color: #8F8F8C;
+  text-align: center;
+  font-weight: normal;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+}
+/* full-screen image part */
+.hero-sales img {
+  width: 100%;
+  height: auto; /* auto height to maintain aspect ratio */
+  object-fit: cover; /* ensures the image fills the space without distortion */
+  margin: 0;
+  padding: 0;
+}
+ /* This is the end of the hero section sales page */
+
+
+
+
 .fullscreen-sales {
   display: flex;
   flex-direction: column; /* stacks text on top, image below */
