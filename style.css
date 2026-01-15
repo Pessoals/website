@@ -1837,11 +1837,13 @@ form button {
   text-decoration: line-through;
   color:#f00606;
 }
-
-.passcoderequired {
+.passcoderequired{
   font-size: var(--font-size-sm);
   color:#f00606;
+  font-weight:550;
+  font-family: Montserrat, 'sans-serif';
 }
+
 
 .freeresource {
   font-size: var(--font-size-sm);

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-20NJ10DBNQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-20NJ10DBNQ');
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/Images/favicon.png" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@300;400;700;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <img src="/Images/pessoalslogo.svg" alt="Pessoals Logo">
+  </div>
+
+  <ul class="menulist" id="menulist">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/aboutus.html">About</a></li>
+    <li><a href="/resources.html">Case Studies</a></li>
+    <li><a href="/ourworks.html">Our Works</a></li>
+    <li><a href="/ourservices.html">Our Services</a></li>
+  </ul>
+
+  <div class="burgermenu" onclick="toggleMenu()">
+    <img src="Icons/Burger Menu Icon.svg">
+  </div>
+</nav>
+
+<!-- RESOURCES -->
+<section class="resourcescontainer">
+  <div class="resourcesintro">
+    <h1>Case Studies</h1>
+    <h3>Dive into the journeys of successful personal brands. Learn how artists, entrepreneurs, and creators built their identity, grew their influence, and achieved impact.</h3>
+  </div>
+
+  <div class="resources-grid">
+
+    <!-- FREE Resource 1: Brand Like a Celebrity eBook -->
+    <a class="resource-card"
+       href="casestudies/charliexcx.html"
+       data-category="ebooks">
+      <div class="card-upper">
+        <img src="/casestudies/Charlie XCX/Brat.png">
+      </div>
+      <div class="card-lower">
+  <p class="resourcetype">Charile XCX</p>
+  <h3>Brat Summer Genius Marketing Masterclass</h3>
+   <p>A guide to aligning your visuals, messaging, and values, so every part of your brand works together seamlessly.</p>
+    <div class="price-box">
+      <span class="passcoderequired">Passcode Required  </span>
+    </div>
+  </div>
+    </a>
+   
+  </div>
+</section>
+
+<footer class="footersecond">
+    <div class="container">
+      <div class="footer-links">
+        <a href="privacypolicy.html">Privacy Policy</a>
+        <a href="cookiespolicy.html">Cookie Policy</a>
+        <a href="privacypolicy.html">Your Privacy Choices</a>
+        <p>© 2025 Pessoals. All rights Reserved</p>
+      </div>
+    </div>
+</footer>
+
+
+
+<!-- SCRIPT -->
+<script>
+  // Mobile menu toggle
+  const menulist = document.getElementById("menulist");
+  menulist.style.maxHeight = "0px";
+
+  function toggleMenu() {
+    menulist.style.maxHeight =
+      menulist.style.maxHeight === "0px" ? "350px" : "0px";
+  }
+</script>
+
+</body>
+</html>
