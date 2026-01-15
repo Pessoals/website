@@ -1,0 +1,2930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Brat Marketing Masterclass Casestudy</title>
+<style>
+:root {
+  --progress-height: 8px;
+  --progress-color: #bd9d5c;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+/* 🔒 LOCK SCREEN */
+#lock-screen {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 26, 21, 0.9); /* Slightly transparent dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 99999;
+  text-align: center;
+}
+
+
+#lock-screen h1 {
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+ font-weight: normal;
+ font-style: normal;
+ color: #FAF8EF;
+ font-family: 'Playfair Display', serif;
+
+}
+/* Body Copy */
+#lock-screen  p {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1.2rem, 0.5rem + 0.5vw, 1.125rem);
+  line-height: 1.75; /* Slightly increased line height for readability */
+  color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
+}
+
+
+#lock-screen input {
+  padding: 12px 20px; /* slightly smaller padding for mobile */
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background-color: #FAF8EF;
+  width: 250px; /* default width */
+  box-sizing: border-box;
+  border: 1.5px solid #FAF8EF;
+}
+
+#lock-screen button {
+  background-color: #FAF8EF;
+  text-decoration: none;
+  color: #1a1a15;
+  padding: 12px 20px; /* slightly smaller padding for mobile */
+  margin-top: 20px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  white-space: normal; /* allow wrapping */
+  text-align: center; /* center text if it wraps */
+  box-sizing: border-box; 
+  border: 1.5px solid #FAF8EF;
+}
+
+#lock-screen button:hover,
+#lock-screen button:focus {
+  background-color: #1c1a15;
+  color: #FAF8EF;
+  outline: none;
+
+}
+/* Responsive adjustments for smaller screens */
+@media (max-width: 480px) {
+  #lock-screen h1 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+  
+  #lock-screen p {
+    font-size: 0.9rem; /* Smaller font for smaller screens */
+    margin-bottom: 20px;
+  }
+
+  #lock-screen input {
+    font-size: 14px; /* Smaller font size for input */
+    padding: 8px; /* Adjust padding */
+    width: 90%; /* Make input width responsive */
+  }
+
+  #lock-screen button {
+    font-size: 14px; /* Smaller font size for button */
+    padding: 8px 12px; /* Adjust padding */
+    margin-left: 0; /* No left margin on smaller screens */
+    margin-top: 10px; /* Add some space above the button */
+    width: 90%; /* Make button width responsive */
+  }
+}
+
+/* Optional: Medium screens (tablets) */
+@media (max-width: 768px) {
+  #lock-screen h1 {
+    font-size: 1.75rem; /* Slightly smaller font for medium screens */
+  }
+
+  #lock-screen p {
+    font-size: 1rem;
+  }
+
+  #lock-screen input, #lock-screen button {
+    margin-top: 15px;
+    width: 70%; /* Slightly smaller width for medium screens */
+  }
+}
+ #error-message {
+    display: none;
+    background-color: #e74c3c; /* solid red for high visibility */
+    color: #fff; /* white text for contrast */
+    padding: 15px 25px;
+    margin: 20px auto;
+    max-width: 400px; /* keeps it centered and compact */
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 9999; /* ensures it appears above everything */
+  }
+
+
+/* Slideshow */
+.slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.slide-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-left, .bg-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 0;
+}
+.bg-left { left: 0; background-color: #FAF8EF; }
+.bg-right { right: 0; background-color: #1c1a15; }
+
+.slide-content {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex;
+  z-index: 2;
+  display: none;
+}
+.slide-content.active { display: flex; }
+
+.left-side1, .right-side1 {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Left side background */
+.left-side1 {
+
+  justify-content: center;
+  align-items: start;
+  background: #FAF8EF;
+  position: relative;
+  flex: 1; /* Make sure it takes available space */
+  width: 100%; /* Ensure full width */
+  height: 100%; /* Ensure full height */
+  overflow: hidden; /* Hide any overflowing content */
+}
+
+.visual-image {
+  position: absolute;
+  top: 0; /* Start at the top of the container */
+  left: 0; /* Start at the left of the container */
+  width: 100%; /* Fill the entire width of the container */
+  height: 100%; /* Fill the entire height of the container */
+  object-fit: cover; /* Ensure the image covers the entire container without distortion */
+  z-index: 1;
+}
+
+.audio-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.3s ease;
+}
+.audio-toggle:hover { background: rgba(0,0,0,0.7); }
+
+.right-side1 {
+  background: linear-gradient(to bottom, rgba(28,26,21,0.95), rgba(28,26,21,0.8));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px 20px;     /* Desktop */
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .right-side1 {
+    padding: 10px 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .right-side1 {
+    padding: 5px 5px;
+  }
+}
+
+/* --- Smooth fade animation --- */
+.right-side1 .content > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.right-side1 .content > *:nth-child(2) { animation-delay: .2s; }
+.right-side1 .content > *:nth-child(3) { animation-delay: .4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.right-side1 .content {
+  padding: 20px; /* remove bottom padding */
+  color: #fff;
+  display: flex;
+  margin-bottom: auto;
+  flex-direction: column;
+  flex-grow: 1;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+
+
+.right-side1 .content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Heading */
+.right-side1 .content h1 {
+  font-size: clamp(2.5rem, 4vw, 4rem); /* Larger, responsive heading */
+  font-weight: normal;
+  font-style: normal;
+  color: #FAF8EF;
+  line-height: 1.3; /* Slightly more line height for elegance */
+  letter-spacing: -0.5px; /* Slightly tighter letter-spacing for a premium feel */
+  font-family: 'Playfair Display', serif; /* Classic serif for a luxurious feel */
+}
+
+.right-side1 .content h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+ font-weight: normal;
+ font-style: normal;
+ color: #FAF8EF;
+ font-family: 'Playfair Display', serif;
+
+}
+/* Body Copy */
+.right-side1 .content p {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1.2rem, 0.5rem + 0.5vw, 1.125rem);
+  line-height: 1.75; /* Slightly increased line height for readability */
+  color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
+}
+.right-side1 .content .date{
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: clamp(16px, 2vw, 18px); /* Responsive body font size */
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #bd9d5c; /* Softer gray for the text to avoid harsh contrast */
+}
+
+
+
+.right-side1 .content li {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1.2rem, 0.5rem + 0.5vw, 1.125rem);
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
+}
+
+.rightsidebutton {
+  background: #FAF8EF;
+  color: #1a1a15;
+  padding: 0.75rem 1.5rem; /* Adjust padding for better proportions */
+  display: inline-block;
+  margin-top: 1rem;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  max-width: 250px; /* Set a maximum width to prevent it from getting too long */
+  width: 100%; /* Ensure it takes up available space but doesn't exceed max-width */
+  font-size: 1rem; /* Set an appropriate font size */
+  font-weight: normal; /* Bold for better readability */
+}
+
+.rightsidebutton:hover {
+ background: #bd9d5c;
+ color: #FAF8EF;
+}
+
+.right-side1 .content button:hover {
+  background-color: #bd9d5c;
+  transform: scale(1.05);
+}/* Footer aligned with logo */
+.right-side1 .footer {
+  display: flex;
+  align-items: center;            /* vertical centering */
+  justify-content: space-between; /* horizontal spacing */
+  gap: 12px;
+  min-height: 40px;               /* gives vertical space */
+  padding: 0 1.25rem;                   /* remove vertical padding */
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 13px;
+  color: #aaa;
+}
+
+
+.right-side1 .footer .logo img {
+  max-width: 55px;
+  height: auto;
+}
+
+.right-side1 .footer .copyright {
+  line-height: 1.4;
+  font-size: 0.75rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+
+/* MOBILE FIX */
+@media (max-width: 600px) {
+
+  .right-side1 .footer {
+    flex-direction: column;      /* stack items cleanly */
+    text-align: center;
+    justify-content: center;
+    gap: 6px;                    /* tighter spacing */
+    padding: 10px 0;             /* clean mobile look */
+  }
+
+  .right-side1 .footer .logo img {
+    max-width: 32px;             /* smaller, polished */
+  }
+
+  .right-side1 .footer .copyright {
+    font-size: 0.8rem;           /* readable on mobile */
+    line-height: 1.3;
+  }
+}
+
+
+
+
+.progress-track {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 5px;  /* Adjust height as needed */
+  background: rgba(255,255,255,0.06);
+  z-index: 3;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ffc404, #fed005);
+  transition: width 450ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+
+
+/* 📱 Rotate Message Overlay */
+#rotate-message {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  color: white;
+  font-size: 1.5rem;
+  z-index: 999999;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* GIF styling */
+.rotate {
+  width: 50%;  /* Adjust width to 50% of container */
+  max-width: 150px; /* Limit the size of the GIF */
+  height: auto; /* Keep aspect ratio intact */
+  margin-bottom: 1.5rem;
+}
+@media (orientation: portrait) {
+  #rotate-message { display: flex; 
+  animation: fadeIn 0.5s ease-in-out;
+}  .slideshow { filter: blur(10px); pointer-events: none; }}
+  
+/* Adding a fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.keyboard-hint {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem; /* distance from right edge */
+  text-align: right;
+}
+
+.keyboard-hint img {
+  width: 200px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.keyboard-hint .hand {
+  position: absolute;
+  bottom: 45px;
+  right: 5px;
+  width: 50px;
+  height: 50px;
+  background: url('/Resources/The\ Most\ Insane\ Music\ Artist\ Brand\ Partnerships/thehand.png') no-repeat center/contain;
+  animation: pressKey 1.2s infinite ease-in-out;
+}
+
+@keyframes pressKey {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(5px) scale(0.97); opacity: 0.9; }
+}
+
+
+/* From now on this is the video 2 part or slide Update for video slides */
+/* Keep the right-side content to 75% of the slide */
+/* Slide 4 Layout */
+
+
+
+.left-side2, .right-side2 {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box; /* Ensure padding and borders are included in width/height */
+}
+
+/* Left side container */
+.left-side2 {
+  width: 30%; /* 30% of the screen */
+  background-color: #FAF8EF;
+  color: #1c1a15;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Start alignment for the video */
+  height: 100%; /* Ensure it takes up full height */
+  padding: 0; /* Remove any unnecessary padding */
+}
+/* --- Smooth fade animation --- */
+.right-side2 .content > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.right-side2 .content > *:nth-child(2) { animation-delay: .2s; }
+.right-side2 .content > *:nth-child(3) { animation-delay: .4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Left side background */
+
+
+/* Wrapper adds spacing */
+.left-side2 .video-wrapper2 {
+  width: 100%;
+  height: 100%;
+  padding: 20px; /* controls top, bottom, left, right spacing */
+  box-sizing: border-box;
+}
+
+/* Video adjusts inside wrapper */
+.video-wrapper2 video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px; /* optional */
+  overflow: hidden;
+}
+
+.right-side2 {
+  width: 70%;
+  object-fit: fill;
+  background:#1c1a15;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+  height: 100%;
+  box-sizing: border-box;
+}
+/* Tablet */
+@media (max-width: 1024px) {
+  .right-side2 {
+    padding: 10px 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .right-side2 {
+    padding: 5px 5px;
+  }
+}
+
+
+.right-side2 .content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem;
+  gap: 5px;
+
+  /* Hide scrollbar for Chrome, Safari */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge legacy */
+}
+
+.right-side2 .content::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+.right-side2 .content h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+ font-weight: normal;
+ font-style: normal;
+ color: #FAF8EF;
+ font-family: 'Playfair Display', serif;
+
+}
+/* Body Copy */
+.right-side2 .content p {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1.2rem, 0.5rem + 0.5vw, 1.125rem);
+  line-height: 1.75; /* Slightly increased line height for readability */
+  color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
+}
+.right-side2 .content .date{
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: clamp(16px, 2vw, 18px); /* Responsive body font size */
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #bd9d5c; /* Softer gray for the text to avoid harsh contrast */
+}
+
+
+.rightside1 button {
+
+  display: inline-block; /* ensures button only takes up content width */
+  width: auto;           /* overrides any width:100% from parent/global */
+  text-align: center;    /* center text inside */
+
+  color: #1c1a15;
+  width: auto;
+  background-color: #FAF8EF;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.right-side2 .content button:hover {
+  background-color: #bd9d5c;
+  transform: scale(1.05);
+}
+
+/* Footer aligned with logo */
+
+.right-side2 .footer {
+  display: flex;
+  align-items: center;            /* vertical centering */
+  justify-content: space-between; /* horizontal spacing */
+  gap: 12px;
+  min-height: 40px;               /* gives vertical space */
+  padding: 0 1.25rem;                   /* remove vertical padding */
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 13px;
+  color: #aaa;
+}
+
+
+.right-side2 .footer .logo img {
+  max-width: 55px;
+  height: auto;
+}
+
+.right-side2 .footer .copyright {
+  line-height: 1.4;
+  font-size: 0.75rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+
+/* MOBILE FIX */
+@media (max-width: 600px) {
+
+  .right-side2 .footer {
+    flex-direction: column;      /* stack items cleanly */
+    text-align: center;
+    justify-content: center;
+    gap: 6px;                    /* tighter spacing */
+    padding: 10px 0;             /* clean mobile look */
+  }
+
+  .right-side2 .footer .logo img {
+    max-width: 32px;             /* smaller, polished */
+  }
+
+  .right-side2 .footer .copyright {
+    font-size: 0.8rem;           /* readable on mobile */
+    line-height: 1.3;
+  }
+}
+
+.left-side3, .right-side3 {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* BIG SIDE (70%) — video */
+.left-side3 {
+  width: 70%;
+  background-color: #FAF8EF;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  padding: 0;
+}
+
+.video-wrapper3 {
+  width: 100%;
+  height: auto;
+  overflow: hidden;               /* required for visible rounded corners */
+  border-radius: 20px;            /* adjust radius */
+  margin: 20px;                   /* space around video */
+}
+
+.video-wrapper3 video {
+  width: 100%;
+  height: auto;                   /* RESPONSIVE height */
+  object-fit: cover;              /* keeps it nicely cropped */
+  display: block;                 /* removes bottom gaps */
+}
+
+
+/* SMALL SIDE (30%) — content */
+.right-side3 {
+  width: 30%;
+  background: #1c1a15;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px 20px;
+  height: 100%;
+  box-sizing: border-box;
+}
+/* Tablet */
+@media (max-width: 1024px) {
+  .right-side3 {
+    padding: 10px 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .right-side3 {
+    padding: 5px 5px;
+  }
+}
+.right-side3 .content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem;
+  gap: 5px;
+
+  /* Hide scrollbar for Chrome, Safari */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge legacy */
+}
+
+/* Heading */
+.right-side3 .content h1 {
+  font-size: clamp(2.5rem, 4vw, 4rem); /* Larger, responsive heading */
+  font-weight: normal;
+  font-style: normal;
+  color: #FAF8EF;
+  line-height: 1.3; /* Slightly more line height for elegance */
+  letter-spacing: -0.5px; /* Slightly tighter letter-spacing for a premium feel */
+  font-family: 'Playfair Display', serif; /* Classic serif for a luxurious feel */
+}
+
+.right-side3 .content h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+ font-weight: normal;
+ font-style: normal;
+ color: #FAF8EF;
+ font-family: 'Playfair Display', serif;
+
+}
+/* Body Copy */
+.right-side3 .content p {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1.2rem, 0.5rem + 0.5vw, 1.125rem);
+  line-height: 1.75; /* Slightly increased line height for readability */
+  color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
+}
+.right-side3 .content .date{
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: clamp(16px, 2vw, 18px); /* Responsive body font size */
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #bd9d5c; /* Softer gray for the text to avoid harsh contrast */
+}
+
+
+
+.right-side3 .content li {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1.2rem, 0.5rem + 0.5vw, 1.125rem);
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
+}
+
+
+.right-side3 .content button:hover {
+  background-color: #bd9d5c;
+  transform: scale(1.05);
+}/* Footer aligned with logo */
+.right-side3 .footer {
+  display: flex;
+  align-items: center;            /* vertical centering */
+  justify-content: space-between; /* horizontal spacing */
+  gap: 12px;
+  min-height: 40px;               /* gives vertical space */
+  padding: 0 1.25rem;                   /* remove vertical padding */
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 13px;
+  color: #aaa;
+}
+
+
+.right-side3 .footer .logo img {
+  max-width: 55px;
+  height: auto;
+}
+
+.right-side3 .footer .copyright {
+  line-height: 1.4;
+  font-size: 0.75rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+
+/* MOBILE FIX */
+@media (max-width: 600px) {
+
+  .right-side3 .footer {
+    flex-direction: column;      /* stack items cleanly */
+    text-align: center;
+    justify-content: center;
+    gap: 6px;                    /* tighter spacing */
+    padding: 10px 0;             /* clean mobile look */
+  }
+
+  .right-side3 .footer .logo img {
+    max-width: 32px;             /* smaller, polished */
+  }
+
+  .right-side3 .footer .copyright {
+    font-size: 0.8rem;           /* readable on mobile */
+    line-height: 1.3;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- 🔒 Lock Screen -->
+<div id="lock-screen">
+  <h1>Please enter the passcode to proceed.</h1>
+  <p>Access to this case study is restricted to invited users and Pessolas subscribers.</p>
+  <div>
+    <input 
+  type="password"
+  id="passcode"
+  placeholder="Enter your passcode"
+  autocomplete="one-time-code"
+  name="unlock-code"
+  autocorrect="off"
+  autocapitalize="off"
+  spellcheck="false"
+  inputmode="numeric"
+/>
+
+    <button onclick="event.stopPropagation(); unlock()">Unlock</button>
+  </div>
+</div>
+
+<!-- 🎥 Slideshow -->
+<div class="slideshow">
+
+  <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+
+  <div class="slide-layer">
+
+
+<!-- Slide 1 Type 01  -->
+<div class="slide-content">
+  
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/charliiexcx.webp" alt="Kanye West x Adidas">
+  </div>
+
+<div class="right-side1">
+
+<div class="content">
+      <p class="date"> Last updated: <time datetime="2025-11-20">November 20, 2025</time> </p>
+      <h2>How <i>Brat Summer</i> Took Over the World & the Genius Marketing Strategy Every Artist Should Learn</h2>
+      <p>Learn the genius marketing strategies Charli XCX and Atlantic Records used to drive the success of Charli XCX's 6th official album, Brat Summer and discover how as an artists you can apply these proven tactics to capture attention and shape culture.</p>
+</div>
+
+    <!-- 🔽 Keyboard Arrow Hint on RIGHT SIDE -->
+   <div class="keyboard-hint">
+        <img src="/Resources/Case Studies/Brat Summer/Keyboard.webp" alt="Keyboard Arrows">
+        <div class="hand"></div>
+   </div>
+
+</div>
+
+</div>
+
+
+<!-- Disclaimer Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Images/disclaimer.jpg" alt="Kanye West x Adidas">
+  </div>
+
+  <div class="right-side1">
+    <div class="content">
+      <h2>Disclaimer</h2>
+      <p>Pessolas is a personal branding agency dedicated to helping individuals develop their unique personal brands through integrity and professionalism. 
+        We does not support or align with any political, social, or cultural movements, including LGBTQ+ causes or political agendas that may be represented within the Brat Summer album's content or marketing. The focus of the agency is strictly on professional brand development, helping artists and creators build their personal brands based on their core values, without promoting or endorsing any specific movements or ideologies.</p>
+
+      
+        
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">© 2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+ 
+
+<!-- Slide 2 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide2.webp" alt="Kanye West x Adidas">
+  </div>
+
+  <div class="right-side1">
+    <div class="content">
+      <h2>Simply, the <i>brat</i> album is a masterclass</h2>
+      <p>yes, a masterclass in claiming a color, shaping culture through music marketing, and selling music as a lifestyle rather than just a product.</p>
+
+      <p>Charli XCX’s sixth studio album  took over the world and  It became instantly recognizable not only for its sound but for a bold, cohesive brand universe that showed exactly who the record spoke to, 
+        while still inviting anyone who wanted in.</p>
+
+        <p>At Pessoals, we studied Charli’s and her team’s entire strategy:           
+          <ul>
+            <li>The intentional takeover of a single shade of green</li>
+            <li>The viral BRAT generator</li>
+            <li>The unexpected star cameos</li>
+            <li>How the tracks quickly exploded across social platforms</li>
+            <li>How it praised for their addictive, early 2000s club energy</li>
+            <li>How it taps into house, rave, and underground party textures</li>
+          </ul>
+        </p>
+
+      
+        
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">© 2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3 Type 01 -->
+<div class="slide-content">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide3.webp" alt="Kanye West x Adidas">
+     </div>
+
+      <div class="right-side1">
+        <div class="content">
+  <p class="date">Nov 1, 2024</p>
+  <h2>Collins Dictionary declared <i>"Brat"</i> the 2024 Word of the Year</h2>  
+  <p>Defining the term as <i>"a confident, independent, and hedonistic attitude," </i>a blog post by the dictionary called it a <i>"fitting"</i> term for the year, where <i>"hedonism and anxiety have combined to form an intoxicating brew."</i></p>
+  <p><i>"More than a hugely successful album, "Brat" is a cultural phenomenon that has resonated with people globally, and "Brat Summer" established itself as an aesthetic and a way of life," </i> dictionary said.</p>
+  <p>Collins experts monitor their 20-billion-word database to create the annual list of new and notable words that reflect the ever-evolving English language. Collins lexicographers said on Friday that in the phrase <i>"Brat Summer,"</i> it became one of the most talked about words of 2024.</p>
+</div>
+
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 4 Type 01 -->
+<div class="slide-content">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide2.webp" alt="Kanye West x Adidas">
+     </div>
+
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">Signature Color Strategy</p>
+          <h2>But how charli XCX's iconic green transformed an album into a viral phenomenon?</h2>
+            <p>Charli XCX’s <i>"Brat Summer"</i> ignited a cultural moment, with the album’s bold green becoming instantly iconic both online and offline. Fans flooded social media platforms with user-generated content (UGC), tagging anything green as <i>"Brat,"</i> and turning the aesthetic into a viral movement. </p>
+            <p>This organic, fan-driven wave amplified the album’s visibility and cemented its place in pop culture. Charli’s use of a distinct color helped create a visual identity that transcended music and bled into fashion, lifestyle, and even social media trends.</p>
+            <p>The album’s success is a perfect example of how a single visual element, like color, can become synonymous with a brand. Charli XCX and her team leveraged the power of color psychology green symbolizing youth, rebellion, and freedom to foster an emotional connection with her audience. In a world saturated with content, the consistency of this bold green made Charli’s brand stand out in a sea of fleeting trends, giving the album a long-lasting impact.</p>
+
+<p>
+Color plays a critical role in branding, influencing how a brand is perceived and remembered. Just like Charli XCX’s use of green, many global brands strategically choose colors that align with their values and evoke specific emotions. Think of Coca-Cola’s red  a color that communicates excitement and energy or Apple’s minimalist white which suggests sophistication and simplicity. </p>
+<p>Consistent use of a color across all brand touchpoints, from logos to packaging to marketing campaigns, helps establish a strong visual identity. because colors are deeply embedded in human psychology, influencing purchasing decisions, brand loyalty, and emotional connections. </p> 
+<p>For example, blue tends to evoke trust and reliability (which is why many banks use it), while yellow represents optimism and energy. As a brand, whether you're a large corporation or a solo artist, choosing the right color can be the difference between blending in and standing out in a crowded marketplace.</p>
+<p>For artists, consistency is key to developing a personal brand that resonates with fans. Charli XCX’s iconic green is a prime example of how artists can use color to create a recognizable, memorable brand. By consistently incorporating this color into her album covers, merchandise, social media posts, and even in her music videos, Charli solidified her identity in the minds of her audience. </p>
+<p>This consistency not only enhanced her visual appeal but also helped create a cohesive narrative that fans could connect with.
+Just as corporate brands use color to convey their message, artists can use a signature color to represent their artistic persona and connect emotionally with their audience. </p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 5 Type 01 -->
+<div class="slide-content">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide5.webp" alt="Kanye West x Adidas">
+     </div>
+
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">Lifestyle Branding</p>
+          <h2>As Charli announced <i>“BRAT Summer”,</i> and the concept and lifestyle gained traction</h2>
+            <p>The concept quickly gained traction not only because of its bold musical direction but also because of its cultural relevance. The album’s distinctive green became an iconic symbol, representing not just the music, but the lifestyle and attitude embodied by the album. </p>
+            <p>Charli’s choice of color resonated with fans who were eager to embrace the aesthetic, and soon, this shade of green became synonymous with her. Thousands of fans and online users began generating user-created content (UGC), incorporating the green hue, the stylized BRAT album cover, and the phrase <i>"Brat"</i> itself. </p>
+            <p>They took to social platforms, calling anything green <i>"Brat"</i> from clothing and accessories to everyday objects, effectively turning the album’s branding into a viral sensation. This movement sparked countless conversations both online and in real life (IRL), amplifying the album's visibility. </p>
+            <p>The organic fan engagement became one of the most effective forms of promotion, contributing to the album’s widespread success without any paid advertising. This free, authentic promotion played a key role in solidifying the album's place in pop culture and demonstrating the power of community-driven marketing.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 6 Type 01 -->
+<div class="slide-content">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide6.webp" alt="Kanye West x Adidas">
+     </div>
+
+      <div class="right-side1">
+        <div class="content">
+          <h2>Brands have also jumped on the trend, showcasing their products in brat green frosting.</h2>
+            <p>This clever strategy allows companies to tap into the viral nature of Charli XCX's branding, aligning themselves with the cultural moment and connecting with consumers in a relevant way.</p>
+            <p>By incorporating brat green into their products, brands engage with their audience in a fun and creative manner. This not only encourages social sharing but also fosters a sense of participation, allowing fans to feel like they are part of the movement. As fans share their experiences online, the visibility of the brand grows, leading to a wider reach.</p>
+            <p>In this way, brands can leverage the brat aesthetic to attract new customers while strengthening their connection with existing ones. The power of a well-timed, visually-striking trend can transform a simple product into a talking point, generating buzz and increasing overall brand awareness.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">© 2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 7 Type 01 -->
+<div class="slide-content">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide7.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <h2>Much of Brat's virality was due to its heavy promotion. </h2>
+          <p>Brat's virality was fueled by strategic and highly visible promotion. In the weeks leading up to the album's release, a wall in Greenpoint, Brooklyn dubbed the <i>"Brat Wall"</i> by fans was painted and repainted with the album's signature green color and a variety of messages.</p>
+          <p>Over the course of the summer, the messages on the wall changed frequently to align with the album's promotional cycle. These included lyrics from the song <i>"360"</i> (2024) as well as references to the album's accompanying remix release. This ever-changing display kept fans engaged, encouraging them to revisit the wall, take photos, and share them online.</p>
+          <p>By creating a physical, interactive space for promotion, Charli XCX’s team was able to extend the album’s visibility beyond digital platforms. The "brat wall" became a cultural touchpoint, bridging real-world engagement with online virality and reinforcing the album's iconic branding.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 8 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide8.mp4"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+        <div class="content">
+          <p class="date">April 5, 2024</p>
+             <h2>Charli XCX posted the video defining "brat" on her TikTok account.</h2>
+
+<p>In the video, Charli explains the concept of brat, describing it as <i>"brat is that girl who is a little messy, likes to party, and maybe says some dumb things sometimes.”</i></p>
+
+<p>She elaborates:<i>“A brat is someone who feels like herself but may also have a breakdown. She kind of parties through it, is very honest, very blunt, a little volatile, and sometimes does dumb things. But it’s brat. You’re brat. That’s brat.”</i></p>
+
+<p>This definition became the guiding concept behind <i>"BRAT Summer"</i>, influencing everything from the album’s visuals to its promotional campaigns. The idea of being unapologetically oneself resonated with fans, who began adopting the "brat" persona in their own social media posts, fashion, and everyday life. It wasn’t just an album title it was a lifestyle and a cultural identity.</p>
+
+<p>By embracing imperfection and authenticity, Charli created a space where fans felt empowered to express themselves freely. The “brat” concept allowed the audience to participate in the album’s narrative, generating organic engagement and user-created content that reinforced the album’s cultural impact.</p>
+
+
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals.</div>
+        </div>
+      </div>
+    </div>
+  
+<!-- Slide 9 Type 01 -->
+<div class="slide-content ">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide9.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">Exclusive Content Marketing </p>
+          <h2>Brat Summer effectively used exclusive content marketing to build anticipation for her project.</h2>
+          <p>At August 2, 2022 Charlie created @360_brat the private Instagram account to engage with her superfans
+            
+          By using this private platform, Charli was able to share personal, behind-the-scenes moments, creating a more intimate connection with her audience. This strategy was particularly effective with younger audiences, who are used to the concept of <i>"finstas"</i> (fake Instagram accounts) to share unfiltered, personal content with a select group of followers.</p>
+
+<p>Through @360_brat, Charli fostered a sense of exclusivity and community among her most loyal fans. The account’s private nature made the content feel special and reserved for the true "Brats," building anticipation and excitement. This not only increased loyalty but also drove fans to share their experiences online, further amplifying the album’s reach and cultural impact.</p>
+
+<p>Ultimately, Charli’s approach shows how artists can use social media creatively to build stronger relationships with their fanbase. By leveraging a more personal platform, Charli was able to foster deeper engagement and loyalty, strengthening her connection with fans while simultaneously generating buzz for <i>"BRAT Summer"</i>.</p>
+
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+  
+<!-- Slide 10 Type 01 -->
+<div class="slide-content ">
+      <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide10.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">Scarcity-Based Fan Engagement</p>
+          <h2> She created a sense of exclusivity and anticipation among her fanbase</h2>
+        <p>Charli XCX kept her @360_brat burner account private, opening it up to new followers in phases, before closing it again. This approach created a sense of exclusivity and anticipation among her fanbase, making them feel like they were part of a special inner circle. The account’s limited access fueled curiosity, driving fans to eagerly await their chance to join the community and gain access to exclusive content.</p>
+
+<p>This strategy was especially effective in building excitement for <i>"BRAT Summer"</i>, as Charli used the account to gradually tease information about the album. Despite the album being announced 1.5 years later, the secrecy and gradual release of information kept fans on edge, fueling anticipation and discussions among her followers. The private nature of the account also made the content feel more authentic and raw, as fans could see a behind-the-scenes view of Charli’s life and creative process.</p>
+
+<p>By controlling when followers could access the account and strategically revealing new updates, Charli was able to keep her fans engaged and invested over a long period. The sense of being in the know and the elusive nature of the account turned it into an exclusive experience, generating excitement and increasing anticipation around the album’s eventual release.</p>
+
+<p>This type of engagement strategy not only strengthened her relationship with superfans but also demonstrated the power of anticipation and exclusivity in modern fan culture. It created a buzz that extended far beyond typical album promotion, positioning Charli’s <i>"BRAT Summer</i> as not just an album but an event that fans wanted to be part of from the very beginning.</p>
+
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 11 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide11.mp4"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+        <div class="content">
+          <p class="date">February 22,2024</p>
+          <h2>Charli generated a spark by revealing select tracks in an intimate, live setting.</h2>
+          <p>Charli XCX’s Boiler Room set took place in Brooklyn, featuring special appearances by Addison Rae and Julia Fox. The announcement of the event generated massive buzz, and within the first few hours, Boiler Room received an astonishing 25,000 RSVPs, marking the largest turnout in Boiler Room history.</p>
+          <p>During the set, Charli teased new music by playing multiple snippets of tracks from her upcoming album, which had not yet been officially announced. Fans were immediately captivated, sharing videos and clips of the performance across social media platforms. This organic circulation of content created early excitement and anticipation, even before the album’s release.</p>
+          <p>The event served as a masterclass in fan engagement and guerrilla marketing. By revealing select tracks in an intimate, live setting, Charli was able to generate word-of-mouth promotion and spark conversations online, turning her live performance into a viral moment. Fans not only experienced the music first-hand but also felt part of an exclusive moment, deepening their connection to the artist and her forthcoming project.</p>
+          <p>Charli’s strategic use of live events, coupled with her ability to tease unreleased music, demonstrates how artists can build anticipation and cultural momentum prior to an album release. The Boiler Room set not only showcased Charli’s music but also cemented her position as an innovator in creating memorable, shareable experiences for her fanbase.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 12 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide12.webp" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p class="date">February 28, 2024</p>
+          <h2>She officially announced ‘Brat’ her 6th studio album via her social media </h2>
+          <p>After six days of teasing and building anticipation, Charli XCX officially announced <i>"Brat"</i>, her sixth studio album, via her social media channels. The announcement instantly grabbed the attention of fans and media outlets, generating excitement and speculation about what the new project would entail.</p>
+<p>The album featured the now infamous album cover, which at first received criticism for its simplicity. However, this minimalist approach proved to be highly effective for the campaign. The bold, memorable design made it instantly recognizable, allowing fans to engage creatively with the artwork.</p>
+<p>As the album circulated online, fans began creating user-generated content (UGC) inspired by the font, colors, and overall style of the cover. This organic content helped amplify the album’s visibility, turning the artwork into a cultural touchpoint and reinforcing Charli’s visual identity in pop culture.</p>
+<p>The success of the album cover demonstrates the power of simplicity and consistency in branding. By opting for a clean, distinctive design, Charli was able to encourage fan participation and engagement, further solidifying the album’s presence and impact across social media platforms.</p>
+
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals.</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 13 Type 03 -->
+<div class="slide-content">
+
+  <div class="left-side3">
+    <div class="video-wrapper3">
+    <video class="horizontal" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide13.mp4"></video>
+    </div>
+  </div>
+
+  <!-- SMALL SIDE (content) -->
+  <div class="right-side3">
+    <div class="content">
+      <p class="date">February 29, 2024</p>
+      <h2>Charli releases <i>"Von Dutch"</i> as her first single of the album</h2>
+      <p>Along with the single, Charli dropped the official music video, further enhancing the impact of the release. The visually striking video showcased Charli’s unique artistic style, complementing the song’s bold energy and marking the beginning of the album’s visual and sonic journey. The video’s aesthetic, paired with the track’s energetic vibe, helped to solidify the album’s identity and set the tone for the rest of the campaign.</p>
+
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">
+        ©2026 Pessoals
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Slide 14 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide14.mp4"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+        <div class="content">
+          <p class="date">March 15, 2024</p>
+          <h2>Before releasing the remix Charli hinted at the collab with video posted on her socials.</h2>
+            <p>On March 22, Charli XCX released the highly anticipated Von Dutch remix, featuring Addison Rae and A.G. Cook. This remix not only added a fresh twist to the original track but also brought together a diverse mix of talent, combining Charli’s innovative pop sound with the social media star power of Addison Rae and the avant-garde production of A.G. Cook.</p>
+<p>The release of this remix created a buzz across multiple fanbases, sparking conversations and engagement among Charli’s followers, Addison’s massive social media audience, and A.G. Cook’s loyal listeners. By bringing together different artistic communities, Charli was able to amplify the track’s visibility, expanding its reach and appeal to an even wider audience.</p>
+<p>Then, on April 12, Charli dropped a second remix of "Von Dutch," this time featuring Skream and Benga. This remix shifted the track's sonic direction, incorporating dubstep and electronic influences that further broadened the song’s appeal. The collaboration with two iconic figures in the electronic music scene helped tap into new audiences, providing the track with a more underground, club-ready vibe.</p>
+<p>Both remixes showed Charli’s ability to keep the momentum of the <i>"BRAT"</i> campaign alive while experimenting with different sounds and collaborating with a variety of artists. By releasing multiple remixes over the span of weeks, Charli not only kept her fanbase engaged but also opened up the music to new interpretations and communities, ensuring that the excitement for BRAT continued to grow.</p>
+
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 15 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide15.webp" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p class="date">March 25, 2025</p>
+          <h2>Charli announces her month of June shows </h2>
+            <p>She announced her upcoming June shows, featuring a mix of live performances and DJ sets, collectively dubbed <i>“Party Girl.”</i> The announcement immediately generated excitement among her fanbase, as it promised a unique blend of energetic live music and immersive DJ experiences.</p>
+<p>The "<i>Party Girl"</i> shows were designed to showcase Charli’s dynamic performance style, blending tracks from her BRAT album with fan favorites and exclusive live remixes. By combining traditional live shows with DJ sets, Charli created an interactive and versatile concert experience that appealed to a wide range of audiences.</p>
+<p>This announcement also served as a strategic promotional move, sustaining momentum for the BRAT campaign by connecting fans directly with her music in real-world settings. Fans eagerly began sharing the news across social media, discussing ticket availability and anticipating the unique energy of the shows.</p>
+
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 16 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide16.webp" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p class="date">April 3, 2024</p>
+          <h2>Charli XCX continued building momentum for the <i> brat</i> era </h2>
+            <p>She released <i>“Club Classics”</i> and <i>“B2B”</i>, the tracks showcased her versatility and ability to experiment with different musical styles. These releases reinforced her position as an innovative pop artist unafraid to explore new sounds.</p>
+<p>Both tracks allowed Charli to engage her fanbase in fresh ways. <i>“Club Classics”</i> delivered an energetic, dancefloor-ready vibe that appealed to fans who enjoy high-energy tracks, while “B2B” offered a complementary style, adding depth and variety to the album’s rollout. By releasing multiple tracks in succession, Charli kept her audience continuously engaged and excited about what was coming next.</p>
+<p>The staggered release strategy also encouraged organic promotion, as fans shared their favorite tracks, created playlists, and discussed the songs online. This approach helped sustain the cultural conversation around <i>"BRAT"</i>, keeping Charli in the spotlight and maintaining engagement leading up to the album’s full release.</p>
+
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 17 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide17.webp" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p class="date">April 3, 2024</p>
+          <h2>Charile announced UK shows</h2>
+          <p>Charile just dropped the news and, honestly, it feels like the summer’s already got a date with the dancefloor. She’s lined up a handful of UK dates that mix live shows with DJ sets — the kind of nights where tracks you know become something new. If you’ve seen her once, you know she plays with energy; if you haven’t, this is the moment to change that.</p> <p>What’s nice about these gigs is they don’t feel mass-produced. The venues are the kind that hold stories — sweaty, loud, and full of people who came for the music, not the spectacle. Expect crowd sing-alongs, quick surprises between songs, and those tiny, perfect moments that make a show stick with you for weeks.</p> <p>If you’re planning to go, grab tickets early and bring your patience for queues and joy — both will be worth it. And if you can’t make a date, don’t worry: the buzz from these nights usually spills online, so you’ll still catch the best bits through clips and chatter.</p> <p>Bottom line: this run feels personal and alive. Charile’s UK shows look set to remind everyone why live music still does something computers never will — it brings people together, loud and breathing the same beat.</p>
+
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2025 Pessoals</div>
+        </div>
+      </div>
+</div>
+
+
+<!-- Slide 18 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide18.webp" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p class="date">April 16, 2024</p>
+          <h2> Charli teases a collaboration with Troye Sivan </h2>
+            <p>She sparked major excitement online when she teased a potential collaboration with <i>"Troye Sivan"</i>. She posted an intriguing image on social media featuring a white tank top soaked in sweat, with the words <i>"Charli XCX, Troye Sivan, and sweat</i> written across the fabric. The post immediately grabbed fans’ attention due to its bold, playful, and suggestive visual style a signature move in Charli’s marketing.</p>
+            <p>Shortly after, Troye Sivan shared a similar image on his own social platforms, doubling the anticipation and confirming that something was definitely in the works. The coordinated posts sent fans into a frenzy, generating thousands of comments, theories, and reposts within minutes. This type of synchronized tease is a highly effective strategy for maximizing reach and engagement.</p>
+            <p>The moment perfectly showcased Charli’s ability to create buzz with minimal information. By using simple but visually striking imagery paired with Troye’s equally massive audience she set the stage for a viral announcement. The collaboration tease not only boosted excitement around the project but also highlighted the power of social media synergy between two influential pop artists.</p>
+
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+</div>
+
+
+<!-- Slide 19 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide19.webp" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p class="date">April 17, 20224</p>
+          <h2>Charlie announces a North America co headline arena tour with Troye </h2>
+           <p>The very next day, on April 17, Charli followed the collaboration tease with another major announcement: <i>"a North American co-headline arena tour"</i> with Troye Sivan. She revealed the news through a coordinated social media post, continuing the momentum and capitalizing on the hype generated from the previous day’s tease.</p>
+           <p>The announcement immediately set the internet buzzing. Fans who had been speculating about a possible joint project now had confirmation that the two artists would be sharing the stage across major cities. The bold, high-energy visual language of the post aligned perfectly with the emerging aesthetic of the <i>"Brat"</i> era, giving fans a taste of the chaotic, fun, club-inspired direction that the tour would embrace.</p>
+           <p>This rapid-fire sequence of teasers and announcements showcased Charli’s mastery of digital storytelling. By spacing the reveals only a day apart, she ensured that the social conversation remained consistently elevated. The strategic timing also created a sense of urgency and excitement, encouraging instant sharing, discussions,</p>
+           </div>
+
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 20 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+  <div class="visual-panel">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide20.webp" alt="Kanye West x Adidas">
+  </div>
+  </div>
+
+  <div class="right-side1">
+        <div class="content">
+          <p class="date">April 20, 2024</p>
+            <h2>The album’s official track list was revealed.</h2>
+            <p>On April 20, Charli took another exciting step in the lead-up to her album release by revealing the official tracklist for <i>"Brat"</i>. The announcement, made via her social media platforms, gave fans an inside look at the highly anticipated album, offering a glimpse into the diverse range of music they could expect.</p>
+            <p>The tracklist revelation created an immediate wave of excitement, as fans began to speculate about the meaning behind each title and which songs might be the next singles. Charli's decision to unveil the list on social media was a calculated move to generate engagement, as fans flocked to comment, share, and discuss their favorite tracks even before the full album was released.</p>
+            <p>Revealing the tracklist helped deepen the connection between Charli and her fans, giving them a sense of ownership over the project. This type of direct engagement sharing key milestones like the tracklist reveal kept the momentum high and continued to fuel the cultural conversation surrounding <i>"Brat"</i>. It also set the stage for what was to come, with fans eagerly anticipating the release of each new single and looking for clues about the overall themes and sounds of the album.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 21 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide21.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <h2>Charli livestreamed the creation of the <i>"Brat Wall"</i> multiple times</h2>
+          <p>This strategy allowed Charli to create a true viral moment, as viewers across social media eagerly speculated about what the reveal could be. With every new letter slowly painted, fans rushed to platforms like TikTok, X, and Instagram to share their guesses and theories, turning the reveal into a real-time global conversation.</p>
+          <p>The gradual unveiling became a collective experience, with fans recording, reacting, and analyzing every new update. This constant stream of user-generated content not only amplified the campaign’s visibility but also transformed it into an interactive event that kept the audience glued to their screens.</p>
+
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Slide 22 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide22.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">May 2,2024</p>
+          <h2>Charli XCX teased by tweeting a time and location on social media</h2>
+          <p>At exactly 6:06 PM, Charli XCX posted a cryptic tease on social media, sharing nothing more than a time and a location. The ambiguity was intentional and incredibly effective. Within minutes, fans began spreading the post across platforms, trying to decode what might happen.</p>
+          <p>The mystery created instant urgency. As word traveled, excitement built, and speculation took over the timelines. Fans who lived nearby rushed to the spot, determined not to miss whatever was about to unfold. The sense of <i>“something big is happening”</i> pushed the moment into viral territory.</p>
+          <p>By the time the clock hit 6:06 PM, hundreds of fans had already gathered at the location. The crowd’s sheer size demonstrated the power of Charli’s influence and the effectiveness of her real-time, in-person marketing tactics. The unexpected nature of the event turned it into a spontaneous cultural mom
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 23 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide23.mp4"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+        <div class="content">
+          <p class="date">May 2, 2024</p>
+          <h2>She performed in front of the Brat Wall</h2>
+          <p>As fans gathered at the location, Charli XCX rewarded them with an unforgettable surprise: a live performance and DJ set right in front of the iconic <i>"Brat Wall"</i>. The moment was a powerful culmination of the buzz surrounding the mysterious tease earlier in the day, and the energy was electric. Fans were not only treated to Charli’s signature performance style but were also immersed in the heart of the <i>"Brat"</i> campaign’s visual identity.</p>
+          <p>In an even more exciting twist, Charli took the opportunity to premiere the next single from her upcoming album live, creating an intimate yet electrifying atmosphere. The surprise performance turned the event into a unique, once-in-a-lifetime experience for those in attendance, leaving fans with memories they would share on social media for weeks to come.</p>
+          <p>This impromptu set was a brilliant marketing move that further strengthened Charli’s connection with her fanbase. By combining a surprise performance, a highly-anticipated single release, and the powerful visual of the "Brat Wall", Charli ensured that the buzz around "Brat" would continue to snowball, generating both digital and real-world excitement. The event became a defining moment in the <i>"Brat"</i> era, marking a creative, fan-first approach to album promotion.</p>
+
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 24 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/slide24.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">May 2, 2024</p>
+          <h2>The performance created FOMO for those who weren’t there to bea part of it.</h2>
+          <p>It generated an overwhelming amount of user-generated content (UGC), with hundreds of fans capturing and sharing clips of the performance online. From videos of Charli’s set to reactions from the crowd, the content flooded social media platforms, creating a ripple effect that amplified the excitement surrounding the <i>"Brat"</i> campaign.</p>
+          <p>This surge of UGC not only increased the visibility of the surprise performance but also showcased the organic buzz that Charli had cultivated. Fans eagerly documented their experience, turning the event into a shared cultural moment. As the content spread, it further fueled the frenzy and anticipation for the upcoming album and Charli's next moves.</p>
+
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 25 Type 03 -->
+<div class="slide-content">
+
+  <div class="left-side3">
+    <div class="video-wrapper3">
+    <video class="horizontal" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide25.mp4"></video>
+    </div>
+  </div>
+
+  <!-- SMALL SIDE (content) -->
+  <div class="right-side3">
+    <div class="content">
+      <p class="date">May 2, 2024</p>
+      <h2>Charli xcx spun some tracks inside the Lot radio DJ booth</h2>
+      <p>Following her Lot Radio and Brooklyn pop-up events, the "Brat Wall" evolved into a central symbol and dynamic canvas for Charli XCX’s album campaign. It served as a living, interactive element of the "Brat" era, capturing the attention of both fans and media alike.</p>
+      <p>The wall underwent numerous transformations, featuring everything from song lyrics to cryptic messages, each update sparking fresh excitement and speculation among her fanbase. Fans eagerly documented each change, sharing photos and videos online, which further amplified the campaign’s reach and created a continuous stream of engagement.</p>
+      <p>For example, when the deluxe version of the album was released, many fans assumed the BRAT Wall would disappear. Instead, Charli revealed a new campaign message on the wall, delighting fans and keeping the **sense of surprise and anticipation** alive. The wall not only reinforced the album’s branding but also demonstrated Charli’s ability to create interactive, real-world experiences that complemented her digital marketing strategy.</p>
+
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">
+        ©2025 Pessoals.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Slide 26 Type 03 -->
+<div class="slide-content">
+
+  <div class="left-side3">
+    <div class="video-wrapper3">
+    <video class="horizontal" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide26.mp4"></video>
+    </div>
+  </div>
+
+  <!-- SMALL SIDE (content) -->
+  <div class="right-side3">
+    <div class="content">
+      <p class="date">May 10, 2024</p>
+      <h2>Carlie Released "360" and it's official music video</h2>
+      <p>On **May 10**, Charli XCX released **“360”**, the fourth single from her *BRAT* album, accompanied by its **official music video** directed by Aidan Zamiri. The release marked another high point in the album’s rollout, combining striking visuals with Charli’s signature high-energy sound.</p>
+      <p>The video was packed with **It Girls**, iconic moments, and playful yet bold imagery that immediately captured fans’ attention. From the fashion-forward styling to memorable set pieces, the video sparked a wave of social media discussion, memes, and fan recreations, demonstrating Charli’s ability to turn a music video into a cultural event.</p>
+      <p>Fans and media alike praised the release, hailing it as an **instant classic** for the artist. The combination of a dynamic track and visually compelling video further reinforced the *BRAT* era’s identity, keeping the momentum alive while showcasing Charli’s creative vision. “360” not only strengthened the album campaign but also highlighted her ongoing influence in shaping pop culture and digital trends.</p>
+
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">
+        ©2025 Pessoals.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Slide 27 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+  <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide27.mp4"> </video>
+  </div>
+  </div>
+
+  <div class="right-side2">
+  <div class="content">
+    <p class="date">May 11, 2024</p>
+    <h2>She also shared this behind-the-scenes content piece</h2>
+    <p>This behind-the-scenes content serves as a perfect example of how artists can effectively shoot and leverage phone-based content for maximum impact. By capturing informal, authentic moments, Charli XCX gave fans a glimpse into her creative process, making the campaign feel more personal and relatable.</p>
+    <p>Using phone footage allowed for a raw, unfiltered aesthetic, which resonated particularly well with younger audiences who are accustomed to consuming content on mobile devices. Fans could connect with the material in real-time, share it easily across social platforms, and engage directly with the content.</p>
+    <p>Strategically incorporating behind-the-scenes content like this not only enhances fan engagement but also demonstrates a clever marketing approach: high-impact promotion without the need for large-scale production. Charli’s team used this content to extend the narrative of the "Brat" campaign, keeping fans invested and excited for upcoming releases and events.</p>
+  </div>
+  <div class="footer">
+    <div class="logo">
+      <img src="/Images/pessoalslogo.svg" alt="Logo">
+    </div>
+    <div class="copyright">©2026 Pessoals</div>
+  </div>
+</div>
+</div>
+
+
+<!-- Slide 28 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide28.webp" alt="Kanye West x Adidas">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">May 14, 2024</p>
+      <h2>"Brat" wall was also painted in San Francisco</h2>
+      <p>Charli XCX, in collaboration with Atlantic Records, continued to expand the "BRAT" campaign’s reach by bringing the west coast some love. San Francisco was treated to its very own "BRAT Wall", extending the visual and cultural identity of the album beyond Brooklyn and creating a new hub for fan engagement.</p>
+      <p>The San Francisco "BRAT Wall" mirrored the original in its bold aesthetic and interactive design, instantly becoming a social media hotspot. Fans flocked to the location to take photos, create videos, and share content online, effectively replicating the viral success of the original wall on the west coast.</p>
+      <p>By strategically placing walls in multiple cities, Charli and her team demonstrated a savvy understanding of location-based marketing, using real-world installations to maintain excitement, drive UGC, and reinforce the cultural footprint of the "BRAT" era. The San Francisco wall further cemented the album’s presence as a nationwide phenomenon.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Slide 29 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide29.webp" alt="Kanye West x Adidas">
+  </div>
+
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">June 5, 2024</p>
+
+      <h2><i>"Brat"</i> Wall to repaint it as the album cover</h2>
+
+      <p>
+        The day before the album’s release, Charli XCX shared a photo of the updated
+        <i>"Brat"</i> Wall on her social media platforms, giving fans an exclusive sneak
+        peek before the full album dropped at midnight. This pre-release tease served
+        to heighten anticipation and keep the conversation around <i>"Brat"</i> alive in
+        the final hours leading up to its debut.
+      </p>
+
+      <p>
+        The updated wall continued to showcase Charli’s distinctive aesthetic and
+        campaign messaging, providing fans with a visual cue that something big was
+        about to happen. By sharing this content online, she effectively combined
+        real-world activation with digital engagement, ensuring that fans both locally
+        and globally could participate in the excitement.
+      </p>
+
+      <p>
+        This strategic move reinforced the sense of urgency and excitement, as fans
+        began speculating about the album, sharing their reactions, and documenting
+        the wall online. The sneak peek not only amplified the cultural impact of the
+        release but also demonstrated Charli’s mastery of timed, attention-grabbing
+        marketing tactics that kept her audience engaged and energized.
+      </p>
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 30 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+    <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide30.mp4"></video>
+    </div>
+  </div>
+
+  <div class="right-side2">
+    <div class="content">
+      <p class="date">June 6, 2024</p>
+      <h2>Charli made a surprise appearance at London’s Dalston Superstore</h2>
+
+      <p>
+        On the night of the album release, Charli XCX made a surprise appearance at
+        London’s Dalston Superstore, arriving in her iconic
+        <i>"Bratmobile"</i> for an impromptu performance. Fans were treated to an
+        unforgettable, intimate set at the East London queer bar, which perfectly
+        captured the energy and inclusivity of the <i>"Brat"</i> era.
+      </p>
+
+      <p>
+        The unannounced nature of the event demonstrated the power of surprise in
+        generating immediate buzz and fan engagement. Attendees quickly shared photos
+        and videos across social media, turning the impromptu set into a viral moment
+        and creating a ripple effect of excitement that extended far beyond those
+        present at the venue.
+      </p>
+
+      <p>
+        This unexpected experience not only heightened fan anticipation but also
+        amplified social media chatter, reinforcing the album launch as a cultural
+        moment. By leveraging the concept of FOMO (fear of missing out), Charli ensured
+        that both her in-person and online audiences remained captivated, illustrating
+        how spontaneous, high-energy events can significantly enhance the impact of an
+        album release and maintain momentum for the campaign.
+      </p>
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 31 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide31.webp" alt="Kanye West x Adidas">
+  </div>
+
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">June 6, 2024</p>
+      <h2>
+        On the day of the album release, Lorde took to Instagram Stories to praise
+        Charli’s album
+      </h2>
+
+      <p>
+        Lorde also confirmed publicly that there were no hard feelings between her and
+        Charli XCX. This reassurance helped calm any fan speculation about tension
+        between the two artists, maintaining a positive narrative around their
+        professional relationship.
+      </p>
+
+      <p>
+        However, Lorde did not comment on the track “Girl, So Confusing”, leaving some
+        questions unanswered about the song’s status or potential collaboration. Fans
+        quickly took to social media to discuss and speculate, keeping the conversation
+        active and maintaining engagement around both artists.
+      </p>
+
+      <p>
+        By addressing the situation diplomatically while leaving certain details open,
+        Lorde managed to maintain her public image and fan intrigue simultaneously.
+        This careful balance of transparency and mystery demonstrates how artists can
+        navigate sensitive topics while keeping audiences engaged and invested in
+        ongoing projects.
+      </p>
+    </div>
+
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 32 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide32.webp" alt="Charli XCX Album Artwork">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">June 7, 2024</p>
+      <h2>Her previous album artwork was updated</h2>
+      <p>
+        Charli XCX took another strategic step by updating all of her previous album artwork on digital streaming platforms to align with the BRAT branding. This move refreshed her discography visually while creating a cohesive and recognizable aesthetic across her entire catalog.
+      </p>
+      <p>
+        By ensuring her branding was consistent across all platforms, Charli increased the visibility and overall impact of the BRAT campaign. Fans encountering her older releases were reminded of the BRAT era, reinforcing the album’s identity and encouraging social sharing and engagement.
+      </p>
+      <p>
+        This attention to branding coherence shows how artists can leverage existing content to strengthen a current campaign. Updating past visuals ensured that every touchpoint contributed to a unified and memorable fan experience, expanding the album’s cultural footprint.
+      </p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 33 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide33.webp" alt="Brat Generator">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <h2>Charli XCX and Atlantic Records created a website called “Brat Generator”</h2>
+      <p>
+        After the album’s cover art gained traction online, Charli XCX and Atlantic Records launched a website called the Brat Generator. The interactive platform allowed fans to create their own images using custom text styled in the same bold visual language as the album cover.
+      </p>
+      <p>
+        The website’s simple and intuitive interface made it easy for fans to generate and share content, leading to parodies and memes spreading rapidly across social media. By giving fans creative tools, Charli transformed the album artwork into a playful, shareable cultural moment that extended the campaign’s reach organically.
+      </p>
+      <p>
+        According to Brandon Davis, Head of A&R at Atlantic Records, the website helped expand the album’s cultural relevance by embedding the BRAT aesthetic directly into fan communities. The Brat Generator demonstrates how interactive, fan-driven marketing can amplify engagement and sustain momentum.
+      </p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 34 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide34.webp" alt="BRAT Album Release">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">June 7, 2024</p>
+      <h2>Finally, BRAT was born</h2>
+      <p>
+        Charli XCX officially released BRAT, and it immediately dominated pop culture across multiple spaces. From underground clubs to crossword clues, the album’s influence was everywhere, with its signature lime-green aesthetic becoming a visual symbol of the BRAT Summer era.
+      </p>
+      <p>
+        BRAT Summer evolved into more than just an album release. It became a cultural vibe that shaped trends, inspired fan content, and permeated media and everyday life. Charli’s bold visuals and distinctive sound ensured the album was recognized and celebrated globally.
+      </p>
+      <p>
+        The success of BRAT highlights how music, branding, and fan engagement can work together to create a multi-layered cultural phenomenon. The album wasn’t just heard — it was experienced.
+      </p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 35 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+    <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide35.mov"></video>
+    </div>
+  </div>
+  <div class="right-side2">
+    <div class="content">
+      <p class="date">June 7, 2024</p>
+      <h2>BRAT trucks appeared in London to promote the album</h2>
+      <p>
+        On the day of the album’s release, BRAT-branded trucks roamed the streets of London, acting as mobile billboards for Charli XCX’s latest project. These moving installations added a real-world dimension to the campaign.
+      </p>
+      <p>
+        The trucks sparked speculation when one displayed the name “Kesha,” leading fans to theorize about a possible collaboration and share predictions across social media.
+      </p>
+      <p>
+        By combining bold visuals with strategic mystery, the BRAT trucks fueled conversation both online and offline, showing how experiential marketing can drive digital virality.
+      </p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 36 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide36.webp" alt="BRAT Deluxe Edition">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">June 9, 2024</p>
+      <h2>Charli released three new songs as part of the deluxe edition</h2>
+      <p>
+        Just three days after the album’s release, Charli XCX surprised fans with a deluxe edition of BRAT featuring three additional songs, keeping the campaign’s momentum strong.
+      </p>
+      <p>
+        The new tracks encouraged continued streaming and social sharing, extending the album’s lifecycle and keeping fans engaged.
+      </p>
+      <p>
+        The deluxe release was a strategic move to sustain cultural relevance and maintain excitement around the BRAT era.
+      </p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 37 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+    <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide37.mp4"></video>
+    </div>
+  </div>
+
+  <div class="right-side2">
+    <div class="content">
+      <p class="date">June 9, 2024</p>
+      <h2>Charli’s surprise performance at the music festival</h2>
+      <p>
+        On the day of her scheduled festival appearance, Charli XCX surprised fans with an impromptu DJ set alongside A.G. Cook and George Daniel. The unannounced performance immediately energized festivalgoers and sparked excitement online.
+      </p>
+      <p>
+        Charli amplified the moment by teasing the set on TikTok, which quickly spread across social platforms and fueled anticipation for her main performance later that day.
+      </p>
+      <p>
+        By combining a live surprise with real-time social media promotion, Charli created a sense of urgency and exclusivity that made her festival presence feel spontaneous, memorable, and highly shareable.
+      </p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 38 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide38.webp" alt="Updated BRAT Album Cover">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">June 10, 2024</p>
+      <h2>Charli shared the updated album cover</h2>
+      <p>
+        To celebrate the release of BRAT, Charli XCX shared content across Instagram and TikTok, including a livestream clip of the BRAT Wall. This real-time interaction kept fans actively engaged during the height of the album rollout.
+      </p>
+      <p>
+        The bold album cover quickly inspired a wave of meme content across social media, creating an organic and humorous form of promotion that helped the BRAT aesthetic spread naturally online.
+      </p>
+      <p>
+        The album also featured fan-favorite tracks that had already gained attention during Charli’s Boiler Room set. Including these tracks rewarded loyal fans and heightened anticipation, driving even more conversation around the release.
+      </p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 39 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide39.webp" alt="Charli XCX Signing Event">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">June 7 & June 10, 2024</p>
+      <h2>Charli hosted exclusive signing events in London and New York City</h2>
+      <p>
+        Charli XCX hosted exclusive signing events on June 7 at Rough Trade East in London and on June 10 at Rough Trade in New York City. These intimate gatherings allowed fans to connect with Charli in person.
+      </p>
+      <p>
+        The events focused on creating meaningful fan experiences rather than traditional promotion. By showing up at iconic venues, Charli strengthened her relationship with her audience and reinforced the authenticity of the BRAT campaign.
+      </p>
+      <p>
+        These live interactions became a powerful extension of the digital rollout, deepening fan loyalty and amplifying the cultural impact of the BRAT era.
+      </p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2025 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 40 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide40.webp" alt="Kanye West x Adidas">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">June 21, 2024</p>
+      <h2>Charli turned the events into memorable moments.</h2>
+      <p>At both the London and NYC signings, Charli XCX went above and beyond to connect with her fans. She personally autographed <i>"Brat"</i> vinyl records, creating a memorable experience for those in attendance. These intimate interactions allowed fans to engage directly with the artist, reinforcing the personal connection that Charli fosters with her community.</p>
+      <p>To add an extra layer of excitement and branding, <i>"Brat"</i>-themed cars were featured at the signings, further reinforcing the album’s aesthetic and creating a buzzworthy spectacle that fans eagerly shared across social media. The cars became a visual representation of the <i>"Brat"</i> era, extending the album's branding into real-world experiences.</p>
+      <p>Charli also made sure to promote the events through Instagram, showcasing her fans' participation and highlighting their importance to the campaign. By sharing fan content and celebrating their support, she not only made the fans feel valued but also continued to amplify the buzz around the <i>"Brat"</i> campaign, keeping the conversation alive on social platforms.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>  
+</div>
+
+<!-- Slide 41 Type 03 -->
+<div class="slide-content">
+  <div class="left-side3">
+    <div class="video-wrapper3">
+      <video class="horizontal" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide41.mp4"></video>
+    </div>
+  </div>
+  <div class="right-side3">
+    <div class="content">
+      <p class="date">June 21, 2024</p>
+      <h2>Charli revealed her collaboration with Lorde on a remix of her track</h2>
+      <p>“Girl, So Confusing,” a track originally inspired by Charli XCX’s awkward relationship with Lorde, became one of the most talked-about songs from the album. To add a layer of humor and intrigue, Charli shared a screenshot on social media of the verse Lorde had texted to her, giving fans a glimpse into their playful dynamic.</p>
+      <p>The screenshot not only provided fans with an insider look into the creative process but also sparked further conversation and speculation about the song’s backstory. Charli’s witty and lighthearted response to the text message helped keep the buzz going, turning a personal moment into an opportunity for engagement and discussion.</p>
+      <p>This interaction perfectly illustrated how Charli and Lorde's playful exchange was incorporated into the album’s promotion, adding a personal, relatable element to the campaign that resonated with fans and kept them invested in the narrative behind the music.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 42 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide42.webp" alt="Kanye West x Adidas">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">June 21, 2024</p>
+      <h2>Charli revealed her collaboration with Lorde on a remix of her track</h2>
+      <p>“Girl, So Confusing” is a song that Charli XCX originally wrote, drawing inspiration from her awkward relationship with Lorde. To add a humorous and personal touch to the track's promotion, Charli shared a screenshot on social media of Lorde’s entire verse, which Lorde had apparently texted to her directly. This unexpected reveal not only deepened the story behind the song but also created a moment of connection between the two artists and their fans.</p>
+      <p>The screenshot quickly became a talking point across social media, with fans delighting in the raw, unfiltered nature of the exchange. Charli’s humorous response to Lorde’s verse helped keep the conversation going, adding an element of lightheartedness and playfulness to the campaign. This engagement created even more buzz, amplifying excitement for the remix and drawing attention to the relationship between the two artists.</p>
+      <p>By sharing such a personal, relatable moment, Charli was able to continue building a narrative that felt authentic and inclusive. This playful interaction added another layer to the <i>"Brat"</i> era, showcasing Charli's ability to keep her fans engaged and entertained while giving them a behind-the-scenes look at her creative process.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 43 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+    <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide43.mp4"></video>
+    </div>
+  </div>
+  <div class="right-side2">
+    <div class="content">
+      <p class="date">June 27, 2024</p>
+      <h2>Troye Sivan’s ‘Something To Give Each Other’ tour made a memorable stop at London’s Wembley Arena.</h2>
+      <p>During his set, Troye Sivan surprised the audience by inviting Charli XCX on stage for an unexpected duet of their 2018 hit, “1999.” This surprise appearance not only delighted fans in the crowd but also became a significant moment of fan-generated content across social media platforms, as concert-goers captured and shared the special performance.</p>
+      <p>The unexpected collaboration served as a strategic preview of their upcoming joint tour scheduled for fall 2024, further igniting excitement and anticipation for the event. Fans immediately began discussing the performance online, amplifying the buzz and cementing the tour as one of the most anticipated music events of the year.</p>
+      <p>This surprise duet perfectly showcased Charli and Troye’s chemistry on stage and proved the power of unexpected live moments to boost engagement and create lasting memories for fans. By capitalizing on the energy of the live performance and combining it with social media interaction, Charli and Troye were able to further strengthen their fanbase loyalty and expand their reach ahead of the tour.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 44 Type 02 -->
+<div class="slide-content">
+  <div class="left-side2">
+    <div class="video-wrapper2">
+      <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide44.mp4"></video>
+    </div>
+  </div>
+  <div class="right-side2">
+    <div class="content">
+      <p class="date">July 20, 2024</p>
+      <h2>TikTok creator Kelley Heyer, a longtime Charli XCX fan, created a dance routine to “Apple”</h2>
+      <p>“Apple Dance” quickly became a viral sensation within Charli XCX’s fanbase, rapidly spreading across social media platforms, particularly TikTok. The high-energy dance challenge became one of the most talked-about <i>"Brat"</i> trends, captivating users with its catchy rhythm and vibrant choreography.</p>
+      <p>Heyer, the choreographer behind the dance, was “starstruck” when she saw Charli herself performing the routine. Overwhelmed with excitement, Heyer shared, “It makes me so happy. It’s so cool how everyone has elevated my dance into something so much bigger.” This heartfelt reaction highlighted the mutual respect between Charli and her fans, showing how the artist’s influence can help amplify fan creations into global phenomena.</p>
+      <p>For Heyer, <i>"Brat"</i> represents more than just a trend—it encapsulates a lifestyle. “Brat is everything,” she explained. The <i>"Brat"</i> ethos, as she describes it, revolves around elements of partying, authenticity, and community. According to Heyer, “Brat is party, brat is fun, brat is messy, brat is sexy. Brat can be anything,” emphasizing how Charli’s brand and music can resonate with a broad spectrum of people and experiences.</p>
+      <p>The success of the “Apple Dance” trend exemplifies how fan-generated content can not only promote a song but also help cement an album’s cultural relevance. The viral dance allowed Charli’s fans to connect, engage, and showcase their creativity, further strengthening the <i>"Brat"</i> movement in the process.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 45 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide45.webp" alt="Kanye West x Adidas">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <h2>Just as Charli planned, fan reactions exploded online.</h2>
+      <p>Fan engagement surrounding the <i>"Brat"</i> campaign reached unprecedented levels, with the <i>"Brat"</i> Wall becoming a central symbol in Charli XCX's promotion strategy. At one point, the wall had already reached over 13 million people worldwide on social media, and the numbers continued to grow, leaving the team behind the campaign to stop counting altogether.</p>
+      <p>The <i>"Brat"</i> Wall wasn't just a physical space—it became a global cultural touchpoint, sparking conversations and creating organic engagement across social media platforms. Fans across the world shared photos, videos, and memes, flooding social media with content related to the wall, which helped amplify the campaign’s viral momentum.</p>
+      <p>This extraordinary level of engagement demonstrates the power of community-driven marketing, where a simple, interactive element like the <i>"Brat"</i> Wall can transcend geographical boundaries and reach millions of people. Charli XCX’s ability to harness fan creativity and involvement created a snowball effect, making <i>"Brat"</i> not just an album, but a cultural movement that resonated with fans on a deeply personal level.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">© 2025 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Slide 46 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide46.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">July 1, 2024</p>
+          <h2>Despite being retired on July 1 with a final “ok, bye!” message, the wall left a lasting impact, symbolising the chaotic energy of the <i>"BRAT"</i> summer era. </h2>
+          <p>Even as it was retired, Charli assured fans on X that “<i>brat summer</i> is only just beginning,” leaving many to admire the blend of physical and digital engagement it brought to her music promotion.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 47 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide47.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">July 1 & 2, 2024</p>
+          <h2>Charli bid fans farewell with a final creative change on the <i>"BRAT"</i> Wall </h2>
+          <p>The <i>"BRAT"</i> mural, live-streamed in progress, featured a bold, memorable message that read "ok, bye!," marking a significant moment in the campaign. Despite the playful and transient nature of the mural’s message, its legacy has remained indelible, cementing its place as a key symbol in Charli XCX’s <i>"BRAT"</i> era. The mural became a point of fascination for fans, with its gradual transformation being documented and shared across social media, further fueling engagement with the campaign.</p>
+          <p>The very next day, in a fitting continuation of the campaign’s visual storytelling, the mural was restored to its original solid green shade, signaling a new phase in the <i>"BRAT"</i> campaign. This act of restoration not only reinforced the iconic green color that had come to symbolize the album but also added an extra layer of narrative to the mural, showing the dynamic, ever-changing nature of Charli's promotional strategy.</p>
+          <p>By using the mural as both a physical and symbolic representation of the <i>"BRAT"</i> campaign, Charli and her team were able to create an evolving artwork that felt alive, ever-changing, and intrinsically tied to the album’s journey. This clever use of public art became another way to engage with fans, providing them with something they could document, share, and reminisce about as the campaign progressed.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 48 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide48.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">July 22, 2024</p>
+          <h2>Charli took to Twitter and endorsed Kamala Harris in the U.S. presidential election.</h2>
+          <p>The endorsement from Harris quickly went viral, igniting widespread conversation across social media platforms and sparking a wave of memes. This unexpected endorsement added a new layer of excitement to the <i>"BRAT"</i> campaign, propelling it to even greater heights. Fans and followers began sharing the meme content, further amplifying the buzz around the album and creating a snowball effect of online engagement.</p>
+          <p>As a result, discussions surrounding Harris and her connection to the <i>"BRAT"</i> campaign skyrocketed. Her team even went as far as updating their header image on X (formerly Twitter) to reflect the distinctive design of the <i>"BRAT"</i> branding, effectively aligning her identity with the viral success of Charli’s album. This clever visual alignment helped reinforce the <i>"BRAT"</i> aesthetic, extending the album’s reach beyond Charli’s direct fanbase.</p>
+          <p>But the effects didn’t stop there. The endorsement also boosted more hype and further fueled conversation around the album, leading to a surge in user-generated content (UGC). Fans began creating and sharing even more content in response to the viral moments, from memes to personal interpretations of the album's themes. The increased online buzz not only elevated the visibility of <i>"BRAT"</i> but also amplified Charli’s overall campaign, keeping it front-and-center in the cultural zeitgeist.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 49 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide49.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+           <p class="date">July 22, 2024</p>
+          <h2>Shortly after, the official Biden-Harris campaign account rebranded itself as "Kamala HQ"</h2>
+          <p>In a playful nod to the <i>"BRAT"</i> campaign, Harris updated her banner to mimic the iconic <i>"BRAT"</i> album cover, sparking further engagement and connection between her and Charli XCX’s brand. Although Charli XCX clarified that her tweet was not a formal endorsement, she humorously added that she was "happy to help prevent democracy from failing forever." This witty remark added a layer of humor and relatability to the conversation, keeping fans engaged while solidifying Charli’s cultural relevance beyond the music industry.</p>
+          <p>The <i>"BRAT"</i> campaign initially launched in October 2021, beginning with a Western-themed short film that captured attention with its striking visuals and storytelling. This cinematic approach not only set the tone for the album’s marketing but also established a unique identity that resonated with fans. Alongside the film, Charli and her team rolled out a series of creative marketing materials, including music video-style ads, which felt like a natural extension of the <i>"BRAT"</i> aesthetic.</p>
+          <p>These marketing initiatives helped generate excitement and anticipation for the album’s release, showcasing how Charli’s team used multimedia and innovative storytelling to elevate the campaign. From short films to digital content, the campaign not only captured the attention of Charli’s loyal fanbase but also attracted broader interest, creating an unforgettable pre-release buzz.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 50 Type 02 -->
+<div class="slide-content">
+      <div class="left-side2">
+        <div class="video-wrapper2">
+        <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide50.mp4"></video>
+        </div>
+      </div>
+      <div class="right-side2">
+        <div class="content">
+           <p class="date">Poltical Campaigns </p>
+          <h2><i>"Brat"</i> edits of Harris went viral on TikTok and Instagram</h2>
+          <p>At July 22, 2024<i>"Brat"</i> edits of Harris went viral on TikTok and Instagram, users on social media quickly began pairing clips of Harris' iconic remarks, such as "I love Venn diagrams" and "You think you just fell out of a coconut tree?" with Charli XCX's music, creating a viral meme trend that took off on various platforms. These spontaneous, humorous pairings provided organic, fan-driven content, amplifying the campaign’s reach and making Charli’s music even more connected to internet culture.</p>
+          <p>Ryan Long, who played a key role in popularizing the meme format, praised Harris for "doing such a good job at embodying what people call '<i>Brat summer</i>'." According to Long, Harris' authentic energy was a perfect match for the <i>"BRAT"</i> ethos: "The way she presents herself, she's happy, laughing, she'll dance. She is like a walking content farm." This comment highlighted how Harris' personality and Charli’s brand meshed perfectly, creating a synergy that resonated with fans and helped fuel the viral success of the campaign.</p>
+          <p>The BBC also acknowledged the campaign's success in helping Harris appeal to a younger demographic, noting that it made her more relatable to a key voting group: "younger voters." The campaign’s adoption of the <i>"BRAT"</i> movement contributed to Harris’ image as the "cool girl" option, one that many young people could relate to and admire. Thanks, in part, to Charli XCX, Harris was able to align herself with a culturally relevant brand that amplified her appeal.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 51 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide51.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">July 31, 2024</p>
+          <h2>Charli sparked more excitement by teasing a new collaboration</h2>
+          <p>Charli XCX further fueled excitement around the <i>"BRAT"</i> campaign by teasing a new collaboration, sending fans into a frenzy of speculation. She posted an intriguing image on social media, leaving fans to wonder who the mystery collaborator could be. This deliberate ambiguity sparked a wave of anticipation and conversation, as fans eagerly debated and guessed who would be joining Charli on this highly anticipated track.</p>
+          <p>The tactic of keeping the collaboration under wraps was a strategic move, playing into the growing curiosity of her fanbase. Fans shared their theories, created memes, and engaged in discussions across social media platforms, amplifying the buzz around the upcoming release. This kind of fan-driven speculation is a proven way to build momentum and create a sense of excitement and exclusivity, making the eventual reveal of the collaborator even more impactful.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 52 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide52.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+           <p class="date">July 31, 2024</p>
+          <h2>Some media outlets and people started claiming <i>"BRAT Summer"</i> was over</h2>
+          <p>Shortly before the release of the highly anticipated “Guess” remix, some media outlets and individuals began to speculate that the <i>"BRAT Summer"</i> movement had run its course, citing the album’s overwhelming presence in pop culture. With its ubiquity, the phrase "<i>BRAT Summer</i>" was beginning to lose some of its novelty. However, Charli XCX quickly turned this potential setback into a strategic advantage by incorporating the growing narrative into her communication plan.</p>
+          <p>Instead of letting the criticism define the end of the campaign, Charli embraced it with a tongue-in-cheek response, playfully acknowledging the idea that <i>"BRAT Summer"</i> might be "over." She hinted at something new coming soon, maintaining her mysterious aura and ensuring that her fans stayed engaged and excited. This clever approach not only kept the buzz alive but also reframed the conversation, turning what could have been seen as a negative into an opportunity for renewed interest and anticipation.</p>
+          <p>By using humor and a strategic tease, Charli ensured that the campaign remained dynamic and relevant, keeping fans on their toes and fueling speculation about what was next. This move is a perfect example of how to harness public perception and use it to your advantage, especially when managing a long-running campaign with a viral component like <i>"BRAT Summer"</i>.</p>
+        </div>
+
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 53 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide53.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">August 1, 2024</p>
+          <h2>Charli revealed the collaboration with Billie Eilish</h2>
+          <p>The mystery was finally unveiled the following day when Charli XCX revealed that the highly anticipated collaboration was with none other than Billie Eilish on the track <i>"Guess"</i>, featured on the deluxe edition of her album. This announcement, made through a post showcasing clips from their music video, sent shockwaves through the fanbase, adding another layer of excitement and intrigue to the already buzzing <i>"BRAT Summer"</i> campaign.</p>
+          <p>Following the release of the track, Charli kept the momentum going by sharing another post, this time featuring a clip from the music video. This post quickly gained traction, becoming her most popular reel to date, with an impressive 32.5 million views, 1 million likes, and 16,000 comments. The overwhelming response from fans further solidified the success of the collaboration, cementing it as a cultural moment in the campaign.</p>
+          <p>The sheer virality of the reel demonstrates the power of strategic timing and how collaborations can drive conversation and amplify fan engagement. Charli’s ability to keep her fans hooked with consistent updates and sneak peeks, while also unveiling a highly anticipated project with an A-list artist like Billie Eilish, showcases her mastery of social media strategy and fan engagement.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 54 Type 02 -->
+<div class="slide-content">
+      <div class="left-side2">
+        <div class="video-wrapper2">
+        <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide54.mp4"></video>
+        </div>
+      </div>
+      <div class="right-side2">
+        <div class="content">
+          <p class="date">August 2, 2024</p>
+          <h2>Charli celebrated her 32nd birthday in L.A.</h2>
+          <p>The weekend surrounding the release of the <i>"Guess"</i> remix also marked a significant milestone for Charli XCX — her 32nd birthday. She celebrated in style in Los Angeles, surrounded by a star-studded guest list of celebrities, making the event a highly publicized moment both in the press and across social media. The presence of key collaborators such as Lorde and Billie Eilish added even more star power to the celebration, creating an atmosphere that was ripe for generating new content and deepening the cultural impact of the <i>"BRAT"</i> movement.</p>
+          <p>During the festivities, Charli, Lorde, and Billie Eilish all joined in singing along to their respective tracks, sparking a fresh wave of fan-generated content. This spontaneous moment not only showcased the camaraderie and authenticity of the artists but also reinforced the lifestyle that <i>"BRAT"</i> embodies — one of celebration, fun, and inclusivity. As videos and photos flooded social media, fans were given a behind-the-scenes look at the <i>"BRAT"</i> experience, further solidifying the album's place in pop culture.</p>
+          <p>This event served as a perfect opportunity to highlight the community and collaborative spirit that <i>"BRAT"</i> represents, blending Charli’s music with her personal life and social media presence. By using moments like this to create organic, shareable content, Charli continued to build excitement around her project while keeping fans engaged in a way that felt genuine and connected to the artist’s lifestyle.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 55 Type 02 -->
+<div class="slide-content">
+      <div class="left-side2">
+        <div class="video-wrapper2">
+        <video class="vertical" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide55.mp4"></video>
+        </div>
+      </div>
+      <div class="right-side2">
+        <div class="content">
+          <p class="date">August 9, 2025</p>
+          <h2>She started pushing <i>"Guess"</i> Dance Challenge</h2>
+          <p>While not as viral as the widely popular <i>"Apple"</i> dance challenge, Charli XCX kept the momentum going by introducing a new dance challenge to her fans, this time featuring Troye Sivan and Terrence O’Connor—both of whom had starred in the original <i>"Apple"</i> dance video. This new challenge saw the trio following a choreography created by the popular influencer Jake Shane, known on social media as @octopusslover8. By collaborating with influential figures and leveraging creative choreography, Charli continued to keep her fanbase engaged and excited for what's next in the <i>"BRAT"</i> campaign.</p>
+          <p>The release of the <i>"Guess"</i> dance challenge generated significant engagement across social media platforms, with fans replicating the moves and adding their own unique flair to the dance. While it didn't reach the same viral level as the <i>"Apple"</i> challenge, it was still a clear demonstration of Charli’s ability to maintain excitement around her music through creative collaborations and by tapping into trending content that resonates with her audience. The success of this challenge reinforces how Charli continues to use dance and social media trends as a key strategy in engaging her fans and promoting her music.</p>
+          <p>By consistently introducing fresh, interactive content, Charli ensures her fanbase remains active and excited throughout her campaign, cementing her status as a cultural trendsetter who knows how to keep the conversation going while staying connected with her community.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 56 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide56.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">August 9, 2025</p>
+          <h2>She collaborated with various culture pages</h2>
+          <p>Collaborations with various culture pages have played a pivotal role in amplifying Charli XCX's visibility and solidifying her status as a cultural icon. These strategic partnerships have kept Charli consistently in the public eye, ensuring that her presence remains front-and-center across social media platforms and other digital spaces. By teaming up with highly influential culture pages, Charli has been able to maintain a constant flow of content that keeps her personality and lifestyle at the forefront of people's feeds.</p>
+          <p>These collaborations not only promote her music but also highlight the broader cultural movement she’s become a part of with <i>"BRAT"</i>. Through these partnerships, Charli is positioned as not just a pop star but as someone whose influence extends into fashion, lifestyle, and online culture. Her ability to integrate her brand into various cultural conversations has made her an even more formidable force in the entertainment industry, appealing to a broad audience that identifies with her authentic, boundary-pushing persona.</p>
+          <p>By leveraging these ongoing partnerships, Charli ensures her continuous relevance and strengthens her influence, positioning herself as a key player in shaping pop culture while simultaneously engaging with her diverse fanbase.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+<!-- Slide 57 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide57.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">August 3, 2024</p>
+          <h2>Charli posts a nostalgic recap of <i>"BRAT Summer"</i></h2>
+          <p>In a pivotal moment for the <i>"BRAT"</i> campaign, Charli XCX officially announced that <i>"BRAT Summer"</i> had come to an end, signaling the conclusion of the viral movement that had taken over pop culture. With this announcement, Charli brought a natural close to the seasonal phenomenon that had dominated conversations, trends, and social media for months. The decision to declare the end of <i>"BRAT Summer"</i> marked a moment of reflection for fans, who had embraced the movement as more than just an album release but as a cultural experience.</p>
+          <p>Ending the movement was a strategic choice, allowing Charli to capitalize on the momentum she had built throughout the campaign while also creating a sense of closure. By drawing a line under <i>"BRAT Summer"</i>, Charli was able to shift focus onto new projects and upcoming music while also leaving fans wanting more. This careful balance of building excitement and knowing when to step back ensures that Charli remains a highly anticipated artist in the eyes of her fanbase.</p>
+          <p>The announcement also sparked a wave of nostalgia among fans, as they reflected on the journey of <i>"BRAT Summer"</i>, its influence on music, fashion, and pop culture, and the vibrant, fan-driven content it generated. Charli’s ability to end the movement with purpose only added to her legacy, leaving behind a lasting mark on the cultural landscape.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 58 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide58.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">September 3, 2024</p>
+          <h2>Teases an upcoming collaboration by posting a faceless picture on Instagram with no caption</h2>
+         <p>On the same day, Troye Sivan posted the exact same image as Charli XCX, sending fans into a frenzy with the apparent collaboration teaser. As both artists prepared for their highly anticipated <i>"Sweat"</i> tour, their social media activity began to build intrigue, with both Charli and Troye dropping subtle hints on TikTok about their upcoming project. The synchronized posts created a sense of anticipation and excitement among their followers, sparking conversations and theories across platforms about what was coming next.</p>
+         <p>The use of social media teasers in the lead-up to the tour allowed Charli and Troye to engage their audience in a more personal and interactive way, providing a behind-the-scenes glimpse of the preparations while keeping the project shrouded in mystery. Fans were quick to speculate, with each new post becoming a puzzle piece in the growing collaboration narrative. This strategic use of TikTok further fueled the buzz, turning every post into an event and keeping their audience eagerly engaged.</p>
+         <p>By dropping these intentional hints, Charli and Troye effectively kept their fanbase on edge, ensuring that the anticipation surrounding their collaboration would only grow, resulting in an even bigger release when the <i>"Sweat"</i> tour finally began. This kind of tease-driven marketing has become a signature move for both artists, leveraging their massive social media followings to create lasting excitement and engagement.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 59 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide59.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">September 11, 2024</p>
+          <h2>Charli reveals the track name and collaboration with Troye</h2>
+          <p>Charli XCX made a major announcement, revealing that her highly anticipated new track would be released in just 24 hours. This unexpected reveal generated significant buzz, as fans eagerly awaited the drop. Speculation had been swirling around a potential collaboration with Dua Lipa, after rumors circulated following an early leak. Charli confirmed these rumors by sharing the exciting news on X (formerly Twitter), where she revealed that Dua Lipa had indeed contributed to the track.</p>
+          <p>The announcement sparked a wave of excitement, with fans buzzing about the collaboration and eagerly counting down the hours until the release. Charli’s strategic use of X to confirm the leak not only fueled speculation but also amplified the anticipation surrounding the track. This unexpected collaboration between Charli and Dua Lipa was a prime example of how leaks and rumors can be used to build excitement and engage fans in the lead-up to a release.</p>
+          <p>By keeping the official details under wraps until the last moment, Charli was able to harness the power of mystery and fan speculation to create an intense build-up, ensuring that the release would be an event in itself. This type of calculated suspense continues to solidify Charli’s reputation for mastering the art of tease-driven marketing, keeping her fans engaged and excited with every move.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 60 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide60.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">September 12, 2024</p>
+          <h2>Charli starred in H&M’s latest campaign for its Autumn/Winter 2024 collection</h2>
+         <p>To celebrate the exciting collaboration, Charli XCX performed at the label’s launch party in London on September 12, coinciding with the opening day of London Fashion Week. The event, held at the Copper Box Arena, was part of the ‘H&M & London’ showcase, celebrating H&M’s latest collection and highlighting the intersection of fashion and music. Charli’s performance added a dynamic, high-energy element to the event, captivating attendees and generating a buzz both on-site and across social media.</p>
+         <p>The launch party also featured curated DJ sets from Jamie xx and Sherelle, creating a vibrant, festival-like atmosphere that perfectly complemented Charli’s live set. By performing at a high-profile fashion event, Charli was able to align her brand with cutting-edge style while simultaneously promoting her music to an influential, fashion-savvy audience. The synergy between music, fashion, and social media amplified the reach of the collaboration, ensuring it resonated with both fans and the broader cultural community.</p>
+         <p>This strategic appearance highlighted Charli’s ability to merge entertainment and brand partnerships, using live experiences to create memorable moments that extend beyond music alone. Fans and fashion enthusiasts alike shared content from the event, further driving engagement and reinforcing Charli’s status as a cultural tastemaker.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+<!-- Slide 61 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide47.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">September 12, 2024</p>
+          <h2>She announced her remix album</h2>
+          <p>The performance took place the night after Charli XCX released her <i>“Talk Talk”</i> track with Troye Sivan and officially announced the remix album, titled <i>Brat</i> – a project described as completely new yet still retaining the essence of <i>BRAT</i>. With an audience of over 3,000 attendees, the event was filled with influencers, industry colleagues, fellow musicians, and devoted fans, creating an electric and highly engaging atmosphere.</p>
+          <p>Charli delivered an impressive 10-song set, celebrating the <i>BRAT</i> era. She both opened and closed her performance with <i>“365”</i>, and also performed a cover of Caroline Polachek’s <i>“Welcome To My Island”</i>, showcasing her versatility and ability to connect with fans through a curated live experience. The performance was a perfect blend of new releases, fan favorites, and live surprises, reinforcing Charli’s reputation as a dynamic and innovative performer.</p>
+          <p>Through this event, Charli not only promoted her latest projects but also created memorable, shareable moments that amplified the excitement around both the remix album and her ongoing cultural impact. Fans and attendees shared clips across social media, generating organic buzz and further solidifying the <i>BRAT</i> campaign’s reach.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 62 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide62.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">September 12, 2024</p>
+          <h2>Charli announced her remix album</h2>
+         <p>Charli XCX officially announced her remix album, <i>Brat and It’s Completely Different but Also Still Brat</i>, scheduled for release on October 11. The album features an array of remixes from <i>Brat</i>, including selections from both the original and deluxe tracks, offering fans a fresh take on her latest work. The announcement coincided with Troye Sivan’s remix of “Talk Talk,” which was also released that day, creating a coordinated moment of excitement across their fanbases.</p>
+         <p>To align with the Sweat concert tour with Troye Sivan, Charli took to social media to share the news, posting: <i>“Brat and it’s completely different but also still Brat – out Oct 11”</i>, along with the album cover and a pre-order link. This strategic timing ensured maximum attention and engagement from fans, generating anticipation for both the remix album and her live performances.</p>
+         <p>The announcement not only highlighted Charli’s commitment to evolving her <i>BRAT</i> era but also leveraged her social media presence to create immediate buzz, encouraging fans to share the news and secure their copies ahead of the release. This approach demonstrates Charli’s mastery of integrating album promotion with live events and digital engagement.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Slide 63 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide63.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">October 1, 2024</p>
+          <h2>Brat-themed billboards and posters begin appearing in cities</h2>
+          <p>Billboards and posters began appearing in cities around the world, from London and Manchester to Wisconsin, Pasadena, and Stockholm. Their neon green, mirrored text immediately grabbed attention.</p>
+          <p>Fans couldn’t help but notice, sharing photos and reactions online as the mysterious ads started spreading. The design made it hard to miss, creating a buzz everywhere.</p>
+          <p>On October 5, Charli took to her socials to share the billboards and posters, giving fans an official glimpse and fueling even more excitement ahead of her upcoming events.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 64 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide64.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">October 6, 2024</p>
+          <h2>At her Florida show, Charli XCX leaked her tracklist</h2>
+          <p>During her Florida show, Charli XCX surprised fans by handing the tracklist directly to someone in the front row. The gesture immediately sparked excitement, as fans eagerly shared it online.</p>
+          <p>The leak caused a flurry of speculation, with fans trying to guess which tracks would feature special collaborations or surprises. Social media quickly lit up with reactions and guesses.</p>
+          <p>On October 7, after all the anticipation, Charli shared the official tracklist and featured artists on her socials, confirming the details and giving fans the full picture of what to expect.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 65 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide65.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">October 8, 2024</p>
+          <h2>Charli teased New Yorkers on her second Instagram account, 360_brat</h2>
+          <p>Charli posted a cryptic message saying, “nyyyy! maybe plan to get off work early thursday?” Fans were instantly curious about what it could mean.</p>
+          <p>She also shared details on her main Instagram account about a listening party scheduled for October 10, including an RSVP link. The post hinted at something special without giving everything away.</p>
+          <p>With so few details revealed, the announcement created suspense and intrigue, leaving fans eagerly anticipating the event and speculating about what they might hear.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 66 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide66.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">October 10, 2024</p>
+          <h2>Brat-themed cubes representing the album’s vinyl cover were spotted</h2>
+          <p>October 10 marked the big release day. Green, brat-themed cubes, echoing the album’s vinyl cover, were spotted at the listening party, creating a striking visual for attendees.</p>
+          <p>Charli herself appeared in front of the giant installation and played the full album, giving fans an immersive experience they won’t forget.</p>
+          <p>She later shared a recap of the event, letting those who couldn’t attend feel the energy and excitement of the listening party.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 67 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide67.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">October 6, 2024</p>
+          <h2>Charli XCX leaked her tracklist by personally handing it to her fans</h2>
+          <p>On October 6, during her Florida show, Charli XCX surprised fans by handing her tracklist directly to someone in the front row. The fan was encouraged to share it online, instantly creating buzz.</p>
+          <p>The unexpected leak sent fans into a frenzy, with social media filling up with reactions, guesses, and excitement about what was coming next.</p>
+          <p>By October 7, after all the speculation, Charli posted the official tracklist and featured artists on her accounts, giving everyone the confirmed details and building more anticipation for the release.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 68 Type 01 -->
+<div class="slide-content">
+       <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide68.webp" alt="Kanye West x Adidas">
+  </div>
+      <div class="right-side1">
+        <div class="content">
+          <p class="date">November 18, 2024</p>
+          <h2>H&M and Charli XCX surprised fans with a 15-minute open-air performance</h2>
+          <p>H&M and Charli XCX surprised fans with a 15-minute open-air performance at Times Square’s TSX Stage, announced just 30 minutes before it started. The sudden reveal created an instant buzz among those nearby and online.</p>
+          <p>The performance celebrated H&M’s Holiday Collection, with Charli performing hits like “Von Dutch,” “360,” and “Guess (Remix)” while wearing a custom H&M outfit. The event also featured massive billboard takeovers and music by DJ Pee .Wee (Anderson Paak).</p>
+          <p>The star-studded crowd included Amelia Gray, Irina Shayk, Lila Moss, and Julia Fox, and the night ended with an exclusive afterparty at The Hotel Chelsea, capping off a memorable and high-energy event.</p>
+        </div>
+        <div class="footer">
+          <div class="logo">
+            <img src="/Images/pessoalslogo.svg" alt="Logo">
+          </div>
+          <div class="copyright">©2026 Pessoals</div>
+        </div>
+      </div>
+</div>
+
+<!-- Slide 69 Type 03 -->
+<div class="slide-content">
+  <div class="left-side3">
+    <div class="video-wrapper3">
+      <video class="horizontal" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide69.mp4"></video>
+    </div>
+  </div>
+  <div class="right-side3">
+    <div class="content">
+      <p class="date">December 18, 2024</p>
+      <h2>Charli XCX joined Billie Eilish’s Hit Me Hard and Soft tour</h2>
+      <p>On December 18, during Billie Eilish’s Hit Me Hard and Soft tour, Charli XCX made a surprise appearance at the Los Angeles show. Fans were thrilled to see her join the stage unexpectedly.</p>
+      <p>Together, they performed “Guess” live for the very first time, creating a memorable moment for everyone in attendance. The energy in the venue was electric as the crowd cheered for the duo.</p>
+      <p>This collaboration highlighted the excitement and unpredictability of live performances, giving fans a rare and special experience they’ll likely never forget.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 70 Type 03 -->
+<div class="slide-content">
+  <div class="left-side3">
+    <div class="video-wrapper3">
+      <video class="horizontal" autoplay muted loop src="/Resources/Case Studies/Brat Summer/Slide70.mp4"></video>
+    </div>
+  </div>
+  <div class="right-side3">
+    <div class="content">
+      <p class="date">December 27, 2024</p>
+      <h2>Charli XCX and Troye Sivan’s SWEAT Tour comes to virtual reality</h2>
+      <p>On December 27, through Meta Quest, Charli XCX and Troye Sivan’s SWEAT Tour came to virtual reality as part of a partnership with iHeartMedia and Meta. The announcement immediately grabbed attention from fans eager for a new way to experience the show.</p>
+      <p>The VR event featured 3D immersive footage of their October Los Angeles performance, allowing fans to feel like they were part of the live audience from anywhere in the world.</p>
+      <p>Hosted in Music Valley, Meta’s virtual music hub, the experience let fans relive the excitement and energy of the show, bringing a unique and interactive dimension to the tour.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 71 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide71.webp" alt="Kanye West x Adidas">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">June 7, 2025</p>
+      <h2>Charli’s Angels got another miracle with an anniversary mural</h2>
+      <p>Charli’s Angels got another surprise with an anniversary mural, designed to bring the community together for another Brat Summer. Fans were thrilled to see a tribute that celebrated the moment in such a public, creative way.</p>
+      <p>She paired the Williamsburg wall with another mural in Los Angeles, giving fans across the country bicoastal backdrops perfect for photos and social media content.</p>
+      <p>Charli shared the murals with her 8.3M followers, and the posts quickly earned over 1M likes, showing just how much her fans connected with the tribute and the shared experience.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 72 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide72.webp" alt="Kanye West x Adidas">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <h2>The Brat Wall is now immortalized on Google Maps</h2>
+      <p>The Brat Wall has officially been immortalized on Google Maps, giving it a permanent spot for fans to discover.</p>
+      <p>Angels now have a digital monument to visit, whether they’re near the location or exploring it virtually from anywhere in the world.</p>
+      <p>This recognition ensures that the wall remains a lasting part of the Brat Summer legacy, letting fans celebrate and share the experience for years to come.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 73 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide73.webp" alt="Kanye West x Adidas">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p>October 6: At her Florida show, Charli XCX leaked her tracklist by personally handing it to a front-row fan, urging them to post it on social media.</p>
+      <p>October 7: After a lot of build up and speculation, Charli shares the official track list and track features on her accounts.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 74 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/Slide74.webp" alt="Kanye West x Adidas">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">October 6, 2024</p>
+      <h2>Charli XCX leaked her tracklist</h2>
+      <p>At her Florida show, Charli started personally handing it to a front-row fan, urging them to post it on social media.  
+      October 7: After a lot of build up and speculation, Charli shares the official track list and track features on her accounts.</p>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 75 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/offers/The Complete Music Artists Personal Branding Playbook/Bundled.png" alt="Kanye West x Adidas">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">Before you go, we have an offer you can't say no to</p>
+      <h2>The Complete Music Artists Personal Branding Playbook</h2>
+      <p>These strategies are used by Hollywood celebrities to create irresistible buzz around your music and help you stand out from the competition, crafting a magnetic, proven strategy that elevates your music and presence.</p>
+      <a class="rightsidebutton" href="/musicartistsplaybook.html">Grab Your Copy</a>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 76 Type 01 -->
+<div class="slide-content">
+  <div class="left-side1">
+    <img class="visual-image" src="/Icons/Certification-rafiki.svg" alt="Kanye West x Adidas">
+  </div>
+  <div class="right-side1">
+    <div class="content">
+      <p class="date">Wow! You’ve made it to the end!</p>
+      <h1>Congratulations!</h1>
+      <p>Now understand the architecture behind Brat Summer’s viral success. This is just the beginning. The world of viral marketing is full of untapped potential. Ready to dive deeper? Explore more high-impact case studies and uncover strategies that drive growth, create buzz, and elevate your marketing game.</p>
+      <a class="rightsidebutton" href="/Resources/Brand Like a Celebrity eBook/brandlikeacelebrity.html">Learn More</a>
+    </div>
+    <div class="footer">
+      <div class="logo">
+        <img src="/Images/pessoalslogo.svg" alt="Logo">
+      </div>
+      <div class="copyright">©2026 Pessoals</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 📱 Rotate Message -->
+<div id="rotate-message">
+  <p>🔄 Please rotate your device for the best experience</p>
+</div>
+
+</div>
+
+</div>
+
+<div id="rotate-message">
+  <img  class="rotate" src="/Images/rotate.gif" alt="Rotate Device">
+</div>
+
+<div id="error-message" style="display:none;">
+</div>
+
+
+</body>
+<script>
+const correctCode = "BRAT922";
+let isUnlocked = false;  // Track whether the screen is unlocked
+
+function unlock() {
+  const enteredCode = document.getElementById("passcode").value;
+  const errorMessage = document.getElementById("error-message");
+
+  if (enteredCode === correctCode) {
+    document.getElementById("lock-screen").style.display = "none";
+    document.querySelector(".slideshow").style.display = "block";
+    errorMessage.style.display = "none";  // Hide the error message on success
+    isUnlocked = true;  // Set unlocked state to true
+  } else {
+    errorMessage.textContent = "Incorrect passcode. Please try again.";  // Set the error message
+    errorMessage.style.display = "block";  // Show the error message
+  }
+}
+
+const slides = document.querySelectorAll('.slide-content');
+const progressBar = document.getElementById('progressBar');
+let currentIndex = 0;
+
+// Function to show the current slide based on the index
+function showSlide(index) {
+  if (index < 0) index = slides.length - 1;
+  if (index >= slides.length) index = 0;
+  currentIndex = index;
+
+  slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex));
+  slides.forEach(slide => {
+    const video = slide.querySelector('video');
+    if (video) video.pause();
+  });
+
+  const currentVideo = slides[currentIndex].querySelector('video');
+  if (currentVideo) {
+    currentVideo.muted = false;
+    currentVideo.play().catch(() => console.log('User interaction required to play sound.'));
+  }
+
+  // Update progress bar width
+  progressBar.style.width = ((currentIndex + 1) / slides.length) * 100 + '%';
+}
+
+// Handle clicking anywhere on the screen to show the next slide
+document.addEventListener('click', () => {
+  if (isUnlocked) {  // Only allow click event after unlocking
+    showSlide(currentIndex + 1); // Navigate to the next slide on any click
+    const currentVideo = slides[currentIndex].querySelector('video');
+    if (currentVideo) currentVideo.play(); // Ensure video plays if clicked
+  }
+});
+
+// Handle keydown events for left and right arrow keys
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') showSlide(currentIndex + 1);
+  if (e.key === 'ArrowLeft') showSlide(currentIndex - 1);
+});
+
+// Initialize first slide
+showSlide(0);
+</script>
+</html>

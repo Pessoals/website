@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Like a Celebrity</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="Images/favicon.png" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google Tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-20NJ10DBNQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-20NJ10DBNQ');
+  </script>
+
+  <style>
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 1rem;
+      display: none;
+    }
+    .modal-box {
+      background: #1a1a15;
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      color: #faf8ef;
+      position: relative;
+    }
+    .modal-box input {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: none;
+      background: #2e2e2e;
+      color: #fff;
+    }
+    .dismiss-btn {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      background: none;
+      border: none;
+      color: #aaa;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- Custom Popup Modal -->
+<div id="leadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+  <div style="background:#fcfaf8; padding:30px; width:90%; max-width:400px; text-align:center; position:relative;">
+    <h2 font family:Playfair Display >Get Acess to : The Genius Marketing Strategy Behind Brat Summer</h2>
+    <p>All fields are required.</p>
+    <input type="text" id="modalFname" placeholder="First Name" style="width:100%; padding:10px; margin-bottom:10px; border-radius:4px; border:1px solid #ccc;">
+    <input type="email" id="modalEmail" placeholder="Email Address*" required style="width:100%; padding:10px; margin-bottom:20px; border-radius:4px; border:1px solid #ccc;">
+    <button id="modalSubmit" style="padding:10px 20px; background:#1c1a15; color:#fcfaef; border:none;cursor:pointer;">Download</button>
+    <span id="modalClose" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px;">&times;</span>
+  </div>
+</div>
+
+<!-- CONTENT / CHAPTERS -->
+<section class="thechapters">
+  <!-- CHAPTER 1 -->
+  <div class="chapter-section">
+    <div class="chapter-wrapper">
+      <div class="chapter-content">
+        <span class="chapter-label1">EBook</span>
+        <h2 class="chapter-title1">How <i>Brat Summer</i> Took Over the World & the Genius Marketing Strategy Every Artist Should Learn</h2>
+        <p class="chapter-desc">Learn the genius marketing strategies Charli XCX and Atlantic Records used to drive the success of Charli XCX's 6th official album, Brat Summer and discover how as an artists you can apply these proven tactics to capture attention and shape culture.</p>
+        <a href="#" class="buy-button2" id="downloadBtn">Get Instant Access</a>
+      </div>
+      <div class="chapter-image">
+        <img src="/Resources/EBook/The Psychology of Personal Branding For Music Artists/brandlikeacelebrityebookcover.webp" alt="Chapter Preview">
+      </div>
+    </div>
+    <input type="checkbox" id="chapterMore1" class="chapter-toggle-checkbox">
+    <div class="chapter-more"> <!-- Expanded content here --> </div>
+  </div>
+  <!-- More chapters can be added similarly -->
+</section>
+
+<!-- SALES / CTA SECTION -->
+<section class="section-findout">
+  <div class="container-findout">
+    <div class="findout-header">
+       <h1>We typically work one-on-one with a select number of clients. These private engagements come with high fees because they are intensive and hands-on. </h1>
+      <p>They are not the right fit for everyone, and that’s completely okay. Brand Like a Celebrity offers you the opportunity to explore the same branding mindset, frameworks, and principles we use with our clients without the pressure, cost, or commitment of a one-on-one service.
+
+If you read the eBook and feel it’s not aligned with your goals or direction, that’s perfectly fine. It simply means our approach isn’t the right fit for you and you can know that without risking a large upfront investment. think of this as a low-pressure, low-risk way to discover if our approach to branding matches how you want to build your career.</p>
+    </div>
+      <a href="#" class="buy-button1" id="downloadBtn">View Casestudy</a>
+  </div>
+</section>
+
+
+<!-- FAQ SECTION -->
+<section class="faq">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="accordion">
+    <div class="accordion-item">
+      <input type="checkbox" id="faq1" class="accordion-toggle">
+      <label class="accordion-label" for="faq1">
+        <span class="text-wrapper">What is this case study about?</span>
+        <span class="accordion-icon"></span>
+      </label>
+      <div class="accordion-content">This case study breaks down the Brat Summer phenomenon and the genius marketing strategies Charli XCX and her label used to market her music. It shows how a single album rollout turned into a global cultural trend, influencing social media, fashion, language, and online behavior worldwide.</div>
+    </div>
+    <!-- Add more FAQs similarly -->
+     <div class="accordion-item">
+      <input type="checkbox" id="faq2" class="accordion-toggle">
+      <label class="accordion-label" for="faq2">
+        <span class="text-wrapper">Who is this case study for?</span>
+        <span class="accordion-icon"></span>
+      </label>
+      <div class="accordion-content">This case study is for:
+
+Artists who want to market their music without relying only on ads
+
+Marketers looking to understand how culture-driven campaigns actually work
+
+Managers & labels who want to create moments, not just releases
+
+If you’re trying to make people feel something and talk about your work, this is for you.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-main">
+  <div class="container">
+    <div class="footer-links">
+      <a href="/privacypolicy.html">Privacy Policy</a>
+      <a href="/cookiespolicy.html">Cookie Policy</a>
+      <a href="/privacypolicy.html">Your Privacy Choices</a>
+      <p>© 2025 Pessolas. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+const downloadBtn = document.getElementById('downloadBtn');
+const leadModal = document.getElementById('leadModal');
+const modalClose = document.getElementById('modalClose');
+const modalSubmit = document.getElementById('modalSubmit');
+
+downloadBtn.addEventListener('click', () => {
+  leadModal.style.display = 'flex';
+});
+
+modalClose.addEventListener('click', () => {
+  leadModal.style.display = 'none';
+});
+
+modalSubmit.addEventListener('click', () => {
+  const email = document.getElementById('modalEmail').value;
+  const fname = document.getElementById('modalFname').value;
+
+  if (!email) return alert('Email is required!');
+
+  // Mailchimp form URL for JSONP
+  const url = "https://pessoals.us8.list-manage.com/subscribe/post-json?u=71c3c24de7113eed19df14070&id=b3b6d2e34e&c=?";
+  const params = new URLSearchParams({ EMAIL: email, FNAME: fname, tags: "4882015" });
+
+  // JSONP request
+  const script = document.createElement('script');
+  script.src = `${url}&${params.toString()}`;
+  document.body.appendChild(script);
+
+  // Close modal
+  leadModal.style.display = 'none';
+
+  // Redirect to lead magnet
+  window.location.href = "https://www.paypal.com/ncp/payment/A7CABSKCLJPJE";
+});
+
+// Close modal if clicked outside content
+window.addEventListener('click', (e) => {
+  if (e.target === leadModal) {
+    leadModal.style.display = 'none';
+  }
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-20NJ10DBNQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-20NJ10DBNQ');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Brand Competitive Analysis</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="Images/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+
+<section class="resourcescontainer">
+  <div class="thankyouintro">
+    <img src="Personal Branding Checklist Cover.png" alt="Personal Branding Checklist Cover">
+    <h1>Thank you for downloading this Checklist.</h1>
+    <p>
+      You will receive an email shortly.  
+      If you didn’t receive it, contact
+      <a href="mailto:hello@pessoals.com">hello@pessoals.com</a>
+    </p>
+
+    <!-- Main Download Button -->
+    <a href="#" class="buy-button1" id="downloadBtn">Download</a>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="subscribeModal" style="display:none;">
+  <div class="modal-box">
+    <button class="dismiss-btn" onclick="hideModal()">×</button>
+
+    <img src="Personal Branding Checklist Cover.png" alt="Checklist Cover" style="max-width:140px;margin-bottom:1rem;">
+
+    <h2>Download Your Free Resource</h2>
+
+    <form id="subscribeForm" onsubmit="processForm(event)">
+      <input type="text" id="userName" placeholder="Your Name" required>
+      <input type="email" id="userEmail" placeholder="Your Email" required>
+
+      <label style="font-size:0.75rem; margin-bottom:1rem; display:block;">
+        <input type="checkbox" id="userConsent" required>
+        I agree to receive marketing emails.
+      </label>
+
+      <!-- REAL submit button -->
+      <button type="submit" class="buy-button1">
+        Download
+      </button>
+    </form>
+  </div>
+</div>
+
+<footer class="footer-main">
+  <div class="container">
+    <div class="footer-links">
+      <a href="privacypolicy.html">Privacy Policy</a>
+      <a href="cookiespolicy.html">Cookie Policy</a>
+      <a href="privacypolicy.html">Your Privacy Choices</a>
+      <p>©2025 Pessoals. All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 1rem;
+  }
+
+  .modal-box {
+    background: #1a1a15;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    color: #faf8ef;
+    position: relative;
+  }
+
+  .modal-box input {
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: none;
+    background: #2e2e2e;
+    color: #fff;
+  }
+
+  .dismiss-btn {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  // Open modal
+  document.getElementById('downloadBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    showModal();
+  });
+
+  function showModal() {
+    document.getElementById('subscribeModal').style.display = 'flex';
+  }
+
+  function hideModal() {
+    document.getElementById('subscribeModal').style.display = 'none';
+  }
+
+  function processForm(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('userName').value.trim();
+    const email = document.getElementById('userEmail').value.trim();
+    const consent = document.getElementById('userConsent').checked;
+
+    if (!name || !email || !consent) {
+      alert('Please complete all fields.');
+      return;
+    }
+
+    const mailchimpUrl =
+      'https://us15.list-manage.com/subscribe/post-json?u=07e655f1ee6606d6949ea7dbb&id=4798db1474&c=?';
+
+    const params = new URLSearchParams({
+      EMAIL: email,
+      FNAME: name
+    });
+
+    // Send Mailchimp JSONP request in the background
+    const script = document.createElement('script');
+    const cb = 'cb_' + Math.random().toString(36).substring(2);
+    window[cb] = function(response) {
+      // optional: log success or error for debugging
+      console.log('Mailchimp Response:', response);
+      delete window[cb];
+      document.body.removeChild(script);
+    };
+
+    script.src = mailchimpUrl.replace('=?', '=' + cb) + '&' + params.toString();
+    document.body.appendChild(script);
+
+    // Hide modal and immediately redirect the user
+    hideModal();
+    window.location.href = "/bratsummer.html";  // Redirects immediately without waiting for Mailchimp
+  }
+</script>
+
+</body>
+</html>

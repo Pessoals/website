@@ -1,126 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-20NJ10DBNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources</title>
 
-  gtag('config', 'G-20NJ10DBNQ');
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-20NJ10DBNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-20NJ10DBNQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-20NJ10DBNQ');
+  </script>
 
-  gtag('config', 'G-20NJ10DBNQ');
-</script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resources</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,
-    wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,
-    900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,
-    wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="icon" href="/Images/favicon.png" type="image/x-icon">
-  </head>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/Images/favicon.png" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@300;400;700;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
 <body>
 
-  <nav>
-      <div class="logo"> 
-          <img src="/Images/pessoalslogo.svg" alt="Pessoals Logo"> </div>
-        <ul class="menulist" id="menulist">
-           <li><a href="/index.html">Home</a></li>
-           <li><a href="/aboutus.html">About</a></li>
-           <li><a href="/resources.html">Resources</a></li>
-           <li><a href="/ourworks.html">Our works</a></li>
-           <li><a href="/ourservices.html">Our services</a></li>
-           
-         </ul>
-       <div class="burgermenu"  id="burgermenu"  onclick=toggleMenu()>
-         <img src="Icons/Burger Menu Icon.svg" alt="Burger Menu">
-      </div> 
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <img src="/Images/pessoalslogo.svg" alt="Pessoals Logo">
+  </div>
+
+  <ul class="menulist" id="menulist">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/aboutus.html">About</a></li>
+    <li><a href="/resources.html">Resources</a></li>
+    <li><a href="/ourworks.html">Our Works</a></li>
+    <li><a href="/ourservices.html">Our Services</a></li>
+  </ul>
+
+  <div class="burgermenu" onclick="toggleMenu()">
+    <img src="Icons/Burger Menu Icon.svg">
+  </div>
 </nav>
 
- <div id="subscribeModal" class="modal-overlay" style="display:none;">
-    <form id="subscribeForm" class="modal-box" onsubmit="processForm(event)">
-      <button type="button" class="dismiss-btn" aria-label="Close modal" onclick="hideModal()">×</button>
-      <img id="modalImage" src="" alt="Resource Cover" style="width:100%; display:block; margin-bottom:20px;" />
-      <input type="text" id="userName" name="userName" placeholder="Your Name" required autocomplete="name" />
-      <input type="email" id="userEmail" name="userEmail" placeholder="Your Email" required autocomplete="email" />
-      <label for="userConsent">
-        <input type="checkbox" id="userConsent" required />
-        Yes, I agree to receive emails and offers from Pessoals. I can unsubscribe anytime.
-      </label>
-      <button type="submit">Download</button>
-    </form>
-  </div>
-
+<!-- RESOURCES -->
 <section class="resourcescontainer">
-    <div class="resourcesintro">
-      <h1>Resources</h1>
-      <h3>
-        Explore a curated collection of ebooks, tools, guides, templates, and reports all crafted to elevate your personal brand and accelerate your growth.
-      </h3> 
-      <p> Filter By:
-        <a href="#" class="filter-link active" data-filter="all">All</a> |
-        <a href="#" class="filter-link" data-filter="e-Books">Ebook</a> |
-        <a href="#" class="filter-link" data-filter="Guides">Guides</a> |
-        <a href="#" class="filter-link" data-filter="Templates">Templates</a> |
-        <a href="#" class="filter-link" data-filter="Infographics">Infographics</a> |
-        <a href="#" class="filter-link" data-filter="Checklists">Checklists</a> |
-        <a href="#" class="filter-link" data-filter="Videos">Videos</a> |
-        <a href="#" class="filter-link" data-filter="Casestudies">Casestudies</a>
-      </p>
-    </div>
-
-  <div class="resourcesgridcontainer">
-
-    <div class="resources-grid">
-      <!-- Resource Card -->
-
-
-<a class="resource-card" data-category="e-Books"
-   data-title="Brand Like a Celebrity"
-   data-description="Thanks for the clarification! You're referring to the price styling..."
-   data-image="Resources/Brand Like a Celebrity eBook/Brand like a Celebrity eBook Cover.jpg"
-   data-sale="$25"
-   data-regular="$80"
-   data-url="/Resources/brandlikeacelebrity.html"
-   onclick="event.preventDefault(); showModal(this);" >
-  <div class="card-upper">
-    <img src="Resources/Brand Like a Celebrity eBook/brandlikeacelebrityebookcover1.png" alt="The 30-Day Personal Brand Launchpad">
+  <div class="resourcesintro">
+    <h1>Resources</h1>
+    <h3>Guides, templates, ebooks & tools to elevate your personal brand.</h3>
   </div>
-  <div class="card-lower">
-    <p class="resourcetype">E-Book</p>
-    <h3>The Psychology of Personal Branding For Music Artists</h3>
-   <p>Why great music alone won't get you noticed in today’s music industry?</p>
+
+  <div class="resources-grid">
+
+    <!-- FREE Resource 1: Brand Like a Celebrity eBook -->
+    <a class="resource-card"
+       href="Resources/bratsummer.html"
+       data-category="ebooks">
+      <div class="card-upper">
+        <img src="Resources/Case Studies/Brat Summer/Brat.png">
+      </div>
+      <div class="card-lower">
+  <p class="resourcetype">Case Study</p>
+  <h3>Brat Genius Marketing Masterclass</h3>
+   <p>A guide to aligning your visuals, messaging, and values, so every part of your brand works together seamlessly.</p>
     <div class="price-box">
-      <span class="sale-price">$19.99</span>
-      <span class="regular-price">$49.99</span>
+      <span></span>
+      <span class="passcoderequired">Passcode Required  </span>
+      <p class="resourcetype">For Music Artists</p>
     </div>
   </div>
-</a>
+    </a>
 
-<a class="resource-card" data-category="Templates"
-   data-title="Brand Like a Celebrity"
-   data-description="Thanks for the clarification! You're referring to the price styling..."
-   data-image="Resources/Brand Like a Celebrity eBook/Brand like a Celebrity eBook Cover.jpg"
-   data-sale="$25"
-   data-regular="$80"
-   data-url="Resources/Personal Brand Content Calendar Template/personalbrandcontentcalendar.html"
-   onclick="event.preventDefault(); showModal(this);" >
-  <div class="card-upper">
-    <img src="Resources/Personal Brand Content Calendar Template/Pessoals Content Calendar Template Cover.png" alt="Pessoals Content Calendar Template Cover.png">
-  </div>
-  <div class="card-lower">
+    <!-- FREE Resource 2: Personal Brand Checklist -->
+      <a class="resource-card"
+       href="Resources/contentcalendar.html"
+       data-category="templates">
+      <div class="card-upper">
+        <img src="Resources/Templates/Content Calendar/Pessoals Content Calendar Template Cover.webp">
+      </div>
+      <div class="card-lower">
   <p class="resourcetype">Template</p>
   <h3>Personal Brand Content Calendar Template</h3>
    <p>Help you plan, organize, and schedule your content efficiently. It allows you to map out all your social media posts, blog articles, videos, newsletters, and other content in one place, ensuring consistency and alignment with your personal brand.</p>
@@ -129,134 +88,57 @@
       <span class="regular-price">$35</span>
     </div>
   </div>
-  </a>
+    </a>
 
-<a class="resource-card" data-category="Case Study"
-   data-title="The Aligned Brand Infographic"
-   data-description="A guide to aligning your visuals, messaging, and values, so every part of your brand works together seamlessly."
-   data-image="Resource/The Aligned Brand Infographic/The Aligned Brand Cover.png"
-   data-sale="$"
-   data-regular="$"
-   data-url="/Resources/bratsummer.html"
-   onclick="event.preventDefault(); showModal(this);" >
-  <div class="card-upper">
-    <video src="/Resources/Brat Summer/intro.mp4" 
-           autoplay 
-           muted 
-           loop 
-           playsinline 
-           style="width:100%; height:auto; border-radius:8px;">
-
-      Your browser does not support the video tag.</video>
-  </div>
-  <div class="card-lower">
-  <p class="resourcetype">Case Study</p>
-  <h3>Brat Genius Marketing Masterclass</h3>
-   <p>A guide to aligning your visuals, messaging, and values, so every part of your brand works together seamlessly.</p>
+    <!-- FREE Resource 3: Personal Brand Content Calendar Template -->
+     
+    <a class="resource-card"
+       href="Resources/thepsychologyofpersonalbrandingformusicartists.html"
+       data-category="checklists">
+      <div class="card-upper">
+        <img src="Resources/EBook/The Psychology of Personal Branding For Music Artists/brandlikeacelebrityebookcover.webp">
+      </div>
+       <div class="card-lower">
+   <p class="resourcetype">E-Book</p>
+   <h3>The Psychology of Personal Branding For Music Artists</h3>
+   <p class="resourcetype">For Music Artists</p>
+   <p>Why great music alone won't get you noticed in today’s music industry?</p>
     <div class="price-box">
-      <span></span>
-      <span class="passcoderequired">Passcode Required  </span>
+      <span class="sale-price">$19.99</span>
+      <span class="regular-price">$49.99</span>
     </div>
   </div>
-</a>
+    </a>
 
-<a class="resource-card" data-category="Guide"
-   data-title="Personal Brand Adjectives List Guide"
-   data-description="A curated list of powerful adjectives to help you define your brand personality and communicate it with clarity."
-   data-image="Resources/Personal Brand Adjectives Guide/Personal Brand Adjectives Guide Cover.png"
-   data-sale="$"
-   data-regular="$"
-   data-url="Resources/Personal Brand Adjectives List Guide/personalbrandadjectives.html" 
-   onclick="event.preventDefault(); showModal(this);" >
-  <div class="card-upper">
-    <img src="Resources/Brand Partnership Outreach Email Templates For Artists/cover.png" alt="Personal Brand Adjectives List Cover">
+     <!-- FREE Resource 4: Personal Brand Content Calendar Template -->
+     
+    <a class="resource-card"
+       href="Resources/brandcollaborationoutreach.html"
+       data-category="checklists">
+      <div class="card-upper">
+        <img src="Resources/Templates/Brand Collaboration Outreach Email/cover.webp">
+      </div>
+       <div class="card-lower">
+          <p class="resourcetype">Template</p>
+          <h3>Brand collaboration Outreach Email Templates For Music Artists</h3>
+          <p>A curated list of powerful adjectives to help you define your brand personality and communicate it with clarity.</p>
+        <div class="price-box">
+            <span class="freeresource">Free</span>
+        </div>
   </div>
-  <div class="card-lower">
-  <p>Guide</p>
-  <h3>Brand collaboration Outreach Email Templates For Music Artists</h3>
-   <p>A curated list of powerful adjectives to help you define your brand personality and communicate it with clarity.</p>
-    <div class="price-box">
-      <span class="freeresource">Free</span>
-    </div>
-  </div>
-</a>
+    </a>
 
-<a class="resource-card" data-category="Guide"
-   data-title="Personal Brand Adjectives List Guide"
-   data-description="A curated list of powerful adjectives to help you define your brand personality and communicate it with clarity."
-   data-image="Resources/Personal Brand Adjectives Guide/Personal Brand Adjectives Guide Cover.png"
-   data-sale="$"
-   data-regular="$"
-   data-url="Resources/Personal Brand Adjectives List Guide/personalbrandadjectives.html" 
-   onclick="event.preventDefault(); showModal(this);" >
-  <div class="card-upper">
-    <img src="Resources/Personal Brand Adjectives List Guide/Personal Brand Adjectives List Cover.png" alt="Personal Brand Adjectives List Cover">
-  </div>
-  <div class="card-lower">
-  <p>Guide</p>
-  <h3>Personal Brand Adjectives List</h3>
-   <p>A curated list of powerful adjectives to help you define your brand personality and communicate it with clarity.</p>
-    <div class="price-box">
-      <span class="freeresource">Free</span>
-    </div>
-  </div>
-</a>
-
-<a class="resource-card" data-category="Checklist"
-   data-title="Personal Brand Checklist"
-   data-description="An all-in-one checklist to ensure your personal brand is polished, consistent, and positioned for maximum impact."
-   data-image="Resources/Personal Brand Checklist/Personal Brand Checklist Cover"
-   data-sale="$"
-   data-regular="$"
-   data-url="Resources/Personal Brand Checklist/personalbrandingchecklist.html" 
-   onclick="event.preventDefault(); showModal(this);" >
-  <div class="card-upper">
-    <img src="Resources/Personal Brand Checklist/Personal Branding Checklist Cover.png" alt="Personal Branding Checklist Cover">
-  </div>
-  <div class="card-lower">
-  <p>Checklist</p>
-  <h3>Personal Brand Checklist</h3>
-   <p>A structured template to analyze competitors and identify opportunities to differentiate and strengthen your brand.</p>
-    <div class="price-box">
-      <span class="freeresource">Free</span>
-    </div>
-  </div>
-</a>
-
-<a class="resource-card" data-category="Infographics"
-   data-title="5 Steps To Make a Damn Good Content Infographic"
-   data-description="A quick, actionable guide that breaks down five proven steps to create engaging and impactful content consistently."
-   data-image="Resources/5 Steps To Make a Damn Good Content Infographic/5 Steps To Make A Damn Good Content Infographic Cover.png"
-   data-sale="$"
-   data-regular="$"
-   data-url="Resources/5 Steps To Make a Damn Good Content Infographic/ 5stepstomakeadamngoodcontent.html" 
-   onclick="event.preventDefault(); showModal(this);" >
-  <div class="card-upper">
-    <img src="Resources/5 Steps To Make a Damn Good Content Infographic/5 Steps To Make a Damn Good Content Cover.png" alt="5 Steps To Make a Damn Good Content/5 Steps To Make a Damn Good Content Cover">
-  </div>
-  <div class="card-lower">
-  <p class="resourcetype">Infographic</p>
-  <h3>5 Steps To Make a Damn Good Content</h3>
-   <p>A quick, actionable guide that breaks down five proven steps to create engaging and impactful content consistently.</p>
-    <div class="price-box">
-      <span class="freeresource">Free</span>
-    </div>
-  </div>
-</a>
-
-
-<a class="resource-card" data-category="Template"
-   data-title="Personal Brand Competitive Analysis Template"
-   data-description="A structured template to analyze competitors and identify opportunities to differentiate and strengthen your brand."
-   data-image="Resources/Personal Brand Competetive Analysis/Personal Brand Competetive Analysis Cover.png"
-   data-sale="$"
-   data-regular="$"
-   data-url="Resources/Personal Brand Competetive Analysis Template/personalbrandcompetetiveanalysis.html" 
-   onclick="event.preventDefault(); showModal(this);" >
-  <div class="card-upper">
-    <img src="Resources/Personal Brand Competetive Analysis Template/Pessoals Personal Brand Competetive Analysis Template.png" alt="Personal Branding Competetive Analysis Cover">
-  </div>
-  <div class="card-lower">
+    
+     <!-- FREE Resource 5: Personal Brand Content Calendar Template -->
+     
+     
+    <a class="resource-card"
+       href="Resources/personalbrandcompetetiveanalysis.html"
+       data-category="checklists">
+      <div class="card-upper">
+        <img src="Resources/Templates/Personal Brand Competetive Analysis Template/Pessoals Personal Brand Competetive Analysis Template.png">
+      </div>
+       <div class="card-lower">
   <p class="resourcetype">Template</p>
   <h3>Personal Brand Competitive Analysis Template</h3>
    <p>An all-in-one checklist to ensure your personal brand is polished, consistent, and positioned for maximum impact.</p>
@@ -264,160 +146,12 @@
       <span class="freeresource">Free</span>
     </div>
   </div>
-</a> 
+    </a>
 
-<a class="resource-card" data-category="Guide"
-   data-title="Personal Brand Voice Cheet Sheet"
-   data-description="A handy reference guide to define and maintain your unique tone of voice across all platforms and communications."
-   data-image="Resources/Personal Brand Cheet Sheet Guide/ Personal Brand Cheet Sheet Cover.png"
-   data-sale="$"
-   data-regular="$"
-   data-url="Resources/Personal Brand Voice Cheet Sheet/Personalbrandvoicecheetsheet.html" 
-   onclick="event.preventDefault(); showModal(this);" >
-  <div class="card-upper">
-    <img src="Resources/Personal Brand Voice Cheat Sheet Guide/Personal Brand Voice Cheat Sheet Cover.png" alt="Personal Brand Voice Cheat Sheet Cover.png">
+   
+
   </div>
-  <div class="card-lower">
-  <p class="resourcetype">Guide</p>
-  <h3>Personal Brand Voice Cheet Sheet</h3>
-   <p>A handy reference guide to define and maintain your unique tone of voice across all platforms and communications."
-   data-image="Resources/Personal Brand Cheet Sheet Guide/ Personal Brand Cheet Sheet Cover.png"</p>
-    <div class="price-box">
-      <span class="freeresource">Free</span>
-    </div>
-  </div>
-</a>
-
-<a class="resource-card" data-category="Infographic"
-   data-title="The Three Layer of Content Marketing Infographic"
-   data-description="An easy-to-follow framework that explains the three layers of content marketing and how they work together to grow your brand."
-   data-image="Resource/The Three Layers of Content Maretign/The Three Layers of Marketing Cover.png"
-   data-sale="$"
-   data-regular="$"
-   data-url="Resources/The Three Layers of Content Marketing Infographic/thethreelayersofcontentmarketing.html" 
-   onclick="event.preventDefault(); showModal(this);" >
-  <div class="card-upper">
-    <img src="Resources/The Three Layers of Content Marketing Infographic/The Three Layers of Content Marketing Guide Cover.png" alt="Personal Brand Voice Cheat Sheet Cover.png">
-  </div>
-  <div class="card-lower">
-  <p class="resourcetype" >Infographic</p>
-  <h3>The Three Layers of Content Marketing</h3>
-   <p>An easy-to-follow framework that explains the three layers of content marketing and how they work together to grow your brand."
-    <div class="price-box">
-      <span class="freeresource">Free</span>
-    </div>
-  </div>
-</a>
-
-<a class="resource-card" data-category="Infographic"
-   data-title="The Aligned Brand Infographic"
-   data-description="A guide to aligning your visuals, messaging, and values, so every part of your brand works together seamlessly."
-   data-image="Resource/The Aligned Brand Infographic/The Aligned Brand Cover.png"
-   data-sale="$"
-   data-regular="$"
-   data-url="Resources/The Aligned Brand Infographic/thealignedbrand.html" 
-   onclick="event.preventDefault(); showModal(this);" >
-  <div class="card-upper">
-    <img src="Resources/The Aligned Brand Infographic/The Aligned Brand Cover.png" alt="The Aligned Brand Infographic Cover.png">
-  </div>
-  <div class="card-lower">
-  <p class="resourcetype">Infographic</p>
-  <h3>The Aligned Brand</h3>
-   <p>A guide to aligning your visuals, messaging, and values, so every part of your brand works together seamlessly.</p>
-    <div class="price-box">
-      <span class="freeresource">Free</span>
-    </div>
-  </div>
-</a>
-
-<a class="resource-card" data-category="Infographic"
-   data-title="The Aligned Brand Infographic"
-   data-description="A guide to aligning your visuals, messaging, and values, so every part of your brand works together seamlessly."
-   data-image="Resource/The Aligned Brand Infographic/The Aligned Brand Cover.png"
-   data-sale="$"
-   data-regular="$"
-   data-url="Resources/Brat Summer/bratsummer.html" 
-   onclick="event.preventDefault(); showModal(this);" >
-  <div class="card-upper">
-    <video src="/Resources/The Most Insane Music Artist Brand Partnerships/coverwhite.mp4" 
-           autoplay 
-           muted 
-           loop 
-           playsinline 
-           style="width:100%; height:auto; border-radius:8px;">
-
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  <div class="card-lower">
-  <p>Infographic</p>
-  <h3>The Aligned Brand</h3>
-   <p>A guide to aligning your visuals, messaging, and values, so every part of your brand works together seamlessly.</p>
-    <div class="price-box">
-      <span class="freeresource">Free</span>
-    </div>
-  </div>
-</a>
-
-
-
-
-
-
-  
-</div>
 </section>
-
-
-<section class="contact-section">
-
-  <div class="container grid">
-    <div class="columncontact">
-      <h2>Schedule a chat</h2>
-      <p>Want to see if we’re the right fit to work together? Schedule a quick 15-30 minute zoom chat with our team to discuss any questions you may have.</p>
-      <a href="#" class="btncontact">Schedule a Chat</a>
-      <p class="email">New Business inquiries: <a href="mailto:hello@pessoals.com">hello@pessoals.com</a></p>
-      <p class="note">We respond within 24 hours on business days.</p>
-    </div>
-  
-    <div class="columncontact">
-      <h2>Contact us</h2>
- <form action="https://api.web3forms.com/submit" method="POST">
-  <!-- Web3Forms Access Key -->
-  <input type="hidden" name="access_key" value="cbbcf22a-09e4-49ee-b8f2-7dc06adebf7d">
-
-  <!-- Custom Confirmation / Success Page -->
-  <input type="hidden" name="redirect" value="https://pessoals.com/formsuccess.html"> 
-
-  <!-- Honeypot Spam Protection -->
-  <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-  <!-- Actual Form Fields -->
-  <input type="text" name="name" placeholder="Name*" required />
-  <input type="email" name="email" placeholder="Email*" required />
-  <input type="text" name="location" placeholder="Location*" required />
-  <input type="text" name="company" placeholder="Company Name" />
-
-  <label for="help">What do you want our help with?</label>
-  <select name="help" id="help">
-    <option>Personal Brand Strategy</option>
-    <option>Custom Website Design & Development</option>
-    <option>Content Marketing Strategy</option>
-    <option>Social Media Templates Design</option>
-    <option>PR Outreach & Thought Leadership</option>
-  </select>
-
-  <!-- ✅ Add the missing name -->
-  <textarea name="message" placeholder="Tell Us About Your Project"></textarea>
-
-  <button type="submit" class="btncontact">Submit</button>
-</form>
-
-        </div>
-      </div>
-
-</section>
-  
 
 <footer class="footersecond">
     <div class="container">
@@ -429,177 +163,20 @@
       </div>
     </div>
 </footer>
-  
-<footer class="footerfirst">
-  <div class="footer-container">
-    
-    <div class="footer-links">
-      <!-- About Section -->
-      <div class="footer-section">
-        <h4>About</h4>
-        <ul>
-          <li><a href="aboutus.html">Team</a></li>          
-          <li><a href="careers.html">Careers</a></li>
-          <li><a href="contactus.html">Contact</a></li>
-          <li><a href="aboutus.html">Our Story</a></li>
-        </ul>
-      </div>
-
-      <!-- Services Section -->
-      <div class="footer-section">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="ourservices.html">Website Design</a></li>
-          <li><a href="ourservices.html">Brand Strategy</a></li>
-          <li><a href="ourservices.html">Visiual Identity</a></li>
-          <li><a href="ourservices.html">Content Strategy</a></li>
-        </ul>
-      </div>
-
-      <!-- Resources Section -->
-      <div class="footer-section">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="resources.html">Guides</a></li>
-          <li><a href="resources.html">E-Books</a></li>
-          <li><a href="resources.html">Templates</a></li>
-          <li><a href="contactus.html">Contact Us</a></li>
-        </ul>
-      </div>
-
-      
-      <!-- Resources Section -->
-      <div class="footer-section">
-        <h4>Social Media</h4>
-        <ul>
-            <li><a href="https://www.x.com/pessoals">X</a></li>
-          <li><a href="https://www.instagram.com/pessoals.theagency/">Instagram</a></li>
-          <li><a href="https://www.linkedin.com/pessoals">LinkedIn</a></li>
-          <li><a href="https://www.facebook.com/pessoals">Facebook</a></li>
-        </ul>
-      </div>
-
-      <!-- Legal Section -->
-      <div class="footer-section">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="disclaimer.html">Disclaimer</a></li>
-          <li><a href="termsofservice.html">Terms of Service</a></li>
-          <li><a href="privacypolicy.html">Privacy Policy</a></li>
-          <li><a href="cookiespolicy.html">Cookies Policy</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-    <!-- Bottom Footer Text -->
-    <div class="footer-bottom">
-      ©2025 Pessoals. All Rights Reserved
-    </div>
-
-  </div>
-</footer>
 
 
 
+<!-- SCRIPT -->
 <script>
-    // Filter
-    document.addEventListener("DOMContentLoaded", () => {
-      const filterLinks = document.querySelectorAll('.filter-link');
-      const resourceCards = document.querySelectorAll('.resource-card');
+  // Mobile menu toggle
+  const menulist = document.getElementById("menulist");
+  menulist.style.maxHeight = "0px";
 
-      filterLinks.forEach(link => {
-        link.addEventListener('click', e => {
-          e.preventDefault();
-          filterLinks.forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-          const filter = link.getAttribute('data-filter').toLowerCase();
-          resourceCards.forEach(card => {
-            const category = card.getAttribute('data-category').toLowerCase();
-            card.style.display = (filter === 'all' || filter === category) ? 'inline-block' : 'none';
-          });
-        });
-      });
-    });
-
-    // Modal
-    const modal = document.getElementById('subscribeModal');
-    let currentResourceURL = "";
-
-    document.querySelectorAll('.resource-card').forEach(card => {
-      card.addEventListener('click', (e) => {
-        e.preventDefault();
-        currentResourceURL = card.dataset.url;
-        const modalImg = document.getElementById('modalImage');
-        modalImg.src = card.querySelector('img').src;
-        modal.style.display = 'flex';
-      });
-    });
-
-    function hideModal() {
-      modal.style.display = 'none';
-    }
-
-    function processForm(event) {
-      event.preventDefault();
-      const name = document.getElementById('userName').value.trim();
-      const email = document.getElementById('userEmail').value.trim();
-      const consent = document.getElementById('userConsent').checked;
-
-      if (!consent) {
-        alert("You must agree to receive emails to proceed.");
-        return false;
-      }
-      if (!name || !email) {
-        alert("Please fill in your name and email.");
-        return false;
-      }
-
-      // Mailchimp JSONP
-      const mailchimpUrl = 'https://pessoals.us8.list-manage.com/subscribe/post-json?u=71c3c24de7113eed19df14070&id=b3b6d2e34e&c=?';
-      const params = new URLSearchParams();
-      params.append('EMAIL', email);
-      params.append('FNAME', name);
-
-      function jsonp(url, callback) {
-        const script = document.createElement('script');
-        const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
-        window[callbackName] = function(data) {
-          delete window[callbackName];
-          document.body.removeChild(script);
-          callback(data);
-        };
-        script.src = url.replace('=?', '=' + callbackName);
-        document.body.appendChild(script);
-      }
-
-      jsonp(mailchimpUrl + '&' + params.toString(), function(response) {
-        if (response.result === 'success' || response.result === 'error') {
-          hideModal();
-          window.location.href = currentResourceURL;
-        } else {
-          alert('There was an error submitting your email. Please try again.');
-        }
-      });
-      return false;
-    }
-
-
-    // Menu toggle code
-const menulist = document.getElementById("menulist");
-const burgermenu = document.getElementById("burgermenu");
-
-menulist.style.maxHeight = "0px";
-
-function toggleMenu() {
-  if (menulist.style.maxHeight === "0px") {
-    menulist.style.maxHeight = "350px";
-  } else {
-    menulist.style.maxHeight = "0px";
+  function toggleMenu() {
+    menulist.style.maxHeight =
+      menulist.style.maxHeight === "0px" ? "350px" : "0px";
   }
-}
-
-  </script>
+</script>
 
 </body>
 </html>

@@ -1,0 +1,59 @@
+<!-- Download Button -->
+<button id="downloadBtn" style="padding:10px 20px; font-size:16px;">Download Lead Magnet</button>
+
+<!-- Custom Popup Modal -->
+<div id="leadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+  <div style="background:#fff; padding:30px; border-radius:8px; width:90%; max-width:400px; text-align:center; position:relative;">
+    <h2>Get Your Lead Magnet</h2>
+    <p>Enter your details below to download instantly:</p>
+    <input type="text" id="modalFname" placeholder="First Name" style="width:100%; padding:10px; margin-bottom:10px; border-radius:4px; border:1px solid #ccc;">
+    <input type="email" id="modalEmail" placeholder="Email Address*" required style="width:100%; padding:10px; margin-bottom:20px; border-radius:4px; border:1px solid #ccc;">
+    <button id="modalSubmit" style="padding:10px 20px; background:#007bff; color:#fff; border:none; border-radius:4px; cursor:pointer;">Download</button>
+    <span id="modalClose" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px;">&times;</span>
+  </div>
+</div>
+
+<script>
+const downloadBtn = document.getElementById('downloadBtn');
+const leadModal = document.getElementById('leadModal');
+const modalClose = document.getElementById('modalClose');
+const modalSubmit = document.getElementById('modalSubmit');
+
+downloadBtn.addEventListener('click', () => {
+  leadModal.style.display = 'flex';
+});
+
+modalClose.addEventListener('click', () => {
+  leadModal.style.display = 'none';
+});
+
+modalSubmit.addEventListener('click', () => {
+  const email = document.getElementById('modalEmail').value;
+  const fname = document.getElementById('modalFname').value;
+
+  if (!email) return alert('Email is required!');
+
+  // Mailchimp form URL for JSONP
+  const url = "https://pessoals.us8.list-manage.com/subscribe/post-json?u=71c3c24de7113eed19df14070&id=b3b6d2e34e&c=?";
+  const params = new URLSearchParams({ EMAIL: email, FNAME: fname, tags: "4882015" });
+
+  // JSONP request
+  const script = document.createElement('script');
+  script.src = `${url}&${params.toString()}`;
+  document.body.appendChild(script);
+
+  // Close modal
+  leadModal.style.display = 'none';
+
+  // Redirect to lead magnet
+  window.location.href = "https://yourwebsite.com/your-lead-magnet.pdf";
+});
+
+// Close modal if clicked outside content
+window.addEventListener('click', (e) => {
+  if (e.target === leadModal) {
+    leadModal.style.display = 'none';
+  }
+});
+</script>

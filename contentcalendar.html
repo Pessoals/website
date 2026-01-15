@@ -1,384 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-20NJ10DBNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Like a Celebrity</title>
 
-  gtag('config', 'G-20NJ10DBNQ');
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-20NJ10DBNQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Favicon -->
+  <link rel="icon" href="Images/favicon.png" type="image/x-icon">
 
-  gtag('config', 'G-20NJ10DBNQ');
-</script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Branding Content Calendar</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,
-    wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,
-    900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,
-    wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="icon" href="Images/favicon.png" type="image/x-icon">
-  </head>
-  <body>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-<nav>
-      <div class="logo"> 
-          <img src="Images/pessoalslogo.svg" alt="Pessoals Logo"> </div>
-        <ul class="menulist" id="menulist">
-           <li><a href="index.html">Home</a></li>
-           <li><a href="aboutus.html">About</a></li>
-           <li><a href="resources.html">Resources</a></li>
-           <li><a href="ourworks.html">Our works</a></li>
-           <li><a href="ourservices.html">Our services</a></li>
-           
-         </ul>
-       <div class="burgermenu"  id="burgermenu"  onclick=toggleMenu()>
-         <img src="Icons/Burger Menu Icon.svg" alt="Burger Menu">
-      </div> 
-</nav>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/style.css" />
 
-<section class="hero">
- <div class="lefthero">
-    <div class="maintexthero">
-      <h3>BRAND LIKE A</h3>
-      <h1>CELEBRITY</h1>
-    </div>
-    <p>HOW TO CRAFT A PERSONAL BRAND THAT'S MEMEORABLE, MAGNETIC AND INFLUNTIAL USING STRATEGIES LIKE 
-      SEMIOTIC BRANDING, SENSORY BRANDING AND MORE.</p>
-    <button class="buy-button1" onclick="openPopup()">Buy eBook</button>
+  <!-- Google Tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-20NJ10DBNQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-20NJ10DBNQ');
+  </script>
 
+</head>
+<body>
 
+<!-- Custom Popup Modal -->
+<div id="leadModal" class="modal-overlay">
+  <div class="modal-box">
+    <span id="modalClose" class="modal-close">&times;</span>
+
+    <h2 class="modal-title">
+      Get Access to: The Genius Marketing Strategy Behind Brat Summer
+    </h2>
+
+    <p class="modal-subtext">All fields are required.</p>
+
+    <input
+      type="text"
+      id="modalFname"
+      class="modal-input"
+      placeholder="First Name"
+    >
+
+    <input
+      type="email"
+      id="modalEmail"
+      class="modal-input"
+      placeholder="Email Address*"
+      required
+    >
+
+    <button id="modalSubmit" class="modal-button">
+      Download
+    </button>
   </div>
-    <img src="Images/Resources/Pessoals Content Calendar Template Cover.png" alt="">
+</div>
+
+
+<!-- CONTENT / CHAPTERS -->
+<section class="thechapters">
+  <!-- CHAPTER 1 -->
+  <div class="chapter-section">
+    <div class="chapter-wrapper">
+      <div class="chapter-content">
+        <span class="chapter-label1">Template</span>
+        <h2 class="chapter-title1">How <i>Brat Summer</i> Took Over the World & the Genius Marketing Strategy Every Artist Should Learn</h2>
+        <p class="chapter-desc">Learn the genius marketing strategies Charli XCX and Atlantic Records used to drive the success of Charli XCX's 6th official album, Brat Summer and discover how as an artists you can apply these proven tactics to capture attention and shape culture.</p>
+        <a href="#" class="buy-button2" id="downloadBtn">View Casestudy</a>
+      </div>
+      <div class="chapter-image">
+        <img src="/Resources/Templates/Content Calendar/Pessoals Content Calendar Template Cover.webp" alt="Chapter Preview">
+      </div>
+    </div>
+    <input type="checkbox" id="chapterMore1" class="chapter-toggle-checkbox">
+    <div class="chapter-more"> <!-- Expanded content here --> </div>
+  </div>
+  <!-- More chapters can be added similarly -->
 </section>
 
-<section class="badges">
-  <div class="containerbadges">
-    <div class="badge-wrapper">
-      <img src="Images/sslcertified.png" alt="SSL Certified" />
-      <p class="badge-text">SSL Certified</p>
-    </div>
-    <div class="badge-wrapper">
-      <img src="Images/moneybackguarantee.png" alt="30 Days Money Back Guarantee" />
-      <p class="badge-text">30 Days Money Back</p>
-    </div>
-    <div class="badge-wrapper">
-      <img src="Images/securepayments.png" alt="Secure Payments" />
-      <p class="badge-text">Secure Payments</p>
-    </div>
-  </div>
-</section>
-
-
+<!-- SALES / CTA SECTION -->
 <section class="section-findout">
   <div class="container-findout">
     <div class="findout-header">
-      <h2>DISCOVER THE STRATEGIES SUCCESSFUL ARTISTS USE TO STAND OUT</h2>
-    </div>
-    <p>
-      Personal branding is more than self-promotion it’s the art of defining and sharing your unique identity, skills, and values in a way that makes you unforgettable. For artists, it goes beyond talent; it’s about crafting a distinct persona that reflects your vision, showcases your signature style, and tells the story behind your work. By mastering the strategies of successful artists, you can position yourself to attract more opportunities, build a loyal audience, and command the value your art truly deserves.
-    </p>
+       <h1>We typically work one-on-one with a select number of clients. These private engagements come with high fees because they are intensive and hands-on. </h1>
+      <p>They are not the right fit for everyone, and that’s completely okay. Brand Like a Celebrity offers you the opportunity to explore the same branding mindset, frameworks, and principles we use with our clients without the pressure, cost, or commitment of a one-on-one service.
 
-    <div class="button-container">
-      <button class="buy-button1" onclick="openPopup()">Buy eBook</button>
+If you read the eBook and feel it’s not aligned with your goals or direction, that’s perfectly fine. It simply means our approach isn’t the right fit for you and you can know that without risking a large upfront investment. think of this as a low-pressure, low-risk way to discover if our approach to branding matches how you want to build your career.</p>
     </div>
+      <a href="#" class="buy-button1" id="downloadBtn">View Casestudy</a>
   </div>
 </section>
 
 
-<div id="popup" class="popup-overlay" style="display:flex;">
-  <form id="popupForm" class="popup" onsubmit="handleSubmit(event)">
-    <button type="button" class="close-btn" aria-label="Close popup" onclick="closePopup()">×</button>
-    <img src="Images/brandlikeacelbritymockupmain.png" alt="eBook Cover" />
-    <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name" />
-    <input type="email" id="email" name="email" placeholder="Your Email" required autocomplete="email" />
-    <label for="consent">
-      <input type="checkbox" id="consent" required />
-      yes we send templates via email and pessoals also send periodic updates and offers but you can always unsubscribe.
-    </label>
-    <button type="submit">Submit & Buy</button>
-  </form>
-</div>
-
-<section class="section-testimonials">
-  <div class="container-testimonials">
-  <h2>BRAND LIKE AN ARTIST IS LOVED BY INDUSTRY LOVING ARTISTS</h2>
-
-  <div class="testimonialsgrid">
-    <div class="testimonial">
-      <em>“ I used to post randomly and hope for likes. This ebook gave me a clear identity and voice online. Now people actually recognize my work and style! “</em>
-      <div class="author">Sasha V.</div>
-      <div class="role">Visual Artist</div>
-    </div>
-
-    <div class="testimonial">
-      <em>“ I thought branding was only for companies. This book changed my mindset—now my followers see me as a serious brand, not just a content creator. “</em>
-      <div class="author">JMarcus Lee</div>
-      <div class="role">Music Producer & Influencer</div>
-    </div>
-
-    <div class="testimonial">
-      <em>“ The strategies in this ebook are gold. I revamped my Instagram, landed a collab with a fashion brand, and doubled my engagement in a month.“</em>
-      <div class="author">Elena Rivera</div>
-      <div class="role">Fashion Content Creator</div>
-    </div>
-
-    <div class="testimonial">
-      <em>“ It made me think deeply about how I want to be perceived. ‘Brand Like a Celebrity’ helped me turn my passion into a real presence “</em>
-      <div class="author">Jay Akram</div>
-      <div class="role">Digital Illustrator</div>
-    </div>
-
-    <div class="testimonial">
-      <em>“I felt stuck trying to stand out. This ebook helped me shape a personal brand that finally makes sense and feels like ME. “</em>
-      <div class="author">Tori Lane</div>
-      <div class="role">Singet-Songwriter</div>
-    </div>
-
-    <div class="testimonial">
-      <em>“ THIS IS  the book to read for Australian artist wanting to have a special place in the heart of there audience. “</em>
-      <div class="author">Devon Brooks</div>
-      <div class="role">TikTok Creator & Dancer</div>
-    </div>
-  </div>
- </div>
-</section>
-
-
-<section class="inside">
-  <div class="headerinside">
-    <h2>What's Included</h2>
-    <h5>Where personal brands become icons.</h5>
-  </div>
-
-  <div class="insidecontainer">
-
-    <div class="inside-step">
-      <div class="left-column">
-        <img src="Images/Resources/Inside1.png" alt="Step 1 Image">
-      </div>
-      <div class="right-column">
-        <h2>Why Every Artist Needs a Personal Brand</h2>
-        <p>Most artists believe their talent will speak for itself — but in today’s world, talent alone isn’t enough. You could be the most gifted painter, singer, or designer, yet still remain invisible if people don’t remember you, trust you, or feel something when they see your work. With the rise of social media, how you present yourself has become just as important as the art you create. Your personal brand is your modern-day reputation — the key that opens doors, builds loyalty, and makes your work unforgettable.</p>
-      </div>
-    </div>
-
-    <div class="inside-step">
-      <div class="left-column">
-        <img src="Images/Resources/Inside2.png" alt="Step 2 Image">
-      </div>
-      <div class="right-column">
-        <h2>Lessons from Artists Who Mastered Personal Branding</h2>
-        <p>You’ll discover how well-known artists use personal branding to stand out and stay relevant — from subtle reinvention to bold transformations. Learn how some artists build strong, relatable identities through authenticity and storytelling, while others craft entire worlds around their work with visuals, fashion, and lifestyle extensions. These case studies reveal how branding isn’t just about your art — it’s about the image, symbols, and emotions that make people feel connected to you and your journey.</p>
-      </div>
-    </div>
-
-    <div class="inside-step">
-      <div class="left-column">
-        <img src="Images/Resources/Inside3.png" alt="Step 3 Image">
-      </div>
-      <div class="right-column">
-        <h2>How to Craft Your Personal Brand & Find Your USP</h2>
-        <p>You will learn how to get clear on who you are and what you want to be known for before worrying about colors, aesthetics, or styles. By using tools like Ikigai, you’ll uncover the sweet spot between what you love, what you’re good at, what the world needs, and what you can be paid for. You’ll also learn how to identify your Unique Selling Point (USP) — the thing that makes you stand out from everyone else. This clarity will give you the foundation to build a brand that feels intentional, authentic, and impossible to ignore.</p>
-      </div>
-    </div>
-
-    <div class="inside-step">
-      <div class="left-column">
-        <img src="Images/Resources/Inside4.png" alt="Step 4 Image">
-      </div>
-      <div class="right-column">
-        <h2>How to Choose the Right Aesthetic for Your Brand</h2>
-        <p>You will learn how to craft a consistent visual identity that makes you instantly recognizable. From hairstyle and statement clothing to colors, accessories, and subtle details, you’ll discover how to pick the elements that reflect your personality and set you apart. You’ll also learn how to strategically choose an aesthetic that feels authentic to you while still being memorable, so your brand tells a clear and cohesive story every time people see you.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<section class="section-who">
- <div class="container-who">
-    <h2>Who Should Read This Book?</h2>
-    <div class="content-who">
-      <div class="who left">
-        <div class="who">Are you an artist struggling to get noticed no matter how good your work is?</div>
-        <div class="who">Are you a content creator who blends in instead of standing out?</div>
-        <div class="who">Do you feel like your online presence is all over the place?</div>
-      </div>
-
-      <div class="icon">
-        <img src="Icons/SVGRepo_iconCarrier.png" alt="Lightbulb Icon" />
-      </div>
-
-      
-    <div class="who right">
-        <div class="who">Are you a coach or consultant who knows your stuff but can't seem to look the part?</div>
-        <div class="who">Are you a creative entrepreneur tired of being undervalued in your industry?</div>
-        <div class="who">Are you a freelancer or solopreneur whose brand feels generic?</div>
-     </div>
-    </div>
-<div class="button-container">
- <button class="buy-button2">Buy eBook</button>
-</div>    
-      
-    
-  </div>
-</section>
-
-
-<section class="section-free-download">
-  
-  <div class="container-free-download">
-    <!-- Left Text Section -->
-    <div class="text-content">
-      <h1>What’s inside?</h1>
-      <h2>Choose one chapter of <br>Brand Like a Celebrity<br>for free</h2>
-      <p>We have selected three chapters to give you a sample right now. Pick one and see how our golden rules apply to your branding strategy.</p>
-    </div>
-
-    <!-- Right Buttons Section -->
-    <div class="button-group">
-      <button class="download-button" onclick="downloadPDF1()">
-        <h3>Download Chapter One</h3>
-        <p>What is personal branding?</p>
-      </button>
-      <button class="download-button" onclick="downloadPDF2()">
-        <h3>Download Chapter Two</h3>
-        <p>Why do Artists need Personal Branding</p>
-      </button>
-      <button class="download-button" onclick="downloadPDF3()">
-        <h3>Download Chapter Six</h3>
-        <p>Choose Your Aesthetics</p>
-      </button>
-    </div>
-  </div>
-  
-</section>
-
+<!-- FAQ SECTION -->
 <section class="faq">
-   <h2 class="faq-title">Frequently Asked Questions</h2>
-    <div class="accordion">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="accordion">
     <div class="accordion-item">
       <input type="checkbox" id="faq1" class="accordion-toggle">
       <label class="accordion-label" for="faq1">
-        Q1, What format(s) is the ebook available in?
+        <span class="text-wrapper">What is this case study about?</span>
         <span class="accordion-icon"></span>
       </label>
-      <div class="accordion-content">
-        Our ebooks come in popular formats such as PDF, EPUB, and MOBI, so you can choose the version that works best for your preferred reading device or app.
-      </div>
+      <div class="accordion-content">This case study breaks down the Brat Summer phenomenon and the genius marketing strategies Charli XCX and her label used to market her music. It shows how a single album rollout turned into a global cultural trend, influencing social media, fashion, language, and online behavior worldwide.</div>
     </div>
-
-    <div class="accordion-item">
+    <!-- Add more FAQs similarly -->
+     <div class="accordion-item">
       <input type="checkbox" id="faq2" class="accordion-toggle">
       <label class="accordion-label" for="faq2">
-       Q2, Can I read the ebook on any device?
+        <span class="text-wrapper">Who is this case study for?</span>
         <span class="accordion-icon"></span>
       </label>
-      <div class="accordion-content">
-       Absolutely! Our ebooks are compatible with most devices, including smartphones, tablets, e-readers, and computers. As long as your device supports common ebook formats like PDF, EPUB, or MOBI, you’re good to go.
-      </div>
+      <div class="accordion-content">This case study is for:
+
+Artists who want to market their music without relying only on ads
+
+Marketers looking to understand how culture-driven campaigns actually work
+
+Managers & labels who want to create moments, not just releases
+
+If you’re trying to make people feel something and talk about your work, this is for you.</div>
     </div>
-
-    <div class="accordion-item">
-      <input type="checkbox" id="faq3" class="accordion-toggle">
-      <label class="accordion-label" for="faq3">
-        Q3, How do I download the ebook after purchase?
-        <span class="accordion-icon"></span>
-      </label>
-      <div class="accordion-content">
-        After you complete your purchase, you’ll receive a download link via email. You can also download the ebook directly from the confirmation page. Just click the link, and the file will save to your device.
-
-
-      </div>
-    </div>
-    <div class="accordion-item">
-      <input type="checkbox" id="faq4" class="accordion-toggle">
-      <label class="accordion-label" for="faq4">
-        Q4, Is the ebook available for instant download?
-        <span class="accordion-icon"></span>
-      </label>
-      <div class="accordion-content">
-        Yes! Once your purchase is complete, you’ll get immediate access to download the ebook no waiting needed. Simply click the download link sent to your email or shown on the confirmation page.
-      </div>
-    </div>
-
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="footer-main">
   <div class="container">
     <div class="footer-links">
-      <a href="privacypolicy.html">Privacy Policy</a>
-      <a href="cookiespolicy.html">Cookie Policy</a>
-      <a href="privacypolicy.html">Your Privacy Choices</a>
-      <p>Copyright ©2025 – Pessoals. All Rights Reserved</p>
+      <a href="/privacypolicy.html">Privacy Policy</a>
+      <a href="/cookiespolicy.html">Cookie Policy</a>
+      <a href="/privacypolicy.html">Your Privacy Choices</a>
+      <p>© 2025 Pessolas. All Rights Reserved.</p>
     </div>
   </div>
 </footer>
 
-
+<!-- SCRIPTS -->
 <script>
-  const mailchimpUrl = 'https://us15.list-manage.com/subscribe/post-json?u=07e655f1ee6606d6949ea7dbb&id=4798db1474&c=?';
-    const paypalUrl = 'https://www.paypal.com/ncp/payment/A7CABSKCLJPJE';
+const downloadBtn = document.getElementById('downloadBtn');
+const leadModal = document.getElementById('leadModal');
+const modalClose = document.getElementById('modalClose');
+const modalSubmit = document.getElementById('modalSubmit');
 
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+downloadBtn.addEventListener('click', () => {
+  leadModal.style.display = 'flex';
+});
 
-      const form = e.target;
-      const name = form.FNAME.value.trim();
-      const email = form.EMAIL.value.trim();
+modalClose.addEventListener('click', () => {
+  leadModal.style.display = 'none';
+});
 
-      if (!name || !email) {
-        alert('Please fill in your name and email');
-        return;
-      }
+modalSubmit.addEventListener('click', () => {
+  const email = document.getElementById('modalEmail').value;
+  const fname = document.getElementById('modalFname').value;
 
-      // Prepare Mailchimp params
-      const params = new URLSearchParams();
-      params.append('EMAIL', email);
-      params.append('FNAME', name);
+  if (!email) return alert('Email is required!');
 
-      // JSONP request helper
-      function jsonp(url, callback) {
-        const script = document.createElement('script');
-        const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+  // Mailchimp form URL for JSONP
+  const url = "https://pessoals.us8.list-manage.com/subscribe/post-json?u=71c3c24de7113eed19df14070&id=b3b6d2e34e&c=?";
+  const params = new URLSearchParams({ EMAIL: email, FNAME: fname, tags: "4882015" });
 
-        window[callbackName] = function(data) {
-          delete window[callbackName];
-          document.body.removeChild(script);
-          callback(data);
-        };
+  // JSONP request
+  const script = document.createElement('script');
+  script.src = `${url}&${params.toString()}`;
+  document.body.appendChild(script);
 
-        script.src = url.replace('=?', '=' + callbackName);
-        document.body.appendChild(script);
-      }
+  // Close modal
+  leadModal.style.display = 'none';
 
-      // Send data silently to Mailchimp via JSONP
-      jsonp(mailchimpUrl + '&' + params.toString(), function(response) {
-        // Optionally handle response.result: 'success' or 'error'
-        // We redirect anyway to PayPal to keep flow smooth
-        window.location.href = paypalUrl;
-      });
-    });
+  // Redirect to lead magnet
+  window.location.href = "/Resources/accesscontentcalendar.html";
+});
 
+// Close modal if clicked outside content
+window.addEventListener('click', (e) => {
+  if (e.target === leadModal) {
+    leadModal.style.display = 'none';
+  }
+});
 </script>
- 
-  
-  
+
+
 </body>
-<script src="script.js"></script>
 </html>

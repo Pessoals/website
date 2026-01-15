@@ -785,7 +785,10 @@ nav ul li a:hover::after {
 .features li::before {
   content: '';
   margin-right: 0.5rem;
-}/* ===== Testimonials Section ===== */
+}
+
+/* ===== Testimonials Section ===== */
+
 .testimonialssection {
   display: flex;
   justify-content: center;
@@ -1735,7 +1738,7 @@ form button {
   width: 100%;
   max-width: 300px;
   min-width: 250px;
-  height: 400px;
+  height: 450px;
   text-decoration: none;
   color: inherit;
   overflow: hidden;
@@ -1899,34 +1902,41 @@ form button {
 
 .hero {
   display: flex;
-  align-items: center;
+  align-items: center;            /* vertical center */
   justify-content: space-between;
-  padding: 50px;
+  padding: clamp(1.25rem, 5vw, 3rem);             /* premium horizontal spacing */
   background-color: #FAF8EF;
+  box-sizing: border-box;
 }
 
 /* Content on the right (heading, subheading, and button) */
 .hero-content {
   flex: 1;
-  max-width: 700px; /* Controls the width of the text section */
+  max-width: 50vw; /* Controls the width of the text section */
+  display: flex;
+  align-items: flex-start; /* align content to start */
 }
 
 .maintexthero {
-  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* KEY FIX */
+  text-align: left;        /* KEY FIX */
 }
-
+/* HEADLINE */
 .maintexthero h1 {
-  font-size: clamp(1rem, 5vw, 2rem); /* Minimum size: 2rem, Preferred size: 5vw, Maximum size: 3.5rem */
-  font-weight: normal;
-  color: #333;
-  font-family: playfair display, serif;
-  margin-bottom: 20px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.2rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: #1c1a15;
 }
 
 .maintexthero p {
   font-size: clamp(1rem, 2vw, 1rem); /* Minimum size: 1rem, Preferred size: 3vw, Maximum size: 1.5rem */
   color: #555;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+  text-align: start;
 }
 
 /* Content on the left (image) */
@@ -1936,7 +1946,7 @@ form button {
 }
 
 .hero-image img {
-  width: 100%;
+  width: 110%;
   height: auto;
   border-radius: 8px;
 }
@@ -1968,7 +1978,6 @@ form button {
 .buy-button1:focus {
   background-color: #FAF8EF;
   color: #1c1a15;
- 
 }
 
 /* Mobile tweaks */
@@ -2220,6 +2229,41 @@ form button {
 
 
 /* end of section findout in sales page of brand like a celebrity */ 
+
+/* ===============================
+       VALUE SECTION
+    ============================== */
+    .value-section {
+      padding: clamp(3rem, 6vw, 6rem) 1.5rem;
+    }
+
+    .value-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .value-card {
+      background: #FFFFFF;
+      text-align: start;
+      padding: 2.25rem;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+    }
+
+    .value-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      font-family: 'Montserrat',sans-serif;
+      font-weight: 600;
+    }
+
+    .value-card p {
+      font-size: 0.95rem;
+      color: #1a1a15;
+    }
+
 
 /* start of testimonials section in sales page of brand like a celebrity */
 .section-testimonials {
@@ -2979,209 +3023,76 @@ form button {
   }
 }
 /* End of footer main consitent */ 
-/* ===== Popup Overlay ===== */
-.popup-overlay,
+/* ===== Popup Overlay ===== *//* Overlay */
 .modal-overlay {
+  display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  padding: 1rem;
-  box-sizing: border-box;
+  z-index: 1000;
 }
 
-/* ===== Popup / Modal Box ===== */
-.popup,
+/* Modal box */
 .modal-box {
-  background: #1a1a15;
-  padding: 2rem 2.5rem;
-  width: 100%;
+  background: #fcfaf8;
+  padding: 30px;
+  width: 90%;
   max-width: 400px;
   text-align: center;
   position: relative;
-  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.1);
-  color: #faf8ef;
-  font-family: 'Lato', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
 }
 
-/* ===== Images ===== */
-.popup img,
-.modal-box img {
-  width: 140px;
-  height: auto;
-  max-height: 220px;
-  margin-bottom: 1.5rem;
-  transition: transform 0.3s ease;
-  object-fit: contain;
+/* Title */
+.modal-title {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #1c1a15;
 }
 
-/* ===== Input Fields ===== */
-.popup input[type="text"],
-.popup input[type="email"],
-.modal-box input[type="text"],
-.modal-box input[type="email"] {
+/* Subtext */
+.modal-subtext {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Inputs */
+.modal-input {
   width: 100%;
-  padding: 0.7rem 1rem;
-  margin-bottom: 1.2rem;
-  border: 1.8px solid transparent;
-  border-radius: 8px;
-  background: #2e2e2e;      /* dark background */
-  color: #faf8ef;           /* light text */
-  font-size: 0.9rem;
-  outline-offset: 2px;
-  outline-color: transparent;
-  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
 }
 
-/* Focus State */
-.popup input[type="text"]:focus,
-.popup input[type="email"]:focus,
-.modal-box input[type="text"]:focus,
-.modal-box input[type="email"]:focus {
-  border-color: #faf8ef;
-  background: #faf8ef;      /* light background on focus */
-  color: #1a1a15;           /* dark text on focus */
-  outline-color: #faf8ef;
-}
-
-/* Placeholder */
-.popup input::placeholder,
-.popup input[type="email"]::placeholder,
-.modal-box input::placeholder,
-.modal-box input[type="email"]::placeholder {
-  color: #c0c0c0;
-}
-
-/* ===== Labels ===== */
-.popup label,
-.modal-box label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: Lato, sans-serif;
-  font-size: 0.7rem;
-  color: #EAF0F6;
-  margin-bottom: 2rem;
-  user-select: none;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-}
-
-/* ===== Checkbox ===== */
-.popup input[type="checkbox"],
-.modal-box input[type="checkbox"] {
-  width: 0.7rem;
-  height: 0.7rem;
-  cursor: pointer;
-  accent-color: #faf8ef;
-  flex-shrink: 0;
-  border-radius: 2px;
-  box-shadow: 0 0 0 1.5px #faf8ef inset;
-  transition: box-shadow 0.3s ease;
-}
-
-/* ===== Buttons ===== */
-.popup button[type="submit"],
-.modal-box button[type="submit"] {
-  background-color: #FAF8EF;
-  text-decoration: none;
-  color: #1a1a15;
-  padding: 12px 20px; /* slightly smaller padding for mobile */
-  margin-top: 20px;
-  font-size: 1rem;
+/* Button */
+.modal-button {
+  padding: 10px 20px;
+  background: #1c1a15;
+  color: #fcfaef;
   border: none;
   cursor: pointer;
-  white-space: normal; /* allow wrapping */
-  max-width: 90%; /* prevent overflow on mobile */
-  text-align: center; /* center text if it wraps */
-  box-sizing: border-box; 
-  border: 1.5px solid #FAF8EF;
+  font-size: 14px;
 }
 
-/* Hover / Focus Button */
-.popup button[type="submit"]:hover,
-.popup button[type="submit"]:focus,
-.modal-box button[type="submit"]:hover,
-.modal-box button[type="submit"]:focus {
-  background-color: #1c1a15;
-  color: #FAF8EF;
-  outline: none;
-
+.modal-button:hover {
+  opacity: 0.9;
 }
 
-/* ===== Close / Dismiss Buttons ===== */
-.close-btn,
-.dismiss-btn {
+/* Close icon */
+.modal-close {
   position: absolute;
-  top: 12px;
-  right: 14px;
-  background: none;
-  border: none;
-  color: #8f8f8c;
-  font-size: 1.6rem;
+  top: 10px;
+  right: 15px;
   cursor: pointer;
-  line-height: 1;
-  padding: 0;
-  transition: color 0.25s ease;
-  user-select: none;
-}
-
-.close-btn:hover,
-.close-btn:focus,
-.dismiss-btn:hover,
-.dismiss-btn:focus {
-  color: #bd9d5c;
-  outline: none;
-}
-
-/* ===== Mobile Responsiveness ===== */
-@media (max-width: 600px) {
-  .popup button[type="submit"],
-  .modal-box button[type="submit"] {
-    width: 100%;
-    padding: 1rem;
-    margin-top: 0rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .popup,
-  .modal-box {
-    padding: 1.5rem 1.8rem;
-    max-width: 320px;
-  }
-
-  .popup img,
-  .modal-box img {
-    width: 120px;
-    max-height: 150px;
-    margin-bottom: 1rem;
-  }
-
-  .popup input[type="text"],
-  .popup input[type="email"],
-  .modal-box input[type="text"],
-  .modal-box input[type="email"] {
-    font-size: 0.9rem;
-    padding: 0.6rem 0.9rem;
-  }
-
-  .popup button[type="submit"],
-  .modal-box button[type="submit"] {
-    font-size: 1rem;
-    padding: 12px 0;
-  }
+  font-size: 22px;
+  color: #1c1a15;
 }
 
 
@@ -4184,8 +4095,7 @@ a:focus {
 
 .chapter-image img {
   width: 100%;
-  height: auto;
-  
+  height: auto;  
 }
 
 /* RIGHT SIDE CONTENT */
@@ -4216,7 +4126,7 @@ a:focus {
   font-size: 1rem;
   line-height: 1.8;
   text-align: start;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   color: #8f8f8c;
   font-family: 'lato', sans-serif;
  
