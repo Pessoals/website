@@ -1738,7 +1738,7 @@ form button {
   width: 100%;
   max-width: 300px;
   min-width: 250px;
-  height: 450px;
+  height: 400px;
   text-decoration: none;
   color: inherit;
   overflow: hidden;
@@ -2265,6 +2265,45 @@ form button {
       font-size: 0.95rem;
       color: #1a1a15;
     }
+
+
+  
+.fullscreen-landing {
+  display: flex;
+  flex-direction: column; /* stacks text on top, image below */
+  align-items: center;
+  padding: clamp(1.25rem, 5vw, 3rem);
+  background-color: #1c1a15;
+  color: #FAF8EF;
+}
+
+.landingcase {
+  max-width: clamp(320px, 90vw, 650px);
+  color: #FAF8EF;
+  margin-bottom: clamp(0.75rem, 3vw, 1rem);
+}
+
+.landingcase h1 {
+  font-size: clamp(1.8rem, 4vw, 2rem);
+  color: #FAF8EF;
+  line-height: 1.1;
+  text-align: center;
+  font-weight: normal;
+  font-family: 'Playfair Display', serif;
+  margin-top: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: clamp(1.5rem, 5vw, 3rem);
+}
+.landingcase p {
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+  word-spacing: 0.1rem;
+  line-height: 1.5;
+  color: #8F8F8C;
+  text-align:center;
+  font-weight: normal;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+}
+
 
 
 /* start of testimonials section in sales page of brand like a celebrity */
