@@ -2233,38 +2233,39 @@ form button {
 /* end of section findout in sales page of brand like a celebrity */ 
 
 /* ===============================
-       VALUE SECTION
-    ============================== */
-    .value-section {
-      padding: clamp(3rem, 6vw, 6rem) 1.5rem;
-    }
+   VALUE SECTION
+================================ */
 
-    .value-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
+.value-section {
+  padding: clamp(3rem, 6vw, 6rem) 1.5rem;
+}
 
-    .value-card {
-      background: #FFFFFF;
-      text-align: start;
-      padding: 2.25rem;
-      box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
-    }
+.value-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
 
-    .value-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.75rem;
-      font-family: 'Montserrat',sans-serif;
-      font-weight: 600;
-    }
+.value-card {
+  background: #ffffff;
+  text-align: start;
+  padding: 2.25rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
 
-    .value-card p {
-      font-size: 0.95rem;
-      color: #1a1a15;
-    }
+.value-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.value-card p {
+  font-size: 0.95rem;
+  color: #1a1a15;
+}
 
 
   
@@ -4285,12 +4286,12 @@ a:focus {
   /* Titles */
   .chapter-title1 {
     font-size: 1.5rem;
-    text-align: center;
+    text-align: start;
   }
 
   /* Content */
   .chapter-content {
-    text-align: center;
+    text-align: start;
     align-items: center;
   }
 
