@@ -3904,12 +3904,11 @@ a:focus {
 .herotop h1 {
   font-size: clamp(1.8rem, 4vw, 5rem);
   color: #FAF8EF;
-  line-height: 1.1;
+  line-height:1;
   text-align: center;
   word-spacing: -1%;
-  font-weight: normal;
+  font-weight:300;
   font-family: 'Playfair Display', serif;
-  margin-top: clamp(1.5rem, 5vw, 3rem);
   margin-bottom: clamp(1.5rem, 5vw, 3rem);
 }
 .herotop p {
@@ -3920,6 +3919,7 @@ a:focus {
   text-align: center;
   font-weight: normal;
   font-family: 'Lato', sans-serif;
+   margin-top: clamp(1.5rem, 5vw, 3rem);
   margin-bottom: clamp(1rem, 3vw, 1.5rem);
 }
 /* full-screen image part */
@@ -3930,6 +3930,17 @@ a:focus {
   margin: 0;
   padding: 0;
 }
+.pbmlogo img {
+  display: block;              /* allows margin auto centering */
+  max-width: 200px;            /* logo max size (adjust as needed) */
+  width: 100%;                 /* responsive scaling */
+  height: auto;                /* keep aspect ratio */
+  object-fit: contain;         /* logo should NEVER be cropped */
+  margin: 0 auto;              /* center horizontally */
+  padding: 0;
+  margin-bottom: clamp(1.5rem, 5vw, 3rem);
+}
+
  /* This is the end of the hero section sales page */
 
 
