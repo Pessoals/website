@@ -330,32 +330,44 @@ html, body {
   max-width: 85%;
   color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
 }
+.button-container {
+  display: flex;
+  justify-content: start;
+}
 
-.rightsidebutton {
-  background: #FAF8EF;
+.getpbm {
+  background-color: #FAF8EF;
+  text-decoration: none;
   color: #1a1a15;
-  padding: 0.75rem 1.5rem; /* Adjust padding for better proportions */
-  display: inline-block;
-  margin-top: 1rem;
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  padding: 12px 20px; /* slightly smaller padding for mobile */
+  margin-top: 20px;
+  font-size: 1rem;
+  border: none;
   cursor: pointer;
-  text-align: center;
-  box-sizing: border-box;
-  max-width: 250px; /* Set a maximum width to prevent it from getting too long */
-  width: 100%; /* Ensure it takes up available space but doesn't exceed max-width */
-  font-size: 1rem; /* Set an appropriate font size */
-  font-weight: normal; /* Bold for better readability */
+  white-space: normal; /* allow wrapping */
+  text-align: center; /* center text if it wraps */
+  box-sizing: border-box; 
+  border: 1.5px solid #FAF8EF;
 }
 
-.rightsidebutton:hover {
- background: #bd9d5c;
- color: #FAF8EF;
+/* Hover (desktop) */
+.getpbm:hover,
+.getpbm:focus {
+  background-color: #1c1a15;
+  color: #FAF8EF;
+  outline: none;
+
 }
 
-.right-side1 .content button:hover {
-  background-color: #bd9d5c;
-  transform: scale(1.05);
-}/* Footer aligned with logo */
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .getpbm {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+}
+
+/* Footer aligned with logo */
 .right-side1 .footer {
   display: flex;
   align-items: center;            /* vertical centering */
@@ -906,7 +918,7 @@ html, body {
 
     <!-- 🔽 Keyboard Arrow Hint on RIGHT SIDE -->
    <div class="keyboard-hint">
-        <img src="/casestudies/Charlie XCX/Keyboard.webp" alt="Keyboard Arrows">
+        <img src="/casestudies/charliexcx/Keyboard.webp" alt="Keyboard Arrows">
         <div class="hand"></div>
    </div>
 
@@ -944,7 +956,7 @@ html, body {
 <!-- Slide 2 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide2.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide2.webp" alt="Kanye West x Adidas">
   </div>
 
   <div class="right-side1">
@@ -974,7 +986,7 @@ html, body {
       <div class="logo">
         <img src="/Images/pessoalslogo.svg" alt="Logo">
       </div>
-      <div class="copyright">© 2026 Pessoals</div>
+      <div class="copyright">©2026 Pessoals</div>
     </div>
   </div>
 </div>
@@ -982,7 +994,7 @@ html, body {
 <!-- Slide 3 Type 01 -->
 <div class="slide-content">
       <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide3.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide3.webp" alt="Kanye West x Adidas">
      </div>
 
       <div class="right-side1">
@@ -998,7 +1010,7 @@ html, body {
           <div class="logo">
             <img src="/Images/pessoalslogo.svg" alt="Logo">
           </div>
-          <div class="copyright">© 2026 Pessoals</div>
+          <div class="copyright">©2026 Pessoals</div>
         </div>
       </div>
     </div>
@@ -1006,7 +1018,7 @@ html, body {
 <!-- Slide 4 Type 01 -->
 <div class="slide-content">
       <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide2.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide2.webp" alt="Kanye West x Adidas">
      </div>
 
       <div class="right-side1">
@@ -1037,7 +1049,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 5 Type 01 -->
 <div class="slide-content">
       <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide5.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide5.webp" alt="Kanye West x Adidas">
      </div>
 
       <div class="right-side1">
@@ -1053,7 +1065,7 @@ Just as corporate brands use color to convey their message, artists can use a si
           <div class="logo">
             <img src="/Images/pessoalslogo.svg" alt="Logo">
           </div>
-          <div class="copyright">© 2026 Pessoals</div>
+          <div class="copyright">©2026 Pessoals</div>
         </div>
       </div>
     </div>
@@ -1061,7 +1073,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 6 Type 01 -->
 <div class="slide-content">
       <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide6.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide6.webp" alt="Kanye West x Adidas">
      </div>
 
       <div class="right-side1">
@@ -1075,7 +1087,7 @@ Just as corporate brands use color to convey their message, artists can use a si
           <div class="logo">
             <img src="/Images/pessoalslogo.svg" alt="Logo">
           </div>
-          <div class="copyright">© 2026 Pessoals</div>
+          <div class="copyright">©2026 Pessoals</div>
         </div>
       </div>
     </div>
@@ -1083,7 +1095,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 7 Type 01 -->
 <div class="slide-content">
       <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide7.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide7.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -1105,7 +1117,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side2">
   <div class="video-wrapper2">
-      <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide8.mp4"> </video>
+      <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide8.mp4"> </video>
   </div>
   </div>
 
@@ -1136,7 +1148,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 9 Type 01 -->
 <div class="slide-content ">
       <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide9.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide9.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -1163,7 +1175,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 10 Type 01 -->
 <div class="slide-content ">
       <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide10.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide10.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -1191,7 +1203,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side2">
   <div class="video-wrapper2">
-      <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide11.mp4"> </video>
+      <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide11.mp4"> </video>
   </div>
   </div>
 
@@ -1217,7 +1229,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side1">
   <div class="visual-panel">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide12.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide12.webp" alt="Kanye West x Adidas">
   </div>
   </div>
 
@@ -1245,7 +1257,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="left-side3">
     <div class="video-wrapper3">
-    <video class="horizontal" autoplay muted loop src="/casestudies/Charlie XCX/Slide13.mp4"></video>
+    <video class="horizontal" autoplay muted loop src="/casestudies/charliexcx/Slide13.mp4"></video>
     </div>
   </div>
 
@@ -1274,7 +1286,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side2">
   <div class="video-wrapper2">
-      <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide14.mp4"> </video>
+      <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide14.mp4"> </video>
   </div>
   </div>
 
@@ -1301,7 +1313,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side1">
   <div class="visual-panel">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide15.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide15.webp" alt="Kanye West x Adidas">
   </div>
   </div>
 
@@ -1327,7 +1339,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side1">
   <div class="visual-panel">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide16.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide16.webp" alt="Kanye West x Adidas">
   </div>
   </div>
 
@@ -1353,7 +1365,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side1">
   <div class="visual-panel">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide17.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide17.webp" alt="Kanye West x Adidas">
   </div>
   </div>
 
@@ -1378,7 +1390,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side1">
   <div class="visual-panel">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide18.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide18.webp" alt="Kanye West x Adidas">
   </div>
   </div>
 
@@ -1405,7 +1417,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side1">
   <div class="visual-panel">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide19.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide19.webp" alt="Kanye West x Adidas">
   </div>
   </div>
 
@@ -1431,7 +1443,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side1">
   <div class="visual-panel">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide20.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide20.webp" alt="Kanye West x Adidas">
   </div>
   </div>
 
@@ -1455,7 +1467,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 21 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide21.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide21.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -1477,7 +1489,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 22 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide22.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide22.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -1500,7 +1512,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side2">
   <div class="video-wrapper2">
-      <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide23.mp4"> </video>
+      <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide23.mp4"> </video>
   </div>
   </div>
 
@@ -1525,7 +1537,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 24 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/slide24.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/slide24.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -1549,7 +1561,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="left-side3">
     <div class="video-wrapper3">
-    <video class="horizontal" autoplay muted loop src="/casestudies/Charlie XCX/Slide25.mp4"></video>
+    <video class="horizontal" autoplay muted loop src="/casestudies/charliexcx/Slide25.mp4"></video>
     </div>
   </div>
 
@@ -1581,7 +1593,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="left-side3">
     <div class="video-wrapper3">
-    <video class="horizontal" autoplay muted loop src="/casestudies/Charlie XCX/Slide26.mp4"></video>
+    <video class="horizontal" autoplay muted loop src="/casestudies/charliexcx/Slide26.mp4"></video>
     </div>
   </div>
 
@@ -1612,7 +1624,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side2">
   <div class="video-wrapper2">
-      <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide27.mp4"> </video>
+      <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide27.mp4"> </video>
   </div>
   </div>
 
@@ -1637,7 +1649,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 28 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide28.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide28.webp" alt="Kanye West x Adidas">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -1660,7 +1672,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 29 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide29.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide29.webp" alt="Kanye West x Adidas">
   </div>
 
   <div class="right-side1">
@@ -1707,7 +1719,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side2">
     <div class="video-wrapper2">
-      <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide30.mp4"></video>
+      <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide30.mp4"></video>
     </div>
   </div>
 
@@ -1754,7 +1766,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 31 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide31.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide31.webp" alt="Kanye West x Adidas">
   </div>
 
   <div class="right-side1">
@@ -1800,7 +1812,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 32 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide32.webp" alt="Charli XCX Album Artwork">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide32.webp" alt="Charli XCX Album Artwork">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -1828,7 +1840,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 33 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide33.webp" alt="Brat Generator">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide33.webp" alt="Brat Generator">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -1855,7 +1867,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 34 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide34.webp" alt="BRAT Album Release">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide34.webp" alt="BRAT Album Release">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -1884,7 +1896,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side2">
     <div class="video-wrapper2">
-      <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide35.mov"></video>
+      <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide35.mov"></video>
     </div>
   </div>
   <div class="right-side2">
@@ -1913,7 +1925,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 36 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide36.webp" alt="BRAT Deluxe Edition">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide36.webp" alt="BRAT Deluxe Edition">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -1942,7 +1954,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side2">
     <div class="video-wrapper2">
-      <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide37.mp4"></video>
+      <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide37.mp4"></video>
     </div>
   </div>
 
@@ -1972,7 +1984,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 38 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide38.webp" alt="Updated BRAT Album Cover">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide38.webp" alt="Updated BRAT Album Cover">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -2000,7 +2012,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 39 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide39.webp" alt="Charli XCX Signing Event">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide39.webp" alt="Charli XCX Signing Event">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -2028,7 +2040,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 40 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide40.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide40.webp" alt="Kanye West x Adidas">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -2051,7 +2063,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side3">
     <div class="video-wrapper3">
-      <video class="horizontal" autoplay muted loop src="/casestudies/Charlie XCX/Slide41.mp4"></video>
+      <video class="horizontal" autoplay muted loop src="/casestudies/charliexcx/Slide41.mp4"></video>
     </div>
   </div>
   <div class="right-side3">
@@ -2074,7 +2086,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 42 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide42.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide42.webp" alt="Kanye West x Adidas">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -2097,7 +2109,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side2">
     <div class="video-wrapper2">
-      <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide43.mp4"></video>
+      <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide43.mp4"></video>
     </div>
   </div>
   <div class="right-side2">
@@ -2121,7 +2133,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side2">
     <div class="video-wrapper2">
-      <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide44.mp4"></video>
+      <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide44.mp4"></video>
     </div>
   </div>
   <div class="right-side2">
@@ -2145,7 +2157,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 45 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide45.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide45.webp" alt="Kanye West x Adidas">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -2167,7 +2179,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 46 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide46.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide46.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2187,7 +2199,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 47 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide47.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide47.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2209,7 +2221,7 @@ Just as corporate brands use color to convey their message, artists can use a si
     <!-- Slide 48 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide48.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide48.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2231,7 +2243,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 49 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide49.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide49.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2254,7 +2266,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
       <div class="left-side2">
         <div class="video-wrapper2">
-        <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide50.mp4"></video>
+        <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide50.mp4"></video>
         </div>
       </div>
       <div class="right-side2">
@@ -2277,7 +2289,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 51 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide51.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide51.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2298,7 +2310,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 52 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide52.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide52.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2321,7 +2333,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 53 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide53.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide53.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2344,7 +2356,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
       <div class="left-side2">
         <div class="video-wrapper2">
-        <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide54.mp4"></video>
+        <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide54.mp4"></video>
         </div>
       </div>
       <div class="right-side2">
@@ -2368,7 +2380,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
       <div class="left-side2">
         <div class="video-wrapper2">
-        <video class="vertical" autoplay muted loop src="/casestudies/Charlie XCX/Slide55.mp4"></video>
+        <video class="vertical" autoplay muted loop src="/casestudies/charliexcx/Slide55.mp4"></video>
         </div>
       </div>
       <div class="right-side2">
@@ -2391,7 +2403,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 56 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide56.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide56.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2412,7 +2424,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 57 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide57.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide57.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2434,7 +2446,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 58 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide58.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide58.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2456,7 +2468,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 59 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide59.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide59.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2478,7 +2490,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 60 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide60.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide60.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2499,7 +2511,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 61 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide47.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide47.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2521,7 +2533,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 62 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide62.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide62.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2543,7 +2555,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 63 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide63.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide63.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2565,7 +2577,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 64 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide64.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide64.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2587,7 +2599,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 65 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide65.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide65.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2609,7 +2621,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 66 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide66.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide66.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2631,7 +2643,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 67 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide67.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide67.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2653,7 +2665,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 68 Type 01 -->
 <div class="slide-content">
        <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide68.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide68.webp" alt="Kanye West x Adidas">
   </div>
       <div class="right-side1">
         <div class="content">
@@ -2676,7 +2688,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side3">
     <div class="video-wrapper3">
-      <video class="horizontal" autoplay muted loop src="/casestudies/Charlie XCX/Slide69.mp4"></video>
+      <video class="horizontal" autoplay muted loop src="/casestudies/charliexcx/Slide69.mp4"></video>
     </div>
   </div>
   <div class="right-side3">
@@ -2700,7 +2712,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <div class="slide-content">
   <div class="left-side3">
     <div class="video-wrapper3">
-      <video class="horizontal" autoplay muted loop src="//casestudies/Charlie XCX/Slide70.mp4"></video>
+      <video class="horizontal" autoplay muted loop src="//casestudies/charliexcx/Slide70.mp4"></video>
     </div>
   </div>
   <div class="right-side3">
@@ -2723,7 +2735,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 71 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide71.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide71.webp" alt="Kanye West x Adidas">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -2745,7 +2757,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 72 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide72.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide72.webp" alt="Kanye West x Adidas">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -2766,7 +2778,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 73 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide73.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide73.webp" alt="Kanye West x Adidas">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -2785,7 +2797,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 74 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/casestudies/Charlie XCX/Slide74.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide74.webp" alt="Kanye West x Adidas">
   </div>
   <div class="right-side1">
     <div class="content">
@@ -2806,14 +2818,16 @@ Just as corporate brands use color to convey their message, artists can use a si
 <!-- Slide 75 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
-    <img class="visual-image" src="/personalbrandingmastery/Personal Branding Mastery For Music Artists/Bundled.png" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/personalbrandingmastery/formusicartists/Bundled.png" alt="Kanye West x Adidas">
   </div>
   <div class="right-side1">
     <div class="content">
       <p class="date">Before you go, we have an offer you can't say no to</p>
       <h2>The Complete Music Artists Personal Branding Playbook</h2>
       <p>These strategies are used by Hollywood celebrities to create irresistible buzz around your music and help you stand out from the competition, crafting a magnetic, proven strategy that elevates your music and presence.</p>
-      <a class="rightsidebutton" href="/personalbrandingmastery/formusicartists/">Grab Your Copy</a>
+      <div class="button-container">
+      <a class="getpbm" href="/personalbrandingmastery/formusicartists/">Learn More</a>
+      </div>
     </div>
     <div class="footer">
       <div class="logo">
@@ -2834,7 +2848,9 @@ Just as corporate brands use color to convey their message, artists can use a si
       <p class="date">Wow! You’ve made it to the end!</p>
       <h1>Congratulations!</h1>
       <p>Now understand the architecture behind Brat Summer’s viral success. This is just the beginning. The world of viral marketing is full of untapped potential. Ready to dive deeper? Explore more high-impact case studies and uncover strategies that drive growth, create buzz, and elevate your marketing game.</p>
-      <a class="rightsidebutton" href="/casestudies.html">Learn More</a>
+      <div class="button-container">
+      <a class="getpbm" href="/casestudies.html">Learn More</a>
+      </div>
     </div>
     <div class="footer">
       <div class="logo">
