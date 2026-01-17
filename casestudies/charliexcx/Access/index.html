@@ -34,10 +34,11 @@ html, body {
 
 
 #lock-screen h1 {
-  font-size: clamp(1.6rem, 2.5vw, 2rem);
+font-size: clamp(1.6rem, 2.5vw, 2rem);
  font-weight: normal;
  font-style: normal;
  color: #FAF8EF;
+ margin-bottom: 0%;
  font-family: 'Playfair Display', serif;
 
 }
@@ -62,9 +63,9 @@ html, body {
 }
 
 #lock-screen button {
-  background-color: #FAF8EF;
+  background-color: #1c1a15;
   text-decoration: none;
-  color: #1a1a15;
+  color: #FAF8EF;
   padding: 12px 20px; /* slightly smaller padding for mobile */
   margin-top: 20px;
   font-size: 1rem;
@@ -78,8 +79,8 @@ html, body {
 
 #lock-screen button:hover,
 #lock-screen button:focus {
-  background-color: #1c1a15;
-  color: #FAF8EF;
+  background-color: #FAF8EF;
+  color: #1c1a15;
   outline: none;
 
 }
@@ -292,7 +293,9 @@ html, body {
   font-weight: normal;
   font-style: normal;
   color: #FAF8EF;
-  line-height: 1.3; /* Slightly more line height for elegance */
+  margin-bottom: 0%;
+  margin-top: 0%;
+  line-height: 1; /* Slightly more line height for elegance */
   letter-spacing: -0.5px; /* Slightly tighter letter-spacing for a premium feel */
   font-family: 'Playfair Display', serif; /* Classic serif for a luxurious feel */
 }
@@ -459,19 +462,32 @@ html, body {
   height: auto; /* Keep aspect ratio intact */
   margin-bottom: 1.5rem;
 }
+/* Styling for the mobile message */
+.rotate-message-text {
+  width: 90%;
+  max-width: 300px;
+  margin: 1.5rem auto;
+  padding: 1rem 1.5rem;
+  background-color: #FAF8EF;
+  color: #1c1a15;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  opacity: 0; /* Start invisible for fade-in */
+  animation: fadeIn 0.5s ease-in-out forwards; /* Fade-in animation */
+}
+
+/* Show message only on portrait (mobile) */
 @media (orientation: portrait) {
-  #rotate-message { display: flex; 
-  animation: fadeIn 0.5s ease-in-out;
-}  .slideshow { filter: blur(10px); pointer-events: none; }}
-  
-/* Adding a fade-in effect */
+  #rotate-message { display: flex; justify-content: center; align-items: center; }
+  .slideshow { filter: blur(10px); pointer-events: none; } /* optional background blur */
+}
+
+/* Fade-in animation */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .keyboard-hint {
@@ -905,15 +921,15 @@ html, body {
 <div class="slide-content">
   
   <div class="left-side1">
-    <img class="visual-image" src="/Resources/Case Studies/Brat Summer/charliiexcx.webp" alt="Kanye West x Adidas">
+    <img class="visual-image" src="/casestudies/charliexcx/Slide1.png" alt="Kanye West x Adidas">
   </div>
 
 <div class="right-side1">
 
 <div class="content">
-      <p class="date"> Last updated: <time datetime="2025-11-20">November 20, 2025</time> </p>
-      <h2>How <i>Brat Summer</i> Took Over the World & the Genius Marketing Strategy Every Artist Should Learn</h2>
-      <p>Learn the genius marketing strategies Charli XCX and Atlantic Records used to drive the success of Charli XCX's 6th official album, Brat Summer and discover how as an artists you can apply these proven tactics to capture attention and shape culture.</p>
+      <p class="date">Charlie XCX</p>
+      <h1>The Genius Marketing Strategy Behind<br><i>Brat Summer</i></h1>
+      <p>Marketing strategies Charli XCX and Atlantic Records used to make Brat Summer a cultural phenomenon  and how artists can apply these tactics to capture attention and shape trends.</p>
 </div>
 
     <!-- 🔽 Keyboard Arrow Hint on RIGHT SIDE -->
@@ -2794,26 +2810,6 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
 </div>
 
-<!-- Slide 74 Type 01 -->
-<div class="slide-content">
-  <div class="left-side1">
-    <img class="visual-image" src="/casestudies/charliexcx/Slide74.webp" alt="Kanye West x Adidas">
-  </div>
-  <div class="right-side1">
-    <div class="content">
-      <p class="date">October 6, 2024</p>
-      <h2>Charli XCX leaked her tracklist</h2>
-      <p>At her Florida show, Charli started personally handing it to a front-row fan, urging them to post it on social media.  
-      October 7: After a lot of build up and speculation, Charli shares the official track list and track features on her accounts.</p>
-    </div>
-    <div class="footer">
-      <div class="logo">
-        <img src="/Images/pessoalslogo.svg" alt="Logo">
-      </div>
-      <div class="copyright">©2026 Pessoals</div>
-    </div>
-  </div>
-</div>
 
 <!-- Slide 75 Type 01 -->
 <div class="slide-content">
@@ -2823,7 +2819,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   <div class="right-side1">
     <div class="content">
       <p class="date">Before you go, we have an offer you can't say no to</p>
-      <h2>The Complete Music Artists Personal Branding Playbook</h2>
+      <h1>Personal Branding Mastery For Music Artists</h1>
       <p>These strategies are used by Hollywood celebrities to create irresistible buzz around your music and help you stand out from the competition, crafting a magnetic, proven strategy that elevates your music and presence.</p>
       <div class="button-container">
       <a class="getpbm" href="/personalbrandingmastery/formusicartists/">Learn More</a>
@@ -2849,7 +2845,7 @@ Just as corporate brands use color to convey their message, artists can use a si
       <h1>Congratulations!</h1>
       <p>Now understand the architecture behind Brat Summer’s viral success. This is just the beginning. The world of viral marketing is full of untapped potential. Ready to dive deeper? Explore more high-impact case studies and uncover strategies that drive growth, create buzz, and elevate your marketing game.</p>
       <div class="button-container">
-      <a class="getpbm" href="/casestudies.html">Learn More</a>
+      <a class="getpbm" href="/casestudies.html">Visit More Case Studies</a>
       </div>
     </div>
     <div class="footer">
@@ -2871,8 +2867,11 @@ Just as corporate brands use color to convey their message, artists can use a si
 
 </div>
 
+<!-- Mobile Notice Message -->
 <div id="rotate-message">
-  <img  class="rotate" src="/Images/rotate.gif" alt="Rotate Device">
+  <p class="rotate-message-text">
+    This case study is a beast—your phone can’t handle all its glory. Open it on a computer for the full experience 😉
+  </p>
 </div>
 
 <div id="error-message" style="display:none;">
