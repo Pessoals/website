@@ -2299,7 +2299,7 @@ form button {
   word-spacing: 0.1rem;
   line-height: 1.5;
   color: #8F8F8C;
-  text-align:center;
+  text-align:start;
   font-weight: normal;
   font-family: 'Lato', sans-serif;
   margin-bottom: clamp(1rem, 3vw, 1.5rem);
