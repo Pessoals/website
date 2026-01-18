@@ -574,7 +574,6 @@ font-size: clamp(1.6rem, 2.5vw, 2rem);
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 15px; /* optional */
   overflow: hidden;
 }
 
@@ -722,32 +721,31 @@ font-size: clamp(1.6rem, 2.5vw, 2rem);
   height: 100%;
   box-sizing: border-box;
 }
-
-/* BIG SIDE (70%) — video */
 .left-side3 {
-  width: 70%;
-  background-color: #FAF8EF;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   height: 100%;
-  padding: 0;
+  display: flex;
+  background-color: #FAF8EF;
+  justify-content: center;
+  align-items: center;
 }
 
 .video-wrapper3 {
   width: 100%;
-  height: auto;
-  overflow: hidden;               /* required for visible rounded corners */
-  border-radius: 20px;            /* adjust radius */
-  margin: 20px;                   /* space around video */
+  height: 100%;
+  padding: 20px; /* space on all sides — adjust */
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .video-wrapper3 video {
   width: 100%;
-  height: auto;                   /* RESPONSIVE height */
-  object-fit: cover;              /* keeps it nicely cropped */
-  display: block;                 /* removes bottom gaps */
+  height: 100%;
+  object-fit: cover; /* keeps full video visible */
 }
+
+
 
 
 /* SMALL SIDE (30%) — content */
@@ -977,6 +975,7 @@ font-size: clamp(1.6rem, 2.5vw, 2rem);
 
   <div class="right-side1">
     <div class="content">
+      <p class="date">A masterclass in modern music marketing</p>
       <h2>Simply, the <i>brat</i> album is a masterclass</h2>
       <p>yes, a masterclass in claiming a color, shaping culture through music marketing, and selling music as a lifestyle rather than just a product.</p>
 
@@ -1015,10 +1014,10 @@ font-size: clamp(1.6rem, 2.5vw, 2rem);
 
       <div class="right-side1">
         <div class="content">
-  <p class="date">Nov 1, 2024</p>
+  <p class="date">The 2024 Word of the Year</p>
   <h2>Collins Dictionary declared <i>"Brat"</i> the 2024 Word of the Year</h2>  
-  <p>Defining the term as <i>"a confident, independent, and hedonistic attitude," </i>a blog post by the dictionary called it a <i>"fitting"</i> term for the year, where <i>"hedonism and anxiety have combined to form an intoxicating brew."</i></p>
-  <p><i>"More than a hugely successful album, "Brat" is a cultural phenomenon that has resonated with people globally, and "Brat Summer" established itself as an aesthetic and a way of life," </i> dictionary said.</p>
+  <p>At Nov 1, 2024 Collins Dictionary defined the term as <i>"a confident, independent, and hedonistic attitude," </i>a blog post by the dictionary called it a <i>"fitting"</i> term for the year, where <i>"hedonism and anxiety have combined to form an intoxicating brew."</i></p>
+  <p><i>"More than a hugely successful album, Brat is a cultural phenomenon that has resonated with people globally, and Brat Summer established itself as an aesthetic and a way of life," </i> - dictionary said.</p>
   <p>Collins experts monitor their 20-billion-word database to create the annual list of new and notable words that reflect the ever-evolving English language. Collins lexicographers said on Friday that in the phrase <i>"Brat Summer,"</i> it became one of the most talked about words of 2024.</p>
 </div>
 
@@ -1041,7 +1040,7 @@ font-size: clamp(1.6rem, 2.5vw, 2rem);
         <div class="content">
           <p class="date">Signature Color Strategy</p>
           <h2>But how charli XCX's iconic green transformed an album into a viral phenomenon?</h2>
-            <p>Charli XCX’s <i>"Brat Summer"</i> ignited a cultural moment, with the album’s bold green becoming instantly iconic both online and offline. Fans flooded social media platforms with user-generated content (UGC), tagging anything green as <i>"Brat,"</i> and turning the aesthetic into a viral movement. </p>
+            <p>Charli XCX’s <i>Brat Summer</i> ignited a cultural moment, with the album’s bold green becoming instantly iconic both online and offline. Fans flooded social media platforms with user-generated content (UGC), tagging anything green as <i>"Brat,"</i> and turning the aesthetic into a viral movement. </p>
             <p>This organic, fan-driven wave amplified the album’s visibility and cemented its place in pop culture. Charli’s use of a distinct color helped create a visual identity that transcended music and bled into fashion, lifestyle, and even social media trends.</p>
             <p>The album’s success is a perfect example of how a single visual element, like color, can become synonymous with a brand. Charli XCX and her team leveraged the power of color psychology green symbolizing youth, rebellion, and freedom to foster an emotional connection with her audience. In a world saturated with content, the consistency of this bold green made Charli’s brand stand out in a sea of fleeting trends, giving the album a long-lasting impact.</p>
 
@@ -1094,6 +1093,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 
       <div class="right-side1">
         <div class="content">
+          <p class="date">Trend Hijacking</p>
           <h2>Brands have also jumped on the trend, showcasing their products in brat green frosting.</h2>
             <p>This clever strategy allows companies to tap into the viral nature of Charli XCX's branding, aligning themselves with the cultural moment and connecting with consumers in a relevant way.</p>
             <p>By incorporating brat green into their products, brands engage with their audience in a fun and creative manner. This not only encourages social sharing but also fosters a sense of participation, allowing fans to feel like they are part of the movement. As fans share their experiences online, the visibility of the brand grows, leading to a wider reach.</p>
@@ -1115,6 +1115,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
+          <p class="date">Interactive Wall Promotional Strategy</p>
           <h2>Much of Brat's virality was due to its heavy promotion. </h2>
           <p>Brat's virality was fueled by strategic and highly visible promotion. In the weeks leading up to the album's release, a wall in Greenpoint, Brooklyn dubbed the <i>"Brat Wall"</i> by fans was painted and repainted with the album's signature green color and a variety of messages.</p>
           <p>Over the course of the summer, the messages on the wall changed frequently to align with the album's promotional cycle. These included lyrics from the song <i>"360"</i> (2024) as well as references to the album's accompanying remix release. This ever-changing display kept fans engaged, encouraging them to revisit the wall, take photos, and share them online.</p>
@@ -1139,10 +1140,10 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side2">
         <div class="content">
-          <p class="date">April 5, 2024</p>
+          <p class="date">Artist Narrative Storytelling</p>
              <h2>Charli XCX posted the video defining "brat" on her TikTok account.</h2>
 
-<p>In the video, Charli explains the concept of brat, describing it as <i>"brat is that girl who is a little messy, likes to party, and maybe says some dumb things sometimes.”</i></p>
+<p>In the video posted at April 5, 2024, Charli explains the concept of brat, describing it as <i>"brat is that girl who is a little messy, likes to party, and maybe says some dumb things sometimes.”</i></p>
 
 <p>She elaborates:<i>“A brat is someone who feels like herself but may also have a breakdown. She kind of parties through it, is very honest, very blunt, a little volatile, and sometimes does dumb things. But it’s brat. You’re brat. That’s brat.”</i></p>
 
@@ -1225,8 +1226,8 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side2">
         <div class="content">
-          <p class="date">February 22,2024</p>
-          <h2>Charli generated a spark by revealing select tracks in an intimate, live setting.</h2>
+          <p class="date">Pre-Release Strategy</p>
+          <h2>At February 22,2024 Charli generated a spark by revealing select tracks in an intimate, live setting.</h2>
           <p>Charli XCX’s Boiler Room set took place in Brooklyn, featuring special appearances by Addison Rae and Julia Fox. The announcement of the event generated massive buzz, and within the first few hours, Boiler Room received an astonishing 25,000 RSVPs, marking the largest turnout in Boiler Room history.</p>
           <p>During the set, Charli teased new music by playing multiple snippets of tracks from her upcoming album, which had not yet been officially announced. Fans were immediately captivated, sharing videos and clips of the performance across social media platforms. This organic circulation of content created early excitement and anticipation, even before the album’s release.</p>
           <p>The event served as a masterclass in fan engagement and guerrilla marketing. By revealing select tracks in an intimate, live setting, Charli was able to generate word-of-mouth promotion and spark conversations online, turning her live performance into a viral moment. Fans not only experienced the music first-hand but also felt part of an exclusive moment, deepening their connection to the artist and her forthcoming project.</p>
@@ -1251,9 +1252,9 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side1">
         <div class="content">
-          <p class="date">February 28, 2024</p>
+          <p class="date">Official Album Release</p>
           <h2>She officially announced ‘Brat’ her 6th studio album via her social media </h2>
-          <p>After six days of teasing and building anticipation, Charli XCX officially announced <i>"Brat"</i>, her sixth studio album, via her social media channels. The announcement instantly grabbed the attention of fans and media outlets, generating excitement and speculation about what the new project would entail.</p>
+          <p>After six days of teasing and building anticipation, At Feb 28, 2024 Charli officially announced 'Brat', her sixth studio album, via her social media channels. The announcement instantly grabbed the attention of fans and media outlets, generating excitement and speculation about what the new project would entail.</p>
 <p>The album featured the now infamous album cover, which at first received criticism for its simplicity. However, this minimalist approach proved to be highly effective for the campaign. The bold, memorable design made it instantly recognizable, allowing fans to engage creatively with the artwork.</p>
 <p>As the album circulated online, fans began creating user-generated content (UGC) inspired by the font, colors, and overall style of the cover. This organic content helped amplify the album’s visibility, turning the artwork into a cultural touchpoint and reinforcing Charli’s visual identity in pop culture.</p>
 <p>The success of the album cover demonstrates the power of simplicity and consistency in branding. By opting for a clean, distinctive design, Charli was able to encourage fan participation and engagement, further solidifying the album’s presence and impact across social media platforms.</p>
@@ -1280,8 +1281,8 @@ Just as corporate brands use color to convey their message, artists can use a si
   <!-- SMALL SIDE (content) -->
   <div class="right-side3">
     <div class="content">
-      <p class="date">February 29, 2024</p>
-      <h2>Charli releases <i>"Von Dutch"</i> as her first single of the album</h2>
+      <p class="date">First Single Released</p>
+      <h2>Charli releases <i>'Von Dutch'</i> at February 29, 2024 as her first single of the album</h2>
       <p>Along with the single, Charli dropped the official music video, further enhancing the impact of the release. The visually striking video showcased Charli’s unique artistic style, complementing the song’s bold energy and marking the beginning of the album’s visual and sonic journey. The video’s aesthetic, paired with the track’s energetic vibe, helped to solidify the album’s identity and set the tone for the rest of the campaign.</p>
 
     </div>
@@ -1308,7 +1309,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side2">
         <div class="content">
-          <p class="date">March 15, 2024</p>
+          <p class="date">Von dutch remixes</p>
           <h2>Before releasing the remix Charli hinted at the collab with video posted on her socials.</h2>
             <p>On March 22, Charli XCX released the highly anticipated Von Dutch remix, featuring Addison Rae and A.G. Cook. This remix not only added a fresh twist to the original track but also brought together a diverse mix of talent, combining Charli’s innovative pop sound with the social media star power of Addison Rae and the avant-garde production of A.G. Cook.</p>
 <p>The release of this remix created a buzz across multiple fanbases, sparking conversations and engagement among Charli’s followers, Addison’s massive social media audience, and A.G. Cook’s loyal listeners. By bringing together different artistic communities, Charli was able to amplify the track’s visibility, expanding its reach and appeal to an even wider audience.</p>
@@ -1335,9 +1336,9 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side1">
         <div class="content">
-          <p class="date">March 25, 2025</p>
+          <p class="date">June Shows Announcement</p>
           <h2>Charli announces her month of June shows </h2>
-            <p>She announced her upcoming June shows, featuring a mix of live performances and DJ sets, collectively dubbed <i>“Party Girl.”</i> The announcement immediately generated excitement among her fanbase, as it promised a unique blend of energetic live music and immersive DJ experiences.</p>
+            <p>At March 25, 2025 She announced her upcoming June shows, featuring a mix of live performances and DJ sets, collectively dubbed <i>“Party Girl.”</i> The announcement immediately generated excitement among her fanbase, as it promised a unique blend of energetic live music and immersive DJ experiences.</p>
 <p>The "<i>Party Girl"</i> shows were designed to showcase Charli’s dynamic performance style, blending tracks from her BRAT album with fan favorites and exclusive live remixes. By combining traditional live shows with DJ sets, Charli created an interactive and versatile concert experience that appealed to a wide range of audiences.</p>
 <p>This announcement also served as a strategic promotional move, sustaining momentum for the BRAT campaign by connecting fans directly with her music in real-world settings. Fans eagerly began sharing the news across social media, discussing ticket availability and anticipating the unique energy of the shows.</p>
 
@@ -1361,7 +1362,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side1">
         <div class="content">
-          <p class="date">April 3, 2024</p>
+          <p class="date">Building Momentum</p>
           <h2>Charli XCX continued building momentum for the <i> brat</i> era </h2>
             <p>She released <i>“Club Classics”</i> and <i>“B2B”</i>, the tracks showcased her versatility and ability to experiment with different musical styles. These releases reinforced her position as an innovative pop artist unafraid to explore new sounds.</p>
 <p>Both tracks allowed Charli to engage her fanbase in fresh ways. <i>“Club Classics”</i> delivered an energetic, dancefloor-ready vibe that appealed to fans who enjoy high-energy tracks, while “B2B” offered a complementary style, adding depth and variety to the album’s rollout. By releasing multiple tracks in succession, Charli kept her audience continuously engaged and excited about what was coming next.</p>
@@ -1387,9 +1388,9 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side1">
         <div class="content">
-          <p class="date">April 3, 2024</p>
-          <h2>Charile announced UK shows</h2>
-          <p>Charile just dropped the news and, honestly, it feels like the summer’s already got a date with the dancefloor. She’s lined up a handful of UK dates that mix live shows with DJ sets — the kind of nights where tracks you know become something new. If you’ve seen her once, you know she plays with energy; if you haven’t, this is the moment to change that.</p> <p>What’s nice about these gigs is they don’t feel mass-produced. The venues are the kind that hold stories — sweaty, loud, and full of people who came for the music, not the spectacle. Expect crowd sing-alongs, quick surprises between songs, and those tiny, perfect moments that make a show stick with you for weeks.</p> <p>If you’re planning to go, grab tickets early and bring your patience for queues and joy — both will be worth it. And if you can’t make a date, don’t worry: the buzz from these nights usually spills online, so you’ll still catch the best bits through clips and chatter.</p> <p>Bottom line: this run feels personal and alive. Charile’s UK shows look set to remind everyone why live music still does something computers never will — it brings people together, loud and breathing the same beat.</p>
+          <p class="date">UK Shows </p>
+          <h2>Charlie announced UK shows</h2>
+          <p>At April 3, 2024 Charlie just dropped the news and, honestly, it feels like the summer’s already got a date with the dancefloor. She’s lined up a handful of UK dates that mix live shows with DJ sets — the kind of nights where tracks you know become something new. If you’ve seen her once, you know she plays with energy; if you haven’t, this is the moment to change that.</p> <p>What’s nice about these gigs is they don’t feel mass-produced. The venues are the kind that hold stories — sweaty, loud, and full of people who came for the music, not the spectacle. Expect crowd sing-alongs, quick surprises between songs, and those tiny, perfect moments that make a show stick with you for weeks.</p> <p>If you’re planning to go, grab tickets early and bring your patience for queues and joy — both will be worth it. And if you can’t make a date, don’t worry: the buzz from these nights usually spills online, so you’ll still catch the best bits through clips and chatter.</p> <p>Bottom line: this run feels personal and alive. Charlie’s UK shows look set to remind everyone why live music still does something computers never will — it brings people together, loud and breathing the same beat.</p>
 
         </div>
         <div class="footer">
@@ -1412,9 +1413,9 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side1">
         <div class="content">
-          <p class="date">April 16, 2024</p>
+          <p class="date">Teasing a Collaboration</p>
           <h2> Charli teases a collaboration with Troye Sivan </h2>
-            <p>She sparked major excitement online when she teased a potential collaboration with <i>"Troye Sivan"</i>. She posted an intriguing image on social media featuring a white tank top soaked in sweat, with the words <i>"Charli XCX, Troye Sivan, and sweat</i> written across the fabric. The post immediately grabbed fans’ attention due to its bold, playful, and suggestive visual style a signature move in Charli’s marketing.</p>
+            <p>SAt 16, 2024 She sparked major excitement online when she teased a potential collaboration with <i>"Troye Sivan"</i>. She posted an intriguing image on social media featuring a white tank top soaked in sweat, with the words <i>"Charli XCX, Troye Sivan, and sweat</i> written across the fabric. The post immediately grabbed fans’ attention due to its bold, playful, and suggestive visual style a signature move in Charli’s marketing.</p>
             <p>Shortly after, Troye Sivan shared a similar image on his own social platforms, doubling the anticipation and confirming that something was definitely in the works. The coordinated posts sent fans into a frenzy, generating thousands of comments, theories, and reposts within minutes. This type of synchronized tease is a highly effective strategy for maximizing reach and engagement.</p>
             <p>The moment perfectly showcased Charli’s ability to create buzz with minimal information. By using simple but visually striking imagery paired with Troye’s equally massive audience she set the stage for a viral announcement. The collaboration tease not only boosted excitement around the project but also highlighted the power of social media synergy between two influential pop artists.</p>
 
@@ -1439,7 +1440,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side1">
         <div class="content">
-          <p class="date">April 17, 20224</p>
+          <p class="date">Charli xcx and Troye Sivan Sweat Tour</p>
           <h2>Charlie announces a North America co headline arena tour with Troye </h2>
            <p>The very next day, on April 17, Charli followed the collaboration tease with another major announcement: <i>"a North American co-headline arena tour"</i> with Troye Sivan. She revealed the news through a coordinated social media post, continuing the momentum and capitalizing on the hype generated from the previous day’s tease.</p>
            <p>The announcement immediately set the internet buzzing. Fans who had been speculating about a possible joint project now had confirmation that the two artists would be sharing the stage across major cities. The bold, high-energy visual language of the post aligned perfectly with the emerging aesthetic of the <i>"Brat"</i> era, giving fans a taste of the chaotic, fun, club-inspired direction that the tour would embrace.</p>
@@ -1465,7 +1466,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side1">
         <div class="content">
-          <p class="date">April 20, 2024</p>
+          <p class="date">Tracklist Revealed</p>
             <h2>The album’s official track list was revealed.</h2>
             <p>On April 20, Charli took another exciting step in the lead-up to her album release by revealing the official tracklist for <i>"Brat"</i>. The announcement, made via her social media platforms, gave fans an inside look at the highly anticipated album, offering a glimpse into the diverse range of music they could expect.</p>
             <p>The tracklist revelation created an immediate wave of excitement, as fans began to speculate about the meaning behind each title and which songs might be the next singles. Charli's decision to unveil the list on social media was a calculated move to generate engagement, as fans flocked to comment, share, and discuss their favorite tracks even before the full album was released.</p>
@@ -1487,6 +1488,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
+          <p class="date">Cliffhangers Strategy</p>
           <h2>Charli livestreamed the creation of the <i>"Brat Wall"</i> multiple times</h2>
           <p>This strategy allowed Charli to create a true viral moment, as viewers across social media eagerly speculated about what the reveal could be. With every new letter slowly painted, fans rushed to platforms like TikTok, X, and Instagram to share their guesses and theories, turning the reveal into a real-time global conversation.</p>
           <p>The gradual unveiling became a collective experience, with fans recording, reacting, and analyzing every new update. This constant stream of user-generated content not only amplified the campaign’s visibility but also transformed it into an interactive event that kept the audience glued to their screens.</p>
@@ -1509,9 +1511,9 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">May 2,2024</p>
+          <p class="date">Time & Place Anchoring</p>
           <h2>Charli XCX teased by tweeting a time and location on social media</h2>
-          <p>At exactly 6:06 PM, Charli XCX posted a cryptic tease on social media, sharing nothing more than a time and a location. The ambiguity was intentional and incredibly effective. Within minutes, fans began spreading the post across platforms, trying to decode what might happen.</p>
+          <p>At May 2, 2024, Charli XCX posted a cryptic tease on social media, sharing nothing more than a time and a location. The ambiguity was intentional and incredibly effective. Within minutes, fans began spreading the post across platforms, trying to decode what might happen.</p>
           <p>The mystery created instant urgency. As word traveled, excitement built, and speculation took over the timelines. Fans who lived nearby rushed to the spot, determined not to miss whatever was about to unfold. The sense of <i>“something big is happening”</i> pushed the moment into viral territory.</p>
           <p>By the time the clock hit 6:06 PM, hundreds of fans had already gathered at the location. The crowd’s sheer size demonstrated the power of Charli’s influence and the effectiveness of her real-time, in-person marketing tactics. The unexpected nature of the event turned it into a spontaneous cultural mom
         </div>
@@ -1534,9 +1536,9 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side2">
         <div class="content">
-          <p class="date">May 2, 2024</p>
+          <p class="date">Live Performance Shock Marketing</p>
           <h2>She performed in front of the Brat Wall</h2>
-          <p>As fans gathered at the location, Charli XCX rewarded them with an unforgettable surprise: a live performance and DJ set right in front of the iconic <i>"Brat Wall"</i>. The moment was a powerful culmination of the buzz surrounding the mysterious tease earlier in the day, and the energy was electric. Fans were not only treated to Charli’s signature performance style but were also immersed in the heart of the <i>"Brat"</i> campaign’s visual identity.</p>
+          <p>At May 2, 2024 as fans gathered at the location, Charli XCX rewarded them with an unforgettable surprise: a live performance and DJ set right in front of the iconic <i>"Brat Wall"</i>. The moment was a powerful culmination of the buzz surrounding the mysterious tease earlier in the day, and the energy was electric. Fans were not only treated to Charli’s signature performance style but were also immersed in the heart of the <i>"Brat"</i> campaign’s visual identity.</p>
           <p>In an even more exciting twist, Charli took the opportunity to premiere the next single from her upcoming album live, creating an intimate yet electrifying atmosphere. The surprise performance turned the event into a unique, once-in-a-lifetime experience for those in attendance, leaving fans with memories they would share on social media for weeks to come.</p>
           <p>This impromptu set was a brilliant marketing move that further strengthened Charli’s connection with her fanbase. By combining a surprise performance, a highly-anticipated single release, and the powerful visual of the "Brat Wall", Charli ensured that the buzz around "Brat" would continue to snowball, generating both digital and real-world excitement. The event became a defining moment in the <i>"Brat"</i> era, marking a creative, fan-first approach to album promotion.</p>
 
@@ -1557,7 +1559,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">May 2, 2024</p>
+          <p class="date">Fear of Missing out</p>
           <h2>The performance created FOMO for those who weren’t there to bea part of it.</h2>
           <p>It generated an overwhelming amount of user-generated content (UGC), with hundreds of fans capturing and sharing clips of the performance online. From videos of Charli’s set to reactions from the crowd, the content flooded social media platforms, creating a ripple effect that amplified the excitement surrounding the <i>"Brat"</i> campaign.</p>
           <p>This surge of UGC not only increased the visibility of the surprise performance but also showcased the organic buzz that Charli had cultivated. Fans eagerly documented their experience, turning the event into a shared cultural moment. As the content spread, it further fueled the frenzy and anticipation for the upcoming album and Charli's next moves.</p>
@@ -1616,11 +1618,11 @@ Just as corporate brands use color to convey their message, artists can use a si
   <!-- SMALL SIDE (content) -->
   <div class="right-side3">
     <div class="content">
-      <p class="date">May 10, 2024</p>
-      <h2>Carlie Released "360" and it's official music video</h2>
-      <p>On **May 10**, Charli XCX released **“360”**, the fourth single from her *BRAT* album, accompanied by its **official music video** directed by Aidan Zamiri. The release marked another high point in the album’s rollout, combining striking visuals with Charli’s signature high-energy sound.</p>
-      <p>The video was packed with **It Girls**, iconic moments, and playful yet bold imagery that immediately captured fans’ attention. From the fashion-forward styling to memorable set pieces, the video sparked a wave of social media discussion, memes, and fan recreations, demonstrating Charli’s ability to turn a music video into a cultural event.</p>
-      <p>Fans and media alike praised the release, hailing it as an **instant classic** for the artist. The combination of a dynamic track and visually compelling video further reinforced the *BRAT* era’s identity, keeping the momentum alive while showcasing Charli’s creative vision. “360” not only strengthened the album campaign but also highlighted her ongoing influence in shaping pop culture and digital trends.</p>
+      <p class="date">Official Music Video Release</p>
+      <h2>Carlie Released '360 and it's official music video</h2>
+      <p>On May 10, Charli XCX released '360', the fourth single from her 'Brat' album, accompanied by its official music video directed by Aidan Zamiri. The release marked another high point in the album’s rollout, combining striking visuals with Charli’s signature high-energy sound.</p>
+      <p>The video was packed with 'It Girls', iconic moments, and playful yet bold imagery that immediately captured fans’ attention. From the fashion-forward styling to memorable set pieces, the video sparked a wave of social media discussion, memes, and fan recreations, demonstrating Charli’s ability to turn a music video into a cultural event.</p>
+      <p>Fans and media alike praised the release, hailing it as an instant classic for the artist. The combination of a dynamic track and visually compelling video further reinforced the 'Brat' era’s identity, keeping the momentum alive while showcasing Charli’s creative vision. '360' not only strengthened the album campaign but also highlighted her ongoing influence in shaping pop culture and digital trends.</p>
 
     </div>
 
@@ -1646,7 +1648,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side2">
   <div class="content">
-    <p class="date">May 11, 2024</p>
+    <p class="date">Leverage Phone-based Content</p>
     <h2>She also shared this behind-the-scenes content piece</h2>
     <p>This behind-the-scenes content serves as a perfect example of how artists can effectively shoot and leverage phone-based content for maximum impact. By capturing informal, authentic moments, Charli XCX gave fans a glimpse into her creative process, making the campaign feel more personal and relatable.</p>
     <p>Using phone footage allowed for a raw, unfiltered aesthetic, which resonated particularly well with younger audiences who are accustomed to consuming content on mobile devices. Fans could connect with the material in real-time, share it easily across social platforms, and engage directly with the content.</p>
@@ -1669,7 +1671,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
-      <p class="date">May 14, 2024</p>
+      <p class="date">The San Francisco Brat Wall</p>
       <h2>"Brat" wall was also painted in San Francisco</h2>
       <p>Charli XCX, in collaboration with Atlantic Records, continued to expand the "BRAT" campaign’s reach by bringing the west coast some love. San Francisco was treated to its very own "BRAT Wall", extending the visual and cultural identity of the album beyond Brooklyn and creating a new hub for fan engagement.</p>
       <p>The San Francisco "BRAT Wall" mirrored the original in its bold aesthetic and interactive design, instantly becoming a social media hotspot. Fans flocked to the location to take photos, create videos, and share content online, effectively replicating the viral success of the original wall on the west coast.</p>
@@ -1693,13 +1695,13 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side1">
     <div class="content">
-      <p class="date">June 5, 2024</p>
+      <p class="date">Album Cover Repainted</p>
 
-      <h2><i>"Brat"</i> Wall to repaint it as the album cover</h2>
+      <h2>Brat Wall to repaint it as the album cover</h2>
 
       <p>
         The day before the album’s release, Charli XCX shared a photo of the updated
-        <i>"Brat"</i> Wall on her social media platforms, giving fans an exclusive sneak
+        <i>'Brat'</i> Wall on her social media platforms, giving fans an exclusive sneak
         peek before the full album dropped at midnight. This pre-release tease served
         to heighten anticipation and keep the conversation around <i>"Brat"</i> alive in
         the final hours leading up to its debut.
@@ -1741,11 +1743,11 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side2">
     <div class="content">
-      <p class="date">June 6, 2024</p>
+      <p class="date">Surprise Appearance</p>
       <h2>Charli made a surprise appearance at London’s Dalston Superstore</h2>
 
       <p>
-        On the night of the album release, Charli XCX made a surprise appearance at
+        At June 6, 2024 on the night of the album release, Charli XCX made a surprise appearance at
         London’s Dalston Superstore, arriving in her iconic
         <i>"Bratmobile"</i> for an impromptu performance. Fans were treated to an
         unforgettable, intimate set at the East London queer bar, which perfectly
@@ -1787,7 +1789,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side1">
     <div class="content">
-      <p class="date">June 6, 2024</p>
+      <p class="date">Positive Narrative</p>
       <h2>
         On the day of the album release, Lorde took to Instagram Stories to praise
         Charli’s album
@@ -1801,7 +1803,7 @@ Just as corporate brands use color to convey their message, artists can use a si
       </p>
 
       <p>
-        However, Lorde did not comment on the track “Girl, So Confusing”, leaving some
+        However, Lorde did not comment on the track 'Girl, So Confusing', leaving some
         questions unanswered about the song’s status or potential collaboration. Fans
         quickly took to social media to discuss and speculate, keeping the conversation
         active and maintaining engagement around both artists.
@@ -1832,7 +1834,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
-      <p class="date">June 7, 2024</p>
+      <p class="date">Update Album Artworks</p>
       <h2>Her previous album artwork was updated</h2>
       <p>
         Charli XCX took another strategic step by updating all of her previous album artwork on digital streaming platforms to align with the BRAT branding. This move refreshed her discography visually while creating a cohesive and recognizable aesthetic across her entire catalog.
@@ -1860,7 +1862,8 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
-      <h2>Charli XCX and Atlantic Records created a website called “Brat Generator”</h2>
+      <p class="date">Brat Generator</p>
+      <h2>Charli XCX and Atlantic Records created a website called Brat Generator</h2>
       <p>
         After the album’s cover art gained traction online, Charli XCX and Atlantic Records launched a website called the Brat Generator. The interactive platform allowed fans to create their own images using custom text styled in the same bold visual language as the album cover.
       </p>
@@ -1887,10 +1890,10 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
-      <p class="date">June 7, 2024</p>
-      <h2>Finally, BRAT was born</h2>
+      <p class="date">The Realease of Brat Album</p>
+      <h2>Finally, Brat was born</h2>
       <p>
-        Charli XCX officially released BRAT, and it immediately dominated pop culture across multiple spaces. From underground clubs to crossword clues, the album’s influence was everywhere, with its signature lime-green aesthetic becoming a visual symbol of the BRAT Summer era.
+        Charli XCX officially released Brat at June 7, 2024, and it immediately dominated pop culture across multiple spaces. From underground clubs to crossword clues, the album’s influence was everywhere, with its signature lime-green aesthetic becoming a visual symbol of the BRAT Summer era.
       </p>
       <p>
         BRAT Summer evolved into more than just an album release. It became a cultural vibe that shaped trends, inspired fan content, and permeated media and everyday life. Charli’s bold visuals and distinctive sound ensured the album was recognized and celebrated globally.
@@ -1917,7 +1920,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side2">
     <div class="content">
-      <p class="date">June 7, 2024</p>
+      <p class="date">Brat Trucks</p>
       <h2>BRAT trucks appeared in London to promote the album</h2>
       <p>
         On the day of the album’s release, BRAT-branded trucks roamed the streets of London, acting as mobile billboards for Charli XCX’s latest project. These moving installations added a real-world dimension to the campaign.
@@ -1945,7 +1948,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
-      <p class="date">June 9, 2024</p>
+      <p class="date">Deluxe Edition</p>
       <h2>Charli released three new songs as part of the deluxe edition</h2>
       <p>
         Just three days after the album’s release, Charli XCX surprised fans with a deluxe edition of BRAT featuring three additional songs, keeping the campaign’s momentum strong.
@@ -1976,7 +1979,7 @@ Just as corporate brands use color to convey their message, artists can use a si
 
   <div class="right-side2">
     <div class="content">
-      <p class="date">June 9, 2024</p>
+      <p class="date">Surprising Performance</p>
       <h2>Charli’s surprise performance at the music festival</h2>
       <p>
         On the day of her scheduled festival appearance, Charli XCX surprised fans with an impromptu DJ set alongside A.G. Cook and George Daniel. The unannounced performance immediately energized festivalgoers and sparked excitement online.
@@ -2004,10 +2007,10 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
-      <p class="date">June 10, 2024</p>
+      <p class="date">Brat Wall</p>
       <h2>Charli shared the updated album cover</h2>
       <p>
-        To celebrate the release of BRAT, Charli XCX shared content across Instagram and TikTok, including a livestream clip of the BRAT Wall. This real-time interaction kept fans actively engaged during the height of the album rollout.
+        To celebrate the release of Brat, Charli XCX shared content across Instagram and TikTok, including a livestream clip of the Brat Wall. This real-time interaction kept fans actively engaged during the height of the album rollout.
       </p>
       <p>
         The bold album cover quickly inspired a wave of meme content across social media, creating an organic and humorous form of promotion that helped the BRAT aesthetic spread naturally online.
@@ -2032,7 +2035,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
-      <p class="date">June 7 & June 10, 2024</p>
+      <p class="date">Exclusive Signing Events</p>
       <h2>Charli hosted exclusive signing events in London and New York City</h2>
       <p>
         Charli XCX hosted exclusive signing events on June 7 at Rough Trade East in London and on June 10 at Rough Trade in New York City. These intimate gatherings allowed fans to connect with Charli in person.
@@ -2060,9 +2063,9 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
-      <p class="date">June 21, 2024</p>
+      <p class="date">Memorable Experience</p>
       <h2>Charli turned the events into memorable moments.</h2>
-      <p>At both the London and NYC signings, Charli XCX went above and beyond to connect with her fans. She personally autographed <i>"Brat"</i> vinyl records, creating a memorable experience for those in attendance. These intimate interactions allowed fans to engage directly with the artist, reinforcing the personal connection that Charli fosters with her community.</p>
+      <p>At both the London and NYC signings, Charli XCX went above and beyond to connect with her fans. She personally autographed <i>'Brat'</i> vinyl records, creating a memorable experience for those in attendance. These intimate interactions allowed fans to engage directly with the artist, reinforcing the personal connection that Charli fosters with her community.</p>
       <p>To add an extra layer of excitement and branding, <i>"Brat"</i>-themed cars were featured at the signings, further reinforcing the album’s aesthetic and creating a buzzworthy spectacle that fans eagerly shared across social media. The cars became a visual representation of the <i>"Brat"</i> era, extending the album's branding into real-world experiences.</p>
       <p>Charli also made sure to promote the events through Instagram, showcasing her fans' participation and highlighting their importance to the campaign. By sharing fan content and celebrating their support, she not only made the fans feel valued but also continued to amplify the buzz around the <i>"Brat"</i> campaign, keeping the conversation alive on social platforms.</p>
     </div>
@@ -2075,30 +2078,6 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>  
 </div>
 
-<!-- Slide 41 Type 03 -->
-<div class="slide-content">
-  <div class="left-side3">
-    <div class="video-wrapper3">
-      <video class="horizontal" autoplay muted loop src="/casestudies/charliexcx/Slide41.mp4"></video>
-    </div>
-  </div>
-  <div class="right-side3">
-    <div class="content">
-      <p class="date">June 21, 2024</p>
-      <h2>Charli revealed her collaboration with Lorde on a remix of her track</h2>
-      <p>“Girl, So Confusing,” a track originally inspired by Charli XCX’s awkward relationship with Lorde, became one of the most talked-about songs from the album. To add a layer of humor and intrigue, Charli shared a screenshot on social media of the verse Lorde had texted to her, giving fans a glimpse into their playful dynamic.</p>
-      <p>The screenshot not only provided fans with an insider look into the creative process but also sparked further conversation and speculation about the song’s backstory. Charli’s witty and lighthearted response to the text message helped keep the buzz going, turning a personal moment into an opportunity for engagement and discussion.</p>
-      <p>This interaction perfectly illustrated how Charli and Lorde's playful exchange was incorporated into the album’s promotion, adding a personal, relatable element to the campaign that resonated with fans and kept them invested in the narrative behind the music.</p>
-    </div>
-    <div class="footer">
-      <div class="logo">
-        <img src="/Images/pessoalslogo.svg" alt="Logo">
-      </div>
-      <div class="copyright">©2026 Pessoals</div>
-    </div>
-  </div>
-</div>
-
 <!-- Slide 42 Type 01 -->
 <div class="slide-content">
   <div class="left-side1">
@@ -2106,7 +2085,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
-      <p class="date">June 21, 2024</p>
+      <p class="date">Collaboration Reveal</p>
       <h2>Charli revealed her collaboration with Lorde on a remix of her track</h2>
       <p>“Girl, So Confusing” is a song that Charli XCX originally wrote, drawing inspiration from her awkward relationship with Lorde. To add a humorous and personal touch to the track's promotion, Charli shared a screenshot on social media of Lorde’s entire verse, which Lorde had apparently texted to her directly. This unexpected reveal not only deepened the story behind the song but also created a moment of connection between the two artists and their fans.</p>
       <p>The screenshot quickly became a talking point across social media, with fans delighting in the raw, unfiltered nature of the exchange. Charli’s humorous response to Lorde’s verse helped keep the conversation going, adding an element of lightheartedness and playfulness to the campaign. This engagement created even more buzz, amplifying excitement for the remix and drawing attention to the relationship between the two artists.</p>
@@ -2130,7 +2109,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side2">
     <div class="content">
-      <p class="date">June 27, 2024</p>
+      <p class="date">Unexpected Duet</p>
       <h2>Troye Sivan’s ‘Something To Give Each Other’ tour made a memorable stop at London’s Wembley Arena.</h2>
       <p>During his set, Troye Sivan surprised the audience by inviting Charli XCX on stage for an unexpected duet of their 2018 hit, “1999.” This surprise appearance not only delighted fans in the crowd but also became a significant moment of fan-generated content across social media platforms, as concert-goers captured and shared the special performance.</p>
       <p>The unexpected collaboration served as a strategic preview of their upcoming joint tour scheduled for fall 2024, further igniting excitement and anticipation for the event. Fans immediately began discussing the performance online, amplifying the buzz and cementing the tour as one of the most anticipated music events of the year.</p>
@@ -2154,7 +2133,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side2">
     <div class="content">
-      <p class="date">July 20, 2024</p>
+      <p class="date">Viral Sensation</p>
       <h2>TikTok creator Kelley Heyer, a longtime Charli XCX fan, created a dance routine to “Apple”</h2>
       <p>“Apple Dance” quickly became a viral sensation within Charli XCX’s fanbase, rapidly spreading across social media platforms, particularly TikTok. The high-energy dance challenge became one of the most talked-about <i>"Brat"</i> trends, captivating users with its catchy rhythm and vibrant choreography.</p>
       <p>Heyer, the choreographer behind the dance, was “starstruck” when she saw Charli herself performing the routine. Overwhelmed with excitement, Heyer shared, “It makes me so happy. It’s so cool how everyone has elevated my dance into something so much bigger.” This heartfelt reaction highlighted the mutual respect between Charli and her fans, showing how the artist’s influence can help amplify fan creations into global phenomena.</p>
@@ -2177,10 +2156,11 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
+      <p class="date">Community-driven Marketing</p>
       <h2>Just as Charli planned, fan reactions exploded online.</h2>
-      <p>Fan engagement surrounding the <i>"Brat"</i> campaign reached unprecedented levels, with the <i>"Brat"</i> Wall becoming a central symbol in Charli XCX's promotion strategy. At one point, the wall had already reached over 13 million people worldwide on social media, and the numbers continued to grow, leaving the team behind the campaign to stop counting altogether.</p>
-      <p>The <i>"Brat"</i> Wall wasn't just a physical space—it became a global cultural touchpoint, sparking conversations and creating organic engagement across social media platforms. Fans across the world shared photos, videos, and memes, flooding social media with content related to the wall, which helped amplify the campaign’s viral momentum.</p>
-      <p>This extraordinary level of engagement demonstrates the power of community-driven marketing, where a simple, interactive element like the <i>"Brat"</i> Wall can transcend geographical boundaries and reach millions of people. Charli XCX’s ability to harness fan creativity and involvement created a snowball effect, making <i>"Brat"</i> not just an album, but a cultural movement that resonated with fans on a deeply personal level.</p>
+      <p>Fan engagement surrounding the <i>'Brat'</i> campaign reached unprecedented levels, with the <i>'Brat'</i> Wall becoming a central symbol in Charli XCX's promotion strategy. At one point, the wall had already reached over 13 million people worldwide on social media, and the numbers continued to grow, leaving the team behind the campaign to stop counting altogether.</p>
+      <p>The <i>'Brat'</i> Wall wasn't just a physical space—it became a global cultural touchpoint, sparking conversations and creating organic engagement across social media platforms. Fans across the world shared photos, videos, and memes, flooding social media with content related to the wall, which helped amplify the campaign’s viral momentum.</p>
+      <p>This extraordinary level of engagement demonstrates the power of community-driven marketing, where a simple, interactive element like the <i>'Brat'</i> Wall can transcend geographical boundaries and reach millions of people. Charli XCX’s ability to harness fan creativity and involvement created a snowball effect, making <i>'Brat'</i> not just an album, but a cultural movement that resonated with fans on a deeply personal level.</p>
     </div>
     <div class="footer">
       <div class="logo">
@@ -2199,8 +2179,8 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">July 1, 2024</p>
-          <h2>Despite being retired on July 1 with a final “ok, bye!” message, the wall left a lasting impact, symbolising the chaotic energy of the <i>"BRAT"</i> summer era. </h2>
+          <p class="date">Brat Wall Retired</p>
+          <h2>Despite being retired on July 1 with a final “ok, bye!” message, the wall left a lasting impact, symbolising the chaotic energy of the <i>'Brat'</i> summer era. </h2>
           <p>Even as it was retired, Charli assured fans on X that “<i>brat summer</i> is only just beginning,” leaving many to admire the blend of physical and digital engagement it brought to her music promotion.</p>
         </div>
         <div class="footer">
@@ -2219,11 +2199,11 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">July 1 & 2, 2024</p>
-          <h2>Charli bid fans farewell with a final creative change on the <i>"BRAT"</i> Wall </h2>
-          <p>The <i>"BRAT"</i> mural, live-streamed in progress, featured a bold, memorable message that read "ok, bye!," marking a significant moment in the campaign. Despite the playful and transient nature of the mural’s message, its legacy has remained indelible, cementing its place as a key symbol in Charli XCX’s <i>"BRAT"</i> era. The mural became a point of fascination for fans, with its gradual transformation being documented and shared across social media, further fueling engagement with the campaign.</p>
-          <p>The very next day, in a fitting continuation of the campaign’s visual storytelling, the mural was restored to its original solid green shade, signaling a new phase in the <i>"BRAT"</i> campaign. This act of restoration not only reinforced the iconic green color that had come to symbolize the album but also added an extra layer of narrative to the mural, showing the dynamic, ever-changing nature of Charli's promotional strategy.</p>
-          <p>By using the mural as both a physical and symbolic representation of the <i>"BRAT"</i> campaign, Charli and her team were able to create an evolving artwork that felt alive, ever-changing, and intrinsically tied to the album’s journey. This clever use of public art became another way to engage with fans, providing them with something they could document, share, and reminisce about as the campaign progressed.</p>
+          <p class="date">Brat Wall Memorable Message</p>
+          <h2>Charli bid fans farewell with a final creative change on the <i>'BRAT'</i> Wall </h2>
+          <p>The <i>'BRAT'</i> mural, live-streamed in progress, featured a bold, memorable message that read "ok, bye!," marking a significant moment in the campaign. Despite the playful and transient nature of the mural’s message, its legacy has remained indelible, cementing its place as a key symbol in Charli XCX’s <i>'BRAT'</i> era. The mural became a point of fascination for fans, with its gradual transformation being documented and shared across social media, further fueling engagement with the campaign.</p>
+          <p>The very next day, in a fitting continuation of the campaign’s visual storytelling, the mural was restored to its original solid green shade, signaling a new phase in the <i>'BRAT'</i> campaign. This act of restoration not only reinforced the iconic green color that had come to symbolize the album but also added an extra layer of narrative to the mural, showing the dynamic, ever-changing nature of Charli's promotional strategy.</p>
+          <p>By using the mural as both a physical and symbolic representation of the <i>'BRAT'</i> campaign, Charli and her team were able to create an evolving artwork that felt alive, ever-changing, and intrinsically tied to the album’s journey. This clever use of public art became another way to engage with fans, providing them with something they could document, share, and reminisce about as the campaign progressed.</p>
         </div>
         <div class="footer">
           <div class="logo">
@@ -2241,7 +2221,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">July 22, 2024</p>
+          <p class="date">Kamala Harris Endorsement</p>
           <h2>Charli took to Twitter and endorsed Kamala Harris in the U.S. presidential election.</h2>
           <p>The endorsement from Harris quickly went viral, igniting widespread conversation across social media platforms and sparking a wave of memes. This unexpected endorsement added a new layer of excitement to the <i>"BRAT"</i> campaign, propelling it to even greater heights. Fans and followers began sharing the meme content, further amplifying the buzz around the album and creating a snowball effect of online engagement.</p>
           <p>As a result, discussions surrounding Harris and her connection to the <i>"BRAT"</i> campaign skyrocketed. Her team even went as far as updating their header image on X (formerly Twitter) to reflect the distinctive design of the <i>"BRAT"</i> branding, effectively aligning her identity with the viral success of Charli’s album. This clever visual alignment helped reinforce the <i>"BRAT"</i> aesthetic, extending the album’s reach beyond Charli’s direct fanbase.</p>
@@ -2263,7 +2243,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-           <p class="date">July 22, 2024</p>
+           <p class="date">Biden-Harris Campaign Rebranded</p>
           <h2>Shortly after, the official Biden-Harris campaign account rebranded itself as "Kamala HQ"</h2>
           <p>In a playful nod to the <i>"BRAT"</i> campaign, Harris updated her banner to mimic the iconic <i>"BRAT"</i> album cover, sparking further engagement and connection between her and Charli XCX’s brand. Although Charli XCX clarified that her tweet was not a formal endorsement, she humorously added that she was "happy to help prevent democracy from failing forever." This witty remark added a layer of humor and relatability to the conversation, keeping fans engaged while solidifying Charli’s cultural relevance beyond the music industry.</p>
           <p>The <i>"BRAT"</i> campaign initially launched in October 2021, beginning with a Western-themed short film that captured attention with its striking visuals and storytelling. This cinematic approach not only set the tone for the album’s marketing but also established a unique identity that resonated with fans. Alongside the film, Charli and her team rolled out a series of creative marketing materials, including music video-style ads, which felt like a natural extension of the <i>"BRAT"</i> aesthetic.</p>
@@ -2288,7 +2268,7 @@ Just as corporate brands use color to convey their message, artists can use a si
       <div class="right-side2">
         <div class="content">
            <p class="date">Poltical Campaigns </p>
-          <h2><i>"Brat"</i> edits of Harris went viral on TikTok and Instagram</h2>
+          <h2><i>'Brat'</i> edits of Harris went viral on TikTok and Instagram</h2>
           <p>At July 22, 2024<i>"Brat"</i> edits of Harris went viral on TikTok and Instagram, users on social media quickly began pairing clips of Harris' iconic remarks, such as "I love Venn diagrams" and "You think you just fell out of a coconut tree?" with Charli XCX's music, creating a viral meme trend that took off on various platforms. These spontaneous, humorous pairings provided organic, fan-driven content, amplifying the campaign’s reach and making Charli’s music even more connected to internet culture.</p>
           <p>Ryan Long, who played a key role in popularizing the meme format, praised Harris for "doing such a good job at embodying what people call '<i>Brat summer</i>'." According to Long, Harris' authentic energy was a perfect match for the <i>"BRAT"</i> ethos: "The way she presents herself, she's happy, laughing, she'll dance. She is like a walking content farm." This comment highlighted how Harris' personality and Charli’s brand meshed perfectly, creating a synergy that resonated with fans and helped fuel the viral success of the campaign.</p>
           <p>The BBC also acknowledged the campaign's success in helping Harris appeal to a younger demographic, noting that it made her more relatable to a key voting group: "younger voters." The campaign’s adoption of the <i>"BRAT"</i> movement contributed to Harris’ image as the "cool girl" option, one that many young people could relate to and admire. Thanks, in part, to Charli XCX, Harris was able to align herself with a culturally relevant brand that amplified her appeal.</p>
@@ -2309,7 +2289,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">July 31, 2024</p>
+          <p class="date">Sparking Excitement</p>
           <h2>Charli sparked more excitement by teasing a new collaboration</h2>
           <p>Charli XCX further fueled excitement around the <i>"BRAT"</i> campaign by teasing a new collaboration, sending fans into a frenzy of speculation. She posted an intriguing image on social media, leaving fans to wonder who the mystery collaborator could be. This deliberate ambiguity sparked a wave of anticipation and conversation, as fans eagerly debated and guessed who would be joining Charli on this highly anticipated track.</p>
           <p>The tactic of keeping the collaboration under wraps was a strategic move, playing into the growing curiosity of her fanbase. Fans shared their theories, created memes, and engaged in discussions across social media platforms, amplifying the buzz around the upcoming release. This kind of fan-driven speculation is a proven way to build momentum and create a sense of excitement and exclusivity, making the eventual reveal of the collaborator even more impactful.</p>
@@ -2330,11 +2310,11 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-           <p class="date">July 31, 2024</p>
-          <h2>Some media outlets and people started claiming <i>"BRAT Summer"</i> was over</h2>
-          <p>Shortly before the release of the highly anticipated “Guess” remix, some media outlets and individuals began to speculate that the <i>"BRAT Summer"</i> movement had run its course, citing the album’s overwhelming presence in pop culture. With its ubiquity, the phrase "<i>BRAT Summer</i>" was beginning to lose some of its novelty. However, Charli XCX quickly turned this potential setback into a strategic advantage by incorporating the growing narrative into her communication plan.</p>
-          <p>Instead of letting the criticism define the end of the campaign, Charli embraced it with a tongue-in-cheek response, playfully acknowledging the idea that <i>"BRAT Summer"</i> might be "over." She hinted at something new coming soon, maintaining her mysterious aura and ensuring that her fans stayed engaged and excited. This clever approach not only kept the buzz alive but also reframed the conversation, turning what could have been seen as a negative into an opportunity for renewed interest and anticipation.</p>
-          <p>By using humor and a strategic tease, Charli ensured that the campaign remained dynamic and relevant, keeping fans on their toes and fueling speculation about what was next. This move is a perfect example of how to harness public perception and use it to your advantage, especially when managing a long-running campaign with a viral component like <i>"BRAT Summer"</i>.</p>
+           <p class="date">Reframing The Conversation</p>
+          <h2>Some media outlets and people started claiming <i>'Brat Summer'</i> was over</h2>
+          <p>Shortly before the release of the highly anticipated “Guess” remix, some media outlets and individuals began to speculate that the <i>'Brat Summer'</i> movement had run its course, citing the album’s overwhelming presence in pop culture. With its ubiquity, the phrase "<i>Brat Summer</i>" was beginning to lose some of its novelty. However, Charli XCX quickly turned this potential setback into a strategic advantage by incorporating the growing narrative into her communication plan.</p>
+          <p>Instead of letting the criticism define the end of the campaign, Charli embraced it with a tongue-in-cheek response, playfully acknowledging the idea that <i>'Brat Summer'</i> might be "over." She hinted at something new coming soon, maintaining her mysterious aura and ensuring that her fans stayed engaged and excited. This clever approach not only kept the buzz alive but also reframed the conversation, turning what could have been seen as a negative into an opportunity for renewed interest and anticipation.</p>
+          <p>By using humor and a strategic tease, Charli ensured that the campaign remained dynamic and relevant, keeping fans on their toes and fueling speculation about what was next. This move is a perfect example of how to harness public perception and use it to your advantage, especially when managing a long-running campaign with a viral component like <i>'Brat Summer'</i>.</p>
         </div>
 
         <div class="footer">
@@ -2353,7 +2333,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">August 1, 2024</p>
+          <p class="date">Collaboration Revealed/p>
           <h2>Charli revealed the collaboration with Billie Eilish</h2>
           <p>The mystery was finally unveiled the following day when Charli XCX revealed that the highly anticipated collaboration was with none other than Billie Eilish on the track <i>"Guess"</i>, featured on the deluxe edition of her album. This announcement, made through a post showcasing clips from their music video, sent shockwaves through the fanbase, adding another layer of excitement and intrigue to the already buzzing <i>"BRAT Summer"</i> campaign.</p>
           <p>Following the release of the track, Charli kept the momentum going by sharing another post, this time featuring a clip from the music video. This post quickly gained traction, becoming her most popular reel to date, with an impressive 32.5 million views, 1 million likes, and 16,000 comments. The overwhelming response from fans further solidified the success of the collaboration, cementing it as a cultural moment in the campaign.</p>
@@ -2377,11 +2357,11 @@ Just as corporate brands use color to convey their message, artists can use a si
       </div>
       <div class="right-side2">
         <div class="content">
-          <p class="date">August 2, 2024</p>
+          <p class="date">Highly Publicized Moment/p>
           <h2>Charli celebrated her 32nd birthday in L.A.</h2>
-          <p>The weekend surrounding the release of the <i>"Guess"</i> remix also marked a significant milestone for Charli XCX — her 32nd birthday. She celebrated in style in Los Angeles, surrounded by a star-studded guest list of celebrities, making the event a highly publicized moment both in the press and across social media. The presence of key collaborators such as Lorde and Billie Eilish added even more star power to the celebration, creating an atmosphere that was ripe for generating new content and deepening the cultural impact of the <i>"BRAT"</i> movement.</p>
-          <p>During the festivities, Charli, Lorde, and Billie Eilish all joined in singing along to their respective tracks, sparking a fresh wave of fan-generated content. This spontaneous moment not only showcased the camaraderie and authenticity of the artists but also reinforced the lifestyle that <i>"BRAT"</i> embodies — one of celebration, fun, and inclusivity. As videos and photos flooded social media, fans were given a behind-the-scenes look at the <i>"BRAT"</i> experience, further solidifying the album's place in pop culture.</p>
-          <p>This event served as a perfect opportunity to highlight the community and collaborative spirit that <i>"BRAT"</i> represents, blending Charli’s music with her personal life and social media presence. By using moments like this to create organic, shareable content, Charli continued to build excitement around her project while keeping fans engaged in a way that felt genuine and connected to the artist’s lifestyle.</p>
+          <p>The weekend surrounding the release of the <i>'Guess'</i> remix also marked a significant milestone for Charli XCX — her 32nd birthday. She celebrated in style in Los Angeles, surrounded by a star-studded guest list of celebrities, making the event a highly publicized moment both in the press and across social media. The presence of key collaborators such as Lorde and Billie Eilish added even more star power to the celebration, creating an atmosphere that was ripe for generating new content and deepening the cultural impact of the <i>'BRAT'</i> movement.</p>
+          <p>During the festivities, Charli, Lorde, and Billie Eilish all joined in singing along to their respective tracks, sparking a fresh wave of fan-generated content. This spontaneous moment not only showcased the camaraderie and authenticity of the artists but also reinforced the lifestyle that <i>'BRAT'</i> embodies — one of celebration, fun, and inclusivity. As videos and photos flooded social media, fans were given a behind-the-scenes look at the <i>'BRAT'</i> experience, further solidifying the album's place in pop culture.</p>
+          <p>This event served as a perfect opportunity to highlight the community and collaborative spirit that <i>'BRAT'</i> represents, blending Charli’s music with her personal life and social media presence. By using moments like this to create organic, shareable content, Charli continued to build excitement around her project while keeping fans engaged in a way that felt genuine and connected to the artist’s lifestyle.</p>
         </div>
         <div class="footer">
           <div class="logo">
@@ -2401,10 +2381,10 @@ Just as corporate brands use color to convey their message, artists can use a si
       </div>
       <div class="right-side2">
         <div class="content">
-          <p class="date">August 9, 2025</p>
-          <h2>She started pushing <i>"Guess"</i> Dance Challenge</h2>
-          <p>While not as viral as the widely popular <i>"Apple"</i> dance challenge, Charli XCX kept the momentum going by introducing a new dance challenge to her fans, this time featuring Troye Sivan and Terrence O’Connor—both of whom had starred in the original <i>"Apple"</i> dance video. This new challenge saw the trio following a choreography created by the popular influencer Jake Shane, known on social media as @octopusslover8. By collaborating with influential figures and leveraging creative choreography, Charli continued to keep her fanbase engaged and excited for what's next in the <i>"BRAT"</i> campaign.</p>
-          <p>The release of the <i>"Guess"</i> dance challenge generated significant engagement across social media platforms, with fans replicating the moves and adding their own unique flair to the dance. While it didn't reach the same viral level as the <i>"Apple"</i> challenge, it was still a clear demonstration of Charli’s ability to maintain excitement around her music through creative collaborations and by tapping into trending content that resonates with her audience. The success of this challenge reinforces how Charli continues to use dance and social media trends as a key strategy in engaging her fans and promoting her music.</p>
+          <p class="date">Viral Sensation</p>
+          <h2>She started pushing <i>'Guess'</i> Dance Challenge</h2>
+          <p>While not as viral as the widely popular <i>'Apple'</i> dance challenge, Charli XCX kept the momentum going by introducing a new dance challenge to her fans, this time featuring Troye Sivan and Terrence O’Connor—both of whom had starred in the original <i>'Apple'</i> dance video. This new challenge saw the trio following a choreography created by the popular influencer Jake Shane, known on social media as @octopusslover8. By collaborating with influential figures and leveraging creative choreography, Charli continued to keep her fanbase engaged and excited for what's next in the <i>'BRAT'</i> campaign.</p>
+          <p>The release of the <i>'Guess'</i> dance challenge generated significant engagement across social media platforms, with fans replicating the moves and adding their own unique flair to the dance. While it didn't reach the same viral level as the <i>'Apple'</i> challenge, it was still a clear demonstration of Charli’s ability to maintain excitement around her music through creative collaborations and by tapping into trending content that resonates with her audience. The success of this challenge reinforces how Charli continues to use dance and social media trends as a key strategy in engaging her fans and promoting her music.</p>
           <p>By consistently introducing fresh, interactive content, Charli ensures her fanbase remains active and excited throughout her campaign, cementing her status as a cultural trendsetter who knows how to keep the conversation going while staying connected with her community.</p>
         </div>
         <div class="footer">
@@ -2423,7 +2403,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">August 9, 2025</p>
+          <p class="date">Collaboration With Culrure Pages</p>
           <h2>She collaborated with various culture pages</h2>
           <p>Collaborations with various culture pages have played a pivotal role in amplifying Charli XCX's visibility and solidifying her status as a cultural icon. These strategic partnerships have kept Charli consistently in the public eye, ensuring that her presence remains front-and-center across social media platforms and other digital spaces. By teaming up with highly influential culture pages, Charli has been able to maintain a constant flow of content that keeps her personality and lifestyle at the forefront of people's feeds.</p>
           <p>These collaborations not only promote her music but also highlight the broader cultural movement she’s become a part of with <i>"BRAT"</i>. Through these partnerships, Charli is positioned as not just a pop star but as someone whose influence extends into fashion, lifestyle, and online culture. Her ability to integrate her brand into various cultural conversations has made her an even more formidable force in the entertainment industry, appealing to a broad audience that identifies with her authentic, boundary-pushing persona.</p>
@@ -2444,11 +2424,11 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">August 3, 2024</p>
-          <h2>Charli posts a nostalgic recap of <i>"BRAT Summer"</i></h2>
-          <p>In a pivotal moment for the <i>"BRAT"</i> campaign, Charli XCX officially announced that <i>"BRAT Summer"</i> had come to an end, signaling the conclusion of the viral movement that had taken over pop culture. With this announcement, Charli brought a natural close to the seasonal phenomenon that had dominated conversations, trends, and social media for months. The decision to declare the end of <i>"BRAT Summer"</i> marked a moment of reflection for fans, who had embraced the movement as more than just an album release but as a cultural experience.</p>
-          <p>Ending the movement was a strategic choice, allowing Charli to capitalize on the momentum she had built throughout the campaign while also creating a sense of closure. By drawing a line under <i>"BRAT Summer"</i>, Charli was able to shift focus onto new projects and upcoming music while also leaving fans wanting more. This careful balance of building excitement and knowing when to step back ensures that Charli remains a highly anticipated artist in the eyes of her fanbase.</p>
-          <p>The announcement also sparked a wave of nostalgia among fans, as they reflected on the journey of <i>"BRAT Summer"</i>, its influence on music, fashion, and pop culture, and the vibrant, fan-driven content it generated. Charli’s ability to end the movement with purpose only added to her legacy, leaving behind a lasting mark on the cultural landscape.</p>
+          <p class="date">Ending The Movement</p>
+          <h2>Charli posts a nostalgic recap of <i>'Brat Summer'</i></h2>
+          <p>In a pivotal moment for the <i>'BRAT'</i> campaign, Charli XCX officially announced that <i>'Brat Summer'</i> had come to an end, signaling the conclusion of the viral movement that had taken over pop culture. With this announcement, Charli brought a natural close to the seasonal phenomenon that had dominated conversations, trends, and social media for months. The decision to declare the end of <i>'BRAT Summer'</i> marked a moment of reflection for fans, who had embraced the movement as more than just an album release but as a cultural experience.</p>
+          <p>Ending the movement was a strategic choice, allowing Charli to capitalize on the momentum she had built throughout the campaign while also creating a sense of closure. By drawing a line under <i>'BRAT Summer'</i>, Charli was able to shift focus onto new projects and upcoming music while also leaving fans wanting more. This careful balance of building excitement and knowing when to step back ensures that Charli remains a highly anticipated artist in the eyes of her fanbase.</p>
+          <p>The announcement also sparked a wave of nostalgia among fans, as they reflected on the journey of <i>'BRAT Summer'</i>, its influence on music, fashion, and pop culture, and the vibrant, fan-driven content it generated. Charli’s ability to end the movement with purpose only added to her legacy, leaving behind a lasting mark on the cultural landscape.</p>
         </div>
         <div class="footer">
           <div class="logo">
@@ -2466,7 +2446,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">September 3, 2024</p>
+          <p class="date">Teasing Upcmoing Collaboration</p>
           <h2>Teases an upcoming collaboration by posting a faceless picture on Instagram with no caption</h2>
          <p>On the same day, Troye Sivan posted the exact same image as Charli XCX, sending fans into a frenzy with the apparent collaboration teaser. As both artists prepared for their highly anticipated <i>"Sweat"</i> tour, their social media activity began to build intrigue, with both Charli and Troye dropping subtle hints on TikTok about their upcoming project. The synchronized posts created a sense of anticipation and excitement among their followers, sparking conversations and theories across platforms about what was coming next.</p>
          <p>The use of social media teasers in the lead-up to the tour allowed Charli and Troye to engage their audience in a more personal and interactive way, providing a behind-the-scenes glimpse of the preparations while keeping the project shrouded in mystery. Fans were quick to speculate, with each new post becoming a puzzle piece in the growing collaboration narrative. This strategic use of TikTok further fueled the buzz, turning every post into an event and keeping their audience eagerly engaged.</p>
@@ -2488,7 +2468,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">September 11, 2024</p>
+          <p class="date">Revealing Collaboration</p>
           <h2>Charli reveals the track name and collaboration with Troye</h2>
           <p>Charli XCX made a major announcement, revealing that her highly anticipated new track would be released in just 24 hours. This unexpected reveal generated significant buzz, as fans eagerly awaited the drop. Speculation had been swirling around a potential collaboration with Dua Lipa, after rumors circulated following an early leak. Charli confirmed these rumors by sharing the exciting news on X (formerly Twitter), where she revealed that Dua Lipa had indeed contributed to the track.</p>
           <p>The announcement sparked a wave of excitement, with fans buzzing about the collaboration and eagerly counting down the hours until the release. Charli’s strategic use of X to confirm the leak not only fueled speculation but also amplified the anticipation surrounding the track. This unexpected collaboration between Charli and Dua Lipa was a prime example of how leaks and rumors can be used to build excitement and engage fans in the lead-up to a release.</p>
@@ -2510,32 +2490,11 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">September 12, 2024</p>
+          <p class="date">Collaboration With H&M’s</p>
           <h2>Charli starred in H&M’s latest campaign for its Autumn/Winter 2024 collection</h2>
          <p>To celebrate the exciting collaboration, Charli XCX performed at the label’s launch party in London on September 12, coinciding with the opening day of London Fashion Week. The event, held at the Copper Box Arena, was part of the ‘H&M & London’ showcase, celebrating H&M’s latest collection and highlighting the intersection of fashion and music. Charli’s performance added a dynamic, high-energy element to the event, captivating attendees and generating a buzz both on-site and across social media.</p>
          <p>The launch party also featured curated DJ sets from Jamie xx and Sherelle, creating a vibrant, festival-like atmosphere that perfectly complemented Charli’s live set. By performing at a high-profile fashion event, Charli was able to align her brand with cutting-edge style while simultaneously promoting her music to an influential, fashion-savvy audience. The synergy between music, fashion, and social media amplified the reach of the collaboration, ensuring it resonated with both fans and the broader cultural community.</p>
          <p>This strategic appearance highlighted Charli’s ability to merge entertainment and brand partnerships, using live experiences to create memorable moments that extend beyond music alone. Fans and fashion enthusiasts alike shared content from the event, further driving engagement and reinforcing Charli’s status as a cultural tastemaker.</p>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">©2026 Pessoals</div>
-        </div>
-      </div>
-    </div>
-<!-- Slide 61 Type 01 -->
-<div class="slide-content">
-       <div class="left-side1">
-    <img class="visual-image" src="/casestudies/charliexcx/Slide47.webp" alt="Kanye West x Adidas">
-  </div>
-      <div class="right-side1">
-        <div class="content">
-          <p class="date">September 12, 2024</p>
-          <h2>She announced her remix album</h2>
-          <p>The performance took place the night after Charli XCX released her <i>“Talk Talk”</i> track with Troye Sivan and officially announced the remix album, titled <i>Brat</i> – a project described as completely new yet still retaining the essence of <i>BRAT</i>. With an audience of over 3,000 attendees, the event was filled with influencers, industry colleagues, fellow musicians, and devoted fans, creating an electric and highly engaging atmosphere.</p>
-          <p>Charli delivered an impressive 10-song set, celebrating the <i>BRAT</i> era. She both opened and closed her performance with <i>“365”</i>, and also performed a cover of Caroline Polachek’s <i>“Welcome To My Island”</i>, showcasing her versatility and ability to connect with fans through a curated live experience. The performance was a perfect blend of new releases, fan favorites, and live surprises, reinforcing Charli’s reputation as a dynamic and innovative performer.</p>
-          <p>Through this event, Charli not only promoted her latest projects but also created memorable, shareable moments that amplified the excitement around both the remix album and her ongoing cultural impact. Fans and attendees shared clips across social media, generating organic buzz and further solidifying the <i>BRAT</i> campaign’s reach.</p>
         </div>
         <div class="footer">
           <div class="logo">
@@ -2553,7 +2512,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">September 12, 2024</p>
+          <p class="date">Remix Album Announcement</p>
           <h2>Charli announced her remix album</h2>
          <p>Charli XCX officially announced her remix album, <i>Brat and It’s Completely Different but Also Still Brat</i>, scheduled for release on October 11. The album features an array of remixes from <i>Brat</i>, including selections from both the original and deluxe tracks, offering fans a fresh take on her latest work. The announcement coincided with Troye Sivan’s remix of “Talk Talk,” which was also released that day, creating a coordinated moment of excitement across their fanbases.</p>
          <p>To align with the Sweat concert tour with Troye Sivan, Charli took to social media to share the news, posting: <i>“Brat and it’s completely different but also still Brat – out Oct 11”</i>, along with the album cover and a pre-order link. This strategic timing ensured maximum attention and engagement from fans, generating anticipation for both the remix album and her live performances.</p>
@@ -2575,7 +2534,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">October 1, 2024</p>
+          <p class="date">Brat-themed Billboards </p>
           <h2>Brat-themed billboards and posters begin appearing in cities</h2>
           <p>Billboards and posters began appearing in cities around the world, from London and Manchester to Wisconsin, Pasadena, and Stockholm. Their neon green, mirrored text immediately grabbed attention.</p>
           <p>Fans couldn’t help but notice, sharing photos and reactions online as the mysterious ads started spreading. The design made it hard to miss, creating a buzz everywhere.</p>
@@ -2597,7 +2556,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">October 6, 2024</p>
+          <p class="date">Handing The Tracklist</p>
           <h2>At her Florida show, Charli XCX leaked her tracklist</h2>
           <p>During her Florida show, Charli XCX surprised fans by handing the tracklist directly to someone in the front row. The gesture immediately sparked excitement, as fans eagerly shared it online.</p>
           <p>The leak caused a flurry of speculation, with fans trying to guess which tracks would feature special collaborations or surprises. Social media quickly lit up with reactions and guesses.</p>
@@ -2619,7 +2578,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">October 8, 2024</p>
+          <p class="date">Building a Curiosity</p>
           <h2>Charli teased New Yorkers on her second Instagram account, 360_brat</h2>
           <p>Charli posted a cryptic message saying, “nyyyy! maybe plan to get off work early thursday?” Fans were instantly curious about what it could mean.</p>
           <p>She also shared details on her main Instagram account about a listening party scheduled for October 10, including an RSVP link. The post hinted at something special without giving everything away.</p>
@@ -2641,7 +2600,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">October 10, 2024</p>
+          <p class="date">Brat-themed Cubes</p>
           <h2>Brat-themed cubes representing the album’s vinyl cover were spotted</h2>
           <p>October 10 marked the big release day. Green, brat-themed cubes, echoing the album’s vinyl cover, were spotted at the listening party, creating a striking visual for attendees.</p>
           <p>Charli herself appeared in front of the giant installation and played the full album, giving fans an immersive experience they won’t forget.</p>
@@ -2656,27 +2615,6 @@ Just as corporate brands use color to convey their message, artists can use a si
       </div>
 </div>
 
-<!-- Slide 67 Type 01 -->
-<div class="slide-content">
-       <div class="left-side1">
-    <img class="visual-image" src="/casestudies/charliexcx/Slide67.webp" alt="Kanye West x Adidas">
-  </div>
-      <div class="right-side1">
-        <div class="content">
-          <p class="date">October 6, 2024</p>
-          <h2>Charli XCX leaked her tracklist by personally handing it to her fans</h2>
-          <p>On October 6, during her Florida show, Charli XCX surprised fans by handing her tracklist directly to someone in the front row. The fan was encouraged to share it online, instantly creating buzz.</p>
-          <p>The unexpected leak sent fans into a frenzy, with social media filling up with reactions, guesses, and excitement about what was coming next.</p>
-          <p>By October 7, after all the speculation, Charli posted the official tracklist and featured artists on her accounts, giving everyone the confirmed details and building more anticipation for the release.</p>
-        </div>
-        <div class="footer">
-          <div class="logo">
-            <img src="/Images/pessoalslogo.svg" alt="Logo">
-          </div>
-          <div class="copyright">©2026 Pessoals</div>
-        </div>
-      </div>
-</div>
 
 <!-- Slide 68 Type 01 -->
 <div class="slide-content">
@@ -2685,7 +2623,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
       <div class="right-side1">
         <div class="content">
-          <p class="date">November 18, 2024</p>
+          <p class="date">Surprising Performance</p>
           <h2>H&M and Charli XCX surprised fans with a 15-minute open-air performance</h2>
           <p>H&M and Charli XCX surprised fans with a 15-minute open-air performance at Times Square’s TSX Stage, announced just 30 minutes before it started. The sudden reveal created an instant buzz among those nearby and online.</p>
           <p>The performance celebrated H&M’s Holiday Collection, with Charli performing hits like “Von Dutch,” “360,” and “Guess (Remix)” while wearing a custom H&M outfit. The event also featured massive billboard takeovers and music by DJ Pee .Wee (Anderson Paak).</p>
@@ -2709,35 +2647,11 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side3">
     <div class="content">
-      <p class="date">December 18, 2024</p>
+      <p class="date">Surprise Appearance</p>
       <h2>Charli XCX joined Billie Eilish’s Hit Me Hard and Soft tour</h2>
       <p>On December 18, during Billie Eilish’s Hit Me Hard and Soft tour, Charli XCX made a surprise appearance at the Los Angeles show. Fans were thrilled to see her join the stage unexpectedly.</p>
       <p>Together, they performed “Guess” live for the very first time, creating a memorable moment for everyone in attendance. The energy in the venue was electric as the crowd cheered for the duo.</p>
       <p>This collaboration highlighted the excitement and unpredictability of live performances, giving fans a rare and special experience they’ll likely never forget.</p>
-    </div>
-    <div class="footer">
-      <div class="logo">
-        <img src="/Images/pessoalslogo.svg" alt="Logo">
-      </div>
-      <div class="copyright">©2026 Pessoals</div>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 70 Type 03 -->
-<div class="slide-content">
-  <div class="left-side3">
-    <div class="video-wrapper3">
-      <video class="horizontal" autoplay muted loop src="//casestudies/charliexcx/Slide70.mp4"></video>
-    </div>
-  </div>
-  <div class="right-side3">
-    <div class="content">
-      <p class="date">December 27, 2024</p>
-      <h2>Charli XCX and Troye Sivan’s SWEAT Tour comes to virtual reality</h2>
-      <p>On December 27, through Meta Quest, Charli XCX and Troye Sivan’s SWEAT Tour came to virtual reality as part of a partnership with iHeartMedia and Meta. The announcement immediately grabbed attention from fans eager for a new way to experience the show.</p>
-      <p>The VR event featured 3D immersive footage of their October Los Angeles performance, allowing fans to feel like they were part of the live audience from anywhere in the world.</p>
-      <p>Hosted in Music Valley, Meta’s virtual music hub, the experience let fans relive the excitement and energy of the show, bringing a unique and interactive dimension to the tour.</p>
     </div>
     <div class="footer">
       <div class="logo">
@@ -2755,9 +2669,9 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
-      <p class="date">June 7, 2025</p>
+      <p class="date">Anniversary Mural</p>
       <h2>Charli’s Angels got another miracle with an anniversary mural</h2>
-      <p>Charli’s Angels got another surprise with an anniversary mural, designed to bring the community together for another Brat Summer. Fans were thrilled to see a tribute that celebrated the moment in such a public, creative way.</p>
+      <p>Charli’s Angels got another surprise with an anniversary mural at June 7, 2025, designed to bring the community together for another Brat Summer. Fans were thrilled to see a tribute that celebrated the moment in such a public, creative way.</p>
       <p>She paired the Williamsburg wall with another mural in Los Angeles, giving fans across the country bicoastal backdrops perfect for photos and social media content.</p>
       <p>Charli shared the murals with her 8.3M followers, and the posts quickly earned over 1M likes, showing just how much her fans connected with the tribute and the shared experience.</p>
     </div>
@@ -2777,6 +2691,7 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
+      <p class="date">Brat Summer legacy</p>
       <h2>The Brat Wall is now immortalized on Google Maps</h2>
       <p>The Brat Wall has officially been immortalized on Google Maps, giving it a permanent spot for fans to discover.</p>
       <p>Angels now have a digital monument to visit, whether they’re near the location or exploring it virtually from anywhere in the world.</p>
@@ -2798,8 +2713,9 @@ Just as corporate brands use color to convey their message, artists can use a si
   </div>
   <div class="right-side1">
     <div class="content">
-      <p>October 6: At her Florida show, Charli XCX leaked her tracklist by personally handing it to a front-row fan, urging them to post it on social media.</p>
-      <p>October 7: After a lot of build up and speculation, Charli shares the official track list and track features on her accounts.</p>
+      <p class="date">The Highest-rated Album of 2024</p>
+      <h2>Charli XCX's Brat Achieved Massive Critical Acclaim</h2>
+     <p>Charli XCX's <em>Brat</em> became 2024's highest-rated album, winning multiple Grammys and Album of the Year at the 2025 Brit Awards. It topped charts worldwide, peaked at #3 in the US, and sparked the cultural 'Brat Summer' phenomenon.</p>
     </div>
     <div class="footer">
       <div class="logo">
@@ -2820,7 +2736,7 @@ Just as corporate brands use color to convey their message, artists can use a si
     <div class="content">
       <p class="date">Personal Branding Mastery For Music Artists</p>
       <h2>We crafted a system that breaks down the branding strategies and frameworks used by the top 5% of music artists to capture 90% of the $50 billion.</h2>
-      <p>These strategies are used by Hollywood celebrities to create irresistible buzz around your music and help you stand out from the competition.</p>
+      <p>The system includes strategies used by Hollywood celebrities to create irresistible buzz around your music and help you stand out from the competition</p>
       <div class="button-container">
       <a class="getpbm" href="/personalbrandingmastery/formusicartists/">Learn More</a>
       </div>
