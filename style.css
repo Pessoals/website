@@ -1658,6 +1658,7 @@ form button {
   color: #1c1a15;
   margin: 0.5rem 0;
   font-size: clamp(1.8rem, 3vw, 2rem);
+  word-spacing:0%;
   line-height: 1.2;
 }
 
@@ -1669,7 +1670,7 @@ form button {
   text-align: center;
   color: #1a1a15;
   margin: 0.5rem 0 2rem 0;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.4;
   padding-left: 1rem;   /* add horizontal padding */
   padding-right: 1rem;
