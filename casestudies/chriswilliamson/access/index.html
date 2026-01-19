@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Chris Williamson Case Study</title>
+<style>
+:root {
+  --progress-height: 8px;
+  --progress-color: #bd9d5c;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+/* 🔒 LOCK SCREEN */
+#lock-screen {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 26, 21, 0.9); /* Slightly transparent dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 99999;
+  text-align: center;
+}
+
+
+#lock-screen h1 {
+font-size: clamp(1.6rem, 2.5vw, 2rem);
+ font-weight: normal;
+ font-style: normal;
+ color: #FAF8EF;
+ margin-bottom: 0%;
+ font-family: 'Playfair Display', serif;
+
+}
+/* Body Copy */
+#lock-screen  p {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1.2rem, 0.5rem + 0.5vw, 1.125rem);
+  line-height: 1.75; /* Slightly increased line height for readability */
+  color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
+}
+
+
+#lock-screen input {
+  padding: 12px 20px; /* slightly smaller padding for mobile */
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background-color: #FAF8EF;
+  width: 250px; /* default width */
+  box-sizing: border-box;
+  border: 1.5px solid #FAF8EF;
+}
+
+#lock-screen button {
+  background-color: #1c1a15;
+  text-decoration: none;
+  color: #FAF8EF;
+  padding: 12px 20px; /* slightly smaller padding for mobile */
+  margin-top: 20px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  white-space: normal; /* allow wrapping */
+  text-align: center; /* center text if it wraps */
+  box-sizing: border-box; 
+  border: 1.5px solid #FAF8EF;
+}
+
+#lock-screen button:hover,
+#lock-screen button:focus {
+  background-color: #FAF8EF;
+  color: #1c1a15;
+  outline: none;
+
+}
+/* Responsive adjustments for smaller screens */
+@media (max-width: 480px) {
+  #lock-screen h1 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+  
+  #lock-screen p {
+    font-size: 0.9rem; /* Smaller font for smaller screens */
+    margin-bottom: 20px;
+  }
+
+  #lock-screen input {
+    font-size: 14px; /* Smaller font size for input */
+    padding: 8px; /* Adjust padding */
+    width: 90%; /* Make input width responsive */
+  }
+
+  #lock-screen button {
+    font-size: 14px; /* Smaller font size for button */
+    padding: 8px 12px; /* Adjust padding */
+    margin-left: 0; /* No left margin on smaller screens */
+    margin-top: 10px; /* Add some space above the button */
+    width: 90%; /* Make button width responsive */
+  }
+}
+
+/* Optional: Medium screens (tablets) */
+@media (max-width: 768px) {
+  #lock-screen h1 {
+    font-size: 1.75rem; /* Slightly smaller font for medium screens */
+  }
+
+  #lock-screen p {
+    font-size: 1rem;
+  }
+
+  #lock-screen input, #lock-screen button {
+    margin-top: 15px;
+    width: 70%; /* Slightly smaller width for medium screens */
+  }
+}
+ #error-message {
+    display: none;
+    background-color: #e74c3c; /* solid red for high visibility */
+    color: #fff; /* white text for contrast */
+    padding: 15px 25px;
+    margin: 20px auto;
+    max-width: 400px; /* keeps it centered and compact */
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 9999; /* ensures it appears above everything */
+  }
+
+
+/* Slideshow */
+.slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.slide-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-left, .bg-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 0;
+}
+.bg-left { left: 0; background-color: #FAF8EF; }
+.bg-right { right: 0; background-color: #1c1a15; }
+
+.slide-content {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex;
+  z-index: 2;
+  display: none;
+}
+.slide-content.active { display: flex; }
+
+.left-side1, .right-side1 {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Left side background */
+.left-side1 {
+
+  justify-content: center;
+  align-items: start;
+  background: #FAF8EF;
+  position: relative;
+  flex: 1; /* Make sure it takes available space */
+  width: 100%; /* Ensure full width */
+  height: 100%; /* Ensure full height */
+  overflow: hidden; /* Hide any overflowing content */
+}
+
+.visual-image {
+  position: absolute;
+  top: 0; /* Start at the top of the container */
+  left: 0; /* Start at the left of the container */
+  width: 100%; /* Fill the entire width of the container */
+  height: 100%; /* Fill the entire height of the container */
+  object-fit: cover; /* Ensure the image covers the entire container without distortion */
+  z-index: 1;
+}
+
+.audio-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.3s ease;
+}
+.audio-toggle:hover { background: rgba(0,0,0,0.7); }
+
+.right-side1 {
+  background: linear-gradient(to bottom, rgba(28,26,21,0.95), rgba(28,26,21,0.8));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px 20px;     /* Desktop */
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .right-side1 {
+    padding: 10px 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .right-side1 {
+    padding: 5px 5px;
+  }
+}
+
+/* --- Smooth fade animation --- */
+.right-side1 .content > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.right-side1 .content > *:nth-child(2) { animation-delay: .2s; }
+.right-side1 .content > *:nth-child(3) { animation-delay: .4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.right-side1 .content {
+  padding: 20px; /* remove bottom padding */
+  color: #fff;
+  display: flex;
+  margin-bottom: auto;
+  flex-direction: column;
+  flex-grow: 1;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+
+
+.right-side1 .content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Heading */
+.right-side1 .content h1 {
+  font-size: clamp(2.5rem, 4vw, 4rem); /* Larger, responsive heading */
+  font-weight: normal;
+  font-style: normal;
+  color: #FAF8EF;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1; /* Slightly more line height for elegance */
+  letter-spacing: -0.5px; /* Slightly tighter letter-spacing for a premium feel */
+  font-family: 'Playfair Display', serif; /* Classic serif for a luxurious feel */
+}
+
+.right-side1 .content h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+ font-weight: normal;
+ font-style: normal;
+ color: #FAF8EF;
+ font-family: 'Playfair Display', serif;
+ margin-bottom: 0.3rem;
+}
+/* Body Copy */
+.right-side1 .content p {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1.2rem, 0.5rem + 0.5vw, 1.125rem);
+  line-height: 1.75; /* Slightly increased line height for readability */
+  color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
+  margin-bottom: 0.3rem;
+}
+.right-side1 .content .date{
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: clamp(16px, 2vw, 18px); /* Responsive body font size */
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #bd9d5c; /* Softer gray for the text to avoid harsh contrast */
+}
+
+
+
+.right-side1 .content li {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1.2rem, 0.5rem + 0.5vw, 1.125rem);
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
+}
+.button-container {
+  display: flex;
+  justify-content: start;
+}
+
+.getpbm {
+  background-color: #FAF8EF;
+  text-decoration: none;
+  color: #1a1a15;
+  padding: 12px 20px; /* slightly smaller padding for mobile */
+  margin-top: 20px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  white-space: normal; /* allow wrapping */
+  text-align: center; /* center text if it wraps */
+  box-sizing: border-box; 
+  border: 1.5px solid #FAF8EF;
+}
+
+/* Hover (desktop) */
+.getpbm:hover,
+.getpbm:focus {
+  background-color: #1c1a15;
+  color: #FAF8EF;
+  outline: none;
+
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .getpbm {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+}
+
+/* Footer aligned with logo */
+.right-side1 .footer {
+  display: flex;
+  align-items: center;            /* vertical centering */
+  justify-content: space-between; /* horizontal spacing */
+  gap: 12px;
+  min-height: 40px;               /* gives vertical space */
+  padding: 0 1.25rem;                   /* remove vertical padding */
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 13px;
+  color: #aaa;
+}
+
+
+.right-side1 .footer .logo img {
+  max-width: 55px;
+  height: auto;
+}
+
+.right-side1 .footer .copyright {
+  line-height: 1.4;
+  font-size: 0.75rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+
+/* MOBILE FIX */
+@media (max-width: 600px) {
+
+  .right-side1 .footer {
+    flex-direction: column;      /* stack items cleanly */
+    text-align: center;
+    justify-content: center;
+    gap: 6px;                    /* tighter spacing */
+    padding: 10px 0;             /* clean mobile look */
+  }
+
+  .right-side1 .footer .logo img {
+    max-width: 32px;             /* smaller, polished */
+  }
+
+  .right-side1 .footer .copyright {
+    font-size: 0.8rem;           /* readable on mobile */
+    line-height: 1.3;
+  }
+}
+
+
+
+
+.progress-track {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 5px;  /* Adjust height as needed */
+  background: rgba(255,255,255,0.06);
+  z-index: 3;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ffc404, #fed005);
+  transition: width 450ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+
+
+/* 📱 Rotate Message Overlay */
+#rotate-message {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  color: white;
+  font-size: 1.5rem;
+  z-index: 999999;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* GIF styling */
+.rotate {
+  width: 50%;  /* Adjust width to 50% of container */
+  max-width: 150px; /* Limit the size of the GIF */
+  height: auto; /* Keep aspect ratio intact */
+  margin-bottom: 1.5rem;
+}
+/* Styling for the mobile message */
+.rotate-message-text {
+  width: 90%;
+  max-width: 300px;
+  margin: 1.5rem auto;
+  padding: 1rem 1.5rem;
+  background-color: #FAF8EF;
+  color: #1c1a15;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  opacity: 0; /* Start invisible for fade-in */
+  animation: fadeIn 0.5s ease-in-out forwards; /* Fade-in animation */
+}
+
+/* Show message only on portrait (mobile) */
+@media (orientation: portrait) {
+  #rotate-message { display: flex; justify-content: center; align-items: center; }
+  .slideshow { filter: blur(10px); pointer-events: none; } /* optional background blur */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.keyboard-hint {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem; /* distance from right edge */
+  text-align: right;
+}
+
+.keyboard-hint img {
+  width: 200px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.keyboard-hint .hand {
+  position: absolute;
+  bottom: 45px;
+  right: 5px;
+  width: 50px;
+  height: 50px;
+  background: url('/Resources/The\ Most\ Insane\ Music\ Artist\ Brand\ Partnerships/thehand.png') no-repeat center/contain;
+  animation: pressKey 1.2s infinite ease-in-out;
+}
+
+@keyframes pressKey {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(5px) scale(0.97); opacity: 0.9; }
+}
+
+
+/* From now on this is the video 2 part or slide Update for video slides */
+/* Keep the right-side content to 75% of the slide */
+/* Slide 4 Layout */
+
+
+
+.left-side2, .right-side2 {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box; /* Ensure padding and borders are included in width/height */
+}
+
+/* Left side container */
+.left-side2 {
+  width: 30%; /* 30% of the screen */
+  background-color: #FAF8EF;
+  color: #1c1a15;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Start alignment for the video */
+  height: 100%; /* Ensure it takes up full height */
+  padding: 0; /* Remove any unnecessary padding */
+}
+/* --- Smooth fade animation --- */
+.right-side2 .content > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.right-side2 .content > *:nth-child(2) { animation-delay: .2s; }
+.right-side2 .content > *:nth-child(3) { animation-delay: .4s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Left side background */
+
+
+/* Wrapper adds spacing */
+.left-side2 .video-wrapper2 {
+  width: 100%;
+  height: 100%;
+  padding: 20px; /* controls top, bottom, left, right spacing */
+  box-sizing: border-box;
+}
+
+/* Video adjusts inside wrapper */
+.video-wrapper2 video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.right-side2 {
+  width: 70%;
+  object-fit: fill;
+  background:#1c1a15;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+  height: 100%;
+  box-sizing: border-box;
+}
+/* Tablet */
+@media (max-width: 1024px) {
+  .right-side2 {
+    padding: 10px 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .right-side2 {
+    padding: 5px 5px;
+  }
+}
+
+
+.right-side2 .content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem;
+  gap: 5px;
+
+  /* Hide scrollbar for Chrome, Safari */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge legacy */
+}
+
+.right-side2 .content::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+.right-side2 .content h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+ font-weight: normal;
+ font-style: normal;
+ color: #FAF8EF;
+ font-family: 'Playfair Display', serif;
+
+}
+/* Body Copy */
+.right-side2 .content p {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1.2rem, 0.5rem + 0.5vw, 1.125rem);
+  line-height: 1.75; /* Slightly increased line height for readability */
+  color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
+}
+.right-side2 .content .date{
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: clamp(16px, 2vw, 18px); /* Responsive body font size */
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #bd9d5c; /* Softer gray for the text to avoid harsh contrast */
+}
+
+
+.rightside1 button {
+
+  display: inline-block; /* ensures button only takes up content width */
+  width: auto;           /* overrides any width:100% from parent/global */
+  text-align: center;    /* center text inside */
+
+  color: #1c1a15;
+  width: auto;
+  background-color: #FAF8EF;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.right-side2 .content button:hover {
+  background-color: #bd9d5c;
+  transform: scale(1.05);
+}
+
+/* Footer aligned with logo */
+
+.right-side2 .footer {
+  display: flex;
+  align-items: center;            /* vertical centering */
+  justify-content: space-between; /* horizontal spacing */
+  gap: 12px;
+  min-height: 40px;               /* gives vertical space */
+  padding: 0 1.25rem;                   /* remove vertical padding */
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 13px;
+  color: #aaa;
+}
+
+
+.right-side2 .footer .logo img {
+  max-width: 55px;
+  height: auto;
+}
+
+.right-side2 .footer .copyright {
+  line-height: 1.4;
+  font-size: 0.75rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+
+/* MOBILE FIX */
+@media (max-width: 600px) {
+
+  .right-side2 .footer {
+    flex-direction: column;      /* stack items cleanly */
+    text-align: center;
+    justify-content: center;
+    gap: 6px;                    /* tighter spacing */
+    padding: 10px 0;             /* clean mobile look */
+  }
+
+  .right-side2 .footer .logo img {
+    max-width: 32px;             /* smaller, polished */
+  }
+
+  .right-side2 .footer .copyright {
+    font-size: 0.8rem;           /* readable on mobile */
+    line-height: 1.3;
+  }
+}
+
+.left-side3, .right-side3 {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+}
+.left-side3 {
+  height: 100%;
+  display: flex;
+  background-color: #FAF8EF;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-wrapper3 {
+  width: 100%;
+  height: 100%;
+  padding: 20px; /* space on all sides — adjust */
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-wrapper3 video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* keeps full video visible */
+}
+
+
+
+
+/* SMALL SIDE (30%) — content */
+.right-side3 {
+  width: 30%;
+  background: #1c1a15;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px 20px;
+  height: 100%;
+  box-sizing: border-box;
+}
+/* Tablet */
+@media (max-width: 1024px) {
+  .right-side3 {
+    padding: 10px 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .right-side3 {
+    padding: 5px 5px;
+  }
+}
+.right-side3 .content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem;
+  gap: 5px;
+
+  /* Hide scrollbar for Chrome, Safari */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge legacy */
+}
+
+/* Heading */
+.right-side3 .content h1 {
+  font-size: clamp(2.5rem, 4vw, 4rem); /* Larger, responsive heading */
+  font-weight: normal;
+  font-style: normal;
+  color: #FAF8EF;
+  line-height: 1.3; /* Slightly more line height for elegance */
+  letter-spacing: -0.5px; /* Slightly tighter letter-spacing for a premium feel */
+  font-family: 'Playfair Display', serif; /* Classic serif for a luxurious feel */
+}
+
+.right-side3 .content h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+ font-weight: normal;
+ font-style: normal;
+ color: #FAF8EF;
+ font-family: 'Playfair Display', serif;
+
+}
+/* Body Copy */
+.right-side3 .content p {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1.2rem, 0.5rem + 0.5vw, 1.125rem);
+  line-height: 1.75; /* Slightly increased line height for readability */
+  color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
+}
+.right-side3 .content .date{
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: clamp(16px, 2vw, 18px); /* Responsive body font size */
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #bd9d5c; /* Softer gray for the text to avoid harsh contrast */
+}
+
+
+
+.right-side3 .content li {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1.2rem, 0.5rem + 0.5vw, 1.125rem);
+  line-height: 1.75; /* Slightly increased line height for readability */
+  max-width: 85%;
+  color: #8c8c8c; /* Softer gray for the text to avoid harsh contrast */
+}
+
+
+.right-side3 .content button:hover {
+  background-color: #bd9d5c;
+  transform: scale(1.05);
+}/* Footer aligned with logo */
+.right-side3 .footer {
+  display: flex;
+  align-items: center;            /* vertical centering */
+  justify-content: space-between; /* horizontal spacing */
+  gap: 12px;
+  min-height: 40px;               /* gives vertical space */
+  padding: 0 1.25rem;                   /* remove vertical padding */
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 13px;
+  color: #aaa;
+}
+
+
+.right-side3 .footer .logo img {
+  max-width: 55px;
+  height: auto;
+}
+
+.right-side3 .footer .copyright {
+  line-height: 1.4;
+  font-size: 0.75rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+
+/* MOBILE FIX */
+@media (max-width: 600px) {
+
+  .right-side3 .footer {
+    flex-direction: column;      /* stack items cleanly */
+    text-align: center;
+    justify-content: center;
+    gap: 6px;                    /* tighter spacing */
+    padding: 10px 0;             /* clean mobile look */
+  }
+
+  .right-side3 .footer .logo img {
+    max-width: 32px;             /* smaller, polished */
+  }
+
+  .right-side3 .footer .copyright {
+    font-size: 0.8rem;           /* readable on mobile */
+    line-height: 1.3;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- 🔒 Lock Screen -->
+<div id="lock-screen">
+  <h1>Please enter the passcode to proceed.</h1>
+  <p>Access to this case study is restricted to invited users and Pessolas subscribers.</p>
+  <div>
+    <input 
+  type="password"
+  id="passcode"
+  placeholder="Enter your passcode"
+  autocomplete="one-time-code"
+  name="unlock-code"
+  autocorrect="off"
+  autocapitalize="off"
+  spellcheck="false"
+  inputmode="numeric"
+/>
+
+    <button onclick="event.stopPropagation(); unlock()">Unlock</button>
+  </div>
+</div>
+
+<!-- 🎥 Slideshow Used to be here -->
+
+
+<!-- Mobile Notice Message -->
+<div id="rotate-message">
+  <p class="rotate-message-text">
+    This case study is a beast your phone can’t handle all its glory. Open it on a computer for the full experience 😉
+  </p>
+</div>
+
+<div id="error-message" style="display:none;">
+</div>
+
+
+</body>
+<script>
+const correctCode = "RANDOMNUMBER";
+let isUnlocked = false;  // Track whether the screen is unlocked
+
+function unlock() {
+  const enteredCode = document.getElementById("passcode").value;
+  const errorMessage = document.getElementById("error-message");
+
+  if (enteredCode === correctCode) {
+    document.getElementById("lock-screen").style.display = "none";
+    document.querySelector(".slideshow").style.display = "block";
+    errorMessage.style.display = "none";  // Hide the error message on success
+    isUnlocked = true;  // Set unlocked state to true
+  } else {
+    errorMessage.textContent = "Incorrect passcode. Please try again.";  // Set the error message
+    errorMessage.style.display = "block";  // Show the error message
+  }
+}
+
+const slides = document.querySelectorAll('.slide-content');
+const progressBar = document.getElementById('progressBar');
+let currentIndex = 0;
+
+// Function to show the current slide based on the index
+function showSlide(index) {
+  if (index < 0) index = slides.length - 1;
+  if (index >= slides.length) index = 0;
+  currentIndex = index;
+
+  slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex));
+  slides.forEach(slide => {
+    const video = slide.querySelector('video');
+    if (video) video.pause();
+  });
+
+  const currentVideo = slides[currentIndex].querySelector('video');
+  if (currentVideo) {
+    currentVideo.muted = false;
+    currentVideo.play().catch(() => console.log('User interaction required to play sound.'));
+  }
+
+  // Update progress bar width
+  progressBar.style.width = ((currentIndex + 1) / slides.length) * 100 + '%';
+}
+
+// Handle clicking anywhere on the screen to show the next slide
+document.addEventListener('click', () => {
+  if (isUnlocked) {  // Only allow click event after unlocking
+    showSlide(currentIndex + 1); // Navigate to the next slide on any click
+    const currentVideo = slides[currentIndex].querySelector('video');
+    if (currentVideo) currentVideo.play(); // Ensure video plays if clicked
+  }
+});
+
+// Handle keydown events for left and right arrow keys
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') showSlide(currentIndex + 1);
+  if (e.key === 'ArrowLeft') showSlide(currentIndex - 1);
+});
+
+// Initialize first slide
+showSlide(0);
+</script>
+</html>
