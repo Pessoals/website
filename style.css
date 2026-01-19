@@ -3451,8 +3451,8 @@ a:focus {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  gap: 3rem;
+  padding: 3rem;
   background-color: #FAF8EF;
   color: #1c1a15;
   width: 100%;
