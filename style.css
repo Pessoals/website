@@ -4504,7 +4504,6 @@ a:focus {
   justify-content: space-between;
   background:#ffffff;
   border: 0.5px solid #1a1a15;
-  border-radius: var(--radius-md);
   width: 100%;
   max-width: 300px;
   min-width: 250px;
@@ -4529,7 +4528,6 @@ a:focus {
   padding: var(--spacing-xs);
   background-color: var(--color-backgroundcard);
   overflow: hidden;
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
   border-bottom: 0.5px solid #1a1a15; /* light gray */
   position: relative; /* ensures the button stays inside the card */
 
@@ -4553,7 +4551,6 @@ a:focus {
       background-color: #db2d0e;
       color: #FAF8EF;
       border: none;
-      border-radius: 5px;
       cursor: pointer;
       z-index: 10;
       transition: 0.3s;
@@ -4576,7 +4573,7 @@ a:focus {
 }
 
 .access-card h3 {
-  font-size: var(--font-size-md);
+   font-size: var(--font-size-md);
   color:var(--color-primary);
   font-weight: 600;
   font-family: var(--font-family-primary);
